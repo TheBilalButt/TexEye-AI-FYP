@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="diag_context" name="System Context Diagram">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="ctx_title" value="&lt;b&gt;TexEye AI: System Context Diagram (Level 0 Overview)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="700" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Central System Bubble -->
+        <mxCell id="sys_center" value="&lt;b&gt;TexEye AI System&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;Fabric Defect Detection &amp;amp;&lt;br&gt;Quality Management System&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#0369a1;strokeWidth=3;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="660" y="380" width="280" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- External Entities -->
+        <mxCell id="ent_cam" value="&lt;b&gt;Industrial Camera&lt;/b&gt;&lt;br&gt;(High-Speed Ingestion)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="180" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_enc" value="&lt;b&gt;Rotary Encoder&lt;/b&gt;&lt;br&gt;(Quadrature Pulse Stream)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="320" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_light" value="&lt;b&gt;Lighting System&lt;/b&gt;&lt;br&gt;(Regulated Illumination)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="460" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_alert" value="&lt;b&gt;Local Stack Light / Beacon&lt;/b&gt;&lt;br&gt;(Physical Floor Alarm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;fontSize=12;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="150" y="600" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;&lt;br&gt;(Mobile Application)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="150" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;&lt;br&gt;(Web / Mobile App)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="270" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;&lt;br&gt;(Web Dashboard)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="390" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;&lt;br&gt;(Web Dashboard)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="510" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_admin" value="&lt;b&gt;System Administrator&lt;/b&gt;&lt;br&gt;(Web Management Console)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="630" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_cloud" value="&lt;b&gt;Central Enterprise Cloud&lt;/b&gt;&lt;br&gt;(PostgreSQL DB &amp;amp; S3 Image Store)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=12;fontColor=#14532d;" vertex="1" parent="1">
+          <mxGeometry x="690" y="770" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors -->
+        <mxCell id="e_c1" value="Video Frames" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=1.5;" edge="1" source="ent_cam" target="sys_center" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c2" value="Displacement Pulses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=1.5;" edge="1" source="ent_enc" target="sys_center" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c3" value="Strobe Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#f59e0b;strokeWidth=1.5;dashed=1;" edge="1" source="sys_center" target="ent_light" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c4" value="Fault / Defect Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_alert" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_c5" value="QR Scan / Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_op" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c6" value="Defect Map / Corrections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_qi" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c7" value="Quality Analytics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_pm" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c8" value="Grading &amp;amp; Stock" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_im" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c9" value="User &amp;amp; Roles Config" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="sys_center" target="ent_admin" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c10" value="Two-Way Batch Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;" edge="1" source="sys_center" target="ent_cloud" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

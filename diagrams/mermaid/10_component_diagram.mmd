@@ -1,0 +1,84 @@
+flowchart TB
+    classDef comp fill:#eff6ff,stroke:#1d4ed8,stroke-width:2px,color:#1e3a8a;
+    classDef iface fill:#ffffff,stroke:#2563eb,stroke-width:1.5px,color:#1e40af,rx:10,ry:10;
+    classDef subSys fill:#f8fafc,stroke:#475569,stroke-width:2px,stroke-dasharray: 4 2,color:#0f172a;
+    classDef db fill:#fffbeb,stroke:#d97706,stroke-width:2px,shape:cylinder,color:#78350f;
+
+    subgraph EDGE_SUBSYS ["Edge Computing Subsystem (texeye-edge-core)"]
+        direction TB
+        subgraph INGESTION ["Ingestion & Monitoring"]
+            COMP_CAM["[Component]<br/>CameraIngestionService"]:::comp
+            COMP_ENC["[Component]<br/>EncoderTelemetryService"]:::comp
+            COMP_REL["[Component]<br/>ReliabilityMonitor"]:::comp
+        end
+
+        subgraph AI_CORE ["Vision & Metrology Pipeline"]
+            COMP_AI["[Component]<br/>DefectDetectorEngine"]:::comp
+            COMP_TRACK["[Component]<br/>MultiFrameTracker"]:::comp
+            COMP_MAP["[Component]<br/>CoordinateMapper"]:::comp
+        end
+
+        subgraph LOCAL_DATA ["Local Persistence & Sync"]
+            COMP_LOCAL_STORE["[Component]<br/>LocalPersistenceManager"]:::comp
+            COMP_SYNC_AGENT["[Component]<br/>EdgeSyncDaemon"]:::comp
+            DB_SQLITE[("Local SQLite DB")]:::db
+        end
+    end
+
+    COMP_CAM --> COMP_REL
+    COMP_ENC --> COMP_REL
+    COMP_REL -->|Reliable Frames| COMP_AI
+    COMP_REL -->|Uninspected Span Event| COMP_LOCAL_STORE
+
+    COMP_AI --> COMP_TRACK
+    COMP_TRACK --> COMP_MAP
+    COMP_ENC -->|Cumulative Pulses| COMP_MAP
+
+    COMP_MAP --> COMP_LOCAL_STORE
+    COMP_LOCAL_STORE <--> DB_SQLITE
+    COMP_LOCAL_STORE --> COMP_SYNC_AGENT
+
+    subgraph BACKEND_SUBSYS ["Central Backend Subsystem (texeye-backend-api)"]
+        direction TB
+        COMP_SYNC_RCV["[Component]<br/>SyncReceiverService"]:::comp
+        COMP_AUTH["[Component]<br/>Auth & RBAC Service"]:::comp
+        COMP_ROLL["[Component]<br/>RollManagerService"]:::comp
+        COMP_DEFECT["[Component]<br/>DefectManagerService"]:::comp
+        COMP_GRADE["[Component]<br/>GradingEngine (4-Point)"]:::comp
+        COMP_REPORT["[Component]<br/>ReportStatisticsService"]:::comp
+        COMP_WS["[Component]<br/>NotificationHub (WebSocket)"]:::comp
+
+        DB_PG[("Central PostgreSQL")]:::db
+        STORAGE_S3[("Object Storage MinIO/S3")]:::db
+    end
+
+    COMP_SYNC_AGENT == "HTTPS POST /api/v1/sync" ==> COMP_SYNC_RCV
+    COMP_SYNC_RCV --> COMP_ROLL
+    COMP_SYNC_RCV --> COMP_DEFECT
+    COMP_SYNC_RCV --> STORAGE_S3
+    COMP_DEFECT --> COMP_GRADE
+    COMP_GRADE --> COMP_REPORT
+
+    COMP_ROLL <--> DB_PG
+    COMP_DEFECT <--> DB_PG
+    COMP_GRADE <--> DB_PG
+    COMP_AUTH <--> DB_PG
+    COMP_REPORT <--> DB_PG
+
+    COMP_SYNC_RCV --> COMP_WS
+
+    subgraph CLIENT_SUBSYS ["User Applications"]
+        direction LR
+        COMP_MOB["[Component]<br/>Mobile App Client<br/>(Flutter/React Native)"]:::comp
+        COMP_WEB["[Component]<br/>Web Dashboard Client<br/>(React / TypeScript)"]:::comp
+    end
+
+    COMP_MOB == "HTTPS REST / WSS" ==> COMP_AUTH
+    COMP_MOB == "Scan / Correct" ==> COMP_DEFECT
+    COMP_WS -.->|Push Notifications| COMP_MOB
+
+    COMP_WEB == "HTTPS REST / WSS" ==> COMP_AUTH
+    COMP_WEB == "Defect Map / Grading / Reports" ==> COMP_REPORT
+    COMP_WEB == "Roll Management" ==> COMP_ROLL
+    COMP_WS -.->|Live Telemetry Updates| COMP_WEB
+

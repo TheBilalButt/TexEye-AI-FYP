@@ -1,0 +1,81 @@
+flowchart TB
+    classDef process fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:20,ry:20;
+    classDef store fill:#fffbeb,stroke:#d97706,stroke-width:2px,shape:cylinder,color:#78350f;
+    classDef ext fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a;
+
+    %% Sub-processes of 1.0 (Hardware Signal Ingestion)
+    subgraph P1_DECOMP ["1.0 Hardware Ingestion & Reliability Subsystem"]
+        P1_1["1.1 Frame Capture<br/>& Timestamp Buffer"]:::process
+        P1_2["1.2 Encoder Pulse<br/>Integration Engine"]:::process
+        P1_3["1.3 Quality & Health<br/>Reliability Monitor"]:::process
+        P1_4["1.4 Uninspected Section<br/>Span Calculator"]:::process
+    end
+
+    %% Sub-processes of 2.0 (AI Processing)
+    subgraph P2_DECOMP ["2.0 AI Vision & Metrology Subsystem"]
+        P2_1["2.1 ROI Conditioning<br/>& CLAHE Contrast"]:::process
+        P2_2["2.2 AI Object Detection<br/>(YOLO Model)"]:::process
+        P2_3["2.3 Multi-Frame Tracker<br/>& Deduplication"]:::process
+        P2_4["2.4 Metric Coordinate<br/>Mapping (X_cm, Y_m)"]:::process
+    end
+
+    %% Sub-processes of 3.0 (Edge Data Logging)
+    subgraph P3_DECOMP ["3.0 Edge Data Storage & Sync"]
+        P3_1["3.1 Local SQLite<br/>Writer & Image Store"]:::process
+        P3_2["3.2 Connectivity Probe<br/>& Sync Dispatcher"]:::process
+    end
+
+    %% Sub-processes of 4.0 & 5.0 (Central Quality & User Services)
+    subgraph P4_5_DECOMP ["4.0 & 5.0 Central Management & UI Services"]
+        P4_1["4.1 Defect Review &<br/>Correction Manager"]:::process
+        P4_2["4.2 4-Point Fabric<br/>Grading Calculator"]:::process
+        P4_3["4.3 Report & Quality<br/>Statistics Engine"]:::process
+        P5_1["5.1 Real-Time Alert<br/>Broadcaster (WebSocket)"]:::process
+        P5_2["5.2 Digital Fabric<br/>Defect Map Renderer"]:::process
+    end
+
+    %% Stores
+    D1[("D1: Local SQLite DB")]:::store
+    D2[("D2: Offline Sync Queue")]:::store
+    D3[("D3: Central PostgreSQL")]:::store
+    D4[("D4: MinIO/S3 Storage")]:::store
+
+    %% Inputs
+    CAM["Industrial Camera"]:::ext --> P1_1
+    ENC["Rotary Encoder"]:::ext --> P1_2
+
+    P1_1 --> P1_3
+    P1_2 --> P1_3
+    P1_2 -- "Incremental Distance ΔL" --> P2_4
+
+    P1_3 -- "Signal Degraded / Drop Anomaly" --> P1_4
+    P1_4 -- "Uninspected Span [L1, L2]" --> P3_1
+
+    P1_3 -- "Verified Clean Frame Stream" --> P2_1
+    P2_1 --> P2_2
+    P2_2 -- "Raw BBoxes & Confidences" --> P2_3
+    P2_3 -- "Tracked Unique Defect ID" --> P2_4
+    P2_4 -- "Defect Record {ID, Class, X, Y, Img}" --> P3_1
+
+    P3_1 <--> D1
+    P3_1 -->|Queue Transaction| D2
+    D2 --> P3_2
+    P3_2 == "Batch Ingestion HTTPS" ==> P4_1
+    P3_2 == "Upload Images" ==> D4
+
+    P4_1 <--> D3
+    P4_1 --> P4_2
+    P4_2 <--> D3
+    P4_2 --> P4_3
+    P4_3 <--> D3
+
+    P3_2 -.->|Inspection Warning / Critical Defect| P5_1
+    D3 --> P5_2
+
+    %% Users
+    P5_1 --> OP["Floor Operator (Mobile)"]:::ext
+    P4_1 <--> QI["Quality Inspector (Web/Mobile)"]:::ext
+    P4_2 --> IM["Inventory Manager (Web)"]:::ext
+    P4_3 --> PM["Production Manager (Web)"]:::ext
+    P5_2 --> QI
+

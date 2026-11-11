@@ -1,0 +1,61 @@
+flowchart TB
+    classDef nodeBox fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a;
+    classDef procBox fill:#eff6ff,stroke:#2563eb,stroke-width:1.5px,color:#1e3a8a;
+    classDef dbBox fill:#fffbeb,stroke:#d97706,stroke-width:2px,shape:cylinder,color:#78350f;
+
+    subgraph NODE_STAND ["<<device>> Fabric Inspection Stand"]
+        direction TB
+        DEV_CAM["Industrial Camera<br/>(Telecentric / Low-Distortion Lens)"]:::nodeBox
+        DEV_ENC["Incremental Rotary Encoder<br/>(Mounted on Idler Roller)"]:::nodeBox
+        DEV_LIGHT["High-Uniformity LED Lighting Rig<br/>(Constant-Current Driver)"]:::nodeBox
+        DEV_ALERT["Alert Tower Light / Relay Buzzer<br/>(Proposed Hardware)"]:::nodeBox
+    end
+
+    subgraph NODE_EDGE ["<<device>> Industrial Edge Computer (e.g., Jetson / Industrial PC)"]
+        direction TB
+        subgraph OS_EDGE ["OS: Ubuntu Linux 22.04 LTS (x86_64 or ARM64)"]
+            PROC_CAP["texeye-capture-daemon<br/>(V4L2 / GenICam / GPIO Listener)"]:::procBox
+            PROC_AI["texeye-inference-runtime<br/>(PyTorch / TensorRT / OpenCV)"]:::procBox
+            PROC_SYNC["texeye-sync-agent<br/>(Python Background Worker)"]:::procBox
+            DB_EDGE[("Local SQLite 3 Engine<br/>(texeye_local.db)")]:::dbBox
+            FS_EDGE["Local NVMe Flash Storage<br/>(/var/texeye/img_cache)"]:::procBox
+        end
+    end
+
+    DEV_CAM == "High-Speed Bus (Proposed: USB 3.0 / GigE Vision)" ==> PROC_CAP
+    DEV_ENC == "Shielded Twisted Pair (Proposed: TTL / GPIO Counter)" ==> PROC_CAP
+    PROC_CAP -.->|Strobe Sync Control| DEV_LIGHT
+    PROC_AI == "Digital Output / Relay Trigger" ==> DEV_ALERT
+
+    PROC_CAP --> PROC_AI
+    PROC_AI --> DB_EDGE
+    PROC_AI --> FS_EDGE
+    DB_EDGE --> PROC_SYNC
+    FS_EDGE --> PROC_SYNC
+
+    subgraph NODE_CLOUD ["<<device>> Central Enterprise Cloud / On-Premise Server"]
+        direction TB
+        subgraph DOCKER_HOST ["Virtualization: Docker Engine / Linux Server"]
+            REV_PROXY["Nginx Reverse Proxy & SSL Termination<br/>(Port 443 / HTTPS & WSS)"]:::procBox
+            APP_API["FastAPI / Backend Service Container<br/>(Uvicorn ASGI Workers)"]:::procBox
+            DB_CENTRAL[("PostgreSQL 16 Database Cluster<br/>(Relational Inspection Data)")]:::dbBox
+            OBJ_CENTRAL[("MinIO / AWS S3 Object Storage<br/>(Defect Snippet Archive)")]:::dbBox
+        end
+    end
+
+    PROC_SYNC == "TLS 1.3 / HTTPS (Chunked REST Batches)<br/>[Corporate LAN / Industrial WAN]" ==> REV_PROXY
+    REV_PROXY --> APP_API
+    APP_API <--> DB_CENTRAL
+    APP_API <--> OBJ_CENTRAL
+
+    subgraph NODE_MOBILE ["<<device>> Shop Floor Mobile Device"]
+        MOB_OS["OS: Android / iOS<br/>App: TexEye AI Mobile (Flutter / React Native)<br/>Sensors: Integrated Camera (QR Scanning)"]:::nodeBox
+    end
+
+    subgraph NODE_PC ["<<device>> Quality & Management Workstation"]
+        PC_OS["OS: Windows / macOS / Linux<br/>Browser: Chrome / Edge / Firefox<br/>App: TexEye AI Web Dashboard (React SPA)"]:::nodeBox
+    end
+
+    MOB_OS == "Wi-Fi 802.11 / 4G (HTTPS REST / WSS)" ==> REV_PROXY
+    PC_OS == "Corporate LAN / WAN (HTTPS REST / WSS)" ==> REV_PROXY
+

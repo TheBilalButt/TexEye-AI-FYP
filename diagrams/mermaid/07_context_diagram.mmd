@@ -1,0 +1,48 @@
+flowchart TB
+    classDef sysBoundary fill:#1e293b,stroke:#0284c7,stroke-width:3px,color:#ffffff,rx:15,ry:15;
+    classDef extEntity fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a,rx:5,ry:5;
+    classDef hwEntity fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:5,ry:5;
+
+    TEXEYE[["TexEye AI System<br/>(AI-Based Fabric Defect Detection &<br/>Quality Management System)"]]:::sysBoundary
+
+    %% Hardware External Entities
+    CAM_HW["Industrial Camera<br/>(Image Ingestion)"]:::hwEntity
+    ENC_HW["Rotary Encoder<br/>(Fabric Movement Pulses)"]:::hwEntity
+    LIGHT_HW["Lighting System<br/>(Controlled Illumination)"]:::hwEntity
+    ALERT_HW["Stack Light / Alert Beacon<br/>(Physical Alarm)"]:::hwEntity
+
+    %% Human External Entities
+    OP["Floor Operator<br/>(Mobile Client)"]:::extEntity
+    QI["Quality Inspector<br/>(Web & Mobile Client)"]:::extEntity
+    PM["Production Manager<br/>(Web Dashboard)"]:::extEntity
+    IM["Inventory Manager<br/>(Web Dashboard)"]:::extEntity
+    ADMIN["System Administrator<br/>(Web Admin Portal)"]:::extEntity
+
+    %% External Infrastructure
+    CLOUD_INFRA["Enterprise Cloud Storage & Services<br/>(Backup, Long-term Storage & Push Gateway)"]:::extEntity
+
+    %% Hardware Data Flows
+    CAM_HW -- "High-Speed Video Stream / Frame Data" --> TEXEYE
+    ENC_HW -- "Quadrature Pulse Train (A/B Channels)" --> TEXEYE
+    TEXEYE -.->|Strobe Trigger / Illumination Feedback| LIGHT_HW
+    TEXEYE -- "Relay Trigger / Fault Signal" --> ALERT_HW
+
+    %% Human Actor Data Flows
+    OP -- "QR Code Scan, Inspection Acknowledgment" --> TEXEYE
+    TEXEYE -- "Real-time Push Alerts, Roll Metadata" --> OP
+
+    QI -- "Defect Corrections, Grade Approvals" --> TEXEYE
+    TEXEYE -- "Defect Map, Roll Status, Printable Reports" --> QI
+
+    PM -- "Query Defect Statistics & Roll History" --> TEXEYE
+    TEXEYE -- "Quality Metrics, Defect Trends, Grading Summaries" --> PM
+
+    IM -- "Update Warehouse Bay / Storage Status" --> TEXEYE
+    TEXEYE -- "Roll Grade, Pass/Fail Status, Scrap Notifications" --> IM
+
+    ADMIN -- "User Roles, System Configuration, Credentials" --> TEXEYE
+    TEXEYE -- "Audit Logs, System Health & Edge Status" --> ADMIN
+
+    %% Cloud Data Flows
+    TEXEYE <== "Bi-directional Batch Sync / Idempotent REST API & WSS" ==> CLOUD_INFRA
+

@@ -1,0 +1,66 @@
+# TexEye AI - Batch Diagram Render Script
+# Automatically exports all SVG diagrams to high-resolution PNGs via headless Microsoft Edge
+
+$edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+if (-not (Test-Path $edgePath)) {
+    $edgePath = "C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+}
+
+$svgDir = "C:\Users\User\Desktop\FYP\diagrams\svg"
+$pngDir = "C:\Users\User\Desktop\FYP\diagrams\png"
+
+if (-not (Test-Path $pngDir)) {
+    New-Item -ItemType Directory -Force -Path $pngDir | Out-Null
+}
+
+$diagramConfigs = @(
+    @{ Name = "01_system_workflow"; Width = 1400; Height = 1300 },
+    @{ Name = "02_ai_inspection_workflow"; Width = 1400; Height = 1350 },
+    @{ Name = "03_offline_sync_workflow"; Width = 1400; Height = 1250 },
+    @{ Name = "04_hardware_architecture"; Width = 1450; Height = 1200 },
+    @{ Name = "05_software_architecture"; Width = 1450; Height = 1450 },
+    @{ Name = "06_use_case_overall"; Width = 1500; Height = 1350 },
+    @{ Name = "07_context_diagram"; Width = 1450; Height = 1100 },
+    @{ Name = "08_dfd_level_0"; Width = 1450; Height = 1250 },
+    @{ Name = "09_dfd_level_1"; Width = 1450; Height = 1300 },
+    @{ Name = "10_component_diagram"; Width = 1450; Height = 1200 },
+    @{ Name = "11_deployment_diagram"; Width = 1450; Height = 1200 },
+    @{ Name = "12_sequence_inspection"; Width = 1450; Height = 1200 },
+    @{ Name = "13_sequence_sync"; Width = 1450; Height = 1150 },
+    @{ Name = "14_entity_relationship_diagram"; Width = 1550; Height = 1400 }
+)
+
+Write-Host "Starting TexEye AI Diagram PNG Rendering..." -ForegroundColor Cyan
+
+foreach ($cfg in $diagramConfigs) {
+    $name = $cfg.Name
+    $w = $cfg.Width
+    $h = $cfg.Height
+    $svgFile = Join-Path $svgDir "$name.svg"
+    $pngFile = Join-Path $pngDir "$name.png"
+
+    if (Test-Path $svgFile) {
+        Write-Host "Rendering $name ($w x $h)..." -NoNewline
+        $url = "file:///$($svgFile.Replace('\', '/'))"
+        
+        $argList = @(
+            "--headless",
+            "--disable-gpu",
+            "--screenshot=`"$pngFile`"",
+            "--window-size=$w,$h",
+            "`"$url`""
+        )
+        
+        $proc = Start-Process -FilePath $edgePath -ArgumentList $argList -Wait -PassThru
+        if (Test-Path $pngFile) {
+            $len = (Get-Item $pngFile).Length
+            Write-Host " OK ($([math]::Round($len/1KB, 1)) KB)" -ForegroundColor Green
+        } else {
+            Write-Host " FAILED" -ForegroundColor Red
+        }
+    } else {
+        Write-Host "Skipping $($name): SVG not found." -ForegroundColor Yellow
+    }
+}
+
+Write-Host "`nAll diagrams rendered to $pngDir" -ForegroundColor Green

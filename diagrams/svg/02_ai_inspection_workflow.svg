@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1350" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7e22ce"/>
+      <stop offset="100%" stop-color="#3b0764"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#450a0a"/>
+    </linearGradient>
+    <filter id="shadow2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrB" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/></marker>
+    <marker id="arrP" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c084fc"/></marker>
+    <marker id="arrG" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4ade80"/></marker>
+    <marker id="arrR" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f87171"/></marker>
+  </defs>
+
+  <!-- Title -->
+  <g transform="translate(100, 30)" filter="url(#shadow2)">
+    <rect width="1200" height="70" rx="12" fill="url(#headerGrad2)" stroke="#334155" stroke-width="1.5"/>
+    <text x="600" y="32" fill="#c084fc" font-size="20" font-weight="bold" text-anchor="middle">TexEye AI &mdash; Detailed AI Vision, Tracking &amp; Metrology Pipeline</text>
+    <text x="600" y="55" fill="#94a3b8" font-size="13" text-anchor="middle">Muhammad Bilal Butt (FA23-BAI-042) | Real-Time Detection, Multi-Frame Tracking &amp; Encoder Synchronization</text>
+  </g>
+
+  <!-- Input -->
+  <g transform="translate(450, 125)" filter="url(#shadow2)">
+    <rect width="500" height="50" rx="25" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+    <text x="250" y="31" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Synchronized Video Stream &amp; Rotary Encoder Ticks</text>
+  </g>
+  <path d="M 700 175 L 700 205" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrB)"/>
+
+  <!-- Stage 1 Box: Quality Gate -->
+  <g transform="translate(100, 210)" filter="url(#shadow2)">
+    <rect width="1200" height="230" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="25" y="28" fill="#38bdf8" font-size="14" font-weight="bold">STAGE 1: PRE-INFERENCE RELIABILITY &amp; INTEGRITY GATE</text>
+
+    <!-- Check 1 -->
+    <polygon points="170,50 290,105 170,160 50,105" fill="url(#blueGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="170" y="100" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Frame Sequence</text>
+    <text x="170" y="118" fill="#93c5fd" font-size="10" text-anchor="middle">Dropped Frames?</text>
+
+    <!-- Check 2 -->
+    <polygon points="570,50 690,105 570,160 450,105" fill="url(#blueGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="570" y="100" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Illumination</text>
+    <text x="570" y="118" fill="#93c5fd" font-size="10" text-anchor="middle">Luminance Histogram</text>
+
+    <!-- Check 3 -->
+    <polygon points="970,50 1090,105 970,160 850,105" fill="url(#blueGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="970" y="100" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Image Sharpness</text>
+    <text x="970" y="118" fill="#93c5fd" font-size="10" text-anchor="middle">Laplacian Variance</text>
+
+    <!-- Connectors inside Stage 1 -->
+    <path d="M 290 105 L 440 105" stroke="#4ade80" stroke-width="2" marker-end="url(#arrG)"/>
+    <text x="360" y="95" fill="#4ade80" font-size="11" font-weight="bold">Intact</text>
+
+    <path d="M 690 105 L 840 105" stroke="#4ade80" stroke-width="2" marker-end="url(#arrG)"/>
+    <text x="760" y="95" fill="#4ade80" font-size="11" font-weight="bold">Uniform</text>
+
+    <!-- Warning bar below -->
+    <rect x="180" y="180" width="840" height="38" rx="6" fill="url(#redGrad)" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="600" y="204" fill="#fecaca" font-size="12" font-weight="bold" text-anchor="middle">ANY FAILURE &rarr; Compute Span [L1, L2], Flag as UNINSPECTED (Bypasses AI Inference)</text>
+
+    <path d="M 170 160 L 170 180" stroke="#f87171" stroke-width="2"/>
+    <path d="M 570 160 L 570 180" stroke="#f87171" stroke-width="2"/>
+    <path d="M 970 160 L 970 180" stroke="#f87171" stroke-width="2"/>
+  </g>
+  <path d="M 1070 440 L 1070 480 L 700 480 L 700 500" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG)"/>
+
+  <!-- Stage 2 Box: Image Conditioning & AI Inference -->
+  <g transform="translate(100, 505)" filter="url(#shadow2)">
+    <rect width="1200" height="190" rx="12" fill="#0f172a" stroke="#c084fc" stroke-width="2"/>
+    <text x="25" y="28" fill="#c084fc" font-size="14" font-weight="bold">STAGE 2: IMAGE CONDITIONING &amp; AI DEFECT INFERENCE</text>
+
+    <!-- Step 1 -->
+    <rect x="40" y="50" width="280" height="60" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="180" y="77" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ROI Cropping &amp; Undistortion</text>
+    <text x="180" y="97" fill="#c084fc" font-size="11" text-anchor="middle">Isolate fabric web boundary</text>
+
+    <!-- Step 2 -->
+    <rect x="370" y="50" width="280" height="60" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="510" y="77" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Adaptive Contrast (CLAHE)</text>
+    <text x="510" y="97" fill="#c084fc" font-size="11" text-anchor="middle">Enhance warp/weft thread variations</text>
+
+    <!-- Step 3 -->
+    <rect x="700" y="45" width="460" height="70" rx="8" fill="url(#purpleGrad)" stroke="#c084fc" stroke-width="2"/>
+    <text x="930" y="73" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">YOLO AI Defect Detection Backbone</text>
+    <text x="930" y="95" fill="#f3e8ff" font-size="11" text-anchor="middle">Hole &bull; Stain &bull; Warp Defect &bull; Weft Defect &bull; Float &bull; Oil Spot</text>
+
+    <path d="M 320 80 L 360 80" stroke="#c084fc" stroke-width="2" marker-end="url(#arrP)"/>
+    <path d="M 650 80 L 690 80" stroke="#c084fc" stroke-width="2" marker-end="url(#arrP)"/>
+
+    <!-- Bottom Decision -->
+    <rect x="350" y="130" width="500" height="40" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="600" y="155" fill="#93c5fd" font-size="12" text-anchor="middle">Confidence Score &ge; Threshold &theta;? &rarr; Filter False Positives</text>
+  </g>
+  <path d="M 700 695 L 700 735" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrP)"/>
+
+  <!-- Stage 3 Box: Multi-Frame Tracking & Deduplication -->
+  <g transform="translate(100, 740)" filter="url(#shadow2)">
+    <rect width="1200" height="200" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="25" y="28" fill="#38bdf8" font-size="14" font-weight="bold">STAGE 3: MULTI-FRAME TRACKING &amp; DUPLICATE REDUCTION</text>
+
+    <!-- Box 1 -->
+    <rect x="40" y="55" width="320" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="200" y="85" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Multi-Frame Tracker</text>
+    <text x="200" y="108" fill="#94a3b8" font-size="11" text-anchor="middle">Kalman Filter Motion Modeling</text>
+    <text x="200" y="128" fill="#94a3b8" font-size="11" text-anchor="middle">IoU Matching Across Consecutive Frames</text>
+    <text x="200" y="148" fill="#38bdf8" font-size="11" text-anchor="middle">Window: &Delta;t (Fabric Movement Span)</text>
+
+    <path d="M 360 110 L 410 110" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Box 2 -->
+    <rect x="420" y="55" width="360" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="600" y="85" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Track State Management</text>
+    <text x="600" y="108" fill="#4ade80" font-size="11" text-anchor="middle">&bull; Matched Track &rarr; Update Trajectory &amp; Score</text>
+    <text x="600" y="128" fill="#38bdf8" font-size="11" text-anchor="middle">&bull; New Appearance &rarr; Assign New Track ID</text>
+    <text x="600" y="148" fill="#94a3b8" font-size="11" text-anchor="middle">&bull; Lost Track &rarr; Terminate after K frames</text>
+
+    <path d="M 780 110 L 830 110" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrB)"/>
+
+    <!-- Box 3 -->
+    <rect x="840" y="55" width="320" height="110" rx="8" fill="url(#blueGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <text x="1000" y="85" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Duplicate Reduction Gate</text>
+    <text x="1000" y="108" fill="#bae6fd" font-size="11" text-anchor="middle">Spatial-Temporal Suppression</text>
+    <text x="1000" y="130" fill="#fef08a" font-size="11" font-weight="bold" text-anchor="middle">Result: Single Valid Record</text>
+    <text x="1000" y="150" fill="#bae6fd" font-size="10" text-anchor="middle">Eliminates repeated defect logging</text>
+  </g>
+  <path d="M 700 940 L 700 980" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG)"/>
+
+  <!-- Stage 4 Box: Metrology & Physical Position -->
+  <g transform="translate(100, 985)" filter="url(#shadow2)">
+    <rect width="1200" height="190" rx="12" fill="#0f172a" stroke="#4ade80" stroke-width="2"/>
+    <text x="25" y="28" fill="#4ade80" font-size="14" font-weight="bold">STAGE 4: METROLOGY &amp; PHYSICAL COORDINATE ESTIMATION</text>
+
+    <!-- Longitudinal Y -->
+    <rect x="40" y="55" width="530" height="110" rx="8" fill="url(#greenGrad)" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="305" y="85" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Longitudinal Position (Y in meters)</text>
+    <text x="305" y="110" fill="#bbf7d0" font-size="12" text-anchor="middle">Y = Cumulative Encoder Pulses &times; (&pi; &times; D / PPR)</text>
+    <text x="305" y="132" fill="#86efac" font-size="11" text-anchor="middle">Hardware Synchronized with Physical Fabric Movement</text>
+    <text x="305" y="150" fill="#dcfce7" font-size="10" text-anchor="middle">Precision: &plusmn; 2mm along roll length</text>
+
+    <!-- Lateral X -->
+    <rect x="630" y="55" width="530" height="110" rx="8" fill="url(#greenGrad)" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="895" y="85" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Lateral Position (X in centimeters)</text>
+    <text x="895" y="110" fill="#bbf7d0" font-size="12" text-anchor="middle">X = BoundingBox_Center_X &times; Ground_Resolution (cm/px)</text>
+    <text x="895" y="132" fill="#86efac" font-size="11" text-anchor="middle">Camera-to-Fabric Geometric Calibration Engine</text>
+    <text x="895" y="150" fill="#dcfce7" font-size="10" text-anchor="middle">Corrects perspective warp &amp; barrel distortion</text>
+  </g>
+  <path d="M 700 1175 L 700 1215" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG)"/>
+
+  <!-- Output Payload -->
+  <g transform="translate(300, 1220)" filter="url(#shadow2)">
+    <rect width="800" height="75" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="400" y="32" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="middle">Consolidated Defect Record Payload Ready for Local DB &amp; Sync</text>
+    <text x="400" y="55" fill="#f8fafc" font-size="12" text-anchor="middle">{ Track_ID: 104, Class: "HOLE", Confidence: 0.94, X: 42.5cm, Y: 18.2m, Image_Snippet: "blob..." }</text>
+  </g>
+
+</svg>

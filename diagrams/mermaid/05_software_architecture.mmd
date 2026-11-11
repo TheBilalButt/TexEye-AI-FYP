@@ -1,0 +1,97 @@
+flowchart TB
+    classDef edgeLayer fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+    classDef aiLayer fill:#faf5ff,stroke:#9333ea,stroke-width:2px,color:#581c87;
+    classDef backendLayer fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef dataLayer fill:#fffbeb,stroke:#d97706,stroke-width:2px,color:#78350f;
+    classDef uiLayer fill:#fdf2f8,stroke:#db2777,stroke-width:2px,color:#831843;
+
+    subgraph UI_LAYER ["E. User Interface Layer"]
+        direction LR
+        MOB_APP["Mobile Application (Floor Operator / Inspector)<br/>[Proposed: Flutter / React Native]<br/>- QR Scanner<br/>- Defect Review & Correction<br/>- Real-time Audio/Visual Alerts"]:::uiLayer
+        WEB_APP["Web Dashboard (QA Inspector / Production Mgr / Admin)<br/>[Proposed: React + TypeScript + Tailwind]<br/>- Digital Fabric Defect Map (Interactive Roll Visualizer)<br/>- Inspection Status & 4-Point Roll Grading<br/>- Inventory & Scrap Management<br/>- Executive Analytics & PDF Report Generator"]:::uiLayer
+    end
+
+    subgraph BACKEND_LAYER ["C. Backend / Application Layer (Proposed: FastAPI / Node.js)"]
+        direction TB
+        AUTH_SVC["Authentication & RBAC Service (JWT / Session)"]:::backendLayer
+        ROLL_SVC["Fabric Roll & Batch Management Service"]:::backendLayer
+        DEFECT_SVC["Defect Records & Verification Service"]:::backendLayer
+        INSPECT_SVC["Inspection Session & Uninspected Section Service"]:::backendLayer
+        GRADING_SVC["Fabric Grading & 4-Point System Engine"]:::backendLayer
+        INVENTORY_SVC["Inventory & Scrap Tracking Service"]:::backendLayer
+        REPORT_SVC["Reporting & Quality Statistics Service"]:::backendLayer
+        QR_SVC["QR Code Generator & Roll Identifier Service"]:::backendLayer
+        CLOUD_SYNC_SVC["Central Synchronization Receiver Service"]:::backendLayer
+        NOTIF_SVC["Real-time Notification Service (WebSocket / FCM Push)"]:::backendLayer
+    end
+
+    subgraph DATA_LAYER ["D. Data & Persistence Layer"]
+        direction LR
+        subgraph CENTRAL_STORAGE ["Central Data Store"]
+            CENTRAL_DB[("PostgreSQL Central DB<br/>(Transactional Records)")]:::dataLayer
+            OBJECT_STORE[("MinIO / S3 Object Store<br/>(Defect Image Snippets)")]:::dataLayer
+        end
+        subgraph LOCAL_STORAGE ["Edge Local Data Store"]
+            LOCAL_DB[("SQLite Local DB<br/>(Offline Cache & Session Records)")]:::dataLayer
+            LOCAL_IMG[("Local NVMe File Store<br/>(Buffered Defect Frames)")]:::dataLayer
+            SYNC_QUEUE[("Offline Sync Queue Table<br/>(Ordered Transaction Logs)")]:::dataLayer
+        end
+    end
+
+    subgraph AI_LAYER ["B. AI Processing Layer (Edge Runtime - Proposed: PyTorch / TensorRT / ONNX)"]
+        direction TB
+        PREPROC["Image Preprocessing & ROI Conditioning (OpenCV)"]:::aiLayer
+        DETECTION_MDL["Fabric Defect Detection Model (YOLOv8 / RT-DETR)"]:::aiLayer
+        TRACKER_MDL["Multi-Frame Defect Tracker (Kalman Filter + IoU Tracker)"]:::aiLayer
+        DEDUP_MDL["Duplicate Detection Reduction & Spatial-Temporal Merging"]:::aiLayer
+        METROLOGY_MDL["Physical Coordinate Estimation & Calibration Engine"]:::aiLayer
+        RELIABILITY_STATUS["Reliability State Evaluator & Uninspected Classifier"]:::aiLayer
+    end
+
+    subgraph EDGE_LAYER ["A. Hardware / Edge Layer (Proposed: Python Edge Services)"]
+        direction TB
+        CAM_SVC["Camera Capture Service (V4L2 / GenICam / OpenCV VideoCapture)"]:::edgeLayer
+        ENC_SVC["Rotary Encoder Telemetry Service (High-Speed Pulse Counter)"]:::edgeLayer
+        CONN_MON["Camera Connectivity & Heartbeat Monitor"]:::edgeLayer
+        LIGHT_MON["Lighting & Luminance Uniformity Checker"]:::edgeLayer
+        FRAME_QC["Frame Sharpness & Blur Detector (Laplacian Variance)"]:::edgeLayer
+        DROP_MON["Dropped Frame & Frame-Rate Sync Monitor"]:::edgeLayer
+        EDGE_SYNC_AGENT["Edge Offline/Online Sync Daemon"]:::edgeLayer
+    end
+
+    %% Communications
+    CAM_SVC --> FRAME_QC
+    CAM_SVC --> LIGHT_MON
+    CAM_SVC --> CONN_MON
+    ENC_SVC --> DROP_MON
+
+    FRAME_QC --> RELIABILITY_STATUS
+    LIGHT_MON --> RELIABILITY_STATUS
+    CONN_MON --> RELIABILITY_STATUS
+    DROP_MON --> RELIABILITY_STATUS
+
+    RELIABILITY_STATUS -->|If Reliable| PREPROC
+    RELIABILITY_STATUS -->|If Unreliable: Flag Section| LOCAL_DB
+
+    PREPROC --> DETECTION_MDL
+    DETECTION_MDL --> TRACKER_MDL
+    TRACKER_MDL --> DEDUP_MDL
+    DEDUP_MDL --> METROLOGY_MDL
+    METROLOGY_MDL --> LOCAL_DB
+    METROLOGY_MDL --> LOCAL_IMG
+
+    LOCAL_DB --> SYNC_QUEUE
+    SYNC_QUEUE --> EDGE_SYNC_AGENT
+
+    EDGE_SYNC_AGENT == "REST API HTTPS Batch / WebSocket Telemetry" ==> CLOUD_SYNC_SVC
+    CLOUD_SYNC_SVC --> CENTRAL_DB
+    CLOUD_SYNC_SVC --> OBJECT_STORE
+    CLOUD_SYNC_SVC --> NOTIF_SVC
+
+    AUTH_SVC & ROLL_SVC & DEFECT_SVC & INSPECT_SVC & GRADING_SVC & INVENTORY_SVC & REPORT_SVC & QR_SVC <--> CENTRAL_DB
+
+    MOB_APP == "REST API HTTPS / WebSocket (JWT Authenticated)" ==> BACKEND_LAYER
+    WEB_APP == "REST API HTTPS / WebSocket (JWT Authenticated)" ==> BACKEND_LAYER
+    NOTIF_SVC -.->|Push Notifications & Live Map Stream| MOB_APP
+    NOTIF_SVC -.->|Live Defect Telemetry & Alerts| WEB_APP
+

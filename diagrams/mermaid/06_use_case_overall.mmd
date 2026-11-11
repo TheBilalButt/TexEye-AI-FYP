@@ -1,0 +1,113 @@
+flowchart LR
+    classDef actor fill:#f8fafc,stroke:#0f172a,stroke-width:2px,color:#0f172a;
+    classDef usecase fill:#eff6ff,stroke:#2563eb,stroke-width:1.5px,color:#1e3a8a,rx:20,ry:20;
+    classDef internalUC fill:#faf5ff,stroke:#9333ea,stroke-width:1.5px,color:#581c87,rx:20,ry:20;
+    classDef boundary fill:#ffffff,stroke:#64748b,stroke-width:3px,stroke-dasharray: 6 3;
+
+    %% Human Actors
+    ACT_OP["fa:fa-user Floor Operator"]:::actor
+    ACT_QI["fa:fa-user Quality Inspector"]:::actor
+    ACT_PM["fa:fa-user Production Manager"]:::actor
+    ACT_IM["fa:fa-user Inventory Manager"]:::actor
+    ACT_ADMIN["fa:fa-user System Administrator"]:::actor
+
+    %% Automated Subsystem Actor
+    ACT_EDGE["fa:fa-microchip Edge / AI Subsystem<br/>(Internal Automated Engine)"]:::actor
+
+    subgraph SYSTEM_BOUNDARY ["System Boundary: TexEye AI"]
+        %% Common Use Cases
+        UC_AUTH(["Login / Logout"]):::usecase
+        
+        %% Floor Operator Use Cases
+        UC_SCAN_QR(["Scan Roll QR Code"]):::usecase
+        UC_VIEW_ROLL(["View Roll Information"]):::usecase
+        UC_RECV_ALERT(["Receive Inspection Alerts"]):::usecase
+        UC_REV_OP(["Review Detected Defects"]):::usecase
+
+        %% Quality Inspector Use Cases
+        UC_DEFECT_MAP(["View Digital Fabric Defect Map"]):::usecase
+        UC_REV_QI(["Review Detected Defects"]):::usecase
+        UC_CORRECT_DEFECT(["Correct Defect Record"]):::usecase
+        UC_VIEW_STATUS(["View Inspection Status"]):::usecase
+        UC_CONFIRM_GRADE(["Confirm / Update Roll Grading"]):::usecase
+        UC_GEN_REPORT(["Generate Inspection Report"]):::usecase
+
+        %% Production Manager Use Cases
+        UC_VIEW_DASH(["View Production Dashboard"]):::usecase
+        UC_VIEW_STATS(["View Defect Statistics"]):::usecase
+        UC_VIEW_REPORTS(["View Quality Reports"]):::usecase
+        UC_VIEW_PROD_RECS(["View Production Quality Records"]):::usecase
+
+        %% Inventory Manager Use Cases
+        UC_VIEW_INV(["View Inventory Records"]):::usecase
+        UC_UPDATE_INV(["Update Roll Inventory Records"]):::usecase
+        UC_VIEW_GRADE_INV(["View Grading Information"]):::usecase
+        UC_MANAGE_SCRAP(["Manage Scrap Records"]):::usecase
+
+        %% Admin Use Cases
+        UC_MANAGE_USERS(["Manage Users"]):::usecase
+        UC_ASSIGN_ROLES(["Assign Roles & Permissions"]):::usecase
+        UC_CONFIG_SYS(["Configure Edge / System Parameters"]):::usecase
+
+        %% Automated Internal Use Cases
+        UC_CAP_IMG(["Capture Fabric Images"]):::internalUC
+        UC_READ_ENC(["Read Encoder Measurements"]):::internalUC
+        UC_MON_RELIABILITY(["Monitor Inspection Reliability"]):::internalUC
+        UC_DETECT_DEFECT(["Detect Fabric Defects"]):::internalUC
+        UC_TRACK_DEFECT(["Track Defects Across Consecutive Frames"]):::internalUC
+        UC_EST_LOC(["Estimate Metric Defect Locations"]):::internalUC
+        UC_MARK_UNINSPECTED(["Mark Fabric Section as Uninspected"]):::internalUC
+        UC_STORE_LOCAL(["Store Inspection Records Locally"]):::internalUC
+        UC_SYNC_CLOUD(["Synchronize Records When Internet Returns"]):::internalUC
+        UC_GEN_ALERT(["Generate System / Defect Alerts"]):::internalUC
+    end
+
+    %% Actor Associations
+    ACT_OP --> UC_AUTH
+    ACT_OP --> UC_SCAN_QR
+    ACT_OP --> UC_VIEW_ROLL
+    ACT_OP --> UC_RECV_ALERT
+    ACT_OP --> UC_REV_OP
+
+    ACT_QI --> UC_AUTH
+    ACT_QI --> UC_DEFECT_MAP
+    ACT_QI --> UC_REV_QI
+    ACT_QI --> UC_VIEW_STATUS
+    ACT_QI --> UC_CONFIRM_GRADE
+    ACT_QI --> UC_GEN_REPORT
+
+    ACT_PM --> UC_AUTH
+    ACT_PM --> UC_VIEW_DASH
+    ACT_PM --> UC_VIEW_STATS
+    ACT_PM --> UC_VIEW_REPORTS
+    ACT_PM --> UC_VIEW_PROD_RECS
+
+    ACT_IM --> UC_AUTH
+    ACT_IM --> UC_VIEW_INV
+    ACT_IM --> UC_UPDATE_INV
+    ACT_IM --> UC_VIEW_GRADE_INV
+    ACT_IM --> UC_MANAGE_SCRAP
+
+    ACT_ADMIN --> UC_AUTH
+    ACT_ADMIN --> UC_MANAGE_USERS
+    ACT_ADMIN --> UC_ASSIGN_ROLES
+    ACT_ADMIN --> UC_CONFIG_SYS
+
+    %% Automated Internal System Associations
+    ACT_EDGE --> UC_CAP_IMG
+    ACT_EDGE --> UC_READ_ENC
+    ACT_EDGE --> UC_MON_RELIABILITY
+    ACT_EDGE --> UC_DETECT_DEFECT
+    ACT_EDGE --> UC_STORE_LOCAL
+    ACT_EDGE --> UC_SYNC_CLOUD
+
+    %% Include & Extend Relationships
+    UC_CORRECT_DEFECT -.->|&lt;&lt;extend&gt;&gt;| UC_REV_QI
+    UC_DETECT_DEFECT -.->|&lt;&lt;include&gt;&gt;| UC_TRACK_DEFECT
+    UC_DETECT_DEFECT -.->|&lt;&lt;include&gt;&gt;| UC_EST_LOC
+    UC_MON_RELIABILITY -.->|&lt;&lt;extend&gt;&gt; On Anomaly| UC_MARK_UNINSPECTED
+    UC_MON_RELIABILITY -.->|&lt;&lt;include&gt;&gt;| UC_GEN_ALERT
+    UC_GEN_ALERT -.->|Dispatches To| UC_RECV_ALERT
+    UC_CONFIRM_GRADE -.->|&lt;&lt;include&gt;&gt;| UC_DEFECT_MAP
+    UC_GEN_REPORT -.->|&lt;&lt;include&gt;&gt;| UC_CONFIRM_GRADE
+

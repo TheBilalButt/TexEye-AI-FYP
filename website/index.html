@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TexEye AI &mdash; System Analysis, Architecture &amp; UML Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  <!-- Top Banner / Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-logo">👁️</span>
+        <div class="brand-text">
+          <span class="brand-title">TexEye AI</span>
+          <span class="brand-sub">Fabric Defect Detection &amp; Quality Management System</span>
+        </div>
+      </div>
+      <div class="nav-badges">
+        <span class="badge badge-primary">FYP 2026</span>
+        <span class="badge badge-success">BS AI</span>
+        <span class="badge badge-info">Architecture Package v1.0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-left">
+        <div class="hero-pill">University Final Year Project (System Analysis &amp; Design)</div>
+        <h1 class="hero-title">AI-Powered Industrial Fabric Inspection &amp; Resilient Edge Architecture</h1>
+        <p class="hero-desc">
+          A high-throughput computer vision and quality management platform integrating synchronized hardware sensing, 
+          continuous reliability gating, multi-frame defect tracking, offline-resilient edge persistence, 
+          and full-stack mobile &amp; web quality mapping.
+        </p>
+        <div class="team-cards">
+          <div class="team-card">
+            <div class="team-avatar">AK</div>
+            <div class="team-info">
+              <strong>Muhammad Afnan Khan</strong>
+              <span>FA23-BAI-028</span>
+              <small>App, Web Dashboard, Defect Mapping &amp; Sync</small>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">BB</div>
+            <div class="team-info">
+              <strong>Muhammad Bilal Butt</strong>
+              <span>FA23-BAI-042</span>
+              <small>AI Vision, Deep Learning, Hardware &amp; Reliability</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="rule-card">
+          <div class="rule-header">
+            <span class="rule-icon">🛡️</span>
+            <strong>Core System Architectural Invariant</strong>
+          </div>
+          <p>
+            If camera connectivity is severed, lighting is compromised, optical blur occurs, or frames are dropped:
+            <strong>the affected fabric section is explicitly marked as <span class="highlight-red">UNINSPECTED</span></strong>.
+            Under no circumstances is uninspected fabric classified as defect-free.
+          </p>
+          <div class="rule-footer">
+            <span class="status-dot"></span>
+            <span>Zero False-Clean Guarantee Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <nav class="tab-bar">
+    <div class="container tab-container">
+      <button class="tab-btn active" data-tab="tab-overview">Overview</button>
+      <button class="tab-btn" data-tab="tab-workflows">System Workflows</button>
+      <button class="tab-btn" data-tab="tab-hardware">Hardware Architecture</button>
+      <button class="tab-btn" data-tab="tab-software">Software Architecture</button>
+      <button class="tab-btn" data-tab="tab-usecases">Actors &amp; Use Cases</button>
+      <button class="tab-btn" data-tab="tab-diagrams">UML &amp; DFDs</button>
+      <button class="tab-btn" data-tab="tab-team">Team Division</button>
+      <button class="tab-btn" data-tab="tab-defense">Viva / Defense (Urdu)</button>
+      <button class="tab-btn" data-tab="tab-downloads">Download Center</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container main-content">
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="tab-overview" class="tab-pane active">
+      <div class="section-card">
+        <h2>1. The Real-World Industrial Challenge</h2>
+        <p>
+          Manual textile quality inspection is physically restricted by high-speed stenter frames and rolling tables ($20&ndash;60+$ m/min). 
+          Human visual fatigue causes up to 40% of micro-defects, warp breaks, and oil leaks to be overlooked, culminating in costly export rejections 
+          and textile scrap. Moreover, manual inspection produces handwritten paper sheets devoid of metric coordinates, preventing root-cause tracing.
+        </p>
+        <div class="grid-2">
+          <div class="info-box border-blue">
+            <h3>Automated Edge Sensing &amp; AI Vision</h3>
+            <p>
+              TexEye AI couples high-speed industrial imaging with an incremental rotary encoder riding on a contact roller. 
+              Deep learning models (YOLO) identify defect classes, while a Kalman-filter multi-frame tracker prevents duplicate counting as fabric moves.
+            </p>
+          </div>
+          <div class="info-box border-amber">
+            <h3>Camera Failure vs. Internet Outage</h3>
+            <p>
+              <strong>Camera/Lighting Failure:</strong> Halts AI inference on degraded frames, triggers local beacon, and records interval as <code>UNINSPECTED</code>.<br>
+              <strong>Internet Outage:</strong> Inspection continues at 100% capacity locally in SQLite; outbox syncs automatically when network recovers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: WORKFLOWS -->
+    <div id="tab-workflows" class="tab-pane">
+      <div class="section-card">
+        <h2>2. Core System Workflows</h2>
+        
+        <div class="diagram-viewer">
+          <div class="diagram-toolbar">
+            <h3>Main System Workflow (Reliability Gate &amp; Data Routing)</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/01_system_workflow.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/01_system_workflow.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/01_system_workflow.svg" alt="Main System Workflow" class="diagram-img">
+          </div>
+        </div>
+
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Detailed AI Vision, Tracking &amp; Metrology Pipeline</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/02_ai_inspection_workflow.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/02_ai_inspection_workflow.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/02_ai_inspection_workflow.svg" alt="AI Inspection Pipeline" class="diagram-img">
+          </div>
+        </div>
+
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Resilient Offline / Online Synchronization Workflow</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/03_offline_sync_workflow.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/03_offline_sync_workflow.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/03_offline_sync_workflow.svg" alt="Offline Sync Pipeline" class="diagram-img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: HARDWARE -->
+    <div id="tab-hardware" class="tab-pane">
+      <div class="section-card">
+        <h2>3. Hardware Architecture &amp; Physical Interconnects</h2>
+        
+        <div class="diagram-viewer">
+          <div class="diagram-toolbar">
+            <h3>Hardware Architecture &amp; Connection Topology</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/04_hardware_architecture.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/04_hardware_architecture.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/04_hardware_architecture.svg" alt="Hardware Architecture Diagram" class="diagram-img">
+          </div>
+        </div>
+
+        <h3 class="mt-4">Hardware Component &amp; Interface Specification Table</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Connected To</th>
+                <th>Proposed Interface</th>
+                <th>Purpose &amp; Data Flow</th>
+                <th>Selection Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Industrial Camera</strong></td>
+                <td>Edge Computer</td>
+                <td>USB 3.0 Vision / GigE Vision / MIPI-CSI2</td>
+                <td>Ingests continuous video stream (30&ndash;60+ FPS) across full fabric width.</td>
+                <td><span class="tag tag-confirmed">Confirmed Subsystem</span> (Model proposed)</td>
+              </tr>
+              <tr>
+                <td><strong>Rotary Encoder</strong></td>
+                <td>Measurement Roller &bull; Edge</td>
+                <td>GPIO Counter / TTL / Opto DAQ</td>
+                <td>Measures physical movement pulses ($\Delta L$) and instantaneous line speed.</td>
+                <td><span class="tag tag-confirmed">Confirmed Subsystem</span> (PPR proposed)</td>
+              </tr>
+              <tr>
+                <td><strong>LED Lighting Rig</strong></td>
+                <td>Inspection Area &bull; Driver</td>
+                <td>High-CRI Linear LED Bar Array</td>
+                <td>Uniform, shadow-free illumination across fabric web.</td>
+                <td><span class="tag tag-confirmed">Confirmed Subsystem</span> (Lux proposed)</td>
+              </tr>
+              <tr>
+                <td><strong>Lighting Controller</strong></td>
+                <td>Lighting Array &bull; Edge</td>
+                <td>Constant-Current 24V DC Driver / PWM</td>
+                <td>Suppresses electrical ripple and thermal LED drift.</td>
+                <td><span class="tag tag-proposed">Proposed Alternative</span></td>
+              </tr>
+              <tr>
+                <td><strong>Alert Unit</strong></td>
+                <td>Edge Computer Digital Out</td>
+                <td>Opto-Isolated Relay &bull; Stack Tower Light</td>
+                <td>Visual and audible alarm on uninspected span or severe flaw.</td>
+                <td><span class="tag tag-proposed">Proposed Alternative</span></td>
+              </tr>
+              <tr>
+                <td><strong>Edge Computer</strong></td>
+                <td>Sensors, Storage &bull; Cloud Uplink</td>
+                <td>NVIDIA Jetson Orin / Industrial PC Mini-ITX</td>
+                <td>Executes YOLO detection, Kalman tracking, reliability gates &amp; local SQLite.</td>
+                <td><span class="tag tag-confirmed">Confirmed Subsystem</span> (Specs proposed)</td>
+              </tr>
+              <tr>
+                <td><strong>Network Uplink</strong></td>
+                <td>Edge Unit to Central Server</td>
+                <td>Cat6 Gigabit Ethernet / Dual-band Wi-Fi</td>
+                <td>Transmits HTTPS REST batches and real-time WebSockets.</td>
+                <td><span class="tag tag-proposed">Proposed Alternative</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warning mt-4">
+          <strong>Strict Scope Boundary Invariant:</strong> Automatic cutting knives, loom emergency stopping interlocks, remote motor inverter controls, and automatic inkjet defect markers are <strong>NOT</strong> included in TexEye AI.
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: SOFTWARE -->
+    <div id="tab-software" class="tab-pane">
+      <div class="section-card">
+        <h2>4. Layered Software Architecture</h2>
+        
+        <div class="diagram-viewer">
+          <div class="diagram-toolbar">
+            <h3>5-Tier Layered Software Architecture Diagram</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/05_software_architecture.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/05_software_architecture.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/05_software_architecture.svg" alt="Software Architecture" class="diagram-img">
+          </div>
+        </div>
+
+        <h3 class="mt-4">Proposed Technology Recommendations</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Layer / Service</th>
+                <th>Suggested Technology</th>
+                <th>Purpose &amp; Rationale</th>
+                <th>Communication Protocol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A. Camera Capture</strong></td>
+                <td>Python / OpenCV / GenICam / V4L2</td>
+                <td>High-speed zero-copy frame buffer acquisition and timestamp tagging.</td>
+                <td>Native driver API &bull; Shared memory</td>
+              </tr>
+              <tr>
+                <td><strong>A. Encoder Service</strong></td>
+                <td>Python with <code>gpiod</code> / C++ interrupt counter</td>
+                <td>Quadrature pulse integration into metric length ($\Delta L$).</td>
+                <td>GPIO hardware interrupts / UART serial</td>
+              </tr>
+              <tr>
+                <td><strong>B. AI Defect Detection</strong></td>
+                <td>PyTorch / ONNX Runtime / TensorRT (YOLOv8)</td>
+                <td>Real-time defect classification, confidence scores, and bounding boxes.</td>
+                <td>CUDA memory &bull; Tensor buffers</td>
+              </tr>
+              <tr>
+                <td><strong>B. Multi-Frame Tracker</strong></td>
+                <td>Kalman Filter + Hungarian IoU matching</td>
+                <td>Trajectory association across consecutive frames and spatial-temporal deduplication.</td>
+                <td>In-memory track state machine</td>
+              </tr>
+              <tr>
+                <td><strong>C. Central Backend API</strong></td>
+                <td>FastAPI (Python 3.11+) + Uvicorn ASGI</td>
+                <td>High-performance asynchronous REST gateway, auth, and sync receiver.</td>
+                <td>HTTPS / TLS 1.3 &bull; OpenAPI JSON</td>
+              </tr>
+              <tr>
+                <td><strong>C. 4-Point Grading Engine</strong></td>
+                <td>Python business logic module</td>
+                <td>ASTM D5430 standard penalty calculation per 100m&sup2; (Grades A, B, C, Reject).</td>
+                <td>Internal service method</td>
+              </tr>
+              <tr>
+                <td><strong>D. Local Edge Database</strong></td>
+                <td>SQLite 3 (WAL Mode Enabled)</td>
+                <td>Zero-latency ACID commits on shop floor independent of internet connectivity.</td>
+                <td>C library bindings &bull; POSIX file</td>
+              </tr>
+              <tr>
+                <td><strong>D. Central Database</strong></td>
+                <td>PostgreSQL 16 Relational Database</td>
+                <td>Central enterprise repository for rolls, verified defects, grading, and users.</td>
+                <td>SQLAlchemy / Asyncpg over TCP:5432</td>
+              </tr>
+              <tr>
+                <td><strong>E. Mobile Application</strong></td>
+                <td>Flutter / React Native</td>
+                <td>Floor operator QR scanning, instant vibration alerts, defect thumbnail reviews.</td>
+                <td>HTTPS REST &bull; WSS WebSockets</td>
+              </tr>
+              <tr>
+                <td><strong>E. Web Dashboard</strong></td>
+                <td>React 18 + TypeScript + Tailwind CSS</td>
+                <td>Interactive 2D Digital Fabric Defect Map, roll grading approvals, PDF export.</td>
+                <td>HTTPS REST &bull; HTML5 Canvas 2D</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: ACTORS & USE CASES -->
+    <div id="tab-usecases" class="tab-pane">
+      <div class="section-card">
+        <h2>5. Actors Identification &amp; UML Use Cases</h2>
+
+        <div class="diagram-viewer">
+          <div class="diagram-toolbar">
+            <h3>UML Use Case Diagram (System Boundary &amp; Actors)</h3>
+            <div class="btn-group">
+              <a href="../diagrams/svg/06_use_case_overall.svg" target="_blank" class="btn btn-sm btn-outline">Open Full Vector SVG</a>
+              <a href="../diagrams/drawio/06_use_case_overall.drawio" download class="btn btn-sm btn-primary">Download Draw.io</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/06_use_case_overall.svg" alt="Use Case Diagram" class="diagram-img">
+          </div>
+        </div>
+
+        <div class="grid-2 mt-4">
+          <div class="actor-card border-blue">
+            <h3>Floor Operator (Mobile Client)</h3>
+            <ul>
+              <li>Scan physical roll QR code to initialize inspection session</li>
+              <li>View active roll speed, inspected meters, and fabric type</li>
+              <li>Receive instant vibration &amp; audio alerts on uninspected state or major defects</li>
+              <li>Review defect thumbnail crops on shop-floor mobile device</li>
+            </ul>
+          </div>
+          <div class="actor-card border-purple">
+            <h3>Quality Inspector (Web &amp; Mobile)</h3>
+            <ul>
+              <li>Open interactive 2D Digital Fabric Defect Map canvas</li>
+              <li>Review high-resolution defect crops and confidence scores</li>
+              <li><strong>Correct Defect Records</strong> (reclassify label or adjust bounding box)</li>
+              <li>Confirm and certify ASTM 4-Point Roll Grading</li>
+              <li>Generate and export digitally signed PDF inspection certificates</li>
+            </ul>
+          </div>
+          <div class="actor-card border-green">
+            <h3>Production Manager (Web Dashboard)</h3>
+            <ul>
+              <li>View executive production throughput and roll pass/fail rates</li>
+              <li>Analyze defect Pareto frequency charts and historical trends</li>
+              <li>Filter inspection quality by loom ID, batch number, or fabric blend</li>
+            </ul>
+          </div>
+          <div class="actor-card border-amber">
+            <h3>Inventory Manager (Web Dashboard)</h3>
+            <ul>
+              <li>View warehouse inventory records and certified roll grades</li>
+              <li>Update warehouse bay / rack storage coordinates</li>
+              <li>Manage quarantine records for rejected/scrap fabric rolls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: UML & DFDS -->
+    <div id="tab-diagrams" class="tab-pane">
+      <div class="section-card">
+        <h2>6. Complete UML &amp; Data Flow Diagrams</h2>
+
+        <!-- Context Diagram -->
+        <div class="diagram-viewer mt-3">
+          <div class="diagram-toolbar">
+            <h3>System Context Diagram (Level 0 Overview)</h3>
+            <a href="../diagrams/svg/07_context_diagram.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/07_context_diagram.svg" alt="Context Diagram" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- DFD Level 0 -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Level 0 Data Flow Diagram (DFD L0)</h3>
+            <a href="../diagrams/svg/08_dfd_level_0.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/08_dfd_level_0.svg" alt="DFD Level 0" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- DFD Level 1 -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Level 1 Data Flow Diagram (DFD L1)</h3>
+            <a href="../diagrams/svg/09_dfd_level_1.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/09_dfd_level_1.svg" alt="DFD Level 1" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- Component Diagram -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>UML Component Diagram</h3>
+            <a href="../diagrams/svg/10_component_diagram.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/10_component_diagram.svg" alt="Component Diagram" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- Deployment Diagram -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>UML Deployment Diagram</h3>
+            <a href="../diagrams/svg/11_deployment_diagram.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/11_deployment_diagram.svg" alt="Deployment Diagram" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- Sequence 1 -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Sequence Diagram: Real-Time Inspection &amp; Reliability Gating</h3>
+            <a href="../diagrams/svg/12_sequence_inspection.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/12_sequence_inspection.svg" alt="Sequence Diagram Inspection" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- Sequence 2 -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Sequence Diagram: Offline / Online Resilient Sync</h3>
+            <a href="../diagrams/svg/13_sequence_sync.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/13_sequence_sync.svg" alt="Sequence Diagram Sync" class="diagram-img">
+          </div>
+        </div>
+
+        <!-- ERD -->
+        <div class="diagram-viewer mt-4">
+          <div class="diagram-toolbar">
+            <h3>Entity Relationship Diagram (ERD &amp; Schema)</h3>
+            <a href="../diagrams/svg/14_entity_relationship_diagram.svg" target="_blank" class="btn btn-sm btn-outline">Open Full SVG</a>
+          </div>
+          <div class="image-frame">
+            <img src="../diagrams/svg/14_entity_relationship_diagram.svg" alt="ERD Diagram" class="diagram-img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: TEAM -->
+    <div id="tab-team" class="tab-pane">
+      <div class="section-card">
+        <h2>7. Project Division &amp; Member Responsibilities</h2>
+        
+        <div class="grid-2">
+          <div class="member-box">
+            <div class="member-header">
+              <span class="avatar-lg">AK</span>
+              <div>
+                <h3>Muhammad Afnan Khan</h3>
+                <span class="role-badge">FA23-BAI-028</span>
+                <p>Application Architecture, Frontend &amp; Cloud Integration Lead</p>
+              </div>
+            </div>
+            <ul class="task-list">
+              <li>Cross-platform Mobile Application (Flutter/React Native)</li>
+              <li>Camera QR code scanning and roll metadata binding</li>
+              <li>Floor operator real-time alert reception &amp; defect thumbnail preview</li>
+              <li>Web Dashboard (React + TypeScript + Tailwind CSS)</li>
+              <li>Interactive 2D <strong>Digital Fabric Defect Map</strong> canvas</li>
+              <li>Defect review and on-screen human reclassification interfaces</li>
+              <li>Roll lifecycle, batch numbers &amp; warehouse inventory records</li>
+              <li>ASTM D5430 <strong>4-Point Fabric Inspection Grading Engine</strong></li>
+              <li>Automated PDF digital inspection certificate generator</li>
+              <li>Application-side local data synchronization and offline state caching</li>
+            </ul>
+          </div>
+
+          <div class="member-box">
+            <div class="member-header">
+              <span class="avatar-lg">BB</span>
+              <div>
+                <h3>Muhammad Bilal Butt</h3>
+                <span class="role-badge">FA23-BAI-042</span>
+                <p>AI Vision, Deep Learning, Hardware &amp; Reliability Lead</p>
+              </div>
+            </div>
+            <ul class="task-list">
+              <li>Fabric defect dataset collection, domain annotation &amp; augmentation</li>
+              <li>Deep learning object detection model training (YOLOv8 / RT-DETR)</li>
+              <li>Real-time edge GPU inference engine optimization (TensorRT / ONNX)</li>
+              <li>Multi-frame defect tracking (Kalman Filter + Hungarian IoU matching)</li>
+              <li>Spatial-temporal deduplication gate (eliminates repeated counting)</li>
+              <li>Rotary encoder hardware integration &amp; pulse displacement counting</li>
+              <li>Industrial camera driver integration (USB3/GigE/V4L2) with memory buffers</li>
+              <li>Illumination uniformity, blur, and dropped-frame watchdog monitors</li>
+              <li><strong>Inspection Reliability Gate</strong> &amp; uninspected section isolation</li>
+              <li>Hardware alert triggering (relay output for physical stack tower beacon)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 8: VIVA DEFENSE GUIDE (ROMAN URDU) -->
+    <div id="tab-defense" class="tab-pane">
+      <div class="section-card">
+        <h2>8. Supervisor Viva &amp; Presentation Guide (Roman Urdu)</h2>
+        <p class="subtitle">Both team members can use these exact talking points during supervisor defense sessions:</p>
+
+        <div class="defense-card">
+          <h3>Q1: "Fabric tez chalay aur camera frame drop kare to kya hoga?"</h3>
+          <p>
+            <em>"Sir, yahi hamare system ka sab se bara feature hai. Hamara Dropped-Frame Analyzer rotary encoder ki physical movement speed aur camera ke incoming timestamps ko match karta hai. Agar frame drop ho, to system us missing interval ke encoder meters calculate karke foran <code>uninspected_sections</code> table mein row insert karta hai aur alarm bajata hai. System us missing section ko kabhi bhi clean ya defect-free treat nahi karega."</em>
+          </p>
+        </div>
+
+        <div class="defense-card mt-3">
+          <h3>Q2: "Camera failure aur internet outage mein kya farq hai?"</h3>
+          <p>
+            <em>"Sir dono completely mukhtalif failure modes hain:
+            <strong>Camera Failure</strong> hardware sensing ka fault hai; fabric chal raha hai lekin hum dekh nahi pa rahe. Is mein AI inference bypass hoti hai, fabric uninspected mark hota hai, aur floor alarm bajta hai.
+            <strong>Internet Outage</strong> network ka fault hai; edge computer aur camera bilkul theek chal rahe hain. Is soorat mein inspection 100% full speed par chalti rehti hai, defects detect hote hain, aur local SQLite outbox queue mein save hote hain. Jab internet aayega to background worker baghair kisi data loss ke cloud se sync kar lega."</em>
+          </p>
+        </div>
+
+        <div class="defense-card mt-3">
+          <h3>Q3: "Aik hi defect 5 consecutive frames mein aaye to grading kharab nahi hogi?"</h3>
+          <p>
+            <em>"Sir bilkul, agar naive system ho to wo 5 alag defects count kar lega. Is maslay ko hal karne ke liye Bilal Butt ne <strong>Multi-Frame Defect Tracker aur Spatial-Temporal Deduplication Gate</strong> implement kiya hai. Yeh Kalman Filter aur IoU matching se defect ko track karta hai aur jab defect frame se nikal jata hai to un tamam frame detections ko aik single unique defect record mein consolidate kar deta hai."</em>
+          </p>
+        </div>
+
+        <div class="defense-card mt-3">
+          <h3>Q4: "Defect ki physical metric position $(X, Y)$ kaise calculate hoti hai?"</h3>
+          <p>
+            <em>"Sir, longitudinal position ($Y$ meters) rotary encoder ke cumulative pulses ko roller circumference ($\pi \times D / \text{PPR}$) se multiply karke aati hai. Aur lateral position ($X$ centimeters) camera pixel coordinates ko calibrated ground sampling resolution (cm/pixel) se multiply karke aati hai."</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 9: DOWNLOAD CENTER -->
+    <div id="tab-downloads" class="tab-pane">
+      <div class="section-card">
+        <h2>9. Download Center &amp; Deliverables Package</h2>
+        <p>Access all editable Draw.io XML files, standalone SVG vectors, rendered PNGs, and technical markdown specifications:</p>
+
+        <div class="download-grid">
+          <div class="download-card">
+            <h4>Editable Draw.io Diagrams</h4>
+            <p>10 Native XML files ready to open in diagrams.net / VS Code Draw.io.</p>
+            <a href="../diagrams/drawio/" target="_blank" class="btn btn-primary">Browse Draw.io Folder</a>
+          </div>
+          <div class="download-card">
+            <h4>Standalone Vector SVGs</h4>
+            <p>14 Handcrafted scalable vector graphics with dark-theme styling.</p>
+            <a href="../diagrams/svg/" target="_blank" class="btn btn-outline">Browse SVG Folder</a>
+          </div>
+          <div class="download-card">
+            <h4>High-Resolution PNGs</h4>
+            <p>14 Pixel-perfect PNG renders exported via headless Microsoft Edge.</p>
+            <a href="../diagrams/png/" target="_blank" class="btn btn-outline">Browse PNG Folder</a>
+          </div>
+          <div class="download-card">
+            <h4>Mermaid Diagram Sources</h4>
+            <p>14 Raw .mmd source files for GitHub markdown rendering.</p>
+            <a href="../diagrams/mermaid/" target="_blank" class="btn btn-outline">Browse Mermaid Folder</a>
+          </div>
+        </div>
+
+        <h3 class="mt-4">Technical Documentation Files (docs/)</h3>
+        <ul class="file-links">
+          <li>📄 <a href="../docs/01_project_overview.md" target="_blank">01_project_overview.md &mdash; Project Overview &amp; Real-World Problem</a></li>
+          <li>📄 <a href="../docs/02_system_workflow.md" target="_blank">02_system_workflow.md &mdash; System Workflow &amp; Decision Pipeline</a></li>
+          <li>📄 <a href="../docs/03_hardware_architecture.md" target="_blank">03_hardware_architecture.md &mdash; Hardware Architecture &amp; Component Table</a></li>
+          <li>📄 <a href="../docs/04_software_architecture.md" target="_blank">04_software_architecture.md &mdash; Layered Software Architecture &amp; Protocols</a></li>
+          <li>📄 <a href="../docs/05_actors_and_use_cases.md" target="_blank">05_actors_and_use_cases.md &mdash; Actor Specifications &amp; Use Case Tables</a></li>
+          <li>📄 <a href="../docs/06_data_flow_diagrams.md" target="_blank">06_data_flow_diagrams.md &mdash; Context, DFD Level 0 &amp; Level 1</a></li>
+          <li>📄 <a href="../docs/07_component_and_deployment.md" target="_blank">07_component_and_deployment.md &mdash; Component &amp; Deployment Diagrams</a></li>
+          <li>📄 <a href="../docs/08_sequence_diagrams.md" target="_blank">08_sequence_diagrams.md &mdash; Real-Time Inspection &amp; Offline Sync Sequences</a></li>
+          <li>📄 <a href="../docs/09_entity_relationship_diagram.md" target="_blank">09_entity_relationship_diagram.md &mdash; ERD Schema &amp; Data Dictionary</a></li>
+          <li>📄 <a href="../docs/10_team_responsibilities.md" target="_blank">10_team_responsibilities.md &mdash; Team Task Matrix (Afnan &amp; Bilal)</a></li>
+          <li>📄 <a href="../docs/11_hardware_selection_checklist.md" target="_blank">11_hardware_selection_checklist.md &mdash; Hardware Procurement Checklist</a></li>
+          <li>📄 <a href="../docs/12_assumptions_and_limitations.md" target="_blank">12_assumptions_and_limitations.md &mdash; System Constraints &amp; Scope Boundaries</a></li>
+          <li>📄 <a href="../docs/roman_urdu_defense_guide.md" target="_blank">roman_urdu_defense_guide.md &mdash; Complete Supervisor Viva Script in Roman Urdu</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 TexEye AI &bull; Final Year Project &bull; BS Artificial Intelligence</p>
+      <p>Muhammad Afnan Khan (FA23-BAI-028) &bull; Muhammad Bilal Butt (FA23-BAI-042)</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

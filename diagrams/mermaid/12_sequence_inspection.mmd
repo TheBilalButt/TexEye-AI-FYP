@@ -1,0 +1,56 @@
+sequenceDiagram
+    autonumber
+    actor OP as Floor Operator
+    participant STAND as Fabric Roller
+    participant ENC as Rotary Encoder
+    participant CAM as Industrial Camera
+    participant MON as Edge Inspection Monitor
+    participant AI as AI Vision & Tracking Engine
+    participant DB as Local SQLite Storage
+    participant CLOUD as Central Backend API
+    actor QI as Quality Inspector (Web/Mobile)
+
+    OP->>DB: Initiate Inspection Session (Scan Roll QR)
+    DB-->>OP: Session Confirmed (Roll ID, Fabric Type)
+    
+    STAND->>ENC: Fabric Web Moves (Linear Displacement)
+    ENC->>MON: Stream Channel A/B Pulses (Distance Increment ΔL)
+    STAND->>CAM: Fabric Reflects Regulated Light
+    CAM->>MON: Deliver Video Frame Stream (Timestamped)
+
+    rect rgb(240, 248, 255)
+        Note over MON: Step 1: Real-Time Reliability Gate Validation
+        MON->>MON: Check Camera Signal, Illumination Uniformity, Blur & Frame Sync
+    end
+
+    alt Reliability Check Passed (Optimal Conditions)
+        MON->>AI: Dispatch Frame + Current Rotary Pulse Counter
+        AI->>AI: Preprocess Image (CLAHE Contrast + ROI Extraction)
+        AI->>AI: Execute AI Defect Detection (YOLO Inference)
+        AI->>AI: Track Defect Across Frames (Kalman Filter + IoU Matching)
+        AI->>AI: Spatial-Temporal Deduplication (Suppress duplicate counts)
+        AI->>AI: Calculate Metric Position (X_cm from pixel calibration, Y_m from encoder)
+        AI->>DB: Write Defect Record {TrackID, Class, BBox, X_cm, Y_m, ImageFile}
+        DB-->>AI: Record Persisted (Status: Queued for Sync)
+        
+        opt Defect Discovered Above Severity Threshold
+            AI->>OP: Dispatch Real-Time Mobile Vibration & Screen Alert
+            AI->>CLOUD: Stream Live Defect Telemetry (If Online)
+            CLOUD->>QI: Update Digital Defect Map in Real-Time
+        end
+
+    else Reliability Check Failed (e.g. Frame Drop / Cam Disconnect / Lighting Drop)
+        MON->>MON: Calculate Affected Interval [L_start = Y, L_end = Y + ΔL]
+        MON->>DB: Record Uninspected Section Span (Reason, Severity, Coordinates)
+        Note over DB: CRITICAL: Explicitly flagged as 'UNINSPECTED'<br/>NEVER recorded as defect-free!
+        MON->>OP: Trigger Local Warning Beacon & Push Alert ("Inspection Compromised")
+        MON->>CLOUD: Broadcast Reliability Warning Event
+        CLOUD->>QI: Render Yellow/Hashed 'Uninspected' Segment on Roll Map
+    end
+
+    opt Quality Inspector Review
+        QI->>CLOUD: Review Detected Defect Bounding Box & Class Label
+        QI->>CLOUD: Submit Correction / Verification (Update Defect Class)
+        CLOUD->>DB: Re-sync Corrected Verification State
+    end
+

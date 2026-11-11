@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 1450" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="hdrGrad5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="uiGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#831843"/><stop offset="100%" stop-color="#500724"/></linearGradient>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#14532d"/><stop offset="100%" stop-color="#052e16"/></linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#581c87"/><stop offset="100%" stop-color="#3b0764"/></linearGradient>
+    <linearGradient id="edgeGrad5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#78350f"/><stop offset="100%" stop-color="#451a03"/></linearGradient>
+    <filter id="shadow5" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/></filter>
+    <marker id="aB" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/></marker>
+    <marker id="aG" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4ade80"/></marker>
+    <marker id="aP" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c084fc"/></marker>
+    <marker id="aPK" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f472b6"/></marker>
+    <marker id="aY" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+  </defs>
+
+  <!-- Title -->
+  <g transform="translate(100, 30)" filter="url(#shadow5)">
+    <rect width="1250" height="75" rx="12" fill="url(#hdrGrad5)" stroke="#334155" stroke-width="1.5"/>
+    <text x="625" y="32" fill="#38bdf8" font-size="20" font-weight="bold" text-anchor="middle">TexEye AI &mdash; Layered Software Architecture &amp; Service Communication</text>
+    <text x="625" y="55" fill="#94a3b8" font-size="13" text-anchor="middle">Modular 5-Tier Architecture: Hardware/Edge &bull; AI Pipeline &bull; Backend Core &bull; Data Stores &bull; User Applications</text>
+  </g>
+
+  <!-- LAYER E: USER INTERFACE LAYER -->
+  <g transform="translate(100, 130)" filter="url(#shadow5)">
+    <rect width="1250" height="170" rx="12" fill="#0f172a" stroke="#db2777" stroke-width="2"/>
+    <text x="25" y="28" fill="#f472b6" font-size="14" font-weight="bold">E. USER INTERFACE LAYER (CLIENTS)</text>
+
+    <!-- Mobile -->
+    <rect x="30" y="45" width="570" height="105" rx="8" fill="url(#uiGrad)" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="315" y="73" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Mobile Application (Floor Operator / Inspector)</text>
+    <text x="315" y="93" fill="#fbcfe8" font-size="11" text-anchor="middle">Technology: Flutter / React Native (Proposed Choice)</text>
+    <text x="315" y="113" fill="#ffffff" font-size="11" text-anchor="middle">&bull; Real-time Alerts &bull; QR Code Scanner &bull; Defect Review &amp; Correction</text>
+    <text x="315" y="133" fill="#f9a8d4" font-size="10" text-anchor="middle">Communicates via HTTPS REST (Bearer JWT) &amp; WSS Push Notifications</text>
+
+    <!-- Web -->
+    <rect x="640" y="45" width="580" height="105" rx="8" fill="url(#uiGrad)" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="930" y="73" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Web Dashboard (Quality / Production / Inventory / Admin)</text>
+    <text x="930" y="93" fill="#fbcfe8" font-size="11" text-anchor="middle">Technology: React + TypeScript + Tailwind CSS (Proposed Choice)</text>
+    <text x="930" y="113" fill="#ffffff" font-size="11" text-anchor="middle">&bull; Interactive Fabric Defect Map &bull; 4-Point Roll Grading &bull; PDF Report Export</text>
+    <text x="930" y="133" fill="#f9a8d4" font-size="10" text-anchor="middle">Communicates via HTTPS REST API &amp; WebSocket Telemetry Stream</text>
+  </g>
+
+  <!-- Connect E -> C -->
+  <path d="M 725 300 L 725 340" stroke="#f472b6" stroke-width="2.5" marker-end="url(#aPK)"/>
+  <text x="740" y="325" fill="#f472b6" font-size="11" font-weight="bold">HTTPS REST / WSS</text>
+
+  <!-- LAYER C: BACKEND / APPLICATION LAYER -->
+  <g transform="translate(100, 345)" filter="url(#shadow5)">
+    <rect width="1250" height="240" rx="12" fill="#0f172a" stroke="#16a34a" stroke-width="2"/>
+    <text x="25" y="28" fill="#4ade80" font-size="14" font-weight="bold">C. BACKEND / APPLICATION LAYER [Proposed: FastAPI / Python ASGI / Docker]</text>
+
+    <!-- Grid of Services -->
+    <!-- Row 1 -->
+    <rect x="30" y="45" width="220" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="140" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Authentication &amp; RBAC</text>
+    <text x="140" y="92" fill="#94a3b8" font-size="10" text-anchor="middle">JWT Tokens &bull; Role Scopes</text>
+    <text x="140" y="108" fill="#4ade80" font-size="10" text-anchor="middle">User Session Manager</text>
+
+    <rect x="270" y="45" width="220" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="380" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Fabric Roll Service</text>
+    <text x="380" y="92" fill="#94a3b8" font-size="10" text-anchor="middle">Batch Numbers &bull; QR Codes</text>
+    <text x="380" y="108" fill="#4ade80" font-size="10" text-anchor="middle">Inspection Lifecycle</text>
+
+    <rect x="510" y="45" width="220" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="620" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Defect Records Service</text>
+    <text x="620" y="92" fill="#94a3b8" font-size="10" text-anchor="middle">Coordinate Normalization</text>
+    <text x="620" y="108" fill="#4ade80" font-size="10" text-anchor="middle">Correction &amp; Verification</text>
+
+    <rect x="750" y="45" width="220" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="860" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Grading Engine</text>
+    <text x="860" y="92" fill="#94a3b8" font-size="10" text-anchor="middle">Standard 4-Point System</text>
+    <text x="860" y="108" fill="#4ade80" font-size="10" text-anchor="middle">Points/100m&sup2; Penalty Calc</text>
+
+    <rect x="990" y="45" width="230" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="1105" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Notification Hub</text>
+    <text x="1105" y="92" fill="#94a3b8" font-size="10" text-anchor="middle">WebSocket Telemetry</text>
+    <text x="1105" y="108" fill="#4ade80" font-size="10" text-anchor="middle">FCM Mobile Push Gateway</text>
+
+    <!-- Row 2 -->
+    <rect x="30" y="140" width="370" height="80" rx="6" fill="url(#appGrad)" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="215" y="167" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Central Sync Ingestion Receiver</text>
+    <text x="215" y="187" fill="#bbf7d0" font-size="10" text-anchor="middle">Idempotent Batch Processor &bull; UUID De-duplication</text>
+    <text x="215" y="203" fill="#86efac" font-size="10" text-anchor="middle">Validates HMAC &amp; Checksums from Edge</text>
+
+    <rect x="420" y="140" width="370" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="605" y="167" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Inventory &amp; Scrap Service</text>
+    <text x="605" y="187" fill="#94a3b8" font-size="10" text-anchor="middle">Warehouse Bay / Shelf Allocation</text>
+    <text x="605" y="203" fill="#4ade80" font-size="10" text-anchor="middle">Quarantine Flagging for Grade C / Scrap</text>
+
+    <rect x="810" y="140" width="410" height="80" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="1015" y="167" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Reporting &amp; Quality Statistics Engine</text>
+    <text x="1015" y="187" fill="#94a3b8" font-size="10" text-anchor="middle">Automated Digital Inspection Report (PDF) Generator</text>
+    <text x="1015" y="203" fill="#4ade80" font-size="10" text-anchor="middle">Pareto Charts &bull; Defect Class Distribution Metrics</text>
+  </g>
+
+  <!-- Connect C -> D -->
+  <path d="M 725 585 L 725 625" stroke="#4ade80" stroke-width="2.5" marker-end="url(#aG)"/>
+
+  <!-- LAYER D: DATA LAYER -->
+  <g transform="translate(100, 630)" filter="url(#shadow5)">
+    <rect width="1250" height="150" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="25" y="28" fill="#fbbf24" font-size="14" font-weight="bold">D. DATA LAYER (CENTRAL + LOCAL EDGE SPLIT)</text>
+
+    <!-- Central PG -->
+    <rect x="30" y="45" width="280" height="85" rx="8" fill="url(#dataGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="170" y="75" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">PostgreSQL Central DB</text>
+    <text x="170" y="95" fill="#fde68a" font-size="10" text-anchor="middle">Rolls, Defects, Grades, Users</text>
+    <text x="170" y="112" fill="#fef3c7" font-size="10" text-anchor="middle">ACID Relational Core</text>
+
+    <!-- MinIO/S3 -->
+    <rect x="330" y="45" width="280" height="85" rx="8" fill="url(#dataGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="470" y="75" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Cloud Object Store (MinIO/S3)</text>
+    <text x="470" y="95" fill="#fde68a" font-size="10" text-anchor="middle">Defect Bounding Box Snippets</text>
+    <text x="470" y="112" fill="#fef3c7" font-size="10" text-anchor="middle">High-Res Visual Evidence</text>
+
+    <!-- Edge SQLite -->
+    <rect x="630" y="45" width="290" height="85" rx="8" fill="url(#dataGrad)" stroke="#f59e0b" stroke-width="2"/>
+    <text x="775" y="75" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Edge SQLite DB (Local)</text>
+    <text x="775" y="95" fill="#fde68a" font-size="10" text-anchor="middle">Autonomous Zero-Latency Store</text>
+    <text x="775" y="112" fill="#fef3c7" font-size="10" text-anchor="middle">Active Session &bull; Uninspected Log</text>
+
+    <!-- Outbox Queue -->
+    <rect x="940" y="45" width="280" height="85" rx="8" fill="url(#dataGrad)" stroke="#f59e0b" stroke-width="2"/>
+    <text x="1080" y="75" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Offline Sync Outbox Queue</text>
+    <text x="1080" y="95" fill="#fde68a" font-size="10" text-anchor="middle">Guaranteed Eventual Consistency</text>
+    <text x="1080" y="112" fill="#fef3c7" font-size="10" text-anchor="middle">FIFO Retries on Reconnect</text>
+  </g>
+
+  <!-- Connect D -> B -->
+  <path d="M 725 780 L 725 820" stroke="#c084fc" stroke-width="2.5" marker-end="url(#aP)"/>
+
+  <!-- LAYER B: AI PROCESSING LAYER -->
+  <g transform="translate(100, 825)" filter="url(#shadow5)">
+    <rect width="1250" height="180" rx="12" fill="#0f172a" stroke="#c084fc" stroke-width="2"/>
+    <text x="25" y="28" fill="#c084fc" font-size="14" font-weight="bold">B. AI PROCESSING LAYER (EDGE ACCELERATED) [Proposed: PyTorch / ONNX / TensorRT]</text>
+
+    <!-- Steps -->
+    <rect x="30" y="50" width="220" height="105" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="140" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Image Preprocessing</text>
+    <text x="140" y="100" fill="#c084fc" font-size="11" text-anchor="middle">OpenCV Pipelines</text>
+    <text x="140" y="118" fill="#94a3b8" font-size="10" text-anchor="middle">ROI Masking &bull; CLAHE</text>
+    <text x="140" y="134" fill="#94a3b8" font-size="10" text-anchor="middle">Contrast Normalization</text>
+
+    <rect x="270" y="50" width="230" height="105" rx="6" fill="url(#aiGrad)" stroke="#c084fc" stroke-width="2"/>
+    <text x="385" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Defect Detection Model</text>
+    <text x="385" y="100" fill="#f3e8ff" font-size="11" text-anchor="middle">YOLO Object Detector</text>
+    <text x="385" y="118" fill="#e9d5ff" font-size="10" text-anchor="middle">Trained Fabric Weights</text>
+    <text x="385" y="134" fill="#e9d5ff" font-size="10" text-anchor="middle">Outputs: BBox, Class, Conf</text>
+
+    <rect x="520" y="50" width="220" height="105" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="630" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Multi-Frame Tracker</text>
+    <text x="630" y="100" fill="#c084fc" font-size="11" text-anchor="middle">Kalman Filter + IoU</text>
+    <text x="630" y="118" fill="#94a3b8" font-size="10" text-anchor="middle">Tracks across frames</text>
+    <text x="630" y="134" fill="#94a3b8" font-size="10" text-anchor="middle">Prevents track jitter</text>
+
+    <rect x="760" y="50" width="220" height="105" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="870" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Duplicate Reduction</text>
+    <text x="870" y="100" fill="#c084fc" font-size="11" text-anchor="middle">Spatial-Temporal Merging</text>
+    <text x="870" y="118" fill="#94a3b8" font-size="10" text-anchor="middle">Suppresses repeat count</text>
+    <text x="870" y="134" fill="#94a3b8" font-size="10" text-anchor="middle">Consolidates alerts</text>
+
+    <rect x="1000" y="50" width="220" height="105" rx="6" fill="url(#aiGrad)" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="1110" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Metric Coordinate Engine</text>
+    <text x="1110" y="100" fill="#f3e8ff" font-size="11" text-anchor="middle">Calibration &amp; Integration</text>
+    <text x="1110" y="118" fill="#e9d5ff" font-size="10" text-anchor="middle">Y_m: Rotary Encoder</text>
+    <text x="1110" y="134" fill="#e9d5ff" font-size="10" text-anchor="middle">X_cm: Camera pixel calib</text>
+  </g>
+
+  <!-- Connect B -> A -->
+  <path d="M 725 1005 L 725 1045" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#aB)"/>
+
+  <!-- LAYER A: HARDWARE / EDGE LAYER -->
+  <g transform="translate(100, 1050)" filter="url(#shadow5)">
+    <rect width="1250" height="190" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="25" y="28" fill="#38bdf8" font-size="14" font-weight="bold">A. HARDWARE / EDGE LAYER (PHYSICAL SENSORS &amp; TELEMETRY GATES)</text>
+
+    <!-- Services -->
+    <rect x="30" y="50" width="210" height="115" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="135" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Camera Capture Service</text>
+    <text x="135" y="98" fill="#38bdf8" font-size="10" text-anchor="middle">V4L2 / GenICam Stream</text>
+    <text x="135" y="116" fill="#94a3b8" font-size="10" text-anchor="middle">Frame Buffer Queue</text>
+    <text x="135" y="132" fill="#94a3b8" font-size="10" text-anchor="middle">Zero-Copy Memory Shm</text>
+    <text x="135" y="148" fill="#94a3b8" font-size="10" text-anchor="middle">Timestamp Tagging</text>
+
+    <rect x="260" y="50" width="210" height="115" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="365" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Rotary Encoder Service</text>
+    <text x="365" y="98" fill="#38bdf8" font-size="10" text-anchor="middle">Hardware GPIO Listener</text>
+    <text x="365" y="116" fill="#94a3b8" font-size="10" text-anchor="middle">Quadrature Counter</text>
+    <text x="365" y="132" fill="#94a3b8" font-size="10" text-anchor="middle">&Delta;L Integration Engine</text>
+    <text x="365" y="148" fill="#94a3b8" font-size="10" text-anchor="middle">Speed calculation (m/min)</text>
+
+    <rect x="490" y="50" width="310" height="115" rx="6" fill="url(#edgeGrad5)" stroke="#38bdf8" stroke-width="2"/>
+    <text x="645" y="75" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Inspection Reliability Monitor</text>
+    <text x="645" y="95" fill="#ffffff" font-size="10" text-anchor="middle">&bull; Camera Disconnect Ping Watchdog</text>
+    <text x="645" y="112" fill="#ffffff" font-size="10" text-anchor="middle">&bull; Illumination Uniformity &amp; Lux Check</text>
+    <text x="645" y="129" fill="#ffffff" font-size="10" text-anchor="middle">&bull; Laplacian Variance Sharpness Filter</text>
+    <text x="645" y="146" fill="#ffffff" font-size="10" text-anchor="middle">&bull; Dropped Frame Sequence Analyzer</text>
+
+    <rect x="820" y="50" width="220" height="115" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="930" y="78" fill="#f87171" font-size="12" font-weight="bold" text-anchor="middle">Uninspected Section Handler</text>
+    <text x="930" y="98" fill="#ffffff" font-size="10" text-anchor="middle">Computes Span [L1, L2]</text>
+    <text x="930" y="116" fill="#fca5a5" font-size="10" text-anchor="middle">Triggers Warning Beacon</text>
+    <text x="930" y="132" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">Flags as UNINSPECTED</text>
+    <text x="930" y="148" fill="#fca5a5" font-size="9" text-anchor="middle">Never treats as defect-free!</text>
+
+    <rect x="1060" y="50" width="160" height="115" rx="6" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="1140" y="78" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Edge Sync Daemon</text>
+    <text x="1140" y="98" fill="#94a3b8" font-size="10" text-anchor="middle">Background HTTP</text>
+    <text x="1140" y="116" fill="#94a3b8" font-size="10" text-anchor="middle">Heartbeat Worker</text>
+    <text x="1140" y="132" fill="#94a3b8" font-size="10" text-anchor="middle">Exponential Jitter</text>
+    <text x="1140" y="148" fill="#94a3b8" font-size="10" text-anchor="middle">Outbox Processor</text>
+  </g>
+
+  <!-- Uplink Connector from Edge Sync Daemon to Central Sync Receiver -->
+  <path d="M 1220 1100 L 1380 1100 L 1380 470 L 400 470" stroke="#4ade80" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#aG)"/>
+  <text x="1390" y="780" fill="#4ade80" font-size="11" font-weight="bold" transform="rotate(90, 1390, 780)">HTTPS Sync Batches</text>
+
+</svg>

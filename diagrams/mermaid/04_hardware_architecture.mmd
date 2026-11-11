@@ -1,0 +1,69 @@
+flowchart LR
+    classDef physical fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a;
+    classDef edgeUnit fill:#eff6ff,stroke:#2563eb,stroke-width:3px,color:#1e3a8a;
+    classDef cloudUnit fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef proposed fill:#fffbeb,stroke:#d97706,stroke-width:2px,stroke-dasharray: 4 2,color:#78350f;
+    classDef alertUnit fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b;
+
+    subgraph INSPECTION_STAND ["Fabric Inspection Physical Stand (Confirmed Subsystem)"]
+        direction TB
+        FABRIC_WEB["Moving Fabric Web<br/>(Continuous Feed)"]:::physical
+        IDLER_ROLLER["Idler / Guide Roller<br/>(Rotates with Fabric Motion)"]:::physical
+        ILLUM_AREA["Illuminated Inspection Zone"]:::physical
+        FABRIC_WEB -.-> IDLER_ROLLER
+        FABRIC_WEB -.-> ILLUM_AREA
+    end
+
+    subgraph HARDWARE_SENSORS ["Hardware Sensing & Illumination Components"]
+        direction TB
+        CAM["Industrial Camera<br/>(Area-Scan / Line-Scan)<br/>[Confirmed Component]"]:::physical
+        ENC["Rotary Encoder<br/>(Incremental Optical Quadrature)<br/>[Confirmed Component]"]:::physical
+        LIGHT["Lighting System<br/>(High-CRI Uniform LED Bar)<br/>[Confirmed Component]"]:::physical
+        
+        IDLER_ROLLER == Mechanical Coupling ==> ENC
+        LIGHT == Regulated Photons ==> ILLUM_AREA
+        ILLUM_AREA == Reflected Photons ==> CAM
+    end
+
+    subgraph INTERFACES ["Proposed Alternative Connection Interfaces"]
+        direction TB
+        CAM_IF["Camera Interface<br/>(Proposed: USB 3.0 Vision / GigE / MIPI)"]:::proposed
+        ENC_IF["Encoder Interface<br/>(Proposed: GPIO Counter / Opto DAQ / TTL-to-USB)"]:::proposed
+        LIGHT_CTRL["Lighting Driver / Controller<br/>(Proposed: Constant-Current / PWM Strobe)"]:::proposed
+        ALERT_DEV["Local Alert Unit<br/>(Proposed: Tower Stack Light / Relay / Buzzer)"]:::alertUnit
+        NET_IF["Network Uplink Interface<br/>(Proposed: Gigabit Ethernet Cat6 / Wi-Fi)"]:::proposed
+    end
+
+    CAM ==> CAM_IF
+    ENC ==> ENC_IF
+    LIGHT <== LIGHT_CTRL
+
+    subgraph EDGE_COMPUTE ["Edge Computer / Processing Unit (Confirmed Subsystem)"]
+        direction TB
+        EDGE_HW["Industrial PC / Embedded GPU Unit<br/>(e.g., Jetson / High-spec Mini-PC)"]:::edgeUnit
+        LOCAL_STORAGE[("Local Edge Storage<br/>(SQLite + NVMe SSD Cache)")]:::edgeUnit
+        EDGE_HW <--> LOCAL_STORAGE
+    end
+
+    CAM_IF == "High-Speed Raw Image Stream (Data Flow)" ==> EDGE_HW
+    ENC_IF == "Digital Pulses (Channel A/B Quadrature Ticks)" ==> EDGE_HW
+    EDGE_HW -.->|Feedback / Strobe Sync Trigger| LIGHT_CTRL
+    EDGE_HW == "Digital Trigger Output / Relay State" ==> ALERT_DEV
+
+    EDGE_HW <==> NET_IF
+
+    subgraph CENTRAL_INFRA ["Central Infrastructure / Cloud Server (Confirmed Subsystem)"]
+        direction TB
+        CLOUD_SRV["Central Application Server<br/>(API Gateway / Business Logic)"]:::cloudUnit
+        CLOUD_DB[("Central Database<br/>(PostgreSQL + Object Storage)")]:::cloudUnit
+        WEB_CLIENT["Web Dashboard Client<br/>(Admin / QA / Production)"]:::cloudUnit
+        MOBILE_CLIENT["Mobile App Client<br/>(Floor Operator Device)"]:::cloudUnit
+
+        CLOUD_SRV <--> CLOUD_DB
+        CLOUD_SRV <--> WEB_CLIENT
+        CLOUD_SRV <--> MOBILE_CLIENT
+    end
+
+    NET_IF == "HTTPS / WSS (Defect Records, Telemetry, Health Status)" <==> CLOUD_SRV
+    EDGE_HW -.->|Direct Local Wi-Fi (Optional Fallback)| MOBILE_CLIENT
+

@@ -1,0 +1,195 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="seq_inspection" name="Sequence - Real-Time Inspection">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_seq" value="&lt;b&gt;TexEye AI: Sequence Diagram &amp;mdash; Fabric Inspection &amp;amp; Reliability Gating Flow&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines (Columns) -->
+        <mxCell id="ll_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;&lt;br&gt;(Mobile App)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_op" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_op" target="end_op" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_op" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="150" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_stand" value="&lt;b&gt;Fabric Stand / Enc&lt;/b&gt;&lt;br&gt;(Hardware Line)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="270" y="90" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_stand" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_stand" target="end_stand" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_stand" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="340" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_cam" value="&lt;b&gt;Industrial Camera&lt;/b&gt;&lt;br&gt;(Video Ingestion)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="460" y="90" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_cam" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_cam" target="end_cam" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_cam" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="530" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_mon" value="&lt;b&gt;Reliability Gate&lt;/b&gt;&lt;br&gt;(Edge Health Monitor)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="90" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_mon" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_mon" target="end_mon" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_mon" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="725" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_ai" value="&lt;b&gt;AI Vision Engine&lt;/b&gt;&lt;br&gt;(Inference &amp;amp; Tracker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="850" y="90" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ai" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_ai" target="end_ai" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_ai" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="920" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_db" value="&lt;b&gt;Edge SQLite DB&lt;/b&gt;&lt;br&gt;(Local Storage)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="90" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_db" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_db" target="end_db" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_db" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ll_cloud" value="&lt;b&gt;Central Backend&lt;/b&gt;&lt;br&gt;(FastAPI &amp;amp; Web Portal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="90" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_cloud" style="edgeStyle=none;rounded=0;dashed=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" source="ll_cloud" target="end_cloud" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="end_cloud" value="" style="shape=point;" vertex="1" parent="1">
+          <mxGeometry x="1305" y="850" width="1" height="1" as="geometry" />
+        </mxCell>
+
+        <!-- Message 1: Scan QR -->
+        <mxCell id="msg1" value="1. Scan Roll QR Code" style="edgeStyle=none;rounded=0;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="160" as="sourcePoint" />
+            <mxPoint x="1110" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg2" value="2. Initialize Local Session" style="edgeStyle=none;rounded=0;strokeColor=#16a34a;strokeWidth=1.5;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1110" y="190" as="sourcePoint" />
+            <mxPoint x="150" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 3: Continuous Ingestion -->
+        <mxCell id="msg3" value="3. Fabric moves: Quadrature pulse stream (&amp;Delta;L)" style="edgeStyle=none;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="240" as="sourcePoint" />
+            <mxPoint x="725" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg4" value="4. Live video stream (Timestamped frames)" style="edgeStyle=none;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="270" as="sourcePoint" />
+            <mxPoint x="725" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Self Call: Reliability Check -->
+        <mxCell id="box_alt_rel" value="&lt;b&gt;[alt: Reliability Check Passed vs Failed]&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;strokeWidth=1.5;strokeDasharray=2 2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="110" y="310" width="1250" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- Condition: Passed -->
+        <mxCell id="lbl_rel_ok" value="&lt;b&gt;[Reliable: Cam connected, Uniform light, Sharp focus, No dropped frames]&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15803d;fontSize=11;" vertex="1" parent="box_alt_rel">
+          <mxGeometry x="20" y="30" width="500" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg5" value="5. Forward clean frame + encoder tick" style="edgeStyle=none;rounded=0;strokeColor=#15803d;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="370" as="sourcePoint" />
+            <mxPoint x="920" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg6" value="6. Infer defect (YOLO) + Multi-frame track &amp;amp; Deduplicate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="390" as="sourcePoint" />
+            <mxPoint x="920" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="960" y="390" />
+              <mxPoint x="960" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg7" value="7. Estimate coordinates: X_cm (calib), Y_m (encoder)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="430" as="sourcePoint" />
+            <mxPoint x="920" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="960" y="430" />
+              <mxPoint x="960" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg8" value="8. INSERT Defect Record (Track_ID, Class, X, Y, Img)" style="edgeStyle=none;rounded=0;strokeColor=#d97706;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="480" as="sourcePoint" />
+            <mxPoint x="1110" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg9" value="9. Push Mobile Alert &amp;amp; Stream to Live Defect Map" style="edgeStyle=none;rounded=0;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="520" as="sourcePoint" />
+            <mxPoint x="150" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Divider -->
+        <mxCell id="div_alt" value="" style="line;strokeWidth=1.5;strokeDasharray=4 4;strokeColor=#ef4444;" vertex="1" parent="box_alt_rel">
+          <mxGeometry x="10" y="240" width="1230" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Condition: Failed -->
+        <mxCell id="lbl_rel_fail" value="&lt;b&gt;[Unreliable: Camera disconnected OR Lighting failure OR Frame drop OR Occlusion]&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#b91c1c;fontSize=11;" vertex="1" parent="box_alt_rel">
+          <mxGeometry x="20" y="260" width="550" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg10" value="10. Compute Span [L_start = Y, L_end = Y + &amp;Delta;L]; Flag as UNINSPECTED" style="edgeStyle=none;rounded=0;strokeColor=#ef4444;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="610" as="sourcePoint" />
+            <mxPoint x="1110" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg11" value="11. Trigger Local Warning Beacon &amp;amp; Alarm ('Inspection Compromised')" style="edgeStyle=none;rounded=0;strokeColor=#ef4444;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="650" as="sourcePoint" />
+            <mxPoint x="150" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg12" value="12. Broadcast Anomaly Event (Render Uninspected Yellow Zone on Map)" style="edgeStyle=none;rounded=0;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="690" as="sourcePoint" />
+            <mxPoint x="1305" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note_crit" value="&lt;b&gt;CRITICAL FYP RULE:&lt;/b&gt;&lt;br&gt;Uninspected section is NEVER treated as defect-free!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#991b1b;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="780" y="720" width="360" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

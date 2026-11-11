@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="diag_comp_deploy" name="Component &amp; Deployment Architecture">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;TexEye AI: UML Deployment &amp;amp; Execution Topology Diagram&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Nodes, Physical Execution Environments, Device Interfaces &amp;amp; Network Protocols&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Node 1: Stand -->
+        <mxCell id="node_stand" value="&lt;b&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Fabric Inspection Stand&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontSize=13;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="360" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_cam" value="&amp;lt;&amp;lt;hardware&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Industrial Camera&lt;/b&gt;&lt;br&gt;Area-Scan / Line-Scan Sensor&lt;br&gt;Telecentric Lens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;fontSize=11;" vertex="1" parent="node_stand">
+          <mxGeometry x="30" y="50" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_enc" value="&amp;lt;&amp;lt;hardware&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Rotary Encoder&lt;/b&gt;&lt;br&gt;Incremental Quadrature Pulses&lt;br&gt;Shaft-Coupled to Roller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;fontSize=11;" vertex="1" parent="node_stand">
+          <mxGeometry x="30" y="125" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_light" value="&amp;lt;&amp;lt;hardware&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;High-CRI LED Lighting Rig&lt;/b&gt;&lt;br&gt;Regulated Constant-Current Illumination" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;fontSize=11;" vertex="1" parent="node_stand">
+          <mxGeometry x="30" y="200" width="300" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="dev_alert" value="&amp;lt;&amp;lt;hardware&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Local Stack Light Beacon / Buzzer&lt;/b&gt;&lt;br&gt;Opto-Isolated Relay Driven" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=11;fontColor=#991b1b;" vertex="1" parent="node_stand">
+          <mxGeometry x="30" y="270" width="300" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Node 2: Edge -->
+        <mxCell id="node_edge" value="&lt;b&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Industrial Edge Computer (Ubuntu Linux 22.04 LTS)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Proposed: NVIDIA Jetson Orin / Industrial PC Mini-ITX&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=3;fontSize=12;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="520" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="art_cap" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;texeye-capture-daemon&lt;/b&gt;&lt;br&gt;V4L2 / GenICam / GPIO Pulse Counter&lt;br&gt;Reliability Gate &amp;amp; Dropped Frame Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#60a5fa;fontSize=11;" vertex="1" parent="node_edge">
+          <mxGeometry x="30" y="55" width="460" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="art_ai" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;texeye-ai-inference&lt;/b&gt;&lt;br&gt;PyTorch / TensorRT / CUDA Acceleration&lt;br&gt;Multi-frame Kalman Tracker &amp;amp; Metrology" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;fontSize=11;fontColor=#581c87;" vertex="1" parent="node_edge">
+          <mxGeometry x="30" y="135" width="460" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="art_sqlite" value="&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Local SQLite3 Database (texeye_local.db)&lt;/b&gt;&lt;br&gt;WAL Mode Enabled &amp;bull; Offline Outbox Queue" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#fffbeb;strokeColor=#d97706;fontSize=11;fontColor=#78350f;" vertex="1" parent="node_edge">
+          <mxGeometry x="40" y="220" width="440" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="art_cache" value="&amp;lt;&amp;lt;file store&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Local NVMe Image Cache (/var/texeye/cache)&lt;/b&gt;&lt;br&gt;Pre-sync Image Crops &amp;bull; Ring Buffer Allocation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;fontSize=11;" vertex="1" parent="node_edge">
+          <mxGeometry x="40" y="315" width="440" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="art_sync" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;texeye-sync-agent (Background Python Worker)&lt;/b&gt;&lt;br&gt;Connectivity Ping &amp;bull; Multipart REST Batch Sync &amp;bull; Exponential Retry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#14532d;" vertex="1" parent="node_edge">
+          <mxGeometry x="40" y="395" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="art_uninspect" value="&lt;b&gt;Uninspected Section Handler&lt;/b&gt; (Marks degraded span as uninspected)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=10;fontColor=#991b1b;" vertex="1" parent="node_edge">
+          <mxGeometry x="40" y="475" width="440" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Physical Interconnects Stand -> Edge -->
+        <mxCell id="e_d_cam" value="USB 3.0 / GigE Vision" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="dev_cam" target="art_cap" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d_enc" value="Shielded GPIO / TTL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="dev_enc" target="art_cap" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_d_alert" value="Relay Contact" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;" edge="1" source="art_uninspect" target="dev_alert" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Node 3: Cloud / Server -->
+        <mxCell id="node_cloud" value="&lt;b&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Central Cloud / Enterprise Server (Ubuntu 22.04 LTS / Docker)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=13;fontColor=#14532d;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="120" width="560" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_nginx" value="&amp;lt;&amp;lt;reverse proxy&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Nginx 1.24 (TLS 1.3 Termination)&lt;/b&gt;&lt;br&gt;Port 443 HTTPS &amp;amp; WebSocket Proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="node_cloud">
+          <mxGeometry x="40" y="55" width="480" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_fastapi" value="&amp;lt;&amp;lt;application service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;FastAPI Backend Container (Uvicorn ASGI)&lt;/b&gt;&lt;br&gt;REST Endpoints &amp;bull; Sync Ingest &amp;bull; 4-Point Grading Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="node_cloud">
+          <mxGeometry x="40" y="130" width="480" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_pg_cluster" value="&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;PostgreSQL 16 Cluster&lt;/b&gt;&lt;br&gt;Relational Schema: Rolls, Defects, Grading, Users" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#fffbeb;strokeColor=#d97706;fontSize=11;fontColor=#78350f;" vertex="1" parent="node_cloud">
+          <mxGeometry x="40" y="215" width="480" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_minio" value="&amp;lt;&amp;lt;storage service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;MinIO / AWS S3 Object Store&lt;/b&gt;&lt;br&gt;Compressed Defect Images &amp;amp; PDF Reports Archive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="node_cloud">
+          <mxGeometry x="40" y="310" width="480" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_ws_hub" value="&amp;lt;&amp;lt;realtime hub&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;WebSocket Push Notification Hub&lt;/b&gt;&lt;br&gt;Real-Time Telemetry &amp;amp; Defect Map Sync Channel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="node_cloud">
+          <mxGeometry x="40" y="390" width="480" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Network Link Edge -> Cloud -->
+        <mxCell id="e_edge_cloud" value="&lt;b&gt;HTTPS / TLS 1.3 REST Batches&lt;/b&gt;&lt;br&gt;(Industrial Ethernet RJ45 / Wi-Fi)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=3;fontColor=#15803d;" edge="1" source="art_sync" target="srv_nginx" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Node 4: Mobile Client -->
+        <mxCell id="node_mob" value="&lt;b&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Shop Floor Mobile Device (Android / iOS)&lt;/b&gt;&lt;br&gt;Flutter / React Native Client App &amp;bull; QR Scanner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="750" y="730" width="420" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Node 5: Web Workstation -->
+        <mxCell id="node_pc" value="&lt;b&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;QA &amp;amp; Management Workstation (PC / Laptop)&lt;/b&gt;&lt;br&gt;Chrome / Edge Browser &amp;bull; React Web Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="730" width="420" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_mob_cloud" value="Wi-Fi / LTE (HTTPS &amp;amp; WSS)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="node_mob" target="srv_nginx" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pc_cloud" value="Corporate LAN (HTTPS &amp;amp; WSS)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="node_pc" target="srv_nginx" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

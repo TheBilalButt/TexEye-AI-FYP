@@ -1,0 +1,100 @@
+flowchart TD
+    classDef startEnd fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#fff,rx:20,ry:20;
+    classDef process fill:#f8fafc,stroke:#3b82f6,stroke-width:2px,color:#0f172a;
+    classDef decision fill:#eff6ff,stroke:#2563eb,stroke-width:2px,stroke-dasharray: 4 2,color:#1e3a8a;
+    classDef warning fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b;
+    classDef success fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#166534;
+    classDef subProcess fill:#f5f3ff,stroke:#8b5cf6,stroke-width:2px,color:#5b21b6;
+    classDef dataStore fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,shape:cylinder,color:#92400e;
+
+    START(["Start: Fabric Roll Enters Inspection Stand"]):::startEnd
+    INIT["Load Roll Metadata & Initialize Inspection Session<br/>(Scan Roll QR / Operator Login)"]:::process
+    START --> INIT
+
+    subgraph SENSING ["1. Continuous Hardware Sensing & Illumination"]
+        direction TB
+        LIGHT["Lighting System Active<br/>(Illuminates Fabric Web Under Inspection)"]:::process
+        CAM_FEED["Industrial Camera Captures Live Video Frames"]:::process
+        ENC_FEED["Rotary Encoder Measures Physical Fabric Movement<br/>(Digital Pulses -> Distance Increment ΔL)"]:::process
+    end
+    INIT --> SENSING
+
+    subgraph RELIABILITY_GATE ["2. Edge Inspection Reliability Gate"]
+        direction TB
+        CHECK_CAM{"Camera Connected?<br/>(No signal loss)"}:::decision
+        CHECK_LIGHT{"Lighting Adequate?<br/>(Luminance within calibrated threshold)"}:::decision
+        CHECK_FOCUS{"Image Quality OK?<br/>(No severe blur / occlusion)"}:::decision
+        CHECK_FRAMES{"No Dropped Frames?<br/>(Framerate synchronized with encoder speed)"}:::decision
+        
+        CHECK_CAM -- Yes --> CHECK_LIGHT
+        CHECK_LIGHT -- Yes --> CHECK_FOCUS
+        CHECK_FOCUS -- Yes --> CHECK_FRAMES
+    end
+    SENSING --> CHECK_CAM
+
+    CHECK_CAM -- No --> UNRELIABLE_PATH["Generate Inspection Warning Event"]:::warning
+    CHECK_LIGHT -- No --> UNRELIABLE_PATH
+    CHECK_FOCUS -- No --> UNRELIABLE_PATH
+    CHECK_FRAMES -- No --> UNRELIABLE_PATH
+
+    subgraph UNINSPECTED_HANDLING ["3. Uninspected Fabric Section Management"]
+        direction TB
+        MARK_UNINSPECTED["Calculate Affected Length Span [L_start, L_end]<br/>Mark Section as 'UNINSPECTED'<br/>(CRITICAL: Never treat as defect-free)"]:::warning
+        LOG_ANOMALY["Log Warning Reason to Local Session & Alert Queue"]:::warning
+        MARK_UNINSPECTED --> LOG_ANOMALY
+    end
+    UNRELIABLE_PATH --> MARK_UNINSPECTED
+
+    subgraph AI_PIPELINE ["4. Reliable AI Defect Detection & Tracking Pipeline"]
+        direction TB
+        INFERENCE["Execute AI Defect Detection Model<br/>(YOLO / Feature Extractor)"]:::subProcess
+        TRACKING["Track Defect Across Consecutive Frames<br/>(Kalman Filter / Centroid Association)"]:::subProcess
+        DEDUP["Spatial-Temporal Duplicate Reduction<br/>(Consolidate multi-frame instances)"]:::subProcess
+        LOCALIZE["Estimate Metric Defect Coordinates (X_cm, Y_m)<br/>(Rotary Encoder Cumulative Length + Camera-to-Fabric Calibration)"]:::subProcess
+
+        INFERENCE --> TRACKING
+        TRACKING --> DEDUP
+        DEDUP --> LOCALIZE
+    end
+    CHECK_FRAMES -- Yes --> INFERENCE
+
+    SAVE_RECORDS["Assemble Roll Inspection Records, Defect Coordinates & Metadata"]:::process
+    LOCALIZE --> SAVE_RECORDS
+    LOG_ANOMALY --> SAVE_RECORDS
+
+    LOCAL_STORE[("Save to Local Edge Storage<br/>(SQLite DB + Local Defect Image Cache)")]:::dataStore
+    SAVE_RECORDS --> LOCAL_STORE
+
+    NET_CHECK{"Central Backend Reachable?<br/>(Internet / LAN Available?)"}:::decision
+    LOCAL_STORE --> NET_CHECK
+
+    subgraph SYNC_ONLINE ["5A. Online Synchronization"]
+        direction TB
+        PUSH_CENTRAL["Stream Defect Data & Real-Time Telemetry to Central Backend<br/>(REST API / WebSocket)"]:::success
+        UPDATE_CENTRAL_DB[("Central PostgreSQL Database & Object Storage")]:::dataStore
+        PUSH_CENTRAL --> UPDATE_CENTRAL_DB
+    end
+    NET_CHECK -- Yes --> PUSH_CENTRAL
+
+    subgraph SYNC_OFFLINE ["5B. Offline Resilient Queuing"]
+        direction TB
+        QUEUE_OFFLINE["Queue Records in Local SQLite Offline Sync Table"]:::process
+        AUTO_SYNC_DAEMON["Sync Worker Monitors Connectivity<br/>(Auto-transfers queued batches when connection restores)"]:::process
+        QUEUE_OFFLINE --> AUTO_SYNC_DAEMON
+    end
+    NET_CHECK -- No --> QUEUE_OFFLINE
+    AUTO_SYNC_DAEMON -.->|When Link Restored| PUSH_CENTRAL
+
+    subgraph CONSUMERS ["6. User Interfaces & Actionable Downstream Operations"]
+        direction TB
+        MOBILE_APP["Mobile Application (Floor Operator / Inspector):<br/>- Receive Real-time Defect/Reliability Alerts<br/>- Scan Roll QR Codes<br/>- Review & Correct Defect Classifications"]:::process
+        WEB_DASH["Web Dashboard (Quality / Production / Inventory):<br/>- Interactive Digital Fabric Defect Map<br/>- Roll Inspection Status & Grading (4-Point Standard)<br/>- Inventory Status & Scrap Records<br/>- Exportable Digital Quality Reports & Statistics"]:::process
+    end
+
+    UPDATE_CENTRAL_DB --> MOBILE_APP
+    UPDATE_CENTRAL_DB --> WEB_DASH
+    LOCAL_STORE -.->|Local Wi-Fi fallback| MOBILE_APP
+
+    END_ROLL(["End: Fabric Roll Complete, Graded & Recorded"]):::startEnd
+    WEB_DASH --> END_ROLL
+

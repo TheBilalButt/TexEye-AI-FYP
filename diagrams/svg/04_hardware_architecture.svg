@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 1200" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="amberGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </linearGradient>
+    <filter id="shadow4" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrB4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/></marker>
+    <marker id="arrG4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4ade80"/></marker>
+    <marker id="arrR4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#f87171"/></marker>
+    <marker id="arrY4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#fbbf24"/></marker>
+  </defs>
+
+  <!-- Title -->
+  <g transform="translate(100, 30)" filter="url(#shadow4)">
+    <rect width="1250" height="75" rx="12" fill="url(#headerGrad4)" stroke="#334155" stroke-width="1.5"/>
+    <text x="625" y="32" fill="#38bdf8" font-size="20" font-weight="bold" text-anchor="middle">TexEye AI &mdash; Hardware Architecture &amp; Physical Interfaces</text>
+    <text x="625" y="55" fill="#94a3b8" font-size="12" text-anchor="middle">Muhammad Bilal Butt (FA23-BAI-042) | Hardware Integration &amp; Real-Time Sensing Lead</text>
+    <text x="625" y="69" fill="#f59e0b" font-size="10" text-anchor="middle">&bull; Notice: Specific models and interface protocols are proposed alternatives pending final hardware bench testing &bull;</text>
+  </g>
+
+  <!-- Column 1: Physical Inspection Stand -->
+  <g transform="translate(60, 135)" filter="url(#shadow4)">
+    <rect width="360" height="420" rx="12" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+    <text x="25" y="28" fill="#f8fafc" font-size="13" font-weight="bold">FABRIC INSPECTION STAND [CONFIRMED]</text>
+
+    <!-- Fabric Web -->
+    <rect x="25" y="45" width="310" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="180" y="72" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Moving Fabric Web</text>
+    <text x="180" y="92" fill="#94a3b8" font-size="11" text-anchor="middle">Continuous feed textile material</text>
+
+    <!-- Idler Roller -->
+    <rect x="25" y="125" width="310" height="70" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="180" y="152" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Idler / Guide Roller</text>
+    <text x="180" y="172" fill="#94a3b8" font-size="11" text-anchor="middle">Precision cylindrical contact roller</text>
+    <text x="180" y="186" fill="#64748b" font-size="10" text-anchor="middle">Rotates proportionally with fabric</text>
+
+    <!-- Illumination Area -->
+    <rect x="25" y="210" width="310" height="70" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="180" y="237" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">Illuminated Inspection Zone</text>
+    <text x="180" y="257" fill="#94a3b8" font-size="11" text-anchor="middle">Direct Field of View (FOV) across fabric</text>
+
+    <!-- Stand Frame -->
+    <rect x="25" y="295" width="310" height="105" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="180" y="322" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Rigid Mechanical Gantry</text>
+    <text x="180" y="342" fill="#94a3b8" font-size="11" text-anchor="middle">Vibration-damped overhead mount</text>
+    <text x="180" y="362" fill="#94a3b8" font-size="10" text-anchor="middle">Maintains constant working distance (WD)</text>
+    <text x="180" y="380" fill="#94a3b8" font-size="10" text-anchor="middle">and optical resolution</text>
+  </g>
+
+  <!-- Column 2: Sensors & Interfaces (Proposed Choices) -->
+  <g transform="translate(450, 135)" filter="url(#shadow4)">
+    <rect width="450" height="420" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="25" y="28" fill="#38bdf8" font-size="13" font-weight="bold">SENSING, ILLUMINATION &amp; ALERT INTERFACES</text>
+
+    <!-- Rotary Encoder -->
+    <rect x="20" y="45" width="410" height="80" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="225" y="70" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">Rotary Encoder [Confirmed Subsystem]</text>
+    <text x="225" y="90" fill="#ffffff" font-size="11" text-anchor="middle">Incremental Optical Quadrature (A/B Channels)</text>
+    <text x="225" y="108" fill="#fde68a" font-size="10" text-anchor="middle">Proposed: GPIO Counter / Opto DAQ / TTL Pulse Counter</text>
+
+    <!-- Industrial Camera -->
+    <rect x="20" y="135" width="410" height="85" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="225" y="160" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Industrial Camera [Confirmed Subsystem]</text>
+    <text x="225" y="180" fill="#ffffff" font-size="11" text-anchor="middle">Area-Scan / Line-Scan Sensor &bull; Low-Distortion Lens</text>
+    <text x="225" y="198" fill="#93c5fd" font-size="10" text-anchor="middle">Proposed: USB 3.0 Vision OR GigE Vision OR MIPI-CSI2</text>
+
+    <!-- Lighting Rig -->
+    <rect x="20" y="230" width="410" height="85" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="225" y="255" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">Lighting Rig [Confirmed Subsystem]</text>
+    <text x="225" y="275" fill="#ffffff" font-size="11" text-anchor="middle">High-CRI Uniform Linear Light Bar Array</text>
+    <text x="225" y="295" fill="#fde68a" font-size="10" text-anchor="middle">Proposed: Constant-Current 24V LED Driver / PWM Dimmer</text>
+
+    <!-- Alert Unit -->
+    <rect x="20" y="325" width="410" height="80" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="225" y="350" fill="#f87171" font-size="12" font-weight="bold" text-anchor="middle">Alert Unit [Proposed Subsystem]</text>
+    <text x="225" y="370" fill="#ffffff" font-size="11" text-anchor="middle">Visual Stack Light Beacon / Relay Audible Buzzer</text>
+    <text x="225" y="388" fill="#fca5a5" font-size="10" text-anchor="middle">Proposed: Optocoupler-Isolated Digital Output Relay</text>
+  </g>
+
+  <!-- Connectors Stand -> Sensors -->
+  <path d="M 335 195 L 470 195" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)"/>
+  <path d="M 335 280 L 470 280" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrB4)"/>
+
+  <!-- Column 3: Edge Processing Unit -->
+  <g transform="translate(930, 135)" filter="url(#shadow4)">
+    <rect width="460" height="420" rx="12" fill="#0f172a" stroke="#1d4ed8" stroke-width="3"/>
+    <text x="25" y="28" fill="#38bdf8" font-size="13" font-weight="bold">EDGE COMPUTER / PROCESSING UNIT [CONFIRMED]</text>
+    <text x="25" y="44" fill="#94a3b8" font-size="10">Proposed: NVIDIA Jetson Orin / Industrial PC / Embedded x86</text>
+
+    <!-- Hardware Sub-blocks -->
+    <rect x="20" y="55" width="420" height="60" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="230" y="80" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Multi-Core Host CPU (ARM64 / x86_64)</text>
+    <text x="230" y="98" fill="#94a3b8" font-size="11" text-anchor="middle">Runs V4L2/GenICam, GPIO driver &amp; OS services</text>
+
+    <rect x="20" y="125" width="420" height="70" rx="6" fill="url(#edgeGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="230" y="152" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">AI Hardware Accelerator (GPU / NPU)</text>
+    <text x="230" y="172" fill="#93c5fd" font-size="11" text-anchor="middle">Runs real-time YOLO defect inference engine</text>
+    <text x="230" y="186" fill="#bae6fd" font-size="10" text-anchor="middle">Supports CUDA / TensorRT / ONNX Runtime</text>
+
+    <rect x="20" y="205" width="420" height="65" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="230" y="232" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">High-Speed NVMe Storage</text>
+    <text x="230" y="252" fill="#fde68a" font-size="11" text-anchor="middle">Local SQLite DB + Defect Frame Buffer Cache</text>
+
+    <rect x="20" y="280" width="420" height="60" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="230" y="305" fill="#f87171" font-size="12" font-weight="bold" text-anchor="middle">Hardware Reliability Watchdog</text>
+    <text x="230" y="323" fill="#fca5a5" font-size="10" text-anchor="middle">Detects camera disconnect, frame drops, light anomalies</text>
+
+    <rect x="20" y="350" width="420" height="55" rx="6" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="230" y="375" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Network Uplink Controller</text>
+    <text x="230" y="393" fill="#bbf7d0" font-size="10" text-anchor="middle">Proposed: Gigabit Ethernet (RJ45) OR Dual-band Wi-Fi</text>
+  </g>
+
+  <!-- Connectors Sensors -> Edge -->
+  <path d="M 860 195 L 950 195" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrB4)"/>
+  <path d="M 860 100 L 950 100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)"/>
+  <path d="M 950 380 L 860 380" stroke="#f87171" stroke-width="2" marker-end="url(#arrR4)"/>
+
+  <!-- Lower Section: Network & Central Cloud -->
+  <!-- Network Uplink Pipe -->
+  <g transform="translate(400, 580)" filter="url(#shadow4)">
+    <rect width="650" height="50" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+    <text x="325" y="31" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">COMMUNICATION UPLINK: TLS 1.3 HTTPS &amp; WEBSOCKETS</text>
+  </g>
+  <path d="M 1160 555 L 1160 605 L 1050 605" stroke="#4ade80" stroke-width="2.5"/>
+  <path d="M 725 630 L 725 680" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG4)"/>
+
+  <!-- Central Cloud Container -->
+  <g transform="translate(200, 685)" filter="url(#shadow4)">
+    <rect width="1050" height="230" rx="12" fill="#0f172a" stroke="#16a34a" stroke-width="2"/>
+    <text x="25" y="28" fill="#4ade80" font-size="14" font-weight="bold">CENTRAL INFRASTRUCTURE / BACKEND SERVER [CONFIRMED SUBSYSTEM]</text>
+
+    <!-- Cloud Services -->
+    <rect x="30" y="50" width="300" height="75" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="180" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Central API Server (FastAPI)</text>
+    <text x="180" y="98" fill="#94a3b8" font-size="11" text-anchor="middle">REST Gateway &bull; Sync Ingestion</text>
+    <text x="180" y="112" fill="#94a3b8" font-size="10" text-anchor="middle">Roll &amp; Defect Service</text>
+
+    <rect x="375" y="50" width="300" height="75" rx="8" fill="url(#cloudGrad)" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="525" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">PostgreSQL Database</text>
+    <text x="525" y="98" fill="#bbf7d0" font-size="11" text-anchor="middle">Central Relational Store</text>
+    <text x="525" y="112" fill="#86efac" font-size="10" text-anchor="middle">ACID Roll, Grading &amp; Defect History</text>
+
+    <rect x="720" y="50" width="300" height="75" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="870" y="78" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Cloud Object Storage</text>
+    <text x="870" y="98" fill="#94a3b8" font-size="11" text-anchor="middle">MinIO / S3 Compatible</text>
+    <text x="870" y="112" fill="#94a3b8" font-size="10" text-anchor="middle">Defect Image Archive</text>
+
+    <!-- Client Applications Sub-bar -->
+    <rect x="30" y="145" width="470" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="265" y="172" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Mobile Client (Floor Operator / Inspector)</text>
+    <text x="265" y="192" fill="#94a3b8" font-size="11" text-anchor="middle">QR Scan &bull; Review &amp; Correct &bull; Instant Alerts</text>
+
+    <rect x="550" y="145" width="470" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="785" y="172" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Web Dashboard (QA / Manager / Inventory)</text>
+    <text x="785" y="192" fill="#94a3b8" font-size="11" text-anchor="middle">Fabric Defect Map &bull; 4-Point Grading &bull; PDF Reports</text>
+  </g>
+
+  <!-- Clarification Legend -->
+  <g transform="translate(200, 935)" filter="url(#shadow4)">
+    <rect width="1050" height="90" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="25" y="25" fill="#f59e0b" font-size="12" font-weight="bold">CRITICAL SCOPE BOUNDARY NOTICE &amp; ENGINEERING CONSTRAINTS:</text>
+    <text x="25" y="48" fill="#ffffff" font-size="11">&bull; Confirmed Components: Industrial Camera, Rotary Encoder, Uniform Lighting, Edge Computer, Central Backend, Mobile App, Web Portal.</text>
+    <text x="25" y="66" fill="#fde68a" font-size="11">&bull; Proposed Alternatives: USB 3.0 / GigE Vision / MIPI; GPIO counter / Opto DAQ; Constant Current Driver; Tower Light Relay.</text>
+    <text x="25" y="82" fill="#f87171" font-size="11">&bull; Out of Scope (Do Not Implement): Automatic cutting, machine stopping, remote machine control, automatic fabric marking actuator.</text>
+  </g>
+
+</svg>

@@ -1,0 +1,46 @@
+sequenceDiagram
+    autonumber
+    participant ENGINE as Inspection Engine
+    participant SQLITE as Local SQLite DB
+    participant CACHE as Local Image Disk
+    participant SYNC as Edge Sync Daemon
+    participant API as Central Backend API
+    participant PG as Central PostgreSQL DB
+    participant S3 as Central Object Storage
+
+    Note over ENGINE,CACHE: Normal Local Operation (Independent of Internet Link)
+    ENGINE->>SQLITE: Insert Defect & Uninspected Records (sync_status = 'PENDING')
+    ENGINE->>CACHE: Save Defect Thumbnail & Snippet Images (local_path)
+    SQLITE-->>ENGINE: Transaction Committed (Zero Latency on Shop Floor)
+
+    loop Periodic Health Check (Every 5 seconds)
+        SYNC->>API: HTTPS GET /api/v1/health (Heartbeat Probe)
+        alt Network Outage / Factory Wi-Fi Disconnected
+            API--xSYNC: Connection Refused / Timeout
+            Note over SYNC: Internet Offline: Buffer records locally.<br/>Edge inspection proceeds unhindered.
+        else Network Link Restored / Healthy
+            API-->>SYNC: 200 OK (Backend Healthy)
+            SYNC->>SQLITE: Fetch Oldest Unsynced Records (LIMIT 50, status = 'PENDING')
+            SQLITE-->>SYNC: Return Batch of Transactions {batch_id, records}
+            SYNC->>CACHE: Read Associated Image Byte Blobs
+            CACHE-->>SYNC: Return Image Streams
+            
+            SYNC->>API: HTTPS POST /api/v1/sync/batch (Multipart / Gzipped JSON + Images)
+            
+            rect rgb(240, 255, 240)
+                Note over API,S3: Atomic Central Ingestion
+                API->>PG: Upsert Records Using UUIDv4 (Idempotent Deduplication)
+                API->>S3: PutObject (Store Defect Image Files)
+                S3-->>API: Image URLs Generated
+                API->>PG: Commit Transaction & Update Cloud Roll Defect Map
+                PG-->>API: Commit Successful
+            end
+
+            API-->>SYNC: 200 OK (Batch Acknowledged: {synced_ids: [1, 2, ...]})
+            SYNC->>SQLITE: UPDATE sync_queue SET status = 'SYNCED' WHERE id IN (...)
+            SQLITE-->>SYNC: Rows Updated
+            SYNC->>CACHE: Clean / Evict Uploaded Images (Apply Retention Quota)
+            Note over SYNC: Sync complete. Ready for next pending chunk.
+        end
+    end
+

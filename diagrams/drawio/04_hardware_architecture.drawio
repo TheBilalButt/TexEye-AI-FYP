@@ -1,0 +1,157 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_hardware_arch" name="Hardware Architecture &amp; Interfaces">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;TexEye AI: Hardware Architecture &amp;amp; Physical Connection Diagram&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Muhammad Bilal Butt (FA23-BAI-042) &amp;bull; Hardware Integration &amp;amp; Edge Sensing Lead&lt;br&gt;&lt;i&gt;Note: Interfaces and specific hardware models are proposed engineering alternatives pending final physical prototype selection.&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="860" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Physical Inspection Line -->
+        <mxCell id="box_stand" value="&lt;b&gt;Fabric Inspection Stand (Confirmed Subsystem)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;strokeWidth=2;fontSize=12;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="460" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_roller" value="&lt;b&gt;Idler / Measurement Roller&lt;/b&gt;&lt;br&gt;Direct friction contact with fabric web&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Precision ground diameter for pulse calibration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;fontSize=11;" vertex="1" parent="box_stand">
+          <mxGeometry x="30" y="50" width="400" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_fabric" value="&lt;b&gt;Continuous Fabric Web&lt;/b&gt;&lt;br&gt;Woven / Knitted Textile under inspection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#cbd5e1;fontSize=11;" vertex="1" parent="box_stand">
+          <mxGeometry x="30" y="130" width="400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_illum_zone" value="&lt;b&gt;Illuminated Inspection Zone&lt;/b&gt;&lt;br&gt;Optimized Field of View (FOV) across fabric width" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef9c3;strokeColor=#facc15;fontSize=11;fontColor=#854d0e;" vertex="1" parent="box_stand">
+          <mxGeometry x="30" y="210" width="400" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Sensors & Actuators -->
+        <mxCell id="box_sensors" value="&lt;b&gt;Sensing, Illumination &amp;amp; Local Alert Components&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;fontSize=12;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="590" y="130" width="480" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_enc" value="&lt;b&gt;Rotary Encoder&lt;/b&gt; [Confirmed]&lt;br&gt;Incremental Optical Quadrature (A/B Pulses)&lt;br&gt;&lt;font style=&quot;font-size: 10px; color:#d97706;&quot;&gt;Coupled mechanically to idler roller shaft&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="box_sensors">
+          <mxGeometry x="30" y="45" width="420" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_cam" value="&lt;b&gt;Industrial Camera&lt;/b&gt; [Confirmed]&lt;br&gt;High-Resolution Area-Scan / Line-Scan Sensor&lt;br&gt;&lt;font style=&quot;font-size: 10px; color:#d97706;&quot;&gt;Mounted perpendicular to fabric web plane&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="box_sensors">
+          <mxGeometry x="30" y="115" width="420" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_light" value="&lt;b&gt;LED Lighting Array&lt;/b&gt; [Confirmed]&lt;br&gt;High-CRI Uniform Linear Light Bar / Backlight&lt;br&gt;&lt;font style=&quot;font-size: 10px; color:#d97706;&quot;&gt;Suppresses ambient factory light fluctuations&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="box_sensors">
+          <mxGeometry x="30" y="185" width="420" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_alert" value="&lt;b&gt;Local Alert Indicator&lt;/b&gt; [Proposed]&lt;br&gt;Visual Stack Tower Light / Audible Relay Buzzer&lt;br&gt;&lt;font style=&quot;font-size: 10px; color:#dc2626;&quot;&gt;Immediate floor notification on uninspected state / major defect&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontSize=11;fontColor=#991b1b;" vertex="1" parent="box_sensors">
+          <mxGeometry x="30" y="255" width="420" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Mechanical / Optical Links -->
+        <mxCell id="e_mech" value="Mechanical Rotation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#475569;strokeWidth=2;fontColor=#334155;" edge="1" source="hw_roller" target="hw_enc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_opt_cam" value="Optical Reflection" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#b45309;" edge="1" source="hw_illum_zone" target="hw_cam" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_opt_light" value="Uniform Photons" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#b45309;" edge="1" source="hw_light" target="hw_illum_zone" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Proposed Interfaces -->
+        <mxCell id="box_interfaces" value="&lt;b&gt;Proposed Hardware Communication Interfaces &amp;amp; Conditioning&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=2;fontSize=12;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="130" width="480" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="if_enc" value="&lt;b&gt;Encoder Signal Interface&lt;/b&gt; [Proposed]&lt;br&gt;&amp;bull; High-speed GPIO Counter / Hardware Pulse Counter&lt;br&gt;&amp;bull; Optocoupler isolation / TTL-to-USB DAQ module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;fontSize=11;" vertex="1" parent="box_interfaces">
+          <mxGeometry x="25" y="45" width="430" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="if_cam" value="&lt;b&gt;Camera Interface&lt;/b&gt; [Proposed]&lt;br&gt;&amp;bull; USB 3.0 Vision (Direct high-bandwidth USB 3.1/3.2)&lt;br&gt;&amp;bull; OR GigE Vision (Ethernet RJ45 with PoE)&lt;br&gt;&amp;bull; OR MIPI-CSI2 (Direct embedded ribbon)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;fontSize=11;" vertex="1" parent="box_interfaces">
+          <mxGeometry x="25" y="115" width="430" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="if_light" value="&lt;b&gt;Lighting Driver / Controller&lt;/b&gt; [Proposed]&lt;br&gt;&amp;bull; Constant-Current LED Driver (24V DC)&lt;br&gt;&amp;bull; Optional PWM Strobe / Digital Dimming Controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;fontSize=11;" vertex="1" parent="box_interfaces">
+          <mxGeometry x="25" y="185" width="430" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="if_alert" value="&lt;b&gt;Alert Signal Interface&lt;/b&gt; [Proposed]&lt;br&gt;&amp;bull; Digital Output GPIO through Optoisolated Relay Module&lt;br&gt;&amp;bull; Dry contact closure for 12V/24V tower light" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f59e0b;fontSize=11;" vertex="1" parent="box_interfaces">
+          <mxGeometry x="25" y="255" width="430" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor to Interface links -->
+        <mxCell id="e_s_enc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="hw_enc" target="if_enc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s_cam" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="hw_cam" target="if_cam" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s_light" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="if_light" target="hw_light" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_s_alert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;" edge="1" source="if_alert" target="hw_alert" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Computer Subgraph -->
+        <mxCell id="box_edge" value="&lt;b&gt;Edge Computer / Processing Unit [Confirmed Subsystem]&lt;/b&gt;&lt;br&gt;(Proposed: NVIDIA Jetson Orin / Industrial IPC Mini-PC / High-spec Embedded Core)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=3;fontSize=13;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="380" y="540" width="840" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cpu" value="&lt;b&gt;Host CPU &amp;amp; OS&lt;/b&gt;&lt;br&gt;Linux Edge Kernel&lt;br&gt;&amp;bull; V4L2/GenICam Driver&lt;br&gt;&amp;bull; GPIO Interrupt Handler" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3b82f6;fontSize=11;" vertex="1" parent="box_edge">
+          <mxGeometry x="40" y="60" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gpu" value="&lt;b&gt;AI Accelerator (GPU/NPU)&lt;/b&gt;&lt;br&gt;Inference &amp;amp; Tracking Engine&lt;br&gt;&amp;bull; TensorRT / CUDA / ONNX&lt;br&gt;&amp;bull; Real-time Multi-defect Model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;fontSize=11;fontColor=#581c87;" vertex="1" parent="box_edge">
+          <mxGeometry x="310" y="60" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_store" value="&lt;b&gt;Edge NVMe / SSD Storage&lt;/b&gt;&lt;br&gt;&amp;bull; Local SQLite Database&lt;br&gt;&amp;bull; Buffered Image Ring Cache&lt;br&gt;&amp;bull; Offline Outbox Sync Queue" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#ffffff;strokeColor=#d97706;fontSize=11;fontColor=#78350f;" vertex="1" parent="box_edge">
+          <mxGeometry x="580" y="55" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_mon" value="&lt;b&gt;Edge Reliability &amp;amp; Sync Daemon&lt;/b&gt;&lt;br&gt;Monitors camera ping, light lux, frame drops &amp;amp; runs offline synchronization daemon" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontSize=11;" vertex="1" parent="box_edge">
+          <mxGeometry x="40" y="160" width="760" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Interfaces to Edge Links -->
+        <mxCell id="e_if_cam_edge" value="Video Data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="if_cam" target="edge_cpu" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1345" y="510" />
+              <mxPoint x="490" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_if_enc_edge" value="Pulse Ticks" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=2;" edge="1" source="if_enc" target="edge_cpu" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1370" y="490" />
+              <mxPoint x="450" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_edge_alert" value="Trip Relay" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;" edge="1" source="edge_mon" target="if_alert" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="725" />
+              <mxPoint x="1400" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Network Uplink -->
+        <mxCell id="net_uplink" value="&lt;b&gt;Network Uplink Interface [Proposed]&lt;/b&gt;&lt;br&gt;Industrial Gigabit Ethernet (RJ45 Cat6) OR Industrial Dual-Band Wi-Fi (802.11ax/ac)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=12;fontColor=#14532d;" vertex="1" parent="1">
+          <mxGeometry x="500" y="830" width="600" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_edge_net" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;" edge="1" source="edge_mon" target="net_uplink" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Central Cloud / Server -->
+        <mxCell id="box_cloud" value="&lt;b&gt;Backend Server / Cloud Infrastructure [Confirmed Subsystem]&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=2;fontSize=12;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="380" y="930" width="840" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud_api" value="&lt;b&gt;Central API Gateway&lt;/b&gt;&lt;br&gt;REST Endpoints &amp;amp; WebSockets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="box_cloud">
+          <mxGeometry x="40" y="55" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud_db" value="&lt;b&gt;Central PostgreSQL DB&lt;/b&gt;&lt;br&gt;Defects, Rolls, Grading, Users" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#ffffff;strokeColor=#d97706;fontSize=11;fontColor=#78350f;" vertex="1" parent="box_cloud">
+          <mxGeometry x="310" y="45" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud_s3" value="&lt;b&gt;Object Storage (MinIO/S3)&lt;/b&gt;&lt;br&gt;High-Res Defect Snippets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64748b;fontSize=11;" vertex="1" parent="box_cloud">
+          <mxGeometry x="580" y="55" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_net_cloud" value="HTTPS / TLS 1.3 Synchronization Batches" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;fontColor=#15803d;" edge="1" source="net_uplink" target="cloud_api" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

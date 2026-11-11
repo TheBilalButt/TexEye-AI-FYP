@@ -1,0 +1,49 @@
+flowchart TD
+    classDef startEnd fill:#0f172a,stroke:#0284c7,stroke-width:2px,color:#fff;
+    classDef step fill:#f8fafc,stroke:#3b82f6,stroke-width:2px,color:#0f172a;
+    classDef decision fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+    classDef warn fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b;
+    classDef ai fill:#faf5ff,stroke:#a855f7,stroke-width:2px,color:#581c87;
+    classDef output fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d;
+
+    A([Incoming Video Stream & Rotary Encoder Ticks]):::startEnd --> B[Frame Ingestion Buffer & Timestamp Pairing]:::step
+    
+    subgraph STAGE1 ["Stage 1: Pre-Inference Quality & Integrity Gate"]
+        B --> C{Frame Sequence Intact?<br/>(Check Dropped Frames)}:::decision
+        C -- No --> D1[Trigger Frame Drop Warning]:::warn
+        C -- Yes --> E{Illumination Uniform?<br/>(Histogram Luminance Check)}:::decision
+        E -- No --> D2[Trigger Lighting Anomaly Warning]:::warn
+        E -- Yes --> F{Blur / Occlusion Metric Acceptable?<br/>(Laplacian Variance Focus Check)}:::decision
+        F -- No --> D3[Trigger Focus / Occlusion Warning]:::warn
+    end
+
+    D1 & D2 & D3 --> G[Compute Fabric Displacement Interval ΔL<br/>Flag Section as 'UNINSPECTED'<br/>DO NOT PASS TO INFERENCE]:::warn
+    G --> H([Append to Uninspected Section Log]):::output
+
+    subgraph STAGE2 ["Stage 2: Image Conditioning & AI Inference"]
+        F -- Yes --> I[Region of Interest ROI Cropping & Geometric Undistortion]:::step
+        I --> J[Adaptive Contrast Enhancement CLAHE & Normalization]:::step
+        J --> K[AI Defect Detection Model Inference<br/>e.g., Optimized YOLO / Object Detection Backbone]:::ai
+        K --> L{Defects Detected?<br/>(Confidence Score >= Threshold θ)}:::decision
+    end
+
+    L -- No --> M[Record Section as Verified Defect-Free Span]:::output
+    
+    subgraph STAGE3 ["Stage 3: Multi-Frame Tracking & Deduplication"]
+        L -- Yes --> N[Extract Bounding Boxes, Defect Classes & Confidence Scores]:::ai
+        N --> O[Multi-Frame Defect Tracker<br/>IoU Association + Centroid Motion Vector]:::ai
+        O --> P{Is Defect Already Tracked in Recent Frames?}:::decision
+        P -- Yes --> Q[Update Existing Track Trajectory & Accumulate Confidence]:::ai
+        P -- No --> R[Initialize New Defect Track ID]:::ai
+        Q & R --> S[Spatial-Temporal Deduplication Gate<br/>Consolidate redundant frame alerts into single unique defect record]:::ai
+    end
+
+    subgraph STAGE4 ["Stage 4: Metrology & Physical Coordinate Mapping"]
+        S --> T[Retrieve Current Cumulative Rotary Encoder Pulses]:::step
+        T --> U[Compute Fabric Longitudinal Position Y<br/>Y_meters = Pulses * Calibrated Resolution (meters/pulse)]:::step
+        U --> V[Compute Fabric Lateral Position X<br/>X_cm = BBox_center_x * Optical Ground Resolution (cm/pixel)]:::step
+        V --> W[Generate Normalized Defect Record:<br/>{Track_ID, Class, Confidence, X_cm, Y_m, BBox, Image_Snippet}]:::output
+    end
+
+    W --> X([Forward to Edge Storage & Sync Engine]):::startEnd
+

@@ -1,0 +1,131 @@
+erDiagram
+    USERS ||--o{ INSPECTION_SESSIONS : "operates / inspects"
+    USERS ||--o{ DEFECT_RECORDS : "corrects / verifies"
+    USERS ||--o{ ROLL_GRADING : "confirms"
+    USERS ||--o{ INVENTORY_RECORDS : "manages"
+    USERS ||--o{ ALERTS : "acknowledges"
+
+    FABRIC_ROLLS ||--o{ INSPECTION_SESSIONS : "undergoes"
+    FABRIC_ROLLS ||--o{ DEFECT_RECORDS : "contains"
+    FABRIC_ROLLS ||--o{ UNINSPECTED_SECTIONS : "has"
+    FABRIC_ROLLS ||--|| ROLL_GRADING : "assigned"
+    FABRIC_ROLLS ||--|| INVENTORY_RECORDS : "tracked_as"
+    FABRIC_ROLLS ||--o{ ALERTS : "triggers"
+
+    INSPECTION_SESSIONS ||--o{ DEFECT_RECORDS : "logs"
+    INSPECTION_SESSIONS ||--o{ UNINSPECTED_SECTIONS : "records"
+    INSPECTION_SESSIONS ||--o{ ALERTS : "generates"
+
+    USERS {
+        uuid id PK
+        varchar username
+        varchar password_hash
+        varchar full_name
+        varchar email
+        varchar role "OPERATOR | INSPECTOR | PROD_MGR | INV_MGR | ADMIN"
+        boolean is_active
+        timestamp created_at
+    }
+
+    FABRIC_ROLLS {
+        uuid id PK
+        varchar roll_code_qr UK "Unique QR identifier"
+        varchar batch_number
+        varchar fabric_type "Cotton, Polyester, Blend, Denim"
+        decimal total_length_m
+        decimal width_cm
+        varchar inspection_status "PENDING | IN_PROGRESS | COMPLETED | INTERRUPTED"
+        varchar final_grade "GRADE_A | GRADE_B | GRADE_C | SCRAP"
+        timestamp created_at
+    }
+
+    INSPECTION_SESSIONS {
+        uuid id PK
+        uuid roll_id FK
+        uuid operator_id FK
+        uuid inspector_id FK
+        varchar edge_device_id
+        timestamp start_time
+        timestamp end_time
+        decimal total_inspected_length_m
+        decimal total_uninspected_length_m
+        varchar status
+    }
+
+    DEFECT_RECORDS {
+        uuid id PK
+        uuid session_id FK
+        uuid roll_id FK
+        varchar defect_class "HOLE | STAIN | WARP_DEFECT | WEFT_DEFECT | FLOAT | OIL_SPOT"
+        decimal confidence_score
+        decimal position_x_cm "Lateral metric distance"
+        decimal position_y_m "Longitudinal distance via encoder"
+        json bounding_box "[ymin, xmin, ymax, xmax]"
+        varchar image_path_local
+        varchar image_url_cloud
+        boolean is_verified
+        varchar corrected_class
+        uuid corrected_by FK
+        integer penalty_points "1, 2, 3, or 4 points"
+        timestamp created_at
+    }
+
+    UNINSPECTED_SECTIONS {
+        uuid id PK
+        uuid session_id FK
+        uuid roll_id FK
+        decimal start_position_m
+        decimal end_position_m
+        varchar failure_reason "CAMERA_DISCONNECTED | POOR_IMAGE_QUALITY | LIGHTING_ANOMALY | DROPPED_FRAMES"
+        varchar severity_warning "WARNING | CRITICAL"
+        timestamp logged_at
+    }
+
+    ROLL_GRADING {
+        uuid id PK
+        uuid roll_id FK
+        uuid session_id FK
+        varchar grading_standard "FOUR_POINT_SYSTEM"
+        integer total_defect_points
+        decimal points_per_100_sqm
+        varchar final_grade "A | B | C | REJECT_SCRAP"
+        uuid graded_by FK
+        timestamp graded_at
+    }
+
+    INVENTORY_RECORDS {
+        uuid id PK
+        uuid roll_id FK
+        varchar warehouse_zone
+        varchar shelf_location
+        varchar stock_status "IN_INSPECTION | IN_STOCK | DISPATCHED | SCRAP_ISOLATED"
+        boolean is_scrap
+        text scrap_reason
+        uuid updated_by FK
+        timestamp last_updated
+    }
+
+    ALERTS {
+        uuid id PK
+        uuid session_id FK
+        uuid roll_id FK
+        varchar alert_type "DEFECT_FOUND | UNINSPECTED_SECTION | HARDWARE_FAULT"
+        varchar severity "LOW | MEDIUM | HIGH | CRITICAL"
+        text message
+        timestamp timestamp
+        uuid acknowledged_by FK
+        timestamp acknowledged_at
+    }
+
+    OFFLINE_SYNC_QUEUE {
+        uuid id PK
+        varchar entity_type "DEFECT | UNINSPECTED | ROLL | GRADING"
+        uuid entity_id
+        varchar operation "INSERT | UPDATE"
+        json payload_json
+        varchar sync_status "PENDING | SYNCED | FAILED"
+        integer retry_count
+        timestamp last_attempt
+        timestamp created_at
+    }
+

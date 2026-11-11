@@ -1,0 +1,45 @@
+flowchart TD
+    classDef startEnd fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef edgeBox fill:#f8fafc,stroke:#0284c7,stroke-width:2px,color:#0f172a;
+    classDef cloudBox fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef decision fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+    classDef warn fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b;
+    classDef db fill:#fffbeb,stroke:#d97706,stroke-width:2px,shape:cylinder,color:#78350f;
+
+    EV([New Inspection Event Generated<br/>Defect Record, Uninspected Span, Roll Status]):::startEnd --> S1[Serialize Record with UUIDv4, Timestamp & Checksum]:::edgeBox
+
+    subgraph EDGE_STORAGE ["Local Edge Storage (Always Active)"]
+        S1 --> S2[(Local SQLite Inspection DB)]:::db
+        S1 --> S3[(Local Defect Image Cache)]:::db
+        S2 --> S4[Insert Transaction into Offline Sync Queue<br/>Status = 'PENDING']:::edgeBox
+    end
+
+    subgraph CONNECTIVITY_MONITOR ["Continuous Health & Connectivity Daemon"]
+        MON[Periodic Ping / HTTPS Heartbeat to Central Backend API]:::edgeBox
+        MON --> NET_CHECK{Network Link Available & Responsive?}:::decision
+    end
+
+    S4 --> NET_CHECK
+
+    NET_CHECK -- No / Timeout --> OFFLINE_MODE[Log Network Outage State<br/>Inspection Continues Locally Without Interruption]:::warn
+    OFFLINE_MODE --> ACCUMULATE[Accumulate Records in Local Queue<br/>Preserve Image Files on Disk FIFO Guard]:::warn
+    ACCUMULATE -.->|Retry on Next Heartbeat Interval| MON
+
+    NET_CHECK -- Yes --> BATCH_PROCESS[Acquire Sync Worker Lock<br/>Fetch Batch of N 'PENDING' Queue Items]:::edgeBox
+
+    subgraph SYNC_TRANSMISSION ["Resilient Data Synchronization Transmission"]
+        BATCH_PROCESS --> PREPARE_PAYLOAD[Package Chunked JSON Payload + Base64/Multipart Images]:::edgeBox
+        PREPARE_PAYLOAD --> HTTPS_POST[Transmit HTTPS POST to Central Backend API<br/>/api/v1/sync/batch]:::edgeBox
+        
+        HTTPS_POST --> BACKEND_GATE{Central Backend Acknowledges 200 OK & Checksums Valid?}:::cloudBox
+        BACKEND_GATE -- No / Server Error --> BACKOFF[Increment Retry Count<br/>Apply Exponential Backoff & Jitter]:::warn
+        BACKOFF --> MON
+
+        BACKEND_GATE -- Yes --> PERSIST_CLOUD[Central Backend Ingests Transaction<br/>- PostgreSQL Upsert with UUID Idempotency<br/>- Upload Images to Cloud Object Storage<br/>- Trigger Push Notification to Web/Mobile]:::cloudBox
+    end
+
+    PERSIST_CLOUD --> CONFIRM_ACK[Send Idempotent Batch Confirmation to Edge]:::cloudBox
+    CONFIRM_ACK --> UPDATE_EDGE[Edge Updates Local Queue Status to 'SYNCED'<br/>Evict Synchronized Images as per Local Retention Policy]:::edgeBox
+
+    UPDATE_EDGE --> COMPLETE([Sync Cycle Complete]):::startEnd
+

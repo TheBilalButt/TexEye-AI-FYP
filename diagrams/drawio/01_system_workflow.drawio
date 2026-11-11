@@ -1,0 +1,156 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_workflow" name="System Workflow">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Header Title Banner -->
+        <mxCell id="title" value="&lt;b&gt;TexEye AI: End-to-End System Workflow&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Muhammad Afnan Khan (FA23-BAI-028) &amp;bull; Muhammad Bilal Butt (FA23-BAI-042)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=16;align=center;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="700" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Start Node -->
+        <mxCell id="node_start" value="&lt;b&gt;START&lt;/b&gt;&lt;br&gt;Fabric Roll Enters Inspection Stand" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#0369a1;fontColor=#ffffff;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="110" width="260" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Init Session -->
+        <mxCell id="node_init" value="&lt;b&gt;Initialize Inspection Session&lt;/b&gt;&lt;br&gt;Scan Roll QR Code &amp; Load Metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#3b82f6;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="670" y="190" width="260" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="node_start" target="node_init" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Sensing -->
+        <mxCell id="group_sensing" value="&lt;b&gt;1. Continuous Hardware Sensing &amp; Illumination&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=2;fontSize=12;fontColor=#1e293b;" vertex="1" parent="1">
+          <mxGeometry x="250" y="280" width="1100" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="node_light" value="&lt;b&gt;Lighting System&lt;/b&gt;&lt;br&gt;Uniform Illumination" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;" vertex="1" parent="group_sensing">
+          <mxGeometry x="40" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_cam" value="&lt;b&gt;Industrial Camera&lt;/b&gt;&lt;br&gt;Continuous Video Ingestion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;" vertex="1" parent="group_sensing">
+          <mxGeometry x="410" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node_enc" value="&lt;b&gt;Rotary Encoder&lt;/b&gt;&lt;br&gt;Quadrature Displacement Pulses (&amp;Delta;L)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#94a3b8;strokeWidth=1.5;fontSize=11;" vertex="1" parent="group_sensing">
+          <mxGeometry x="780" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_init_sensing" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="node_init" target="node_cam" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Reliability Gate Decision -->
+        <mxCell id="node_gate" value="&lt;b&gt;Inspection Data Reliable?&lt;/b&gt;&lt;br&gt;&amp;bull; Camera Connected&lt;br&gt;&amp;bull; Lighting Uniform&lt;br&gt;&amp;bull; Focus Acceptable&lt;br&gt;&amp;bull; Zero Dropped Frames" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=11;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="680" y="430" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cam_gate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="node_cam" target="node_gate" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Unreliable Path (Left) -->
+        <mxCell id="node_warn" value="&lt;b&gt;Generate Inspection Warning&lt;/b&gt;&lt;br&gt;Hardware Alert / Strobe Beacon" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;fontSize=12;fontColor=#991b1b;" vertex="1" parent="1">
+          <mxGeometry x="250" y="472.5" width="260" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gate_warn" value="&lt;b&gt;NO&lt;/b&gt; (Degraded/Failed)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;fontColor=#dc2626;" edge="1" source="node_gate" target="node_warn" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_uninspected" value="&lt;b&gt;Identify &amp;amp; Mark Fabric Section&lt;/b&gt;&lt;br&gt;Flag as &lt;b&gt;UNINSPECTED&lt;/b&gt; [L_start, L_end]&lt;br&gt;&lt;i&gt;(CRITICAL: Never treat as defect-free)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=2;fontSize=12;fontColor=#7f1d1d;" vertex="1" parent="1">
+          <mxGeometry x="250" y="580" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_warn_uninspected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;" edge="1" source="node_warn" target="node_uninspected" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Reliable AI Pipeline (Center & Right) -->
+        <mxCell id="node_ai_detect" value="&lt;b&gt;AI Defect Detection Model&lt;/b&gt;&lt;br&gt;Deep Learning Feature Extraction / YOLO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="680" y="620" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gate_ai" value="&lt;b&gt;YES&lt;/b&gt; (Reliable)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;fontColor=#15803d;" edge="1" source="node_gate" target="node_ai_detect" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_ai_track" value="&lt;b&gt;Defect Tracking Across Frames&lt;/b&gt;&lt;br&gt;Multi-Frame Association (Kalman / IoU)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="680" y="710" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ai_track" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=2;" edge="1" source="node_ai_detect" target="node_ai_track" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_ai_dedup" value="&lt;b&gt;Duplicate Detection Reduction&lt;/b&gt;&lt;br&gt;Spatial-Temporal Suppression" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="680" y="800" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_track_dedup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=2;" edge="1" source="node_ai_track" target="node_ai_dedup" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="node_ai_loc" value="&lt;b&gt;Defect Position Estimation&lt;/b&gt;&lt;br&gt;Encoder Metric (Y_m) + Camera Calib (X_cm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontColor=#581c87;" vertex="1" parent="1">
+          <mxGeometry x="680" y="890" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_dedup_loc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=2;" edge="1" source="node_ai_dedup" target="node_ai_loc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Save to Local Edge Storage -->
+        <mxCell id="node_local_db" value="&lt;b&gt;Save to Local Edge Storage&lt;/b&gt;&lt;br&gt;SQLite DB + Local Defect Image Cache" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=2;fontSize=12;fontColor=#78350f;" vertex="1" parent="1">
+          <mxGeometry x="475" y="990" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_loc_db" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="node_ai_loc" target="node_local_db" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_uninspected_db" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=2;" edge="1" source="node_uninspected" target="node_local_db" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Internet Decision -->
+        <mxCell id="node_net_dec" value="&lt;b&gt;Internet / Backend Available?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=11;fontColor=#1e3a8a;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1120" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_db_net" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#3b82f6;strokeWidth=2;" edge="1" source="node_local_db" target="node_net_dec" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Offline Queue -->
+        <mxCell id="node_offline" value="&lt;b&gt;Queue Locally in Sync Table&lt;/b&gt;&lt;br&gt;Inspection Continues Uninterrupted;&lt;br&gt;Auto-Sync when Internet Returns" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#f59e0b;strokeWidth=2;fontSize=11;fontColor=#92400e;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1130" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_net_no" value="&lt;b&gt;NO (Offline)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#b45309;" edge="1" source="node_net_dec" target="node_offline" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Central Cloud -->
+        <mxCell id="node_central_sync" value="&lt;b&gt;Synchronize with Central Backend&lt;/b&gt;&lt;br&gt;PostgreSQL DB &amp;amp; S3 Image Store" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=12;fontColor=#14532d;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1135" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_net_yes" value="&lt;b&gt;YES (Online)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;fontColor=#15803d;" edge="1" source="node_net_dec" target="node_central_sync" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_offline_recon" value="When reconnected" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#f59e0b;strokeWidth=1.5;dashed=1;fontColor=#b45309;" edge="1" source="node_offline" target="node_central_sync" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="1230" />
+              <mxPoint x="905" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Downstream Applications -->
+        <mxCell id="node_mobile" value="&lt;b&gt;Mobile Application&lt;/b&gt;&lt;br&gt;(Floor Operator)&lt;br&gt;&amp;bull; Push Alerts &amp;bull; Scan QR&lt;br&gt;&amp;bull; Review &amp;amp; Correct Defects" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;fontSize=11;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1270" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="node_web" value="&lt;b&gt;Web Dashboard&lt;/b&gt;&lt;br&gt;(Quality / Production / Inventory)&lt;br&gt;&amp;bull; Fabric Defect Map &amp;bull; 4-Point Grading&lt;br&gt;&amp;bull; Reports, Inventory &amp;amp; Statistics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;strokeWidth=2;fontSize=11;fontColor=#1e40af;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1270" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cloud_mob" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="node_central_sync" target="node_mobile" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cloud_web" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="node_central_sync" target="node_web" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

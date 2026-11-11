@@ -1,0 +1,60 @@
+flowchart TB
+    classDef process fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:20,ry:20;
+    classDef ext fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a;
+    classDef store fill:#fffbeb,stroke:#d97706,stroke-width:2px,shape:cylinder,color:#78350f;
+
+    %% External Entities
+    E_CAM["Industrial Camera"]:::ext
+    E_ENC["Rotary Encoder"]:::ext
+    E_LIGHT["Lighting Rig"]:::ext
+    E_OP["Floor Operator"]:::ext
+    E_QI["Quality Inspector"]:::ext
+    E_PM["Production Manager"]:::ext
+    E_IM["Inventory Manager"]:::ext
+    E_ADMIN["System Admin"]:::ext
+
+    %% Major Processes
+    P1["1.0<br/>Ingest & Validate<br/>Hardware Signals"]:::process
+    P2["2.0<br/>Process AI Detection,<br/>Tracking & Metric Mapping"]:::process
+    P3["3.0<br/>Manage Edge Storage<br/>& Offline Sync Engine"]:::process
+    P4["4.0<br/>Manage Central Quality,<br/>Roll Grading & Reports"]:::process
+    P5["5.0<br/>Serve User Applications<br/>& Dispatch Alerts"]:::process
+
+    %% Data Stores
+    D1[("D1: Local SQLite DB")]:::store
+    D2[("D2: Offline Sync Queue")]:::store
+    D3[("D3: Central PostgreSQL DB")]:::store
+    D4[("D4: Cloud Object Storage")]:::store
+
+    %% Ingestion Data Flows
+    E_CAM -- "Raw Video Stream" --> P1
+    E_ENC -- "Encoder Pulses" --> P1
+    E_LIGHT -.->|Luminance Reflection| P1
+
+    P1 -- "Reliable Video Frames & Delta L" --> P2
+    P1 -- "Unreliable Signal Anomaly (Uninspected Span)" --> P3
+
+    %% AI Pipeline Flows
+    P2 -- "Deduplicated Defect Records & Metric Coordinates" --> P3
+
+    %% Edge Persistence & Sync
+    P3 <-->|Read / Write Inspection Records| D1
+    P3 -->|Enqueue Outbox Transactions| D2
+    D2 -->|Drain Pending Batches on Reconnect| P3
+    P3 == "Synchronized Transactions (HTTPS)" ==> P4
+    P3 == "Upload Defect Image Snippets" ==> D4
+
+    %% Central Logic & Data Stores
+    P4 <-->|Persist Roll Grades, Defects, Inventory| D3
+    D3 --> P4
+    D4 -->|Image URLs| P4
+
+    %% User Interaction Flows
+    P4 --> P5
+
+    E_OP <-->|Scan QR / View Alerts / Review Defects| P5
+    E_QI <-->|View Defect Map / Correct Defects / Approve Grade| P5
+    E_PM <-->|Query Statistics / Production Records| P5
+    E_IM <-->|Update Stock / View Grade / Scrap Roll| P5
+    E_ADMIN <-->|Manage Users / Assign Roles / Config| P5
+
