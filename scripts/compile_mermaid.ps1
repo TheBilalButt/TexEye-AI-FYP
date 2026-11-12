@@ -1,4 +1,4 @@
-﻿$edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+$edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 if (-not (Test-Path $edgePath)) {
     $edgePath = "C:\Program Files\Microsoft\Edge\Application\msedge.exe"
 }
@@ -161,3 +161,4 @@ $mmdContent
 }
 
 Write-Host "Batch compilation complete!" -ForegroundColor Cyan
+

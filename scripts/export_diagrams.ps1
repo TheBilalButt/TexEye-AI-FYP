@@ -19,7 +19,7 @@ $diagramConfigs = @(
     @{ Name = "03_offline_sync_workflow"; Width = 1400; Height = 1130 },
     @{ Name = "04_hardware_architecture"; Width = 1450; Height = 1060 },
     @{ Name = "05_software_architecture"; Width = 1450; Height = 1270 },
-    @{ Name = "06_use_case_overall"; Width = 1600; Height = 1020 },
+    @{ Name = "06_use_case_overall"; Width = 1620; Height = 1050 },
     @{ Name = "07_context_diagram"; Width = 1450; Height = 960 },
     @{ Name = "08_dfd_level_0"; Width = 1450; Height = 900 },
     @{ Name = "09_dfd_level_1"; Width = 1450; Height = 970 },
