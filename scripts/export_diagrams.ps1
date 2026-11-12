@@ -14,23 +14,23 @@ if (-not (Test-Path $pngDir)) {
 }
 
 $diagramConfigs = @(
-    @{ Name = "01_system_workflow"; Width = 1400; Height = 1300 },
-    @{ Name = "02_ai_inspection_workflow"; Width = 1400; Height = 1350 },
-    @{ Name = "03_offline_sync_workflow"; Width = 1400; Height = 1250 },
-    @{ Name = "04_hardware_architecture"; Width = 1450; Height = 1200 },
-    @{ Name = "05_software_architecture"; Width = 1450; Height = 1450 },
-    @{ Name = "06_use_case_overall"; Width = 1500; Height = 1350 },
-    @{ Name = "07_context_diagram"; Width = 1450; Height = 1100 },
-    @{ Name = "08_dfd_level_0"; Width = 1450; Height = 1250 },
-    @{ Name = "09_dfd_level_1"; Width = 1450; Height = 1300 },
-    @{ Name = "10_component_diagram"; Width = 1450; Height = 1200 },
-    @{ Name = "11_deployment_diagram"; Width = 1450; Height = 1200 },
-    @{ Name = "12_sequence_inspection"; Width = 1450; Height = 1200 },
-    @{ Name = "13_sequence_sync"; Width = 1450; Height = 1150 },
-    @{ Name = "14_entity_relationship_diagram"; Width = 1550; Height = 1400 }
+    @{ Name = "01_system_workflow"; Width = 1400; Height = 1290 },
+    @{ Name = "02_ai_inspection_workflow"; Width = 1400; Height = 1320 },
+    @{ Name = "03_offline_sync_workflow"; Width = 1400; Height = 1130 },
+    @{ Name = "04_hardware_architecture"; Width = 1450; Height = 1060 },
+    @{ Name = "05_software_architecture"; Width = 1450; Height = 1270 },
+    @{ Name = "06_use_case_overall"; Width = 1600; Height = 1020 },
+    @{ Name = "07_context_diagram"; Width = 1450; Height = 960 },
+    @{ Name = "08_dfd_level_0"; Width = 1450; Height = 900 },
+    @{ Name = "09_dfd_level_1"; Width = 1450; Height = 970 },
+    @{ Name = "10_component_diagram"; Width = 1450; Height = 990 },
+    @{ Name = "11_deployment_diagram"; Width = 1450; Height = 900 },
+    @{ Name = "12_sequence_inspection"; Width = 1450; Height = 1010 },
+    @{ Name = "13_sequence_sync"; Width = 1450; Height = 910 },
+    @{ Name = "14_entity_relationship_diagram"; Width = 1550; Height = 990 }
 )
 
-Write-Host "Starting TexEye AI Diagram PNG Rendering..." -ForegroundColor Cyan
+Write-Host "Starting TexEye AI Diagram PNG Rendering with Optimized Alignment..." -ForegroundColor Cyan
 
 foreach ($cfg in $diagramConfigs) {
     $name = $cfg.Name
@@ -48,19 +48,21 @@ foreach ($cfg in $diagramConfigs) {
             "--disable-gpu",
             "--screenshot=`"$pngFile`"",
             "--window-size=$w,$h",
-            "`"$url`""
+            "--hide-scrollbars",
+            "$url"
         )
+
+        Start-Process -FilePath $edgePath -ArgumentList $argList -Wait
         
-        $proc = Start-Process -FilePath $edgePath -ArgumentList $argList -Wait -PassThru
         if (Test-Path $pngFile) {
-            $len = (Get-Item $pngFile).Length
-            Write-Host " OK ($([math]::Round($len/1KB, 1)) KB)" -ForegroundColor Green
+            $size = (Get-Item $pngFile).Length
+            Write-Host " OK ($([math]::Round($size / 1KB, 1)) KB)" -ForegroundColor Green
         } else {
-            Write-Host " FAILED" -ForegroundColor Red
+            Write-Host " FAILED (Output file not created)" -ForegroundColor Red
         }
     } else {
         Write-Host "Skipping $($name): SVG not found." -ForegroundColor Yellow
     }
 }
 
-Write-Host "`nAll diagrams rendered to $pngDir" -ForegroundColor Green
+Write-Host "`nAll diagrams re-rendered with tight, professional bounds to $pngDir" -ForegroundColor Cyan
