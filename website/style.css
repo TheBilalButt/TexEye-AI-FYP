@@ -368,15 +368,18 @@ body.dark-theme {
 }
 
 .image-frame {
-  padding: 20px;
+  padding: 16px;
   background: #090e1a;
-  text-align: center;
-  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .diagram-img {
+  width: 100%;
   max-width: 100%;
   height: auto;
+  display: block;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }

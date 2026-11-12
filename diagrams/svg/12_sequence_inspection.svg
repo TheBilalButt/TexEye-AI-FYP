@@ -73,17 +73,17 @@
   </g>
 
   <!-- Step 1: Scan QR -->
-  <path d="M 130 210 L 1125 210" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)"/>
+  <path d="M 130 210 L 1125 210" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)" fill="none"/>
   <text x="450" y="202" fill="#38bdf8" font-size="11" font-weight="bold">1. Scan Roll QR Code &amp; Start Session</text>
 
-  <path d="M 1125 235 L 130 235" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#mB12)"/>
+  <path d="M 1125 235 L 130 235" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#mB12)" fill="none"/>
   <text x="450" y="230" fill="#94a3b8" font-size="10">2. Session Confirmed (Roll ID, Fabric Type)</text>
 
   <!-- Step 2: Ingestion -->
-  <path d="M 325 270 L 720 270" stroke="#fbbf24" stroke-width="2" marker-end="url(#mB12)"/>
+  <path d="M 325 270 L 720 270" stroke="#fbbf24" stroke-width="2" marker-end="url(#mB12)" fill="none"/>
   <text x="440" y="262" fill="#fbbf24" font-size="11" font-weight="bold">3. Fabric moves: Quadrature pulse stream (&#916;L)</text>
 
-  <path d="M 520 295 L 720 295" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)"/>
+  <path d="M 520 295 L 720 295" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)" fill="none"/>
   <text x="540" y="288" fill="#38bdf8" font-size="11" font-weight="bold">4. Continuous Video Frame Ingestion</text>
 
   <!-- ALT BOX: Reliability Gate -->
@@ -104,32 +104,32 @@
   </g>
 
   <!-- Messages inside Branch 1 -->
-  <path d="M 720 405 L 925 405" stroke="#4ade80" stroke-width="2" marker-end="url(#mG12)"/>
+  <path d="M 720 405 L 925 405" stroke="#4ade80" stroke-width="2" marker-end="url(#mG12)" fill="none"/>
   <text x="750" y="398" fill="#4ade80" font-size="11" font-weight="bold">5. Forward Clean Frame + Current Encoder Tick</text>
 
   <!-- Self call AI -->
   <rect x="915" y="425" width="20" height="50" fill="#c084fc"/>
-  <path d="M 935 435 L 970 435 L 970 465 L 935 465" stroke="#c084fc" stroke-width="1.5"/>
+  <path d="M 935 435 L 970 435 L 970 465 L 935 465" stroke="#c084fc" stroke-width="1.5" fill="none"/>
   <text x="980" y="445" fill="#c084fc" font-size="10">6. YOLO Detection &#8226; Multi-frame Kalman Track</text>
   <text x="980" y="460" fill="#c084fc" font-size="10">Spatial-Temporal Deduplication &#8226; Metric (X, Y)</text>
 
-  <path d="M 925 495 L 1125 495" stroke="#fbbf24" stroke-width="2" marker-end="url(#mB12)"/>
+  <path d="M 925 495 L 1125 495" stroke="#fbbf24" stroke-width="2" marker-end="url(#mB12)" fill="none"/>
   <text x="960" y="488" fill="#fbbf24" font-size="11" font-weight="bold">7. INSERT Defect Record (Track_ID, Class, X, Y, Img)</text>
 
-  <path d="M 925 540 L 130 540" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)"/>
+  <path d="M 925 540 L 130 540" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB12)" fill="none"/>
   <text x="400" y="532" fill="#38bdf8" font-size="11" font-weight="bold">8. Push Real-Time Mobile Vibration &amp; Defect Alert</text>
 
-  <path d="M 925 575 L 1320 575" stroke="#4ade80" stroke-width="2" marker-end="url(#mG12)"/>
+  <path d="M 925 575 L 1320 575" stroke="#4ade80" stroke-width="2" marker-end="url(#mG12)" fill="none"/>
   <text x="1000" y="568" fill="#4ade80" font-size="11" font-weight="bold">9. Stream Live Coordinate to Web Defect Map (WSS)</text>
 
   <!-- Messages inside Branch 2 -->
-  <path d="M 720 700 L 1125 700" stroke="#ef4444" stroke-width="2.5" marker-end="url(#mR12)"/>
+  <path d="M 720 700 L 1125 700" stroke="#ef4444" stroke-width="2.5" marker-end="url(#mR12)" fill="none"/>
   <text x="760" y="692" fill="#ef4444" font-size="12" font-weight="bold">10. Compute Span [L_start = Y, L_end = Y + &#916;L]; Flag as UNINSPECTED</text>
 
-  <path d="M 720 740 L 130 740" stroke="#ef4444" stroke-width="2.5" marker-end="url(#mR12)"/>
+  <path d="M 720 740 L 130 740" stroke="#ef4444" stroke-width="2.5" marker-end="url(#mR12)" fill="none"/>
   <text x="350" y="732" fill="#ef4444" font-size="12" font-weight="bold">11. Trigger Local Tower Light &amp; Sound 'Inspection Compromised' Warning</text>
 
-  <path d="M 720 780 L 1320 780" stroke="#f87171" stroke-width="2" marker-end="url(#mR12)"/>
+  <path d="M 720 780 L 1320 780" stroke="#f87171" stroke-width="2" marker-end="url(#mR12)" fill="none"/>
   <text x="800" y="772" fill="#f87171" font-size="11" font-weight="bold">12. Broadcast Anomaly Event (Render Yellow Hashed 'Uninspected' Zone on Map)</text>
 
   <!-- Critical Rule Box -->
@@ -145,6 +145,8 @@
   </g>
 
 </svg>
+
+
 
 
 

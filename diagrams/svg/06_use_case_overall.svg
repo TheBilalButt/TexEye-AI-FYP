@@ -116,7 +116,7 @@
       </g>
 
       <!-- <<extend>> arrow from Correct to Review -->
-      <path d="M 180 195 L 180 165" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowExtend)"/>
+      <path d="M 180 195 L 180 165" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowExtend)" fill="none"/>
       <text x="215" y="182" fill="#f43f5e" font-size="9" font-weight="bold">&lt;&lt;extend&gt;&gt;</text>
 
       <!-- UC: View Inspection Status & Uninspected Spans -->
@@ -139,7 +139,7 @@
       </g>
 
       <!-- <<include>> arrow from Generate Report to Confirm Grade -->
-      <path d="M 180 420 L 180 392" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowInclude)"/>
+      <path d="M 180 420 L 180 392" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowInclude)" fill="none"/>
       <text x="215" y="408" fill="#38bdf8" font-size="9" font-weight="bold">&lt;&lt;include&gt;&gt;</text>
     </g>
 
@@ -223,7 +223,7 @@
       </g>
 
       <!-- <<extend>> from Mark Uninspected to Monitor Reliability -->
-      <path d="M 805 75 L 762 75" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowExtend)"/>
+      <path d="M 805 75 L 762 75" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ucArrowExtend)" fill="none"/>
       <text x="782" y="65" fill="#f87171" font-size="8.5" font-weight="bold" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
 
       <!-- Row 2: Vision & Metrology -->
@@ -286,15 +286,15 @@
 
   <!-- Association Lines: Floor Operator -->
   <!-- To Scan QR -->
-  <path d="M 120 238 L 285 245" stroke="#38bdf8" stroke-width="1.8"/>
+  <path d="M 120 238 L 285 245" stroke="#38bdf8" stroke-width="1.8" fill="none"/>
   <!-- To View Info -->
-  <path d="M 120 238 L 285 310" stroke="#38bdf8" stroke-width="1.8"/>
+  <path d="M 120 238 L 285 310" stroke="#38bdf8" stroke-width="1.8" fill="none"/>
   <!-- To Receive Alerts -->
-  <path d="M 120 238 L 285 380" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 120 238 L 285 380" stroke="#ef4444" stroke-width="2" fill="none"/>
   <!-- To Review Defects -->
-  <path d="M 120 238 L 285 460" stroke="#38bdf8" stroke-width="1.8"/>
+  <path d="M 120 238 L 285 460" stroke="#38bdf8" stroke-width="1.8" fill="none"/>
   <!-- To Speed/Meters -->
-  <path d="M 120 238 L 285 525" stroke="#38bdf8" stroke-width="1.8"/>
+  <path d="M 120 238 L 285 525" stroke="#38bdf8" stroke-width="1.8" fill="none"/>
 
   <!-- ACTOR 2: QUALITY INSPECTOR -->
   <g id="actor-quality-inspector" transform="translate(50, 520)">
@@ -341,11 +341,11 @@
 
   <!-- PM Associations -->
   <!-- To Dashboard -->
-  <path d="M 1420 220 L 1135 245" stroke="#4ade80" stroke-width="1.8"/>
+  <path d="M 1420 220 L 1135 245" stroke="#4ade80" stroke-width="1.8" fill="none"/>
   <!-- To Stats -->
-  <path d="M 1420 220 L 1135 310" stroke="#4ade80" stroke-width="1.8"/>
+  <path d="M 1420 220 L 1135 310" stroke="#4ade80" stroke-width="1.8" fill="none"/>
   <!-- To Logs -->
-  <path d="M 1420 220 L 1135 375" stroke="#4ade80" stroke-width="1.8"/>
+  <path d="M 1420 220 L 1135 375" stroke="#4ade80" stroke-width="1.8" fill="none"/>
 
   <!-- ACTOR 4: INVENTORY MANAGER -->
   <g id="actor-inventory-manager" transform="translate(1420, 420)">
@@ -362,11 +362,11 @@
 
   <!-- IM Associations -->
   <!-- To Stock -->
-  <path d="M 1420 480 L 1135 445" stroke="#fbbf24" stroke-width="1.8"/>
+  <path d="M 1420 480 L 1135 445" stroke="#fbbf24" stroke-width="1.8" fill="none"/>
   <!-- To Bay -->
-  <path d="M 1420 480 L 1135 510" stroke="#fbbf24" stroke-width="1.8"/>
+  <path d="M 1420 480 L 1135 510" stroke="#fbbf24" stroke-width="1.8" fill="none"/>
   <!-- To Quarantine Scrap -->
-  <path d="M 1420 480 L 1135 575" stroke="#fbbf24" stroke-width="1.8"/>
+  <path d="M 1420 480 L 1135 575" stroke="#fbbf24" stroke-width="1.8" fill="none"/>
 
   <!-- ACTOR 5: SYSTEM ADMINISTRATOR -->
   <g id="actor-system-admin" transform="translate(1420, 680)">
@@ -383,10 +383,12 @@
 
   <!-- Admin Associations -->
   <!-- To Users & Calibration -->
-  <path d="M 1420 740 L 1135 635" stroke="#f87171" stroke-width="1.8"/>
+  <path d="M 1420 740 L 1135 635" stroke="#f87171" stroke-width="1.8" fill="none"/>
   <!-- To Auth -->
-  <path d="M 1420 740 L 1370 740 L 1370 142 L 810 142" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 1420 740 L 1370 740 L 1370 142 L 810 142" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
 
 </svg>
+
+
 
 

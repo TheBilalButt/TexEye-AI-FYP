@@ -191,30 +191,32 @@
 
   <!-- Relationships Lines -->
   <!-- rolls -> sessions (1:N) -->
-  <path d="M 750 200 L 800 200" stroke="#38bdf8" stroke-width="2"/>
+  <path d="M 750 200 L 800 200" stroke="#38bdf8" stroke-width="2" fill="none"/>
   <text x="765" y="190" fill="#38bdf8" font-size="10" font-weight="bold">1 : N</text>
 
   <!-- sessions -> defects (1:N) -->
-  <path d="M 970 380 L 970 430" stroke="#c084fc" stroke-width="2"/>
+  <path d="M 970 380 L 970 430" stroke="#c084fc" stroke-width="2" fill="none"/>
   <text x="980" y="410" fill="#c084fc" font-size="10" font-weight="bold">1 : N</text>
 
   <!-- sessions -> uninspected (1:N) -->
-  <path d="M 1140 200 L 1180 200" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 1140 200 L 1180 200" stroke="#ef4444" stroke-width="2" fill="none"/>
   <text x="1145" y="190" fill="#ef4444" font-size="10" font-weight="bold">1 : N</text>
 
   <!-- rolls -> grading (1:1) -->
-  <path d="M 585 360 L 585 430" stroke="#4ade80" stroke-width="2"/>
+  <path d="M 585 360 L 585 430" stroke="#4ade80" stroke-width="2" fill="none"/>
   <text x="595" y="400" fill="#4ade80" font-size="10" font-weight="bold">1 : 1</text>
 
   <!-- rolls -> inventory (1:1) -->
-  <path d="M 420 250 L 300 250 L 300 430" stroke="#4ade80" stroke-width="2"/>
+  <path d="M 420 250 L 300 250 L 300 430" stroke="#4ade80" stroke-width="2" fill="none"/>
   <text x="310" y="340" fill="#4ade80" font-size="10" font-weight="bold">1 : 1</text>
 
   <!-- sessions -> alerts (1:N) -->
-  <path d="M 1140 330 L 1180 440" stroke="#ef4444" stroke-width="1.5"/>
+  <path d="M 1140 330 L 1180 440" stroke="#ef4444" stroke-width="1.5" fill="none"/>
   <text x="1140" y="400" fill="#ef4444" font-size="10" font-weight="bold">1 : N</text>
 
 </svg>
+
+
 
 
 

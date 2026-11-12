@@ -40,10 +40,10 @@
   </g>
 
   <!-- Connectors Stand -> Edge -->
-  <path d="M 395 220 L 460 220" stroke="#38bdf8" stroke-width="2.5"/>
+  <path d="M 395 220 L 460 220" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
   <text x="400" y="210" fill="#38bdf8" font-size="9" font-weight="bold">USB 3 / GigE</text>
 
-  <path d="M 395 320 L 460 320" stroke="#fbbf24" stroke-width="2.5"/>
+  <path d="M 395 320 L 460 320" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
   <text x="400" y="310" fill="#fbbf24" font-size="9" font-weight="bold">GPIO Counter</text>
 
   <!-- Node 2: Edge Computing Unit -->
@@ -80,7 +80,7 @@
   </g>
 
   <!-- Connect Edge -> Cloud -->
-  <path d="M 920 490 L 980 490" stroke="#4ade80" stroke-width="3" marker-end="url(#mG11)"/>
+  <path d="M 920 490 L 980 490" stroke="#4ade80" stroke-width="3" marker-end="url(#mG11)" fill="none"/>
   <text x="915" y="475" fill="#4ade80" font-size="10" font-weight="bold">HTTPS TLS 1.3</text>
 
   <!-- Node 3: Central Cloud / Server -->
@@ -137,10 +137,12 @@
   </g>
 
   <!-- Client Connections to Cloud -->
-  <path d="M 420 720 L 420 680 L 1180 680 L 1180 650" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB11)"/>
-  <path d="M 1020 720 L 1020 650" stroke="#c084fc" stroke-width="2" marker-end="url(#mB11)"/>
+  <path d="M 420 720 L 420 680 L 1180 680 L 1180 650" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB11)" fill="none"/>
+  <path d="M 1020 720 L 1020 650" stroke="#c084fc" stroke-width="2" marker-end="url(#mB11)" fill="none"/>
 
 </svg>
+
+
 
 
 

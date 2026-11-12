@@ -43,8 +43,8 @@
   </g>
 
   <!-- Connectors inside 1.0 -->
-  <path d="M 235 245 L 235 355" stroke="#38bdf8" stroke-width="1.5"/>
-  <path d="M 235 435 L 235 460" stroke="#f87171" stroke-width="2" marker-end="url(#mR9)"/>
+  <path d="M 235 245 L 235 355" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <path d="M 235 435 L 235 460" stroke="#f87171" stroke-width="2" marker-end="url(#mR9)" fill="none"/>
 
   <!-- Group 2: Subsystem 2.0 AI Vision Decomposed -->
   <g transform="translate(520, 130)" filter="url(#sh9)">
@@ -76,7 +76,7 @@
   </g>
 
   <!-- Connect 1.3 to 2.1 -->
-  <path d="M 435 390 L 490 390 L 490 205 L 545 205" stroke="#4ade80" stroke-width="2" marker-end="url(#mG9)"/>
+  <path d="M 435 390 L 490 390 L 490 205 L 545 205" stroke="#4ade80" stroke-width="2" marker-end="url(#mG9)" fill="none"/>
   <text x="440" y="195" fill="#4ade80" font-size="9" font-weight="bold">Clean Frames</text>
 
   <!-- Group 3: Subsystem 3.0 Edge Data Storage & Sync -->
@@ -106,7 +106,7 @@
   </g>
 
   <!-- Connect 2.4 to 3.1 -->
-  <path d="M 915 480 L 980 480 L 980 200 L 1005 200" stroke="#c084fc" stroke-width="2" marker-end="url(#mP9)"/>
+  <path d="M 915 480 L 980 480 L 980 200 L 1005 200" stroke="#c084fc" stroke-width="2" marker-end="url(#mP9)" fill="none"/>
 
   <!-- Group 4 & 5: Central Quality Management & User Hubs -->
   <g transform="translate(100, 600)" filter="url(#sh9)">
@@ -148,6 +148,8 @@
   </g>
 
 </svg>
+
+
 
 
 

@@ -70,10 +70,10 @@
     <text x="20" y="20" fill="#fbbf24" font-size="11" font-weight="bold">Phase 1: Local Autonomous Execution (Zero Latency on Factory Floor)</text>
   </g>
 
-  <path d="M 160 220 L 380 220" stroke="#fbbf24" stroke-width="2" marker-end="url(#mY13)"/>
+  <path d="M 160 220 L 380 220" stroke="#fbbf24" stroke-width="2" marker-end="url(#mY13)" fill="none"/>
   <text x="210" y="212" fill="#fbbf24" font-size="10" font-weight="bold">1. INSERT Record (sync_status = 'PENDING')</text>
 
-  <path d="M 160 250 L 600 250" stroke="#fbbf24" stroke-width="2" marker-end="url(#mY13)"/>
+  <path d="M 160 250 L 600 250" stroke="#fbbf24" stroke-width="2" marker-end="url(#mY13)" fill="none"/>
   <text x="210" y="242" fill="#fbbf24" font-size="10" font-weight="bold">2. Save Defect Snippet Image (local_path)</text>
 
   <!-- Loop: Connectivity Check -->
@@ -91,7 +91,7 @@
   </g>
 
   <!-- Messages in Offline -->
-  <path d="M 820 370 L 1040 370" stroke="#f87171" stroke-width="2" marker-end="url(#mR13)"/>
+  <path d="M 820 370 L 1040 370" stroke="#f87171" stroke-width="2" marker-end="url(#mR13)" fill="none"/>
   <text x="860" y="362" fill="#f87171" font-size="10" font-weight="bold">3. HTTPS GET /health (Heartbeat)</text>
 
   <!-- X mark -->
@@ -102,38 +102,40 @@
   <text x="985" y="438" fill="#fca5a5" font-size="9" text-anchor="middle">Retry heartbeat probe with exponential backoff &amp; jitter.</text>
 
   <!-- Messages in Online -->
-  <path d="M 820 540 L 1040 540" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)"/>
+  <path d="M 820 540 L 1040 540" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)" fill="none"/>
   <text x="860" y="532" fill="#4ade80" font-size="10" font-weight="bold">4. HTTPS GET /health &#8594; 200 OK</text>
 
-  <path d="M 820 575 L 380 575" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB13)"/>
+  <path d="M 820 575 L 380 575" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB13)" fill="none"/>
   <text x="500" y="568" fill="#38bdf8" font-size="10" font-weight="bold">5. Fetch Oldest Pending Batch (LIMIT 50)</text>
 
-  <path d="M 380 605 L 820 605" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#mB13)"/>
+  <path d="M 380 605 L 820 605" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#mB13)" fill="none"/>
   <text x="500" y="600" fill="#94a3b8" font-size="10">6. Return JSON payload batch</text>
 
-  <path d="M 820 635 L 600 635" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#mB13)"/>
+  <path d="M 820 635 L 600 635" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#mB13)" fill="none"/>
   <text x="640" y="628" fill="#38bdf8" font-size="10">7. Read Associated Image Byte Streams</text>
 
-  <path d="M 820 675 L 1040 675" stroke="#4ade80" stroke-width="3" marker-end="url(#mG13)"/>
+  <path d="M 820 675 L 1040 675" stroke="#4ade80" stroke-width="3" marker-end="url(#mG13)" fill="none"/>
   <text x="840" y="668" fill="#4ade80" font-size="11" font-weight="bold">8. HTTPS POST /api/v1/sync/batch (Multipart / Gzipped JSON + Images)</text>
 
   <!-- Central Cloud Ingestion -->
-  <path d="M 1040 710 L 1265 710" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)"/>
+  <path d="M 1040 710 L 1265 710" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)" fill="none"/>
   <text x="1070" y="702" fill="#4ade80" font-size="10" font-weight="bold">9. Upsert PostgreSQL (UUIDv4 Idempotent Deduplication)</text>
 
-  <path d="M 1040 740 L 1265 740" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)"/>
+  <path d="M 1040 740 L 1265 740" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)" fill="none"/>
   <text x="1070" y="732" fill="#4ade80" font-size="10" font-weight="bold">10. MinIO PutObject (Store JPEG Crop &amp; Return Cloud URL)</text>
 
-  <path d="M 1040 785 L 820 785" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)"/>
+  <path d="M 1040 785 L 820 785" stroke="#4ade80" stroke-width="2" marker-end="url(#mG13)" fill="none"/>
   <text x="850" y="778" fill="#4ade80" font-size="10" font-weight="bold">11. HTTP 200 OK (Batch Acknowledged: {synced_ids: [...]})</text>
 
-  <path d="M 820 815 L 380 815" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB13)"/>
+  <path d="M 820 815 L 380 815" stroke="#38bdf8" stroke-width="2" marker-end="url(#mB13)" fill="none"/>
   <text x="500" y="808" fill="#38bdf8" font-size="10" font-weight="bold">12. UPDATE sync_queue SET status = 'SYNCED'</text>
 
-  <path d="M 820 845 L 600 845" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#mB13)"/>
+  <path d="M 820 845 L 600 845" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#mB13)" fill="none"/>
   <text x="640" y="838" fill="#94a3b8" font-size="10">13. Evict / Purge Uploaded Images as per Retention Quota</text>
 
 </svg>
+
+
 
 
 

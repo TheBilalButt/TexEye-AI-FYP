@@ -42,7 +42,7 @@
   </g>
 
   <!-- Connect E -> C -->
-  <path d="M 725 300 L 725 340" stroke="#f472b6" stroke-width="2.5" marker-end="url(#aPK)"/>
+  <path d="M 725 300 L 725 340" stroke="#f472b6" stroke-width="2.5" marker-end="url(#aPK)" fill="none"/>
   <text x="740" y="325" fill="#f472b6" font-size="11" font-weight="bold">HTTPS REST / WSS</text>
 
   <!-- LAYER C: BACKEND / APPLICATION LAYER -->
@@ -95,7 +95,7 @@
   </g>
 
   <!-- Connect C -> D -->
-  <path d="M 725 585 L 725 625" stroke="#4ade80" stroke-width="2.5" marker-end="url(#aG)"/>
+  <path d="M 725 585 L 725 625" stroke="#4ade80" stroke-width="2.5" marker-end="url(#aG)" fill="none"/>
 
   <!-- LAYER D: DATA LAYER -->
   <g transform="translate(100, 630)" filter="url(#shadow5)">
@@ -128,7 +128,7 @@
   </g>
 
   <!-- Connect D -> B -->
-  <path d="M 725 780 L 725 820" stroke="#c084fc" stroke-width="2.5" marker-end="url(#aP)"/>
+  <path d="M 725 780 L 725 820" stroke="#c084fc" stroke-width="2.5" marker-end="url(#aP)" fill="none"/>
 
   <!-- LAYER B: AI PROCESSING LAYER -->
   <g transform="translate(100, 825)" filter="url(#shadow5)">
@@ -168,7 +168,7 @@
   </g>
 
   <!-- Connect B -> A -->
-  <path d="M 725 1005 L 725 1045" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#aB)"/>
+  <path d="M 725 1005 L 725 1045" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#aB)" fill="none"/>
 
   <!-- LAYER A: HARDWARE / EDGE LAYER -->
   <g transform="translate(100, 1050)" filter="url(#shadow5)">
@@ -213,10 +213,12 @@
   </g>
 
   <!-- Uplink Connector from Edge Sync Daemon to Central Sync Receiver -->
-  <path d="M 1220 1100 L 1380 1100 L 1380 470 L 400 470" stroke="#4ade80" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#aG)"/>
+  <path d="M 1220 1100 L 1380 1100 L 1380 470 L 400 470" stroke="#4ade80" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#aG)" fill="none"/>
   <text x="1390" y="780" fill="#4ade80" font-size="11" font-weight="bold" transform="rotate(90, 1390, 780)">HTTPS Sync Batches</text>
 
 </svg>
+
+
 
 
 

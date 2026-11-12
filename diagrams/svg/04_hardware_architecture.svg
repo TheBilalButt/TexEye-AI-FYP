@@ -93,8 +93,8 @@
   </g>
 
   <!-- Connectors Stand -> Sensors -->
-  <path d="M 335 195 L 470 195" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)"/>
-  <path d="M 335 280 L 470 280" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrB4)"/>
+  <path d="M 335 195 L 470 195" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)" fill="none"/>
+  <path d="M 335 280 L 470 280" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrB4)" fill="none"/>
 
   <!-- Column 3: Edge Processing Unit -->
   <g transform="translate(930, 135)" filter="url(#shadow4)">
@@ -126,9 +126,9 @@
   </g>
 
   <!-- Connectors Sensors -> Edge -->
-  <path d="M 860 195 L 950 195" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrB4)"/>
-  <path d="M 860 100 L 950 100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)"/>
-  <path d="M 950 380 L 860 380" stroke="#f87171" stroke-width="2" marker-end="url(#arrR4)"/>
+  <path d="M 860 195 L 950 195" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrB4)" fill="none"/>
+  <path d="M 860 100 L 950 100" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrY4)" fill="none"/>
+  <path d="M 950 380 L 860 380" stroke="#f87171" stroke-width="2" marker-end="url(#arrR4)" fill="none"/>
 
   <!-- Lower Section: Network & Central Cloud -->
   <!-- Network Uplink Pipe -->
@@ -136,8 +136,8 @@
     <rect width="650" height="50" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
     <text x="325" y="31" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">COMMUNICATION UPLINK: TLS 1.3 HTTPS &amp; WEBSOCKETS</text>
   </g>
-  <path d="M 1160 555 L 1160 605 L 1050 605" stroke="#4ade80" stroke-width="2.5"/>
-  <path d="M 725 630 L 725 680" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG4)"/>
+  <path d="M 1160 555 L 1160 605 L 1050 605" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+  <path d="M 725 630 L 725 680" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrG4)" fill="none"/>
 
   <!-- Central Cloud Container -->
   <g transform="translate(200, 685)" filter="url(#shadow4)">
@@ -180,6 +180,8 @@
   </g>
 
 </svg>
+
+
 
 
 
