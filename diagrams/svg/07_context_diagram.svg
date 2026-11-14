@@ -14,73 +14,86 @@
   <line x1="50" y1="62" x2="1050" y2="62" stroke="#cccccc" stroke-width="1"/>
 
   <!-- Central System Circle -->
-  <circle cx="550" cy="450" r="135" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  <circle cx="550" cy="450" r="130" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
   <text x="550" y="432" fill="#000000" font-size="16" font-weight="bold" text-anchor="middle">TexEye AI</text>
   <text x="550" y="454" fill="#000000" font-size="12.5" text-anchor="middle">Fabric Defect Detection</text>
   <text x="550" y="472" fill="#000000" font-size="12.5" text-anchor="middle">&amp; Quality Management</text>
 
   <!-- External Entity 1: Camera & Sensor Rig (Top Left) -->
-  <rect x="70" y="110" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="185" y="140" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Camera &amp; Sensors</text>
-  <text x="185" y="158" fill="#555555" font-size="10.5" text-anchor="middle">(Rig &amp; Rotary Encoder)</text>
+  <rect x="70" y="115" width="230" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="185" y="145" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Camera &amp; Sensors</text>
+  <text x="185" y="165" fill="#555555" font-size="10.5" text-anchor="middle">(Rig &amp; Rotary Encoder)</text>
 
   <!-- External Entity 2: Floor Operator (Bottom Left) -->
-  <rect x="70" y="670" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="185" y="700" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Floor Operator</text>
-  <text x="185" y="718" fill="#555555" font-size="10.5" text-anchor="middle">(Mobile Application)</text>
+  <rect x="70" y="660" width="230" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="185" y="692" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Floor Operator</text>
+  <text x="185" y="712" fill="#555555" font-size="10.5" text-anchor="middle">(Mobile Application)</text>
 
   <!-- External Entity 3: Quality Inspector (Top Right) -->
-  <rect x="800" y="110" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="915" y="140" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Quality Inspector</text>
-  <text x="915" y="158" fill="#555555" font-size="10.5" text-anchor="middle">(Web Workstation)</text>
+  <rect x="800" y="115" width="230" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="915" y="145" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Quality Inspector</text>
+  <text x="915" y="165" fill="#555555" font-size="10.5" text-anchor="middle">(Web Workstation)</text>
 
   <!-- External Entity 4: Production Manager (Middle Right) -->
-  <rect x="800" y="390" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="915" y="420" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Production Manager</text>
-  <text x="915" y="438" fill="#555555" font-size="10.5" text-anchor="middle">(Analytics Dashboard)</text>
+  <rect x="800" y="415" width="230" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="915" y="447" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Production Manager</text>
+  <text x="915" y="467" fill="#555555" font-size="10.5" text-anchor="middle">(Analytics Dashboard)</text>
 
   <!-- External Entity 5: Inventory Manager (Bottom Right) -->
-  <rect x="800" y="670" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="915" y="700" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Inventory Manager</text>
-  <text x="915" y="718" fill="#555555" font-size="10.5" text-anchor="middle">(ERP / Warehouse Stock)</text>
+  <rect x="800" y="660" width="230" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="915" y="692" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">Inventory Manager</text>
+  <text x="915" y="712" fill="#555555" font-size="10.5" text-anchor="middle">(ERP / Warehouse Stock)</text>
 
 
-  <!-- ==================== SPACIOUS HUMAN FLOWS WITH FULL ARROWS & CLEAN CLEARANCE ==================== -->
+  <!-- ==================== FLOWS: ALL ARROWS ON FLAT VERTICAL FACES, ALL LABELS ABOVE LINES ==================== -->
 
-  <!-- Flow 1: Sensor to System (From Camera Right Edge to Circle Top-Left) -->
-  <line x1="300" y1="142" x2="455" y2="355" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="366" y="238" transform="rotate(53.9, 366, 238)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Video Stream &amp; Encoder Ticks</text>
+  <!-- Top-Left Flow 1: Camera to System -->
+  <!-- Flat face at (300, 135) -> Circle (470, 345) -->
+  <line x1="300" y1="135" x2="470" y2="345" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="375" y="228" transform="rotate(51, 375, 228)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Video Stream &amp; Encoder Ticks</text>
 
-  <!-- Flow 2: System to Stack Light Alarm (From Circle Left to Camera Bottom Edge) -->
-  <line x1="420" y1="420" x2="220" y2="175" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
-  <text x="331" y="308" transform="rotate(50.8, 331, 308)" fill="#000000" font-size="10" text-anchor="middle">Relay Warning Signal</text>
+  <!-- Top-Left Flow 2: System to Camera Stack Light -->
+  <!-- Circle (430, 420) -> Flat face at (300, 175) -->
+  <line x1="430" y1="420" x2="300" y2="175" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
+  <text x="355" y="287" transform="rotate(62, 355, 287)" fill="#000000" font-size="10" text-anchor="middle">Relay Warning Signal</text>
 
-  <!-- Flow 3: Floor Operator to System (From Operator Right Edge to Circle Bottom-Left) -->
-  <line x1="300" y1="680" x2="450" y2="540" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="385" y="600" transform="rotate(-43, 385, 600)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">QR Scan &amp; Defect Confirmations</text>
 
-  <!-- Flow 4: System to Floor Operator (From Circle Bottom to Operator Top Edge) -->
-  <line x1="510" y1="580" x2="220" y2="670" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="361" y="638" transform="rotate(-17.2, 361, 638)" fill="#000000" font-size="10" text-anchor="middle">Vibration &amp; Audio Alerts</text>
+  <!-- Top-Right Flow 5: System to Quality Inspector -->
+  <!-- Circle (630, 345) -> Flat face at (800, 135) -->
+  <line x1="630" y1="345" x2="800" y2="135" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="725" y="228" transform="rotate(-51, 725, 228)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Map &amp; ASTM Grade</text>
 
-  <!-- Flow 5: System to Quality Inspector (From Circle Top-Right to Inspector Left Edge) -->
-  <line x1="645" y1="355" x2="800" y2="142" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="734" y="238" transform="rotate(-53.9, 734, 238)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Map &amp; ASTM Grade</text>
+  <!-- Top-Right Flow 6: Quality Inspector to System -->
+  <!-- Flat face at (800, 175) -> Circle (670, 420) -->
+  <line x1="800" y1="175" x2="670" y2="420" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="745" y="287" transform="rotate(-62, 745, 287)" fill="#000000" font-size="10" text-anchor="middle">Classification Corrections</text>
 
-  <!-- Flow 6: Quality Inspector to System (From Inspector Bottom Edge to Circle Right) -->
-  <line x1="880" y1="175" x2="680" y2="420" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="769" y="308" transform="rotate(-50.8, 769, 308)" fill="#000000" font-size="10" text-anchor="middle">Classification Corrections</text>
 
-  <!-- Flow 7: System to Production Manager (Horizontal Direct Flow) -->
-  <line x1="685" y1="422" x2="800" y2="422" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="742" y="412" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Statistics &amp; Logs</text>
+  <!-- Middle-Right Flow 7: System to Production Manager (Horizontal) -->
+  <!-- Circle (680, 450) -> Flat face at (800, 450) -->
+  <line x1="680" y1="450" x2="800" y2="450" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="740" y="440" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Statistics &amp; Logs</text>
 
-  <!-- Flow 8: System to Inventory Manager (From Circle Bottom-Right to Inventory Left Edge) -->
-  <line x1="650" y1="540" x2="800" y2="680" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="715" y="600" transform="rotate(43, 715, 600)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
 
-  <!-- Flow 9: Inventory Manager to System (From Inventory Top Edge to Circle Bottom) -->
-  <line x1="880" y1="670" x2="590" y2="580" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="739" y="638" transform="rotate(17.2, 739, 638)" fill="#000000" font-size="10" text-anchor="middle">Bay &amp; Quarantine Updates</text>
+  <!-- Bottom-Left Flow 3: Floor Operator to System -->
+  <!-- Flat face at (300, 680) -> Circle (440, 520) -->
+  <line x1="300" y1="680" x2="440" y2="520" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="381" y="590" transform="rotate(-48.8, 381, 590)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">QR Scan &amp; Defect Confirmations</text>
+
+  <!-- Bottom-Left Flow 4: System to Floor Operator -->
+  <!-- Circle (465, 555) -> Flat face at (300, 715) -->
+  <line x1="465" y1="555" x2="300" y2="715" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="393" y="626" transform="rotate(-44, 393, 626)" fill="#000000" font-size="10" text-anchor="middle">Vibration &amp; Audio Alerts</text>
+
+
+  <!-- Bottom-Right Flow 8: System to Inventory Manager -->
+  <!-- Circle (660, 520) -> Flat face at (800, 680) -->
+  <line x1="660" y1="520" x2="800" y2="680" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="719" y="590" transform="rotate(48.8, 719, 590)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
+
+  <!-- Bottom-Right Flow 9: Inventory Manager to System -->
+  <!-- Flat face at (800, 715) -> Circle (635, 555) -->
+  <line x1="800" y1="715" x2="635" y2="555" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="707" y="626" transform="rotate(44, 707, 626)" fill="#000000" font-size="10" text-anchor="middle">Bay &amp; Quarantine Updates</text>
 
 </svg>
