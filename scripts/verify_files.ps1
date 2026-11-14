@@ -31,3 +31,4 @@ foreach ($sfile in $svgFiles) {
         Write-Host "$($sfile.Name): No entities or clean"
     }
 }
+
