@@ -45,51 +45,42 @@
   <text x="915" y="698" fill="#555555" font-size="10.5" text-anchor="middle">(ERP / Warehouse Stock)</text>
 
 
-  <!-- ==================== CLEAN HUMAN FLOWS (NO BORDERED BOXES) ==================== -->
+  <!-- ==================== FULL UNBROKEN ARROWS WITH TILTED TEXT ABOVE ==================== -->
 
-  <!-- Flow 1: Sensor to System -->
-  <line x1="300" y1="150" x2="455" y2="355" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="270" y="240" width="215" height="22" fill="#ffffff" stroke="none"/>
-  <text x="377" y="256" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Video Stream &amp; Encoder Ticks</text>
+  <!-- Flow 1: Sensor to System (Full Arrow, text tilted above) -->
+  <line x1="300" y1="155" x2="455" y2="355" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="367" y="244" transform="rotate(52.4, 367, 244)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Video Stream &amp; Encoder Ticks</text>
 
-  <!-- Flow 2: System to Stack Light Alarm -->
-  <line x1="425" y1="390" x2="280" y2="200" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
-  <rect x="275" y="285" width="155" height="20" fill="#ffffff" stroke="none"/>
-  <text x="352" y="299" fill="#000000" font-size="10.5" text-anchor="middle">Relay Warning Signal</text>
+  <!-- Flow 2: System to Stack Light Alarm (Full Dashed Arrow, text tilted below) -->
+  <line x1="425" y1="390" x2="275" y2="200" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
+  <text x="360" y="306" transform="rotate(50.2, 360, 306)" fill="#000000" font-size="10" text-anchor="middle">Relay Warning Signal</text>
 
-  <!-- Flow 3: Floor Operator to System -->
-  <line x1="220" y1="650" x2="445" y2="520" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="215" y="574" width="235" height="22" fill="#ffffff" stroke="none"/>
-  <text x="332" y="589" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">QR Code &amp; Defect Confirmations</text>
+  <!-- Flow 3: Floor Operator to System (Full Arrow, text tilted above) -->
+  <line x1="300" y1="665" x2="445" y2="530" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="381" y="589" transform="rotate(-43, 381, 589)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">QR Scan &amp; Defect Confirmations</text>
 
-  <!-- Flow 4: System to Floor Operator -->
-  <line x1="475" y1="565" x2="300" y2="695" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="310" y="620" width="155" height="20" fill="#ffffff" stroke="none"/>
-  <text x="387" y="634" fill="#000000" font-size="10.5" text-anchor="middle">Vibration &amp; Audio Alerts</text>
+  <!-- Flow 4: System to Floor Operator (Full Arrow, text tilted below) -->
+  <line x1="420" y1="565" x2="275" y2="700" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="339" y="643" transform="rotate(-43, 339, 643)" fill="#000000" font-size="10" text-anchor="middle">Vibration &amp; Audio Alerts</text>
 
-  <!-- Flow 5: System to Quality Inspector -->
-  <line x1="645" y1="355" x2="800" y2="150" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="605" y="240" width="235" height="22" fill="#ffffff" stroke="none"/>
-  <text x="722" y="256" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Digital Defect Map &amp; ASTM Grade</text>
+  <!-- Flow 5: System to Quality Inspector (Full Arrow, text tilted above) -->
+  <line x1="645" y1="355" x2="800" y2="155" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="733" y="244" transform="rotate(-52.4, 733, 244)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Map &amp; ASTM Grade</text>
 
-  <!-- Flow 6: Quality Inspector to System -->
-  <line x1="820" y1="200" x2="675" y2="390" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="665" y="285" width="165" height="20" fill="#ffffff" stroke="none"/>
-  <text x="747" y="299" fill="#000000" font-size="10.5" text-anchor="middle">Classification Corrections</text>
+  <!-- Flow 6: Quality Inspector to System (Full Arrow, text tilted below) -->
+  <line x1="825" y1="200" x2="675" y2="390" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="741" y="306" transform="rotate(-50.2, 741, 306)" fill="#000000" font-size="10" text-anchor="middle">Classification Corrections</text>
 
-  <!-- Flow 7: System to Production Manager -->
+  <!-- Flow 7: System to Production Manager (Horizontal Full Arrow, text directly above line) -->
   <line x1="685" y1="422" x2="800" y2="422" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="650" y="408" width="185" height="20" fill="#ffffff" stroke="none"/>
-  <text x="742" y="423" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Defect Statistics &amp; Logs</text>
+  <text x="742" y="413" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Statistics &amp; Logs</text>
 
-  <!-- Flow 8: System to Inventory Manager -->
-  <line x1="655" y1="520" x2="850" y2="650" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="635" y="574" width="235" height="22" fill="#ffffff" stroke="none"/>
-  <text x="752" y="589" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
+  <!-- Flow 8: System to Inventory Manager (Full Arrow, text tilted above) -->
+  <line x1="655" y1="530" x2="800" y2="665" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="719" y="589" transform="rotate(43, 719, 589)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
 
-  <!-- Flow 9: Inventory Manager to System -->
-  <line x1="800" y1="695" x2="625" y2="565" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <rect x="625" y="620" width="175" height="20" fill="#ffffff" stroke="none"/>
-  <text x="712" y="634" fill="#000000" font-size="10.5" text-anchor="middle">Bay &amp; Quarantine Updates</text>
+  <!-- Flow 9: Inventory Manager to System (Full Arrow, text tilted below) -->
+  <line x1="825" y1="700" x2="680" y2="565" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="761" y="643" transform="rotate(43, 761, 643)" fill="#000000" font-size="10" text-anchor="middle">Bay &amp; Quarantine Updates</text>
 
 </svg>

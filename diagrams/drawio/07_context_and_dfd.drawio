@@ -45,31 +45,31 @@
         </mxCell>
 
         <!-- Connectors -->
-        <mxCell id="e_sens_sys" value="Video Stream &amp;amp; Encoder Ticks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ent_sensor" target="sys_center">
+        <mxCell id="e_sens_sys" value="Video Stream &amp;amp; Encoder Ticks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_sensor" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_sens" value="Relay Warning Signal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sys_center" target="ent_sensor">
+        <mxCell id="e_sys_sens" value="Relay Warning Signal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_sensor">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_op_sys" value="QR Code &amp;amp; Confirmations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ent_op" target="sys_center">
+        <mxCell id="e_op_sys" value="QR Code &amp;amp; Confirmations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_op" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_op" value="Vibration &amp;amp; Audio Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sys_center" target="ent_op">
+        <mxCell id="e_sys_op" value="Vibration &amp;amp; Audio Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_op">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_qi" value="Digital Defect Map &amp;amp; Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sys_center" target="ent_qi">
+        <mxCell id="e_sys_qi" value="Digital Defect Map &amp;amp; Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_qi">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_qi_sys" value="Classification Corrections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ent_qi" target="sys_center">
+        <mxCell id="e_qi_sys" value="Classification Corrections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_qi" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_pm" value="Defect Statistics &amp;amp; Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sys_center" target="ent_pm">
+        <mxCell id="e_sys_pm" value="Defect Statistics &amp;amp; Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_pm">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_im" value="Certified Roll Grade &amp;amp; Length" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sys_center" target="ent_im">
+        <mxCell id="e_sys_im" value="Certified Roll Grade &amp;amp; Length" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_im">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_im_sys" value="Bay &amp;amp; Quarantine Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ent_im" target="sys_center">
+        <mxCell id="e_im_sys" value="Bay &amp;amp; Quarantine Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_im" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 

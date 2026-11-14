@@ -17,3 +17,4 @@ if ($hasError) {
 } else {
     Write-Host "All SVG files are valid XML!" -ForegroundColor Cyan
 }
+
