@@ -45,55 +45,46 @@
   <text x="915" y="712" fill="#555555" font-size="10.5" text-anchor="middle">(ERP / Warehouse Stock)</text>
 
 
-  <!-- ==================== FLOWS: ALL ARROWS ON FLAT VERTICAL FACES, ALL LABELS ABOVE LINES ==================== -->
+  <!-- ==================== CLEAN ORTHOGONAL FLOWS WITH NATURAL HUMAN WORDS ==================== -->
 
-  <!-- Top-Left Flow 1: Camera to System -->
-  <!-- Flat face at (300, 135) -> Circle (470, 345) -->
-  <line x1="300" y1="135" x2="470" y2="345" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="375" y="228" transform="rotate(51, 375, 228)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Video Stream &amp; Encoder Ticks</text>
+  <!-- Flow 1: Camera to System (Camera Stream & Speed Pulses) -->
+  <path d="M 300 140 L 480 140 L 480 328" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="390" y="132" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Camera Stream &amp; Speed Pulses</text>
 
-  <!-- Top-Left Flow 2: System to Camera Stack Light -->
-  <!-- Circle (430, 420) -> Flat face at (300, 175) -->
-  <line x1="430" y1="420" x2="300" y2="175" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
-  <text x="355" y="287" transform="rotate(62, 355, 287)" fill="#000000" font-size="10" text-anchor="middle">Relay Warning Signal</text>
+  <!-- Flow 2: System to Stack Light Alarm -->
+  <path d="M 420 410 L 350 410 L 350 175 L 300 175" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#arrow)"/>
+  <text x="385" y="402" fill="#000000" font-size="10" text-anchor="middle">Buzzer &amp; Light Alarm Trigger</text>
 
 
-  <!-- Top-Right Flow 5: System to Quality Inspector -->
-  <!-- Circle (630, 345) -> Flat face at (800, 135) -->
-  <line x1="630" y1="345" x2="800" y2="135" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="725" y="228" transform="rotate(-51, 725, 228)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Map &amp; ASTM Grade</text>
+  <!-- Flow 5: System to Quality Inspector -->
+  <path d="M 620 328 L 620 140 L 800 140" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="710" y="132" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Defect Roll Map &amp; ASTM Grade</text>
 
-  <!-- Top-Right Flow 6: Quality Inspector to System -->
-  <!-- Flat face at (800, 175) -> Circle (670, 420) -->
-  <line x1="800" y1="175" x2="670" y2="420" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="745" y="287" transform="rotate(-62, 745, 287)" fill="#000000" font-size="10" text-anchor="middle">Classification Corrections</text>
+  <!-- Flow 6: Quality Inspector to System -->
+  <path d="M 800 175 L 750 175 L 750 410 L 680 410" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="715" y="402" fill="#000000" font-size="10" text-anchor="middle">Classification Corrections</text>
 
 
-  <!-- Middle-Right Flow 7: System to Production Manager (Horizontal) -->
-  <!-- Circle (680, 450) -> Flat face at (800, 450) -->
+  <!-- Flow 7: System to Production Manager (Horizontal) -->
   <line x1="680" y1="450" x2="800" y2="450" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="740" y="440" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Defect Statistics &amp; Logs</text>
+  <text x="740" y="440" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Production Reports &amp; Defect Logs</text>
 
 
-  <!-- Bottom-Left Flow 3: Floor Operator to System -->
-  <!-- Flat face at (300, 680) -> Circle (440, 520) -->
-  <line x1="300" y1="680" x2="440" y2="520" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="381" y="590" transform="rotate(-48.8, 381, 590)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">QR Scan &amp; Defect Confirmations</text>
+  <!-- Flow 3: Floor Operator to System -->
+  <path d="M 300 680 L 350 680 L 350 490 L 420 490" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="385" y="482" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Scanned Roll ID &amp; Confirmations</text>
 
-  <!-- Bottom-Left Flow 4: System to Floor Operator -->
-  <!-- Circle (465, 555) -> Flat face at (300, 715) -->
-  <line x1="465" y1="555" x2="300" y2="715" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="393" y="626" transform="rotate(-44, 393, 626)" fill="#000000" font-size="10" text-anchor="middle">Vibration &amp; Audio Alerts</text>
+  <!-- Flow 4: System to Floor Operator -->
+  <path d="M 480 572 L 480 715 L 300 715" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="390" y="707" fill="#000000" font-size="10" text-anchor="middle">Audio &amp; Vibration Defect Alerts</text>
 
 
-  <!-- Bottom-Right Flow 8: System to Inventory Manager -->
-  <!-- Circle (660, 520) -> Flat face at (800, 680) -->
-  <line x1="660" y1="520" x2="800" y2="680" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="719" y="590" transform="rotate(48.8, 719, 590)" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
+  <!-- Flow 8: System to Inventory Manager -->
+  <path d="M 680 490 L 750 490 L 750 680 L 800 680" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="715" y="482" fill="#000000" font-size="10.5" font-weight="bold" text-anchor="middle">Certified Roll Grade &amp; Length</text>
 
-  <!-- Bottom-Right Flow 9: Inventory Manager to System -->
-  <!-- Flat face at (800, 715) -> Circle (635, 555) -->
-  <line x1="800" y1="715" x2="635" y2="555" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
-  <text x="707" y="626" transform="rotate(44, 707, 626)" fill="#000000" font-size="10" text-anchor="middle">Bay &amp; Quarantine Updates</text>
+  <!-- Flow 9: Inventory Manager to System -->
+  <path d="M 800 715 L 620 715 L 620 572" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="710" y="707" fill="#000000" font-size="10" text-anchor="middle">Warehouse Bay &amp; Storage Updates</text>
 
 </svg>
