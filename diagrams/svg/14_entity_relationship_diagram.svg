@@ -1,11 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 950" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
   <defs>
-    <!-- Crow's Foot markers -->
-    <marker id="one" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto">
-      <line x1="5" y1="1" x2="5" y2="9" stroke="#000000" stroke-width="1.2"/>
-      <line x1="8" y1="1" x2="8" y2="9" stroke="#000000" stroke-width="1.2"/>
+    <!-- One-Start: Mandatory 1 on the line leaving an entity (hashes outside the box) -->
+    <marker id="one-start" markerWidth="12" markerHeight="12" refX="1" refY="6" orient="auto">
+      <line x1="5" y1="1" x2="5" y2="11" stroke="#000000" stroke-width="1.2"/>
+      <line x1="8" y1="1" x2="8" y2="11" stroke="#000000" stroke-width="1.2"/>
     </marker>
-    <marker id="many" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+    
+    <!-- One-End: Mandatory 1 on the line entering an entity (hashes outside the box) -->
+    <marker id="one-end" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <line x1="4" y1="1" x2="4" y2="11" stroke="#000000" stroke-width="1.2"/>
+      <line x1="7" y1="1" x2="7" y2="11" stroke="#000000" stroke-width="1.2"/>
+    </marker>
+
+    <!-- Many-End: Crow's Foot on the line entering an entity (prongs open toward entity border) -->
+    <marker id="many-end" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
       <path d="M0,1 L10,6 L0,11 M10,1 L10,11" fill="none" stroke="#000000" stroke-width="1.2"/>
     </marker>
   </defs>
@@ -25,12 +33,12 @@
     <rect width="240" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="120" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">USERS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  user_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">    username : VARCHAR(50)</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    email : VARCHAR(100)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    password_hash : VARCHAR(255)</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    role : ENUM(role_type)</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  user_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">    username : VARCHAR(50)</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    email : VARCHAR(100)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    password_hash : VARCHAR(255)</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    role : ENUM(role_type)</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 2: FABRIC_ROLLS (Central Entity) -->
@@ -39,15 +47,15 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">FABRIC_ROLLS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  roll_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">    roll_qr_code : VARCHAR(100)</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    fabric_type : VARCHAR(50)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    width_meters : FLOAT</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    total_length_meters : FLOAT</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    inspection_status : VARCHAR(20)</text>
-    <text x="12" y="180" fill="#000000" font-size="11">FK  inspected_by : UUID</text>
-    <text x="12" y="202" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
-    <text x="12" y="224" fill="#000000" font-size="11">    completed_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  roll_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">    roll_qr_code : VARCHAR(100)</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    fabric_type : VARCHAR(50)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    width_meters : FLOAT</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    total_length_meters : FLOAT</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    inspection_status : VARCHAR(20)</text>
+    <text x="14" y="180" fill="#000000" font-size="11">FK  inspected_by : UUID</text>
+    <text x="14" y="202" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
+    <text x="14" y="224" fill="#000000" font-size="11">    completed_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 3: GRADING_REPORTS (1:1 with Roll) -->
@@ -56,13 +64,13 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">GRADING_REPORTS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  report_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    total_penalty_points : INT</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    points_per_100_sq_m : FLOAT</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    astm_grade : VARCHAR(10)</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    certified_by : UUID</text>
-    <text x="12" y="180" fill="#000000" font-size="11">    pdf_report_url : VARCHAR(255)</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  report_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    total_penalty_points : INT</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    points_per_100_sq_m : FLOAT</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    astm_grade : VARCHAR(10)</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    certified_by : UUID</text>
+    <text x="14" y="180" fill="#000000" font-size="11">    pdf_report_url : VARCHAR(255)</text>
   </g>
 
   <!-- TABLE 4: DEFECT_RECORDS -->
@@ -71,15 +79,15 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DEFECT_RECORDS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  defect_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    defect_class : VARCHAR(50)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    confidence_score : FLOAT</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    x_position_cm : FLOAT</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    y_position_meters : FLOAT</text>
-    <text x="12" y="180" fill="#000000" font-size="11">    length_cm : FLOAT</text>
-    <text x="12" y="202" fill="#000000" font-size="11">    penalty_points : INT</text>
-    <text x="12" y="224" fill="#000000" font-size="11">    is_manually_corrected : BOOLEAN</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  defect_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    defect_class : VARCHAR(50)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    confidence_score : FLOAT</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    x_position_cm : FLOAT</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    y_position_meters : FLOAT</text>
+    <text x="14" y="180" fill="#000000" font-size="11">    length_cm : FLOAT</text>
+    <text x="14" y="202" fill="#000000" font-size="11">    penalty_points : INT</text>
+    <text x="14" y="224" fill="#000000" font-size="11">    is_manually_corrected : BOOLEAN</text>
   </g>
 
   <!-- TABLE 5: UNINSPECTED_SECTIONS (Invariant Guard) -->
@@ -88,13 +96,13 @@
     <rect width="260" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="130" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">UNINSPECTED_SECTIONS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  section_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    start_meter : FLOAT</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    end_meter : FLOAT</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    failure_reason : VARCHAR(100)</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    is_quarantined : BOOLEAN</text>
-    <text x="12" y="180" fill="#000000" font-size="11">    recorded_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  section_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    start_meter : FLOAT</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    end_meter : FLOAT</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    failure_reason : VARCHAR(100)</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    is_quarantined : BOOLEAN</text>
+    <text x="14" y="180" fill="#000000" font-size="11">    recorded_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 6: DEFECT_IMAGES -->
@@ -103,12 +111,12 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DEFECT_IMAGES</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  image_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  defect_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    local_file_path : VARCHAR(255)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    cloud_storage_url : VARCHAR(255)</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    is_uploaded : BOOLEAN</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    captured_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  image_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  defect_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    local_file_path : VARCHAR(255)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    cloud_storage_url : VARCHAR(255)</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    is_uploaded : BOOLEAN</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    captured_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 7: INVENTORY_RECORDS -->
@@ -117,12 +125,12 @@
     <rect width="260" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="130" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">INVENTORY_RECORDS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  inventory_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    warehouse_bay : VARCHAR(20)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    rack_number : VARCHAR(20)</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    stock_status : VARCHAR(20)</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    last_updated : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  inventory_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  roll_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    warehouse_bay : VARCHAR(20)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    rack_number : VARCHAR(20)</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    stock_status : VARCHAR(20)</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    last_updated : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 8: SYNC_OUTBOX (Edge Queue) -->
@@ -131,12 +139,12 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">SYNC_OUTBOX</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  queue_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">    entity_type : VARCHAR(30)</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    payload_json : JSONB</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    sync_status : VARCHAR(20)</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    retry_count : INT</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  queue_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">    entity_type : VARCHAR(30)</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    payload_json : JSONB</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    sync_status : VARCHAR(20)</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    retry_count : INT</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 9: ALERTS -->
@@ -145,40 +153,36 @@
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">ALERTS</text>
     
-    <text x="12" y="48" fill="#000000" font-size="11">PK  alert_id : UUID</text>
-    <text x="12" y="70" fill="#000000" font-size="11">FK  defect_id : UUID</text>
-    <text x="12" y="92" fill="#000000" font-size="11">    alert_level : VARCHAR(20)</text>
-    <text x="12" y="114" fill="#000000" font-size="11">    acknowledged : BOOLEAN</text>
-    <text x="12" y="136" fill="#000000" font-size="11">    acknowledged_by : UUID</text>
-    <text x="12" y="158" fill="#000000" font-size="11">    triggered_at : TIMESTAMP</text>
+    <text x="14" y="48" fill="#000000" font-size="11">PK  alert_id : UUID</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  defect_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    alert_level : VARCHAR(20)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    acknowledged : BOOLEAN</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    acknowledged_by : UUID</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    triggered_at : TIMESTAMP</text>
   </g>
 
 
-  <!-- ==================== RELATIONSHIPS (CROW'S FOOT) ==================== -->
+  <!-- ==================== RELATIONSHIPS WITH ACCURATE CROW'S FOOT CARDINALITY ==================== -->
 
-  <!-- USERS (1) to FABRIC_ROLLS (Many) -->
-  <line x1="300" y1="180" x2="420" y2="180" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 1. USERS (1) to FABRIC_ROLLS (Many) -->
+  <line x1="300" y1="180" x2="420" y2="180" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
-  <!-- FABRIC_ROLLS (1) to GRADING_REPORTS (1) -->
-  <line x1="690" y1="180" x2="810" y2="180" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#one)"/>
+  <!-- 2. FABRIC_ROLLS (1) to GRADING_REPORTS (1) - Clean Horizontal Link at y=160, outside box borders -->
+  <line x1="690" y1="160" x2="810" y2="160" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#one-end)"/>
 
-  <!-- FABRIC_ROLLS (1) to DEFECT_RECORDS (Many) -->
-  <line x1="555" y1="330" x2="555" y2="420" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 3. FABRIC_ROLLS (1) to DEFECT_RECORDS (Many) - Clean Vertical Link -->
+  <line x1="555" y1="330" x2="555" y2="420" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
-  <!-- FABRIC_ROLLS (1) to UNINSPECTED_SECTIONS (Many) -->
-  <line x1="420" y1="280" x2="190" y2="280" stroke="#000000" stroke-width="1.2"/>
-  <line x1="190" y1="280" x2="190" y2="420" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 4. FABRIC_ROLLS (1) to UNINSPECTED_SECTIONS (Many) - Routed cleanly through vertical corridor with markers in place -->
+  <path d="M 420 280 L 370 280 L 370 515 L 320 515" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
-  <!-- DEFECT_RECORDS (1) to DEFECT_IMAGES (Many) -->
-  <line x1="690" y1="500" x2="810" y2="500" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 5. DEFECT_RECORDS (1) to DEFECT_IMAGES (Many) - Clean Horizontal Link -->
+  <line x1="690" y1="500" x2="810" y2="500" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
-  <!-- FABRIC_ROLLS (1) to INVENTORY_RECORDS (1:Many) -->
-  <line x1="420" y1="310" x2="350" y2="310" stroke="#000000" stroke-width="1.2"/>
-  <line x1="350" y1="310" x2="350" y2="800" stroke="#000000" stroke-width="1.2"/>
-  <line x1="350" y1="800" x2="320" y2="800" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 6. DEFECT_RECORDS (1) to ALERTS (Many) - Routed cleanly through vertical corridor with markers in place -->
+  <path d="M 690 600 L 750 600 L 750 800 L 810 800" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
-  <!-- DEFECT_RECORDS (1) to ALERTS (Many) -->
-  <line x1="690" y1="620" x2="945" y2="620" stroke="#000000" stroke-width="1.2"/>
-  <line x1="945" y1="620" x2="945" y2="720" stroke="#000000" stroke-width="1.2" marker-start="url(#one)" marker-end="url(#many)"/>
+  <!-- 7. FABRIC_ROLLS (1) to INVENTORY_RECORDS (1) - Routed cleanly through vertical corridor with markers in place -->
+  <path d="M 420 310 L 350 310 L 350 780 L 320 780" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#one-end)"/>
 
 </svg>

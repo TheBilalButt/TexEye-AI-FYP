@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-14T18:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-11-14T20:50:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_context" name="Figure 4.2: Context Diagram &amp; DFD Level 0">
     <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -20,56 +20,56 @@
 
         <!-- Central System Circle -->
         <mxCell id="sys_center" value="&lt;b&gt;TexEye AI&lt;/b&gt;&lt;br&gt;Fabric Defect Detection&lt;br&gt;&amp;amp; Quality Management" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontSize=14;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="450" y="310" width="280" height="280" as="geometry" />
+          <mxGeometry x="460" y="340" width="220" height="220" as="geometry" />
         </mxCell>
 
         <!-- External Entities -->
-        <mxCell id="ent_sensor" value="&lt;b&gt;Camera &amp;amp; Sensors&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="80" y="140" width="220" height="65" as="geometry" />
+        <mxCell id="ent_sensor" value="&lt;b&gt;Camera &amp;amp; Sensors&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Rig &amp;amp; Rotary Encoder)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="105" width="220" height="75" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="80" y="650" width="220" height="65" as="geometry" />
+        <mxCell id="ent_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Mobile Application)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="665" width="220" height="75" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="880" y="140" width="220" height="65" as="geometry" />
+        <mxCell id="ent_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Web Workstation)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="105" width="220" height="75" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="880" y="390" width="220" height="65" as="geometry" />
+        <mxCell id="ent_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Analytics Dashboard)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="415" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="880" y="650" width="220" height="65" as="geometry" />
+        <mxCell id="ent_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(ERP / Warehouse Stock)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="665" width="220" height="75" as="geometry" />
         </mxCell>
 
-        <!-- Connectors -->
-        <mxCell id="e_sens_sys" value="Video Stream &amp;amp; Encoder Ticks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_sensor" target="sys_center">
+        <!-- Clean Zero-Overlap Connectors -->
+        <mxCell id="e_sens_sys" value="Camera Stream &amp;amp; Speed Pulses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_sensor" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e_sys_sens" value="Relay Warning Signal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_sensor">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_op_sys" value="QR Code &amp;amp; Confirmations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_op" target="sys_center">
+        <mxCell id="e_op_sys" value="Scanned Roll ID &amp;amp; Confirmations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_op" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_op" value="Vibration &amp;amp; Audio Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_op">
+        <mxCell id="e_sys_op" value="Audio &amp;amp; Vibration Defect Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_op">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_qi" value="Digital Defect Map &amp;amp; Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_qi">
+        <mxCell id="e_sys_qi" value="Defect Roll Map &amp;amp; ASTM Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_qi">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_qi_sys" value="Classification Corrections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_qi" target="sys_center">
+        <mxCell id="e_qi_sys" value="Classification Corrections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_qi" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_sys_pm" value="Defect Statistics &amp;amp; Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_pm">
+        <mxCell id="e_sys_pm" value="Production Reports &amp;amp; Defect Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_pm">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e_sys_im" value="Certified Roll Grade &amp;amp; Length" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="sys_center" target="ent_im">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_im_sys" value="Bay &amp;amp; Quarantine Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_im" target="sys_center">
+        <mxCell id="e_im_sys" value="Warehouse Bay &amp;amp; Storage Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_im" target="sys_center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
