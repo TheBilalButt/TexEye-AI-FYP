@@ -369,10 +369,12 @@ body.dark-theme {
 
 .image-frame {
   padding: 16px;
-  background: #090e1a;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
 }
 
 .diagram-img {
@@ -380,8 +382,8 @@ body.dark-theme {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* Buttons */

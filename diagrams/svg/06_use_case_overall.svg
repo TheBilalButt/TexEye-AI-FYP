@@ -1,304 +1,289 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1620 1050" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1150" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
   <defs>
-    <linearGradient id="ucTitleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <linearGradient id="ucBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#0b1329"/>
-    </linearGradient>
-    <filter id="ucShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
-    <marker id="ucArrInc" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#38bdf8"/>
+    <!-- Arrowhead markers for UML relationships -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000000"/>
     </marker>
-    <marker id="ucArrExt" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#c084fc"/>
+    <marker id="openArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6" fill="none" stroke="#000000" stroke-width="1.2"/>
     </marker>
   </defs>
 
-  <!-- Title Banner -->
-  <g transform="translate(60, 20)" filter="url(#ucShadow)">
-    <rect width="1500" height="60" rx="8" fill="url(#ucTitleGrad)" stroke="#334155" stroke-width="1.5"/>
-    <text x="750" y="27" fill="#38bdf8" font-size="17" font-weight="bold" text-anchor="middle">TexEye AI &#8212; Complete UML Use Case Architecture</text>
-    <text x="750" y="47" fill="#94a3b8" font-size="12" text-anchor="middle">Muhammad Afnan Khan (FA23-BAI-028) &#8226; Muhammad Bilal Butt (FA23-BAI-042) | BS Artificial Intelligence Final Year Project</text>
+  <!-- Document Frame (Academic Style) -->
+  <rect x="15" y="15" width="1370" height="1120" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="20" y="20" width="1360" height="1110" fill="none" stroke="#000000" stroke-width="0.8"/>
+
+  <!-- Diagram Caption Header -->
+  <text x="700" y="52" fill="#000000" font-size="16" font-weight="bold" text-anchor="middle">Figure 3.1: Use Case Diagram of TexEye AI System</text>
+  <line x1="50" y1="65" x2="1350" y2="65" stroke="#cccccc" stroke-width="1"/>
+
+  <!-- ==================== SYSTEM BOUNDARY ==================== -->
+  <rect x="290" y="85" width="760" height="1025" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="670" y="112" fill="#000000" font-size="15" font-weight="bold" text-anchor="middle">TexEye AI</text>
+
+  <!-- ==================== USE CASES (INSIDE BOUNDARY) ==================== -->
+
+  <!-- Shared Auth -->
+  <g id="uc-auth">
+    <ellipse cx="670" cy="145" rx="130" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="670" y="143" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-00</text>
+    <text x="670" y="155" fill="#000000" font-size="11" text-anchor="middle">Login / Authenticate</text>
   </g>
 
-  <!-- SYSTEM BOUNDARY -->
-  <g transform="translate(180, 95)" filter="url(#ucShadow)">
-    <rect width="1260" height="935" rx="12" fill="url(#ucBoxGrad)" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4"/>
-    
-    <!-- System Boundary Header Tag -->
-    <rect x="25" y="12" width="250" height="26" rx="5" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
-    <text x="150" y="29" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">SYSTEM BOUNDARY: TexEye AI</text>
-
-    <!-- Top Auth Use Case (Precondition for all human actors) -->
-    <g transform="translate(500, 10)">
-      <ellipse cx="130" cy="22" rx="125" ry="20" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-      <text x="130" y="26" fill="#f8fafc" font-size="11" font-weight="bold" text-anchor="middle">Login / Authenticate (JWT RBAC)</text>
-    </g>
-
-    <!-- ==================== LEFT COLUMN ==================== -->
-
-    <!-- PANEL 1: Floor Operations (Directly adjacent to Floor Operator) -->
-    <g transform="translate(25, 55)">
-      <rect width="585" height="295" rx="8" fill="#1e293b" fill-opacity="0.4" stroke="#334155" stroke-width="1"/>
-      <text x="25" y="22" fill="#38bdf8" font-size="12" font-weight="bold">Floor Operator Use Cases</text>
-
-      <!-- UC 1: Scan QR -->
-      <ellipse cx="290" cy="60" rx="170" ry="22" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="290" y="64" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Scan Roll QR Code</text>
-
-      <!-- UC 2: View Roll Info -->
-      <ellipse cx="290" cy="115" rx="170" ry="22" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="290" y="119" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">View Roll Specifications &amp; Metadata</text>
-
-      <!-- UC 3: Receive Alerts -->
-      <ellipse cx="290" cy="175" rx="170" ry="25" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="290" y="172" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Receive Real-Time Inspection Alerts</text>
-      <text x="290" y="188" fill="#94a3b8" font-size="9" text-anchor="middle">(Mobile Audio/Vibration &amp; Floor Stack Light)</text>
-
-      <!-- UC 4: Review Defect Crops -->
-      <ellipse cx="290" cy="240" rx="170" ry="22" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="290" y="244" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Review Detected Defect Thumbnails</text>
-    </g>
-
-    <!-- PANEL 2: Quality Verification (Directly adjacent to Quality Inspector) -->
-    <g transform="translate(25, 365)">
-      <rect width="585" height="345" rx="8" fill="#1e293b" fill-opacity="0.4" stroke="#334155" stroke-width="1"/>
-      <text x="25" y="22" fill="#c084fc" font-size="12" font-weight="bold">Quality Inspector Use Cases</text>
-
-      <!-- UC 1: View 2D Defect Map -->
-      <ellipse cx="290" cy="55" rx="170" ry="22" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
-      <text x="290" y="59" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">View 2D Digital Fabric Defect Map</text>
-
-      <!-- UC 2: Review High-Res Defect -->
-      <ellipse cx="290" cy="115" rx="170" ry="22" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
-      <text x="290" y="119" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Inspect High-Resolution Defect Crops</text>
-
-      <!-- UC 3: Correct Defect Record -->
-      <ellipse cx="290" cy="180" rx="170" ry="24" fill="#3b0764" stroke="#e879f9" stroke-width="1.8"/>
-      <text x="290" y="177" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Correct Defect Record</text>
-      <text x="290" y="192" fill="#f5d0fe" font-size="9" text-anchor="middle">(Reclassify Class / Adjust Bounding Box)</text>
-
-      <!-- <<extend>> relationship from Correct to Review -->
-      <path d="M 290 156 L 290 137" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 3" fill="none" marker-end="url(#ucArrExt)"/>
-      <text x="325" y="149" fill="#c084fc" font-size="8.5" font-weight="bold">&lt;&lt;extend&gt;&gt;</text>
-
-      <!-- UC 4: Confirm 4-Point Grade -->
-      <ellipse cx="290" cy="245" rx="170" ry="23" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
-      <text x="290" y="242" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Confirm / Adjust 4-Point Grading</text>
-      <text x="290" y="256" fill="#c084fc" font-size="9" text-anchor="middle">(ASTM D5430 Standard Calculation)</text>
-
-      <!-- UC 5: Generate Report -->
-      <ellipse cx="290" cy="305" rx="170" ry="22" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="290" y="309" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Generate Official PDF Quality Report</text>
-
-      <!-- <<include>> relationship from Generate Report to Confirm Grade -->
-      <path d="M 290 283 L 290 268" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3" fill="none" marker-end="url(#ucArrInc)"/>
-      <text x="325" y="278" fill="#38bdf8" font-size="8.5" font-weight="bold">&lt;&lt;include&gt;&gt;</text>
-    </g>
-
-    <!-- ==================== RIGHT COLUMN ==================== -->
-
-    <!-- PANEL 3: Production Manager -->
-    <g transform="translate(645, 55)">
-      <rect width="590" height="195" rx="8" fill="#1e293b" fill-opacity="0.4" stroke="#334155" stroke-width="1"/>
-      <text x="25" y="22" fill="#4ade80" font-size="12" font-weight="bold">Production Manager Use Cases</text>
-
-      <!-- UC: Dashboard -->
-      <ellipse cx="300" cy="55" rx="180" ry="22" fill="#0f172a" stroke="#4ade80" stroke-width="1.5"/>
-      <text x="300" y="59" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">View Executive Production Dashboard</text>
-
-      <!-- UC: Stats -->
-      <ellipse cx="300" cy="108" rx="180" ry="22" fill="#0f172a" stroke="#4ade80" stroke-width="1.5"/>
-      <text x="300" y="112" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Analyze Defect Trends &amp; Pareto Charts</text>
-
-      <!-- UC: Quality Logs -->
-      <ellipse cx="300" cy="160" rx="180" ry="22" fill="#0f172a" stroke="#4ade80" stroke-width="1.5"/>
-      <text x="300" y="164" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Review Historical Shift Quality Logs</text>
-    </g>
-
-    <!-- PANEL 4: Inventory Manager -->
-    <g transform="translate(645, 265)">
-      <rect width="590" height="195" rx="8" fill="#1e293b" fill-opacity="0.4" stroke="#334155" stroke-width="1"/>
-      <text x="25" y="22" fill="#fbbf24" font-size="12" font-weight="bold">Inventory Manager Use Cases</text>
-
-      <!-- UC: View Stock -->
-      <ellipse cx="300" cy="55" rx="180" ry="22" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-      <text x="300" y="59" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">View Warehouse Roll Inventory Status</text>
-
-      <!-- UC: Update Bay -->
-      <ellipse cx="300" cy="108" rx="180" ry="22" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-      <text x="300" y="112" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Update Warehouse Bay &amp; Rack Location</text>
-
-      <!-- UC: Quarantine Scrap -->
-      <ellipse cx="300" cy="160" rx="180" ry="22" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-      <text x="300" y="164" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Manage Quarantine &amp; Scrap Records</text>
-    </g>
-
-    <!-- PANEL 5: System Admin -->
-    <g transform="translate(645, 475)">
-      <rect width="590" height="235" rx="8" fill="#1e293b" fill-opacity="0.4" stroke="#334155" stroke-width="1"/>
-      <text x="25" y="22" fill="#f87171" font-size="12" font-weight="bold">System Administrator Use Cases</text>
-
-      <!-- UC: Manage Users -->
-      <ellipse cx="300" cy="65" rx="180" ry="22" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
-      <text x="300" y="69" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Manage User Accounts (Create / Update)</text>
-
-      <!-- UC: RBAC -->
-      <ellipse cx="300" cy="125" rx="180" ry="22" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
-      <text x="300" y="129" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Assign Roles &amp; Security Permissions</text>
-
-      <!-- UC: Calibration -->
-      <ellipse cx="300" cy="185" rx="180" ry="22" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
-      <text x="300" y="189" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">Configure Camera &amp; Encoder Calibration</text>
-    </g>
-
-    <!-- ==================== BOTTOM PANEL: AUTOMATED ENGINE ==================== -->
-    <g transform="translate(25, 725)">
-      <rect width="1210" height="195" rx="8" fill="#0b1329" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 2"/>
-      <text x="25" y="22" fill="#38bdf8" font-size="12" font-weight="bold">INTERNAL AUTOMATED SUBSYSTEM (Edge AI &amp; Sensing Engine)</text>
-
-      <!-- Row 1 -->
-      <ellipse cx="140" cy="65" rx="120" ry="22" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-      <text x="140" y="69" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Capture Continuous Frames</text>
-
-      <ellipse cx="440" cy="65" rx="120" ry="22" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-      <text x="440" y="69" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Read Rotary Encoder Pulses</text>
-
-      <ellipse cx="740" cy="65" rx="130" ry="22" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-      <text x="740" y="69" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Monitor Inspection Reliability</text>
-
-      <!-- Critical Invariant: Mark Uninspected Span -->
-      <ellipse cx="1060" cy="65" rx="135" ry="26" fill="#450a0a" stroke="#ef4444" stroke-width="2"/>
-      <text x="1060" y="61" fill="#ffffff" font-size="10.5" font-weight="bold" text-anchor="middle">Mark Uninspected Span</text>
-      <text x="1060" y="76" fill="#fca5a5" font-size="8.5" font-weight="bold" text-anchor="middle">(NEVER Classified as Clean!)</text>
-
-      <!-- <<extend>> arrow from Mark Uninspected to Monitor Reliability -->
-      <path d="M 925 65 L 870 65" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 3" fill="none" marker-end="url(#ucArrInc)"/>
-      <text x="898" y="55" fill="#f87171" font-size="8" font-weight="bold" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
-
-      <!-- Row 2 -->
-      <ellipse cx="140" cy="140" rx="120" ry="22" fill="#1e293b" stroke="#c084fc" stroke-width="1.2"/>
-      <text x="140" y="144" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Detect Fabric Defects (YOLO)</text>
-
-      <ellipse cx="440" cy="140" rx="120" ry="22" fill="#1e293b" stroke="#c084fc" stroke-width="1.2"/>
-      <text x="440" y="137" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Track Across Frames</text>
-      <text x="440" y="150" fill="#c084fc" font-size="8.5" text-anchor="middle">(Kalman + IoU Filter)</text>
-
-      <ellipse cx="740" cy="140" rx="130" ry="22" fill="#1e293b" stroke="#c084fc" stroke-width="1.2"/>
-      <text x="740" y="137" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Deduplicate Repeat Alerts</text>
-      <text x="740" y="150" fill="#c084fc" font-size="8.5" text-anchor="middle">(Consolidate Unique Record)</text>
-
-      <ellipse cx="1060" cy="140" rx="135" ry="22" fill="#1e293b" stroke="#4ade80" stroke-width="1.2"/>
-      <text x="1060" y="137" fill="#f8fafc" font-size="10.5" font-weight="600" text-anchor="middle">Auto-Sync via Outbox Queue</text>
-      <text x="1060" y="150" fill="#86efac" font-size="8.5" text-anchor="middle">(When Internet Restored)</text>
-    </g>
+  <!-- UC-01: Scan Roll QR Code -->
+  <g id="uc-scan">
+    <ellipse cx="490" cy="205" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="203" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-01</text>
+    <text x="490" y="215" fill="#000000" font-size="11" text-anchor="middle">Scan Roll QR Code</text>
   </g>
 
-  <!-- ==================== LEFT ACTORS (HUMAN) ==================== -->
-
-  <!-- ACTOR 1: FLOOR OPERATOR (Positioned vertically at Y=235) -->
-  <g id="actor-floor-operator" transform="translate(45, 160)">
-    <circle cx="45" cy="22" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
-    <line x1="45" y1="37" x2="45" y2="80" stroke="#38bdf8" stroke-width="2.5"/>
-    <line x1="15" y1="52" x2="75" y2="52" stroke="#38bdf8" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="22" y2="120" stroke="#38bdf8" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="68" y2="120" stroke="#38bdf8" stroke-width="2.5"/>
-    
-    <rect x="-10" y="130" width="110" height="34" rx="5" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
-    <text x="45" y="145" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">&lt;&lt;human&gt;&gt;</text>
-    <text x="45" y="158" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Floor Operator</text>
+  <!-- UC-02: View Roll Specifications -->
+  <g id="uc-spec">
+    <ellipse cx="490" cy="265" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="263" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-02</text>
+    <text x="490" y="275" fill="#000000" font-size="11" text-anchor="middle">View Roll Specifications</text>
   </g>
 
-  <!-- Clean, Straight Blue Association Lines: Floor Operator -->
-  <!-- Hand anchor point is at (x = 45 + 75 = 120, y = 160 + 52 = 212) -->
-  <line x1="120" y1="212" x2="325" y2="210" stroke="#38bdf8" stroke-width="1.8"/>
-  <line x1="120" y1="212" x2="325" y2="265" stroke="#38bdf8" stroke-width="1.8"/>
-  <line x1="120" y1="212" x2="325" y2="325" stroke="#38bdf8" stroke-width="1.8"/>
-  <line x1="120" y1="212" x2="325" y2="390" stroke="#38bdf8" stroke-width="1.8"/>
-
-  <!-- ACTOR 2: QUALITY INSPECTOR (Positioned vertically at Y=540) -->
-  <g id="actor-quality-inspector" transform="translate(45, 470)">
-    <circle cx="45" cy="22" r="15" fill="#0f172a" stroke="#c084fc" stroke-width="2.5"/>
-    <line x1="45" y1="37" x2="45" y2="80" stroke="#c084fc" stroke-width="2.5"/>
-    <line x1="15" y1="52" x2="75" y2="52" stroke="#c084fc" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="22" y2="120" stroke="#c084fc" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="68" y2="120" stroke="#c084fc" stroke-width="2.5"/>
-    
-    <rect x="-15" y="130" width="120" height="34" rx="5" fill="#1e293b" stroke="#c084fc" stroke-width="1"/>
-    <text x="45" y="145" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle">&lt;&lt;human&gt;&gt;</text>
-    <text x="45" y="158" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Quality Inspector</text>
+  <!-- UC-03: Receive Inspection Alerts -->
+  <g id="uc-alert">
+    <ellipse cx="490" cy="325" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="323" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-03</text>
+    <text x="490" y="335" fill="#000000" font-size="11" text-anchor="middle">Receive Inspection Alerts</text>
   </g>
 
-  <!-- Clean, Straight Purple Association Lines: Quality Inspector -->
-  <!-- Hand anchor point is at (x = 120, y = 470 + 52 = 522) -->
-  <line x1="120" y1="522" x2="325" y2="475" stroke="#c084fc" stroke-width="1.8"/>
-  <line x1="120" y1="522" x2="325" y2="535" stroke="#c084fc" stroke-width="1.8"/>
-  <line x1="120" y1="522" x2="325" y2="600" stroke="#c084fc" stroke-width="1.8"/>
-  <line x1="120" y1="522" x2="325" y2="665" stroke="#c084fc" stroke-width="1.8"/>
-  <line x1="120" y1="522" x2="325" y2="725" stroke="#c084fc" stroke-width="1.8"/>
-
-  <!-- ==================== RIGHT ACTORS (HUMAN) ==================== -->
-
-  <!-- ACTOR 3: PRODUCTION MANAGER (Y=160) -->
-  <g id="actor-production-manager" transform="translate(1485, 120)">
-    <circle cx="45" cy="22" r="15" fill="#0f172a" stroke="#4ade80" stroke-width="2.5"/>
-    <line x1="45" y1="37" x2="45" y2="80" stroke="#4ade80" stroke-width="2.5"/>
-    <line x1="15" y1="52" x2="75" y2="52" stroke="#4ade80" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="22" y2="120" stroke="#4ade80" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="68" y2="120" stroke="#4ade80" stroke-width="2.5"/>
-    
-    <rect x="-20" y="130" width="130" height="34" rx="5" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
-    <text x="45" y="145" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">&lt;&lt;human&gt;&gt;</text>
-    <text x="45" y="158" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Production Manager</text>
+  <!-- UC-04: Review Detected Defects -->
+  <g id="uc-review">
+    <ellipse cx="490" cy="385" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="383" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-04</text>
+    <text x="490" y="395" fill="#000000" font-size="11" text-anchor="middle">Review Detected Defects</text>
   </g>
 
-  <!-- Clean, Straight Green Association Lines: Production Manager -->
-  <!-- Hand anchor point is at (x = 1485 + 15 = 1500, y = 120 + 52 = 172) -->
-  <line x1="1500" y1="172" x2="1125" y2="205" stroke="#4ade80" stroke-width="1.8"/>
-  <line x1="1500" y1="172" x2="1125" y2="258" stroke="#4ade80" stroke-width="1.8"/>
-  <line x1="1500" y1="172" x2="1125" y2="310" stroke="#4ade80" stroke-width="1.8"/>
-
-  <!-- ACTOR 4: INVENTORY MANAGER (Y=380) -->
-  <g id="actor-inventory-manager" transform="translate(1485, 330)">
-    <circle cx="45" cy="22" r="15" fill="#0f172a" stroke="#fbbf24" stroke-width="2.5"/>
-    <line x1="45" y1="37" x2="45" y2="80" stroke="#fbbf24" stroke-width="2.5"/>
-    <line x1="15" y1="52" x2="75" y2="52" stroke="#fbbf24" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="22" y2="120" stroke="#fbbf24" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="68" y2="120" stroke="#fbbf24" stroke-width="2.5"/>
-    
-    <rect x="-20" y="130" width="130" height="34" rx="5" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
-    <text x="45" y="145" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">&lt;&lt;human&gt;&gt;</text>
-    <text x="45" y="158" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Inventory Manager</text>
+  <!-- UC-05: View Digital Defect Map -->
+  <g id="uc-map">
+    <ellipse cx="490" cy="450" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="448" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-05</text>
+    <text x="490" y="460" fill="#000000" font-size="11" text-anchor="middle">View Digital Defect Map</text>
   </g>
 
-  <!-- Clean, Straight Amber Association Lines: Inventory Manager -->
-  <!-- Hand anchor point is at (x = 1500, y = 330 + 52 = 382) -->
-  <line x1="1500" y1="382" x2="1125" y2="415" stroke="#fbbf24" stroke-width="1.8"/>
-  <line x1="1500" y1="382" x2="1125" y2="468" stroke="#fbbf24" stroke-width="1.8"/>
-  <line x1="1500" y1="382" x2="1125" y2="520" stroke="#fbbf24" stroke-width="1.8"/>
-
-  <!-- ACTOR 5: SYSTEM ADMINISTRATOR (Y=590) -->
-  <g id="actor-system-admin" transform="translate(1485, 540)">
-    <circle cx="45" cy="22" r="15" fill="#0f172a" stroke="#f87171" stroke-width="2.5"/>
-    <line x1="45" y1="37" x2="45" y2="80" stroke="#f87171" stroke-width="2.5"/>
-    <line x1="15" y1="52" x2="75" y2="52" stroke="#f87171" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="22" y2="120" stroke="#f87171" stroke-width="2.5"/>
-    <line x1="45" y1="80" x2="68" y2="120" stroke="#f87171" stroke-width="2.5"/>
-    
-    <rect x="-20" y="130" width="130" height="34" rx="5" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
-    <text x="45" y="145" fill="#f87171" font-size="10" font-weight="bold" text-anchor="middle">&lt;&lt;human&gt;&gt;</text>
-    <text x="45" y="158" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">System Admin</text>
+  <!-- UC-06: Correct Defect Record -->
+  <g id="uc-correct">
+    <ellipse cx="490" cy="515" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="513" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-06</text>
+    <text x="490" y="525" fill="#000000" font-size="11" text-anchor="middle">Correct Defect Record</text>
   </g>
 
-  <!-- Clean, Straight Red Association Lines: System Admin -->
-  <!-- Hand anchor point is at (x = 1500, y = 540 + 52 = 592) -->
-  <line x1="1500" y1="592" x2="1125" y2="635" stroke="#f87171" stroke-width="1.8"/>
-  <line x1="1500" y1="592" x2="1125" y2="695" stroke="#f87171" stroke-width="1.8"/>
-  <line x1="1500" y1="592" x2="1125" y2="755" stroke="#f87171" stroke-width="1.8"/>
+  <!-- UC-07: Confirm Fabric Grading -->
+  <g id="uc-grade">
+    <ellipse cx="490" cy="580" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="578" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-07</text>
+    <text x="490" y="590" fill="#000000" font-size="11" text-anchor="middle">Confirm Fabric Grading</text>
+  </g>
+
+  <!-- UC-08: Generate Inspection Report -->
+  <g id="uc-report">
+    <ellipse cx="490" cy="645" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="490" y="643" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-08</text>
+    <text x="490" y="655" fill="#000000" font-size="11" text-anchor="middle">Generate Inspection Report</text>
+  </g>
+
+  <!-- UC-09: View Production Dashboard -->
+  <g id="uc-dash">
+    <ellipse cx="850" cy="205" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="203" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-09</text>
+    <text x="850" y="215" fill="#000000" font-size="11" text-anchor="middle">View Production Dashboard</text>
+  </g>
+
+  <!-- UC-10: View Defect Statistics -->
+  <g id="uc-stats">
+    <ellipse cx="850" cy="265" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="263" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-10</text>
+    <text x="850" y="275" fill="#000000" font-size="11" text-anchor="middle">View Defect Statistics</text>
+  </g>
+
+  <!-- UC-11: View Quality Records -->
+  <g id="uc-quality">
+    <ellipse cx="850" cy="325" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="323" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-11</text>
+    <text x="850" y="335" fill="#000000" font-size="11" text-anchor="middle">View Quality Records</text>
+  </g>
+
+  <!-- UC-12: View Inventory Records -->
+  <g id="uc-inv">
+    <ellipse cx="850" cy="400" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="398" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-12</text>
+    <text x="850" y="410" fill="#000000" font-size="11" text-anchor="middle">View Inventory Records</text>
+  </g>
+
+  <!-- UC-13: Update Roll Location -->
+  <g id="uc-loc">
+    <ellipse cx="850" cy="460" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="458" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-13</text>
+    <text x="850" y="470" fill="#000000" font-size="11" text-anchor="middle">Update Roll Location</text>
+  </g>
+
+  <!-- UC-14: Manage Quarantine Records -->
+  <g id="uc-quar">
+    <ellipse cx="850" cy="520" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="518" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-14</text>
+    <text x="850" y="530" fill="#000000" font-size="11" text-anchor="middle">Manage Quarantine Records</text>
+  </g>
+
+  <!-- UC-15: Manage User Accounts -->
+  <g id="uc-users">
+    <ellipse cx="850" cy="595" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="593" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-15</text>
+    <text x="850" y="605" fill="#000000" font-size="11" text-anchor="middle">Manage User Accounts</text>
+  </g>
+
+  <!-- UC-16: Configure Calibration Rules -->
+  <g id="uc-calib">
+    <ellipse cx="850" cy="655" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="850" y="653" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-16</text>
+    <text x="850" y="665" fill="#000000" font-size="11" text-anchor="middle">Configure Calibration Rules</text>
+  </g>
+
+  <!-- Sub-included / Extended Use Cases -->
+  <!-- Calculate 4-Point Grade (included by Confirm Fabric Grading) -->
+  <ellipse cx="670" cy="735" rx="120" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="670" y="739" fill="#000000" font-size="11" text-anchor="middle">Calculate 4-Point Grade</text>
+
+  <!-- Include arrow from UC-07 to Calculate 4-Point Grade -->
+  <path d="M 535 600 L 635 715" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#openArrow)"/>
+  <text x="600" y="650" fill="#000000" font-size="9" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- Extend arrow from UC-06 to UC-04 -->
+  <path d="M 490 493 L 490 407" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#openArrow)"/>
+  <text x="525" y="445" fill="#000000" font-size="9" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- ==================== AUTOMATED SYSTEM PROCESSES ==================== -->
+  <rect x="315" y="785" width="710" height="305" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="670" y="810" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Automated Edge AI &amp; Inspection Processes</text>
+
+  <!-- UC-17: Capture Fabric Images -->
+  <ellipse cx="460" cy="855" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="460" y="853" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-17</text>
+  <text x="460" y="865" fill="#000000" font-size="11" text-anchor="middle">Capture Fabric Images</text>
+
+  <!-- UC-18: Read Encoder Pulses -->
+  <ellipse cx="460" cy="925" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="460" y="923" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-18</text>
+  <text x="460" y="935" fill="#000000" font-size="11" text-anchor="middle">Read Encoder Pulses</text>
+
+  <!-- UC-19: Monitor Inspection Reliability -->
+  <ellipse cx="460" cy="995" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="460" y="993" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-19</text>
+  <text x="460" y="1005" fill="#000000" font-size="11" text-anchor="middle">Monitor Reliability</text>
+
+  <!-- UC-20: Mark Uninspected Section -->
+  <ellipse cx="460" cy="1055" rx="110" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="460" y="1053" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-20</text>
+  <text x="460" y="1065" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">Mark Uninspected Section</text>
+
+  <!-- Extend arrow from UC-20 to UC-19 -->
+  <path d="M 460 1035 L 460 1017" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#openArrow)"/>
+  <text x="500" y="1027" fill="#000000" font-size="9" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- UC-21: Detect Fabric Defects -->
+  <ellipse cx="780" cy="855" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="780" y="853" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-21</text>
+  <text x="780" y="865" fill="#000000" font-size="11" text-anchor="middle">Detect Fabric Defects</text>
+
+  <!-- UC-22: Track Defects Across Frames -->
+  <ellipse cx="780" cy="925" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="780" y="923" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-22</text>
+  <text x="780" y="935" fill="#000000" font-size="11" text-anchor="middle">Track Defects Across Frames</text>
+
+  <!-- UC-23: Store Records Locally -->
+  <ellipse cx="780" cy="995" rx="110" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="780" y="993" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-23</text>
+  <text x="780" y="1005" fill="#000000" font-size="11" text-anchor="middle">Store Records Locally</text>
+
+  <!-- UC-24: Synchronize Records Online -->
+  <ellipse cx="780" cy="1055" rx="110" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="780" y="1053" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">UC-24</text>
+  <text x="780" y="1065" fill="#000000" font-size="10" text-anchor="middle">Synchronize Records Online</text>
+
+
+  <!-- ==================== ACTORS (OUTSIDE BOUNDARY) ==================== -->
+
+  <!-- ACTOR 1: Floor Operator (Top Left) -->
+  <g id="actor-floor-operator" transform="translate(140, 240)">
+    <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="34" x2="20" y2="70" stroke="#000000" stroke-width="1.5"/>
+    <line x1="0" y1="46" x2="40" y2="46" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="4" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="36" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <text x="20" y="125" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Floor Operator</text>
+  </g>
+
+  <!-- ACTOR 2: Quality Inspector (Bottom Left) -->
+  <g id="actor-quality-inspector" transform="translate(140, 520)">
+    <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="34" x2="20" y2="70" stroke="#000000" stroke-width="1.5"/>
+    <line x1="0" y1="46" x2="40" y2="46" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="4" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="36" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <text x="20" y="125" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Quality Inspector</text>
+  </g>
+
+  <!-- ACTOR 3: Production Manager (Top Right) -->
+  <g id="actor-production-manager" transform="translate(1180, 230)">
+    <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="34" x2="20" y2="70" stroke="#000000" stroke-width="1.5"/>
+    <line x1="0" y1="46" x2="40" y2="46" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="4" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="36" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <text x="20" y="125" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Production Manager</text>
+  </g>
+
+  <!-- ACTOR 4: Inventory Manager (Middle Right) -->
+  <g id="actor-inventory-manager" transform="translate(1180, 430)">
+    <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="34" x2="20" y2="70" stroke="#000000" stroke-width="1.5"/>
+    <line x1="0" y1="46" x2="40" y2="46" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="4" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="36" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <text x="20" y="125" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Inventory Manager</text>
+  </g>
+
+  <!-- ACTOR 5: System Administrator (Bottom Right) -->
+  <g id="actor-system-admin" transform="translate(1180, 600)">
+    <circle cx="20" cy="20" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="34" x2="20" y2="70" stroke="#000000" stroke-width="1.5"/>
+    <line x1="0" y1="46" x2="40" y2="46" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="4" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <line x1="20" y1="70" x2="36" y2="105" stroke="#000000" stroke-width="1.5"/>
+    <text x="20" y="125" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">System Administrator</text>
+  </g>
+
+
+  <!-- ==================== ASSOCIATIONS (SOLID BLACK LINES) ==================== -->
+
+  <!-- Floor Operator Associations -->
+  <line x1="180" y1="286" x2="365" y2="205" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="286" x2="365" y2="265" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="286" x2="365" y2="325" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="286" x2="365" y2="385" stroke="#000000" stroke-width="1.2"/>
+
+  <!-- Quality Inspector Associations -->
+  <line x1="180" y1="566" x2="365" y2="385" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="566" x2="365" y2="450" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="566" x2="365" y2="515" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="566" x2="365" y2="580" stroke="#000000" stroke-width="1.2"/>
+  <line x1="180" y1="566" x2="365" y2="645" stroke="#000000" stroke-width="1.2"/>
+
+  <!-- Production Manager Associations -->
+  <line x1="1180" y1="276" x2="975" y2="205" stroke="#000000" stroke-width="1.2"/>
+  <line x1="1180" y1="276" x2="975" y2="265" stroke="#000000" stroke-width="1.2"/>
+  <line x1="1180" y1="276" x2="975" y2="325" stroke="#000000" stroke-width="1.2"/>
+
+  <!-- Inventory Manager Associations -->
+  <line x1="1180" y1="476" x2="975" y2="400" stroke="#000000" stroke-width="1.2"/>
+  <line x1="1180" y1="476" x2="975" y2="460" stroke="#000000" stroke-width="1.2"/>
+  <line x1="1180" y1="476" x2="975" y2="520" stroke="#000000" stroke-width="1.2"/>
+
+  <!-- System Administrator Associations -->
+  <line x1="1180" y1="646" x2="975" y2="595" stroke="#000000" stroke-width="1.2"/>
+  <line x1="1180" y1="646" x2="975" y2="655" stroke="#000000" stroke-width="1.2"/>
 
 </svg>

@@ -1,86 +1,89 @@
-<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
-  <diagram id="texeye_erd" name="Entity Relationship Diagram">
-    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-11-14T18:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_erd" name="Figure 5.6: Entity Relationship Diagram (ERD)">
+    <mxGraphModel dx="1350" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="950" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <mxCell id="title_erd" value="&lt;b&gt;TexEye AI: Entity Relationship Diagram (ERD &amp;amp; Relational Schema)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Muhammad Afnan Khan &amp;bull; Muhammad Bilal Butt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
-          <mxGeometry x="400" y="20" width="800" height="50" as="geometry" />
+        <!-- Academic Double Frame -->
+        <mxCell id="frame_outer" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="15" y="15" width="1320" height="920" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_inner" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=0.8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1310" height="910" as="geometry" />
         </mxCell>
 
-        <!-- Entity: users -->
-        <mxCell id="ent_users" value="&lt;b&gt;users&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;username : varchar(50)&lt;br&gt;password_hash : varchar(255)&lt;br&gt;full_name : varchar(100)&lt;br&gt;email : varchar(100)&lt;br&gt;role : varchar(30)&lt;br&gt;is_active : boolean&lt;br&gt;created_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="80" y="100" width="220" height="150" as="geometry" />
+        <!-- Title Caption -->
+        <mxCell id="caption" value="&lt;b&gt;Figure 5.6: Entity Relationship Diagram (ERD) of TexEye AI&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="375" y="35" width="600" height="30" as="geometry" />
         </mxCell>
 
-        <!-- Entity: fabric_rolls -->
-        <mxCell id="ent_rolls" value="&lt;b&gt;fabric_rolls&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;UK&lt;/b&gt; roll_code_qr : varchar(64)&lt;br&gt;batch_number : varchar(50)&lt;br&gt;fabric_type : varchar(50)&lt;br&gt;total_length_m : decimal(10,2)&lt;br&gt;width_cm : decimal(10,2)&lt;br&gt;inspection_status : varchar(30)&lt;br&gt;final_grade : varchar(20)&lt;br&gt;created_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="400" y="100" width="240" height="170" as="geometry" />
+        <!-- Entity: USERS -->
+        <mxCell id="t_users" value="&lt;b&gt;USERS&lt;/b&gt;&lt;hr&gt;PK  user_id : UUID&lt;br&gt;    username : VARCHAR(50)&lt;br&gt;    email : VARCHAR(100)&lt;br&gt;    password_hash : VARCHAR(255)&lt;br&gt;    role : ENUM(role_type)&lt;br&gt;    created_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="60" y="95" width="240" height="175" as="geometry" />
         </mxCell>
 
-        <!-- Entity: inspection_sessions -->
-        <mxCell id="ent_sessions" value="&lt;b&gt;inspection_sessions&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; operator_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; inspector_id : uuid&lt;br&gt;edge_device_id : varchar(50)&lt;br&gt;start_time : timestamp&lt;br&gt;end_time : timestamp&lt;br&gt;total_inspected_length_m : decimal&lt;br&gt;total_uninspected_length_m : decimal&lt;br&gt;status : varchar(30)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="750" y="100" width="270" height="190" as="geometry" />
+        <!-- Entity: FABRIC_ROLLS -->
+        <mxCell id="t_rolls" value="&lt;b&gt;FABRIC_ROLLS&lt;/b&gt;&lt;hr&gt;PK  roll_id : UUID&lt;br&gt;    roll_qr_code : VARCHAR(100)&lt;br&gt;    fabric_type : VARCHAR(50)&lt;br&gt;    width_meters : FLOAT&lt;br&gt;    total_length_meters : FLOAT&lt;br&gt;    inspection_status : VARCHAR(20)&lt;br&gt;FK  inspected_by : UUID&lt;br&gt;    created_at : TIMESTAMP&lt;br&gt;    completed_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="420" y="95" width="270" height="235" as="geometry" />
         </mxCell>
 
-        <!-- Entity: defect_records -->
-        <mxCell id="ent_defects" value="&lt;b&gt;defect_records&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; session_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;defect_class : varchar(40)&lt;br&gt;confidence_score : decimal(5,4)&lt;br&gt;position_x_cm : decimal(8,2)&lt;br&gt;position_y_m : decimal(10,2)&lt;br&gt;bounding_box : json&lt;br&gt;image_path_local : varchar(255)&lt;br&gt;image_url_cloud : varchar(255)&lt;br&gt;is_verified : boolean&lt;br&gt;corrected_class : varchar(40)&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; corrected_by : uuid&lt;br&gt;penalty_points : integer&lt;br&gt;created_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#581c87;" vertex="1" parent="1">
-          <mxGeometry x="750" y="370" width="270" height="260" as="geometry" />
+        <!-- Entity: GRADING_REPORTS -->
+        <mxCell id="t_grades" value="&lt;b&gt;GRADING_REPORTS&lt;/b&gt;&lt;hr&gt;PK  report_id : UUID&lt;br&gt;FK  roll_id : UUID&lt;br&gt;    total_penalty_points : INT&lt;br&gt;    points_per_100_sq_m : FLOAT&lt;br&gt;    astm_grade : VARCHAR(10)&lt;br&gt;    certified_by : UUID&lt;br&gt;    pdf_report_url : VARCHAR(255)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="810" y="95" width="270" height="195" as="geometry" />
         </mxCell>
 
-        <!-- Entity: uninspected_sections -->
-        <mxCell id="ent_uninspected" value="&lt;b&gt;uninspected_sections&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; session_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;start_position_m : decimal(10,2)&lt;br&gt;end_position_m : decimal(10,2)&lt;br&gt;failure_reason : varchar(50)&lt;br&gt;&lt;i&gt;(CAMERA_DISCONNECTED, POOR_IMAGE,&lt;br&gt;LIGHTING_ANOMALY, DROPPED_FRAMES)&lt;/i&gt;&lt;br&gt;severity_warning : varchar(20)&lt;br&gt;logged_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#991b1b;" vertex="1" parent="1">
-          <mxGeometry x="1110" y="100" width="280" height="190" as="geometry" />
+        <!-- Entity: DEFECT_RECORDS -->
+        <mxCell id="t_defects" value="&lt;b&gt;DEFECT_RECORDS&lt;/b&gt;&lt;hr&gt;PK  defect_id : UUID&lt;br&gt;FK  roll_id : UUID&lt;br&gt;    defect_class : VARCHAR(50)&lt;br&gt;    confidence_score : FLOAT&lt;br&gt;    x_position_cm : FLOAT&lt;br&gt;    y_position_meters : FLOAT&lt;br&gt;    length_cm : FLOAT&lt;br&gt;    penalty_points : INT&lt;br&gt;    is_manually_corrected : BOOLEAN" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="420" y="420" width="270" height="235" as="geometry" />
         </mxCell>
 
-        <!-- Entity: roll_grading -->
-        <mxCell id="ent_grading" value="&lt;b&gt;roll_grading&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; session_id : uuid&lt;br&gt;grading_standard : varchar(30)&lt;br&gt;total_defect_points : integer&lt;br&gt;points_per_100_sqm : decimal(8,2)&lt;br&gt;final_grade : varchar(20)&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; graded_by : uuid&lt;br&gt;graded_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#14532d;" vertex="1" parent="1">
-          <mxGeometry x="400" y="370" width="240" height="180" as="geometry" />
+        <!-- Entity: UNINSPECTED_SECTIONS -->
+        <mxCell id="t_uninsp" value="&lt;b&gt;UNINSPECTED_SECTIONS&lt;/b&gt;&lt;hr&gt;PK  section_id : UUID&lt;br&gt;FK  roll_id : UUID&lt;br&gt;    start_meter : FLOAT&lt;br&gt;    end_meter : FLOAT&lt;br&gt;    failure_reason : VARCHAR(100)&lt;br&gt;    is_quarantined : BOOLEAN&lt;br&gt;    recorded_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="260" height="195" as="geometry" />
         </mxCell>
 
-        <!-- Entity: inventory_records -->
-        <mxCell id="ent_inventory" value="&lt;b&gt;inventory_records&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;warehouse_zone : varchar(30)&lt;br&gt;shelf_location : varchar(30)&lt;br&gt;stock_status : varchar(30)&lt;br&gt;is_scrap : boolean&lt;br&gt;scrap_reason : text&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; updated_by : uuid&lt;br&gt;last_updated : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#14532d;" vertex="1" parent="1">
-          <mxGeometry x="80" y="370" width="220" height="180" as="geometry" />
+        <!-- Entity: DEFECT_IMAGES -->
+        <mxCell id="t_images" value="&lt;b&gt;DEFECT_IMAGES&lt;/b&gt;&lt;hr&gt;PK  image_id : UUID&lt;br&gt;FK  defect_id : UUID&lt;br&gt;    local_file_path : VARCHAR(255)&lt;br&gt;    cloud_storage_url : VARCHAR(255)&lt;br&gt;    is_uploaded : BOOLEAN&lt;br&gt;    captured_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="810" y="420" width="270" height="175" as="geometry" />
         </mxCell>
 
-        <!-- Entity: alerts -->
-        <mxCell id="ent_alerts" value="&lt;b&gt;alerts&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; session_id : uuid&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; roll_id : uuid&lt;br&gt;alert_type : varchar(40)&lt;br&gt;severity : varchar(20)&lt;br&gt;message : text&lt;br&gt;timestamp : timestamp&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; acknowledged_by : uuid&lt;br&gt;acknowledged_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#991b1b;" vertex="1" parent="1">
-          <mxGeometry x="1110" y="370" width="280" height="180" as="geometry" />
+        <!-- Entity: INVENTORY_RECORDS -->
+        <mxCell id="t_inv" value="&lt;b&gt;INVENTORY_RECORDS&lt;/b&gt;&lt;hr&gt;PK  inventory_id : UUID&lt;br&gt;FK  roll_id : UUID&lt;br&gt;    warehouse_bay : VARCHAR(20)&lt;br&gt;    rack_number : VARCHAR(20)&lt;br&gt;    stock_status : VARCHAR(20)&lt;br&gt;    last_updated : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="60" y="720" width="260" height="175" as="geometry" />
         </mxCell>
 
-        <!-- Entity: offline_sync_queue -->
-        <mxCell id="ent_sync_q" value="&lt;b&gt;offline_sync_queue&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; id : uuid&lt;br&gt;entity_type : varchar(30)&lt;br&gt;entity_id : uuid&lt;br&gt;operation : varchar(10)&lt;br&gt;payload_json : json&lt;br&gt;sync_status : varchar(20)&lt;br&gt;retry_count : integer&lt;br&gt;last_attempt : timestamp&lt;br&gt;created_at : timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=2;align=left;spacingLeft=10;fontSize=11;fontColor=#78350f;" vertex="1" parent="1">
-          <mxGeometry x="400" y="620" width="240" height="180" as="geometry" />
+        <!-- Entity: SYNC_OUTBOX -->
+        <mxCell id="t_outbox" value="&lt;b&gt;SYNC_OUTBOX&lt;/b&gt;&lt;hr&gt;PK  queue_id : UUID&lt;br&gt;    entity_type : VARCHAR(30)&lt;br&gt;    payload_json : JSONB&lt;br&gt;    sync_status : VARCHAR(20)&lt;br&gt;    retry_count : INT&lt;br&gt;    created_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="420" y="720" width="270" height="175" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: ALERTS -->
+        <mxCell id="t_alerts" value="&lt;b&gt;ALERTS&lt;/b&gt;&lt;hr&gt;PK  alert_id : UUID&lt;br&gt;FK  defect_id : UUID&lt;br&gt;    alert_level : VARCHAR(20)&lt;br&gt;    acknowledged : BOOLEAN&lt;br&gt;    acknowledged_by : UUID&lt;br&gt;    triggered_at : TIMESTAMP" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;startSize=28;" vertex="1" parent="1">
+          <mxGeometry x="810" y="720" width="270" height="175" as="geometry" />
         </mxCell>
 
         <!-- Relationships -->
-        <mxCell id="rel_roll_session" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="ent_rolls" target="ent_sessions" parent="1">
+        <mxCell id="rel_u_r" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_users" target="t_rolls">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel_session_defect" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" source="ent_sessions" target="ent_defects" parent="1">
+        <mxCell id="rel_r_g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_rolls" target="t_grades">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel_session_uninspect" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="ent_sessions" target="ent_uninspected" parent="1">
+        <mxCell id="rel_r_d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_rolls" target="t_defects">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel_roll_grading" value="1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="ent_rolls" target="ent_grading" parent="1">
+        <mxCell id="rel_r_u" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_rolls" target="t_uninsp">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel_roll_inventory" value="1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="ent_rolls" target="ent_inventory" parent="1">
+        <mxCell id="rel_d_i" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_defects" target="t_images">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel_session_alerts" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="ent_sessions" target="ent_alerts" parent="1">
+        <mxCell id="rel_r_inv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_rolls" target="t_inv">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="rel_user_session" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1;" edge="1" source="ent_users" target="ent_sessions" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="190" y="80" />
-              <mxPoint x="885" y="80" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="rel_d_a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_defects" target="t_alerts">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
       </root>

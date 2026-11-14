@@ -1,205 +1,121 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1290" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
   <defs>
-    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <linearGradient id="blueCard" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e3a8a"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <linearGradient id="greenCard" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#14532d"/>
-      <stop offset="100%" stop-color="#052e16"/>
-    </linearGradient>
-    <linearGradient id="purpleCard" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#581c87"/>
-      <stop offset="100%" stop-color="#3b0764"/>
-    </linearGradient>
-    <linearGradient id="redCard" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7f1d1d"/>
-      <stop offset="100%" stop-color="#450a0a"/>
-    </linearGradient>
-    <linearGradient id="amberCard" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#78350f"/>
-      <stop offset="100%" stop-color="#451a03"/>
-    </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
-    </filter>
-    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/>
-    </marker>
-    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#4ade80"/>
-    </marker>
-    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f87171"/>
-    </marker>
-    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#c084fc"/>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#000000"/>
     </marker>
   </defs>
 
-  <!-- Header -->
-  <g transform="translate(100, 30)" filter="url(#shadow)">
-    <rect width="1200" height="70" rx="12" fill="url(#headerGrad)" stroke="#334155" stroke-width="1.5"/>
-    <text x="600" y="32" fill="#38bdf8" font-size="20" font-weight="bold" text-anchor="middle">TexEye AI &#8212; End-to-End System Workflow</text>
-    <text x="600" y="55" fill="#94a3b8" font-size="13" text-anchor="middle">Muhammad Afnan Khan (FA23-BAI-028) &#8226; Muhammad Bilal Butt (FA23-BAI-042) | Real-Time Inspection &amp; Quality Gating</text>
-  </g>
+  <!-- Academic Double Frame -->
+  <rect x="15" y="15" width="970" height="1220" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="20" y="20" width="960" height="1210" fill="none" stroke="#000000" stroke-width="0.8"/>
 
-  <!-- Start Node -->
-  <g transform="translate(525, 130)" filter="url(#shadow)">
-    <rect width="350" height="50" rx="25" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
-    <text x="175" y="30" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">START: Fabric Roll Enters Stand</text>
-  </g>
-  <path d="M 700 180 L 700 210" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowBlue)" fill="none"/>
+  <!-- Caption Title -->
+  <text x="500" y="50" fill="#000000" font-size="16" font-weight="bold" text-anchor="middle">Figure 2.1: Main System Workflow of TexEye AI</text>
+  <line x1="50" y1="62" x2="950" y2="62" stroke="#cccccc" stroke-width="1"/>
 
-  <!-- Session Init -->
-  <g transform="translate(500, 215)" filter="url(#shadow)">
-    <rect width="400" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="200" y="27" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Initialize Inspection Session</text>
-    <text x="200" y="47" fill="#94a3b8" font-size="12" text-anchor="middle">Operator QR Scan &#8226; Fabric Metadata Loaded</text>
-  </g>
-  <path d="M 700 275 L 700 305" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowBlue)" fill="none"/>
+  <!-- Start Symbol (Initial State) -->
+  <circle cx="500" cy="95" r="14" fill="#000000" stroke="#000000" stroke-width="1.5"/>
 
-  <!-- Subgraph 1: Sensing -->
-  <g transform="translate(150, 310)" filter="url(#shadow)">
-    <rect width="1100" height="110" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 2"/>
-    <text x="25" y="25" fill="#38bdf8" font-size="13" font-weight="bold">1. CONTINUOUS HARDWARE SENSING &amp; ILLUMINATION</text>
-    
-    <!-- Light -->
-    <rect x="30" y="40" width="320" height="50" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-    <text x="190" y="62" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">LED Lighting System</text>
-    <text x="190" y="80" fill="#94a3b8" font-size="11" text-anchor="middle">High-CRI Uniform Illumination</text>
+  <!-- Step 1: Roll Enters Stand -->
+  <line x1="500" y1="109" x2="500" y2="135" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="135" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="161" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Fabric Roll Enters Inspection Stand</text>
 
-    <!-- Camera -->
-    <rect x="390" y="40" width="320" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="550" y="62" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Industrial Camera</text>
-    <text x="550" y="80" fill="#94a3b8" font-size="11" text-anchor="middle">Continuous High-Speed Video Stream</text>
+  <!-- Step 2: Initialize Session / Scan QR -->
+  <line x1="500" y1="177" x2="500" y2="205" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="205" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="231" fill="#000000" font-size="12" text-anchor="middle">Scan Roll QR Code &amp; Load Metadata</text>
 
-    <!-- Encoder -->
-    <rect x="750" y="40" width="320" height="50" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-    <text x="910" y="62" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">Rotary Encoder</text>
-    <text x="910" y="80" fill="#94a3b8" font-size="11" text-anchor="middle">Physical Movement Pulses (&#916;L)</text>
-  </g>
-  <path d="M 700 420 L 700 460" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowBlue)" fill="none"/>
+  <!-- Step 3: Capture & Measure (Fork) -->
+  <line x1="500" y1="247" x2="500" y2="275" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="275" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="301" fill="#000000" font-size="12" text-anchor="middle">Capture Images &amp; Read Encoder Displacement</text>
 
-  <!-- Decision Gate: Reliability -->
-  <g transform="translate(550, 465)" filter="url(#shadow)">
-    <polygon points="150,0 300,70 150,140 0,70" fill="url(#blueCard)" stroke="#38bdf8" stroke-width="2"/>
-    <text x="150" y="55" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Inspection Data</text>
-    <text x="150" y="75" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Reliable?</text>
-    <text x="150" y="95" fill="#93c5fd" font-size="10" text-anchor="middle">Cam &#8226; Light &#8226; Blur &#8226; Drop</text>
-  </g>
+  <!-- Step 4: Reliability Gate Check -->
+  <line x1="500" y1="317" x2="500" y2="345" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="345" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="371" fill="#000000" font-size="12" text-anchor="middle">Evaluate Inspection Reliability</text>
 
-  <!-- Left Branch: Unreliable -->
-  <path d="M 550 535 L 360 535" stroke="#f87171" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
-  <text x="440" y="525" fill="#f87171" font-size="12" font-weight="bold">NO (Degraded)</text>
+  <!-- Decision 1: Inspection Reliable? -->
+  <line x1="500" y1="387" x2="500" y2="415" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <polygon points="500 415, 620 450, 500 485, 380 450" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="454" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Data Reliable?</text>
 
-  <g transform="translate(100, 500)" filter="url(#shadow)">
-    <rect width="250" height="70" rx="8" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
-    <text x="125" y="30" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Generate Warning Alert</text>
-    <text x="125" y="50" fill="#fca5a5" font-size="11" text-anchor="middle">Local Beacon &#8226; Operator Push</text>
-  </g>
-  <path d="M 225 570 L 225 610" stroke="#f87171" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
+  <!-- [No] Branch: Left -->
+  <line x1="380" y1="450" x2="230" y2="450" stroke="#000000" stroke-width="1.2"/>
+  <line x1="230" y1="450" x2="230" y2="495" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="310" y="442" fill="#000000" font-size="11" font-weight="bold">No</text>
 
-  <g transform="translate(60, 615)" filter="url(#shadow)">
-    <rect width="330" height="95" rx="8" fill="url(#redCard)" stroke="#ef4444" stroke-width="2"/>
-    <text x="165" y="27" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Mark Section as UNINSPECTED</text>
-    <text x="165" y="47" fill="#fecaca" font-size="11" text-anchor="middle">Interval: [L_start, L_end] in meters</text>
-    <rect x="20" y="58" width="290" height="25" rx="4" fill="#450a0a"/>
-    <text x="165" y="75" fill="#fca5a5" font-size="10" font-weight="bold" text-anchor="middle">CRITICAL: Never treat as defect-free!</text>
-  </g>
+  <rect x="110" y="495" width="240" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="230" y="521" fill="#000000" font-size="12" text-anchor="middle">Trigger Warning Stack Light</text>
 
-  <!-- Right Branch: Reliable (AI Pipeline) -->
-  <path d="M 700 605 L 700 645" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowGreen)" fill="none"/>
-  <text x="710" y="625" fill="#4ade80" font-size="12" font-weight="bold">YES (Reliable)</text>
+  <line x1="230" y1="537" x2="230" y2="565" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="110" y="565" width="240" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="230" y="591" fill="#000000" font-size="11.5" font-weight="bold" text-anchor="middle">Mark Span as Uninspected</text>
 
-  <g transform="translate(500, 650)" filter="url(#shadow)">
-    <rect width="400" height="260" rx="12" fill="#0f172a" stroke="#a855f7" stroke-width="2"/>
-    <text x="20" y="25" fill="#c084fc" font-size="13" font-weight="bold">AI DEFECT DETECTION &amp; METROLOGY PIPELINE</text>
-    
-    <!-- Model -->
-    <rect x="25" y="40" width="350" height="42" rx="6" fill="url(#purpleCard)" stroke="#c084fc" stroke-width="1"/>
-    <text x="200" y="65" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">1. AI Model Defect Detection (YOLO)</text>
+  <!-- [Yes] Branch: Down to AI Pipeline -->
+  <line x1="500" y1="485" x2="500" y2="520" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="510" y="505" fill="#000000" font-size="11" font-weight="bold">Yes</text>
 
-    <!-- Tracker -->
-    <rect x="25" y="92" width="350" height="42" rx="6" fill="url(#purpleCard)" stroke="#c084fc" stroke-width="1"/>
-    <text x="200" y="117" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">2. Multi-Frame Tracking (Kalman / IoU)</text>
+  <rect x="360" y="520" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="546" fill="#000000" font-size="12" text-anchor="middle">Run AI Defect Detection</text>
 
-    <!-- Dedup -->
-    <rect x="25" y="144" width="350" height="42" rx="6" fill="url(#purpleCard)" stroke="#c084fc" stroke-width="1"/>
-    <text x="200" y="169" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">3. Duplicate Detection Reduction</text>
+  <line x1="500" y1="562" x2="500" y2="590" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="590" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="616" fill="#000000" font-size="12" text-anchor="middle">Track Defects Across Frames</text>
 
-    <!-- Position -->
-    <rect x="25" y="196" width="350" height="45" rx="6" fill="url(#purpleCard)" stroke="#c084fc" stroke-width="1"/>
-    <text x="200" y="217" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">4. Metric Position Estimation</text>
-    <text x="200" y="233" fill="#e9d5ff" font-size="10" text-anchor="middle">X_cm (Cam Calib) &#8226; Y_m (Encoder Displace)</text>
-  </g>
+  <line x1="500" y1="632" x2="500" y2="660" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="660" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="686" fill="#000000" font-size="12" text-anchor="middle">Deduplicate Repeat Detections</text>
 
-  <!-- Join into Local Storage -->
-  <path d="M 225 710 L 225 960 L 520 960" stroke="#f87171" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
-  <path d="M 700 910 L 700 935" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowGreen)" fill="none"/>
+  <line x1="500" y1="702" x2="500" y2="730" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="730" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="756" fill="#000000" font-size="12" text-anchor="middle">Estimate Physical Coordinate (X, Y)</text>
 
-  <!-- Local Storage Cylinder -->
-  <g transform="translate(525, 935)" filter="url(#shadow)">
-    <rect width="350" height="65" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="2"/>
-    <text x="175" y="28" fill="#fef3c7" font-size="13" font-weight="bold" text-anchor="middle">Local Edge Data Store (Always Active)</text>
-    <text x="175" y="48" fill="#fde68a" font-size="11" text-anchor="middle">SQLite DB &#8226; Local Defect Image Cache &#8226; Outbox Queue</text>
-  </g>
-  <path d="M 700 1000 L 700 1030" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowBlue)" fill="none"/>
+  <!-- Merge Uninspected and Detected Branches -->
+  <line x1="230" y1="607" x2="230" y2="795" stroke="#000000" stroke-width="1.2"/>
+  <line x1="230" y1="795" x2="475" y2="795" stroke="#000000" stroke-width="1.2"/>
+  <line x1="500" y1="772" x2="500" y2="785" stroke="#000000" stroke-width="1.2"/>
 
-  <!-- Decision: Internet -->
-  <g transform="translate(575, 1035)" filter="url(#shadow)">
-    <polygon points="125,0 250,50 125,100 0,50" fill="url(#blueCard)" stroke="#38bdf8" stroke-width="2"/>
-    <text x="125" y="47" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Internet / Cloud</text>
-    <text x="125" y="63" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Reachable?</text>
-  </g>
+  <!-- Decision 2: Merge Diamond -->
+  <polygon points="500 785, 525 795, 500 805, 475 795" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <line x1="500" y1="805" x2="500" y2="830" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
 
-  <!-- Left: Offline Queue -->
-  <path d="M 575 1085 L 350 1085" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowBlue)" fill="none"/>
-  <text x="440" y="1075" fill="#f59e0b" font-size="11" font-weight="bold">NO (Offline)</text>
+  <!-- Step: Save Inspection Record Locally -->
+  <rect x="360" y="830" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="856" fill="#000000" font-size="12" text-anchor="middle">Save Record to Local Storage</text>
 
-  <g transform="translate(100, 1055)" filter="url(#shadow)">
-    <rect width="240" height="65" rx="8" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
-    <text x="120" y="27" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Buffer in Sync Queue</text>
-    <text x="120" y="45" fill="#fde68a" font-size="10" text-anchor="middle">Zero stoppage. Syncs automatically</text>
-    <text x="120" y="58" fill="#fde68a" font-size="10" text-anchor="middle">when connection restores.</text>
-  </g>
-  <path d="M 220 1120 L 220 1160 L 850 1160 L 850 1125" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 2" fill="none"/>
+  <!-- Decision 3: Network Connection Available? -->
+  <line x1="500" y1="872" x2="500" y2="900" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <polygon points="500 900, 620 935, 500 970, 380 935" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="939" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Network Available?</text>
 
-  <!-- Right: Online Sync -->
-  <path d="M 825 1085 L 940 1085" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowGreen)" fill="none"/>
-  <text x="850" y="1075" fill="#4ade80" font-size="11" font-weight="bold">YES (Online)</text>
+  <!-- [No] Branch: Store in Outbox Queue -->
+  <line x1="380" y1="935" x2="230" y2="935" stroke="#000000" stroke-width="1.2"/>
+  <line x1="230" y1="935" x2="230" y2="985" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="310" y="927" fill="#000000" font-size="11" font-weight="bold">No</text>
 
-  <g transform="translate(950, 1055)" filter="url(#shadow)">
-    <rect width="360" height="65" rx="8" fill="url(#greenCard)" stroke="#4ade80" stroke-width="2"/>
-    <text x="180" y="27" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">Central Backend Synchronization</text>
-    <text x="180" y="47" fill="#bbf7d0" font-size="11" text-anchor="middle">PostgreSQL Ingest &#8226; Cloud S3 &#8226; WebSockets</text>
-  </g>
+  <rect x="110" y="985" width="240" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="230" y="1011" fill="#000000" font-size="11.5" text-anchor="middle">Queue in Offline Outbox</text>
 
-  <!-- User Applications (Bottom) -->
-  <path d="M 1130 1120 L 1130 1180" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)" fill="none"/>
+  <!-- [Yes] Branch: Synchronize to Central Backend -->
+  <line x1="500" y1="970" x2="500" y2="1005" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="510" y="990" fill="#000000" font-size="11" font-weight="bold">Yes</text>
 
-  <g transform="translate(450, 1185)" filter="url(#shadow)">
-    <rect width="860" height="85" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-    
-    <!-- Mobile -->
-    <rect x="20" y="15" width="390" height="55" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
-    <text x="215" y="37" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Mobile App (Floor Operator / Inspector)</text>
-    <text x="215" y="55" fill="#94a3b8" font-size="11" text-anchor="middle">Push Alerts &#8226; QR Scanning &#8226; Review &amp; Correct</text>
+  <rect x="360" y="1005" width="280" height="42" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="1031" fill="#000000" font-size="12" text-anchor="middle">Synchronize Batches with Central Server</text>
 
-    <!-- Web -->
-    <rect x="440" y="15" width="400" height="55" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
-    <text x="640" y="37" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Web Dashboard (QA / Manager / Inventory)</text>
-    <text x="640" y="55" fill="#94a3b8" font-size="11" text-anchor="middle">Fabric Defect Map &#8226; 4-Point Grading &#8226; PDF Reports</text>
-  </g>
+  <!-- Final Step: Update UI & Reports -->
+  <line x1="230" y1="1027" x2="230" y2="1080" stroke="#000000" stroke-width="1.2"/>
+  <line x1="230" y1="1080" x2="360" y2="1080" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
 
+  <line x1="500" y1="1047" x2="500" y2="1070" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <rect x="360" y="1070" width="280" height="45" rx="8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="500" y="1092" fill="#000000" font-size="11" text-anchor="middle">Update Defect Map, 4-Point Grade</text>
+  <text x="500" y="1106" fill="#000000" font-size="11" text-anchor="middle">&amp; Push Alerts to Web / Mobile</text>
+
+  <!-- End Node (Bullseye) -->
+  <line x1="500" y1="1115" x2="500" y2="1145" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <circle cx="500" cy="1165" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <circle cx="500" cy="1165" r="8" fill="#000000"/>
 </svg>
-
-
-
-
-
-

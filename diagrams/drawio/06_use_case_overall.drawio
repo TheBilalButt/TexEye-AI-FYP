@@ -1,250 +1,217 @@
-<mxfile host="app.diagrams.net" modified="2026-11-12T14:30:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
-  <diagram id="texeye_usecases" name="UML Use Case Architecture">
-    <mxGraphModel dx="1600" dy="1050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1620" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-11-14T18:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_usecases" name="Figure 3.1: Use Case Diagram of TexEye AI System">
+    <mxGraphModel dx="1400" dy="1150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1150" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- Title Banner -->
-        <mxCell id="title" value="&lt;b&gt;TexEye AI — Complete UML Use Case Architecture&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;Muhammad Afnan Khan (FA23-BAI-028) • Muhammad Bilal Butt (FA23-BAI-042) | BS Artificial Intelligence Final Year Project&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=14;align=center;" vertex="1" parent="1">
-          <mxGeometry x="60" y="20" width="1500" height="55" as="geometry" />
+        <!-- Outer Double Frame (Academic Style) -->
+        <mxCell id="frame_outer" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="15" y="15" width="1370" height="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_inner" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=0.8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1360" height="1110" as="geometry" />
+        </mxCell>
+
+        <!-- Caption Header -->
+        <mxCell id="caption_title" value="&lt;b&gt;Figure 3.1: Use Case Diagram of TexEye AI System&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="32" width="600" height="30" as="geometry" />
         </mxCell>
 
         <!-- System Boundary: TexEye AI -->
-        <mxCell id="sys_boundary" value="&lt;b&gt;SYSTEM BOUNDARY: TexEye AI&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;strokeDasharray=4 4;fontSize=12;fontColor=#0369a1;startSize=28;" vertex="1" parent="1">
-          <mxGeometry x="180" y="95" width="1260" height="935" as="geometry" />
+        <mxCell id="sys_boundary" value="&lt;b&gt;TexEye AI&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=14;fontColor=#000000;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="290" y="85" width="760" height="1025" as="geometry" />
         </mxCell>
 
-        <!-- Top Shared Auth Precondition -->
-        <mxCell id="uc_auth" value="Login / Authenticate&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: #64748b;&quot;&gt;(JWT RBAC Validation)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#3b82f6;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="510" y="32" width="240" height="42" as="geometry" />
+        <!-- UC-00: Login / Authenticate -->
+        <mxCell id="uc_auth" value="&lt;b&gt;UC-00&lt;/b&gt;&lt;br&gt;Login / Authenticate" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="260" y="45" width="240" height="42" as="geometry" />
         </mxCell>
 
-        <!-- ==================== LEFT COLUMN: FLOOR & QUALITY ==================== -->
-
-        <!-- Panel 1: Floor Operations (Directly adjacent to Floor Operator) -->
-        <mxCell id="box_col_floor" value="Floor Operator Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f9ff;strokeColor=#bae6fd;fontSize=12;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;fontColor=#0369a1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="25" y="85" width="585" height="270" as="geometry" />
+        <!-- Left Column Use Cases -->
+        <mxCell id="uc_scan" value="&lt;b&gt;UC-01&lt;/b&gt;&lt;br&gt;Scan Roll QR Code" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="105" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_spec" value="&lt;b&gt;UC-02&lt;/b&gt;&lt;br&gt;View Roll Specifications" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="165" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_alert" value="&lt;b&gt;UC-03&lt;/b&gt;&lt;br&gt;Receive Inspection Alerts" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="225" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_review" value="&lt;b&gt;UC-04&lt;/b&gt;&lt;br&gt;Review Detected Defects" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="285" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_map" value="&lt;b&gt;UC-05&lt;/b&gt;&lt;br&gt;View Digital Defect Map" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="348" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_correct" value="&lt;b&gt;UC-06&lt;/b&gt;&lt;br&gt;Correct Defect Record" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="412" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_grade" value="&lt;b&gt;UC-07&lt;/b&gt;&lt;br&gt;Confirm Fabric Grading" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="475" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_report" value="&lt;b&gt;UC-08&lt;/b&gt;&lt;br&gt;Generate Inspection Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="75" y="540" width="240" height="42" as="geometry" />
         </mxCell>
 
-        <mxCell id="uc_op_scan" value="Scan Roll QR Code" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="120" width="350" height="38" as="geometry" />
+        <!-- Right Column Use Cases -->
+        <mxCell id="uc_dash" value="&lt;b&gt;UC-09&lt;/b&gt;&lt;br&gt;View Production Dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="105" width="240" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_op_info" value="View Roll Specifications &amp;amp; Metadata" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="170" width="350" height="38" as="geometry" />
+        <mxCell id="uc_stats" value="&lt;b&gt;UC-10&lt;/b&gt;&lt;br&gt;View Defect Statistics" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="165" width="240" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_op_alert" value="Receive Real-Time Inspection Alerts&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: #64748b;&quot;&gt;(Mobile Push / Vibration &amp;amp; Physical Stack Light)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="220" width="350" height="45" as="geometry" />
+        <mxCell id="uc_quality" value="&lt;b&gt;UC-11&lt;/b&gt;&lt;br&gt;View Quality Records" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="225" width="240" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_op_review" value="Review Detected Defect Thumbnails" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="280" width="350" height="38" as="geometry" />
+        <mxCell id="uc_inv" value="&lt;b&gt;UC-12&lt;/b&gt;&lt;br&gt;View Inventory Records" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="298" width="240" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Panel 2: Quality Verification (Directly adjacent to Quality Inspector) -->
-        <mxCell id="box_col_qi" value="Quality Inspector Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#e9d5ff;fontSize=12;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;fontColor=#7e22ce;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="25" y="375" width="585" height="340" as="geometry" />
+        <mxCell id="uc_loc" value="&lt;b&gt;UC-13&lt;/b&gt;&lt;br&gt;Update Roll Location" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="358" width="240" height="42" as="geometry" />
         </mxCell>
-
-        <mxCell id="uc_qi_map" value="View 2D Digital Fabric Defect Map" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="405" width="350" height="38" as="geometry" />
+        <mxCell id="uc_quar" value="&lt;b&gt;UC-14&lt;/b&gt;&lt;br&gt;Manage Quarantine Records" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="418" width="240" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_qi_review" value="Inspect High-Resolution Defect Crops" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="455" width="350" height="38" as="geometry" />
+        <mxCell id="uc_users" value="&lt;b&gt;UC-15&lt;/b&gt;&lt;br&gt;Manage User Accounts" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="490" width="240" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_qi_correct" value="Correct Defect Record&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: #7e22ce;&quot;&gt;(Reclassify Class / Adjust Bounding Box)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#a855f7;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="505" width="350" height="45" as="geometry" />
+        <mxCell id="uc_calib" value="&lt;b&gt;UC-16&lt;/b&gt;&lt;br&gt;Configure Calibration Rules" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="445" y="550" width="240" height="42" as="geometry" />
         </mxCell>
 
-        <!-- <<extend>> relationship from Correct to Review -->
-        <mxCell id="rel_extend_qi" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#a855f7;strokeWidth=1.5;fontSize=9;" edge="1" parent="sys_boundary" source="uc_qi_correct" target="uc_qi_review">
+        <!-- Sub included UC: Calculate 4-Point Grade -->
+        <mxCell id="uc_calc_grade" value="Calculate 4-Point Grade" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="260" y="625" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_inc_grade" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#000000;strokeWidth=1;fontSize=9;" edge="1" parent="sys_boundary" source="uc_grade" target="uc_calc_grade">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="uc_qi_grade" value="Confirm / Adjust 4-Point Grading&lt;br&gt;&lt;font style=&quot;font-size: 9px; color: #7e22ce;&quot;&gt;(ASTM D5430 Standard Calculation)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="575" width="350" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_qi_report" value="Generate Official PDF Quality Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;fontColor=#15803d;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="140" y="640" width="350" height="42" as="geometry" />
-        </mxCell>
-
-        <!-- <<include>> relationship from Generate Report to Confirm Grade -->
-        <mxCell id="rel_include_qi" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#16a34a;strokeWidth=1.5;fontSize=9;" edge="1" parent="sys_boundary" source="uc_qi_report" target="uc_qi_grade">
+        <!-- Extend from UC-06 to UC-04 -->
+        <mxCell id="rel_ext_review" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#000000;strokeWidth=1;fontSize=9;" edge="1" parent="sys_boundary" source="uc_correct" target="uc_review">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== RIGHT COLUMN: PM, IM, ADMIN ==================== -->
-
-        <!-- Panel 3: Production Manager -->
-        <mxCell id="box_col_pm" value="Production Manager Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#bbf7d0;fontSize=12;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;fontColor=#15803d;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="645" y="85" width="590" height="195" as="geometry" />
+        <!-- Bottom Panel: Automated Edge AI Processes -->
+        <mxCell id="box_auto" value="&lt;b&gt;Automated Edge AI &amp;amp; Inspection Processes&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;strokeDasharray=4 2;fontSize=11;fontColor=#000000;startSize=25;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="25" y="700" width="710" height="305" as="geometry" />
         </mxCell>
 
-        <mxCell id="uc_pm_dash" value="View Executive Production Dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="115" width="380" height="38" as="geometry" />
+        <mxCell id="uc_cap" value="&lt;b&gt;UC-17&lt;/b&gt;&lt;br&gt;Capture Fabric Images" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="50" y="45" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_pm_stats" value="Analyze Defect Trends &amp;amp; Pareto Charts" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="165" width="380" height="38" as="geometry" />
+        <mxCell id="uc_enc" value="&lt;b&gt;UC-18&lt;/b&gt;&lt;br&gt;Read Encoder Pulses" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="50" y="110" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_pm_logs" value="Review Historical Shift Quality Logs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="215" width="380" height="38" as="geometry" />
+        <mxCell id="uc_rel" value="&lt;b&gt;UC-19&lt;/b&gt;&lt;br&gt;Monitor Reliability" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="50" y="175" width="220" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Panel 4: Inventory Manager -->
-        <mxCell id="box_col_im" value="Inventory Manager Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#fde68a;fontSize=12;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;fontColor=#b45309;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="645" y="295" width="590" height="195" as="geometry" />
+        <mxCell id="uc_uninsp" value="&lt;b&gt;UC-20&lt;/b&gt;&lt;br&gt;Mark Uninspected Section" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=10.5;fontColor=#000000;fontStyle=1;" vertex="1" parent="box_auto">
+          <mxGeometry x="50" y="240" width="220" height="42" as="geometry" />
         </mxCell>
-
-        <mxCell id="uc_im_stock" value="View Warehouse Roll Inventory Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d97706;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="325" width="380" height="38" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_im_bay" value="Update Warehouse Bay &amp;amp; Rack Location" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d97706;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="375" width="380" height="38" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_im_scrap" value="Manage Quarantine &amp;amp; Scrap Records" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d97706;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="425" width="380" height="38" as="geometry" />
-        </mxCell>
-
-        <!-- Panel 5: System Admin -->
-        <mxCell id="box_col_admin" value="System Administrator Use Cases" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#fecaca;fontSize=12;fontStyle=1;align=center;verticalAlign=top;spacingTop=6;fontColor=#b91c1c;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="645" y="505" width="590" height="210" as="geometry" />
-        </mxCell>
-
-        <mxCell id="uc_admin_users" value="Manage User Accounts (Create / Update)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ef4444;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="535" width="380" height="38" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_admin_rbac" value="Assign Roles &amp;amp; Security Permissions" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ef4444;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="585" width="380" height="38" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_admin_calib" value="Configure Camera &amp;amp; Encoder Calibration" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ef4444;fontSize=11;fontStyle=1;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="750" y="635" width="380" height="38" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== BOTTOM PANEL: AUTOMATED ENGINE ==================== -->
-        <mxCell id="box_auto" value="&lt;b&gt;INTERNAL AUTOMATED SUBSYSTEM (Edge AI &amp;amp; Sensing Engine)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=1.5;strokeDasharray=4 2;fontSize=12;fontColor=#0369a1;startSize=25;" vertex="1" parent="sys_boundary">
-          <mxGeometry x="25" y="730" width="1210" height="185" as="geometry" />
-        </mxCell>
-
-        <mxCell id="uc_auto_cam" value="Capture Continuous Frames" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="20" y="42" width="240" height="42" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_auto_enc" value="Read Rotary Encoder Pulses" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="320" y="42" width="240" height="42" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_auto_rel" value="Monitor Inspection Reliability" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0284c7;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="620" y="42" width="240" height="42" as="geometry" />
-        </mxCell>
-        <mxCell id="uc_auto_uninsp" value="Mark Uninspected Span&lt;br&gt;&lt;font style=&quot;font-size: 8.5px; color: #b91c1c;&quot;&gt;&lt;b&gt;(NEVER Classified as Clean!)&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;fontColor=#991b1b;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="930" y="38" width="250" height="48" as="geometry" />
-        </mxCell>
-
-        <!-- <<extend>> relationship between Mark Uninspected and Monitor Reliability -->
-        <mxCell id="rel_auto_extend" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#ef4444;strokeWidth=1.5;fontSize=8.5;" edge="1" parent="box_auto" source="uc_auto_uninsp" target="uc_auto_rel">
+        <mxCell id="rel_ext_rel" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#000000;strokeWidth=1;fontSize=9;" edge="1" parent="box_auto" source="uc_uninsp" target="uc_rel">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="uc_auto_yolo" value="Detect Fabric Defects (YOLO)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="20" y="115" width="240" height="42" as="geometry" />
+        <mxCell id="uc_det" value="&lt;b&gt;UC-21&lt;/b&gt;&lt;br&gt;Detect Fabric Defects" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="440" y="45" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_auto_track" value="Track Across Frames&lt;br&gt;&lt;font style=&quot;font-size: 8.5px; color: #7e22ce;&quot;&gt;(Kalman + IoU Filter)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="320" y="112" width="240" height="46" as="geometry" />
+        <mxCell id="uc_track" value="&lt;b&gt;UC-22&lt;/b&gt;&lt;br&gt;Track Defects Across Frames" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="440" y="110" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_auto_dedup" value="Deduplicate Repeat Alerts&lt;br&gt;&lt;font style=&quot;font-size: 8.5px; color: #7e22ce;&quot;&gt;(Consolidate Unique Record)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9333ea;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="620" y="112" width="240" height="46" as="geometry" />
+        <mxCell id="uc_store" value="&lt;b&gt;UC-23&lt;/b&gt;&lt;br&gt;Store Records Locally" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="440" y="175" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="uc_auto_sync" value="Auto-Sync via Outbox Queue&lt;br&gt;&lt;font style=&quot;font-size: 8.5px; color: #15803d;&quot;&gt;(When Internet Restored)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#16a34a;fontSize=10.5;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="930" y="112" width="250" height="46" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== ACTORS (HUMAN) ==================== -->
-
-        <!-- Actor 1: Floor Operator (Top Left) -->
-        <mxCell id="act_op" value="Floor Operator&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #0284c7;&quot;&gt;&amp;lt;&amp;lt;human&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f0f9ff;strokeColor=#0284c7;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="210" width="60" height="100" as="geometry" />
+        <mxCell id="uc_sync" value="&lt;b&gt;UC-24&lt;/b&gt;&lt;br&gt;Synchronize Records Online" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
+          <mxGeometry x="440" y="240" width="220" height="42" as="geometry" />
         </mxCell>
 
-        <!-- Actor 2: Quality Inspector (Bottom Left) -->
-        <mxCell id="act_qi" value="Quality Inspector&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #7e22ce;&quot;&gt;&amp;lt;&amp;lt;human&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="520" width="60" height="100" as="geometry" />
+        <!-- ==================== ACTORS ==================== -->
+        <!-- Floor Operator -->
+        <mxCell id="act_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="135" y="270" width="50" height="90" as="geometry" />
         </mxCell>
 
-        <!-- Actor 3: Production Manager (Top Right) -->
-        <mxCell id="act_pm" value="Production Manager&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #15803d;&quot;&gt;&amp;lt;&amp;lt;human&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1510" y="170" width="60" height="100" as="geometry" />
+        <!-- Quality Inspector -->
+        <mxCell id="act_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="135" y="550" width="50" height="90" as="geometry" />
         </mxCell>
 
-        <!-- Actor 4: Inventory Manager (Middle Right) -->
-        <mxCell id="act_im" value="Inventory Manager&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #b45309;&quot;&gt;&amp;lt;&amp;lt;human&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fffbeb;strokeColor=#d97706;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1510" y="380" width="60" height="100" as="geometry" />
+        <!-- Production Manager -->
+        <mxCell id="act_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="220" width="50" height="90" as="geometry" />
         </mxCell>
 
-        <!-- Actor 5: System Admin (Bottom Right) -->
-        <mxCell id="act_admin" value="System Admin&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #b91c1c;&quot;&gt;&amp;lt;&amp;lt;human&amp;gt;&amp;gt;&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1510" y="590" width="60" height="100" as="geometry" />
+        <!-- Inventory Manager -->
+        <mxCell id="act_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="420" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- System Administrator -->
+        <mxCell id="act_admin" value="&lt;b&gt;System Administrator&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="600" width="50" height="90" as="geometry" />
         </mxCell>
 
         <!-- ==================== ASSOCIATIONS ==================== -->
-
-        <!-- Floor Operator Associations (Clean, Uniform Blue, No Red, No Crossings) -->
-        <mxCell id="edge_op_scan" style="endArrow=none;html=1;rounded=0;strokeColor=#0284c7;strokeWidth=1.8;" edge="1" parent="1" source="act_op" target="uc_op_scan">
+        <!-- Floor Operator Associations -->
+        <mxCell id="edge_op_1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_op" target="uc_scan">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_op_info" style="endArrow=none;html=1;rounded=0;strokeColor=#0284c7;strokeWidth=1.8;" edge="1" parent="1" source="act_op" target="uc_op_info">
+        <mxCell id="edge_op_2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_op" target="uc_spec">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_op_alert" style="endArrow=none;html=1;rounded=0;strokeColor=#0284c7;strokeWidth=1.8;" edge="1" parent="1" source="act_op" target="uc_op_alert">
+        <mxCell id="edge_op_3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_op" target="uc_alert">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_op_review" style="endArrow=none;html=1;rounded=0;strokeColor=#0284c7;strokeWidth=1.8;" edge="1" parent="1" source="act_op" target="uc_op_review">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Quality Inspector Associations (Clean, Uniform Purple, No Crossings) -->
-        <mxCell id="edge_qi_map" style="endArrow=none;html=1;rounded=0;strokeColor=#9333ea;strokeWidth=1.8;" edge="1" parent="1" source="act_qi" target="uc_qi_map">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_qi_review" style="endArrow=none;html=1;rounded=0;strokeColor=#9333ea;strokeWidth=1.8;" edge="1" parent="1" source="act_qi" target="uc_qi_review">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_qi_correct" style="endArrow=none;html=1;rounded=0;strokeColor=#9333ea;strokeWidth=1.8;" edge="1" parent="1" source="act_qi" target="uc_qi_correct">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_qi_grade" style="endArrow=none;html=1;rounded=0;strokeColor=#9333ea;strokeWidth=1.8;" edge="1" parent="1" source="act_qi" target="uc_qi_grade">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_qi_report" style="endArrow=none;html=1;rounded=0;strokeColor=#9333ea;strokeWidth=1.8;" edge="1" parent="1" source="act_qi" target="uc_qi_report">
+        <mxCell id="edge_op_4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_op" target="uc_review">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Production Manager Associations (Clean Green) -->
-        <mxCell id="edge_pm_dash" style="endArrow=none;html=1;rounded=0;strokeColor=#16a34a;strokeWidth=1.8;" edge="1" parent="1" source="act_pm" target="uc_pm_dash">
+        <!-- Quality Inspector Associations -->
+        <mxCell id="edge_qi_1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_qi" target="uc_review">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_pm_stats" style="endArrow=none;html=1;rounded=0;strokeColor=#16a34a;strokeWidth=1.8;" edge="1" parent="1" source="act_pm" target="uc_pm_stats">
+        <mxCell id="edge_qi_2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_qi" target="uc_map">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_pm_logs" style="endArrow=none;html=1;rounded=0;strokeColor=#16a34a;strokeWidth=1.8;" edge="1" parent="1" source="act_pm" target="uc_pm_logs">
+        <mxCell id="edge_qi_3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_qi" target="uc_correct">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Inventory Manager Associations (Clean Amber) -->
-        <mxCell id="edge_im_stock" style="endArrow=none;html=1;rounded=0;strokeColor=#d97706;strokeWidth=1.8;" edge="1" parent="1" source="act_im" target="uc_im_stock">
+        <mxCell id="edge_qi_4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_qi" target="uc_grade">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_im_bay" style="endArrow=none;html=1;rounded=0;strokeColor=#d97706;strokeWidth=1.8;" edge="1" parent="1" source="act_im" target="uc_im_bay">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge_im_scrap" style="endArrow=none;html=1;rounded=0;strokeColor=#d97706;strokeWidth=1.8;" edge="1" parent="1" source="act_im" target="uc_im_scrap">
+        <mxCell id="edge_qi_5" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_qi" target="uc_report">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- System Admin Associations (Clean Red) -->
-        <mxCell id="edge_admin_users" style="endArrow=none;html=1;rounded=0;strokeColor=#ef4444;strokeWidth=1.8;" edge="1" parent="1" source="act_admin" target="uc_admin_users">
+        <!-- Production Manager Associations -->
+        <mxCell id="edge_pm_1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_pm" target="uc_dash">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_admin_rbac" style="endArrow=none;html=1;rounded=0;strokeColor=#ef4444;strokeWidth=1.8;" edge="1" parent="1" source="act_admin" target="uc_admin_rbac">
+        <mxCell id="edge_pm_2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_pm" target="uc_stats">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge_admin_calib" style="endArrow=none;html=1;rounded=0;strokeColor=#ef4444;strokeWidth=1.8;" edge="1" parent="1" source="act_admin" target="uc_admin_calib">
+        <mxCell id="edge_pm_3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_pm" target="uc_quality">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Inventory Manager Associations -->
+        <mxCell id="edge_im_1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_im" target="uc_inv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_im_2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_im" target="uc_loc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_im_3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_im" target="uc_quar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- System Administrator Associations -->
+        <mxCell id="edge_admin_1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_admin" target="uc_users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="act_admin" target="uc_calib">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 

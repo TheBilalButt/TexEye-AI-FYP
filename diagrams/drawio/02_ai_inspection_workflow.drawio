@@ -1,155 +1,182 @@
-<mxfile host="app.diagrams.net" modified="2026-11-11T09:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
-  <diagram id="texeye_ai_pipeline" name="AI Inspection Pipeline">
-    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" background="#FFFFFF" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-11-14T18:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_ai_workflow" name="Figure 2.2: AI Vision, Tracking and Metrology Workflow">
+    <mxGraphModel dx="1000" dy="1250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1250" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <mxCell id="title" value="&lt;b&gt;TexEye AI: Detailed AI Vision, Tracking &amp;amp; Metrology Pipeline&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Muhammad Bilal Butt (FA23-BAI-042) &amp;bull; AI Defect Detection &amp;amp; Hardware Integration Lead&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=15;align=center;" vertex="1" parent="1">
-          <mxGeometry x="380" y="20" width="740" height="60" as="geometry" />
+        <!-- Academic Double Frame -->
+        <mxCell id="frame_outer" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="15" y="15" width="970" height="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_inner" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=0.8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="960" height="1210" as="geometry" />
         </mxCell>
 
-        <!-- Input Node -->
-        <mxCell id="node_input" value="&lt;b&gt;Video Stream + Encoder Pulse Stream&lt;/b&gt;&lt;br&gt;Synchronized Timestamped Frame Queue" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fillColor=#0284c7;strokeColor=#0369a1;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="610" y="100" width="280" height="50" as="geometry" />
+        <!-- Title Caption -->
+        <mxCell id="caption" value="&lt;b&gt;Figure 2.2: AI Vision, Tracking and Metrology Workflow&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="35" width="600" height="30" as="geometry" />
         </mxCell>
 
-        <!-- Stage 1 Box -->
-        <mxCell id="box_stage1" value="&lt;b&gt;Stage 1: Pre-Inference Reliability &amp;amp; Integrity Gate&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#3b82f6;strokeWidth=2;fontSize=12;fontColor=#1e3a8a;" vertex="1" parent="1">
-          <mxGeometry x="220" y="180" width="1060" height="230" as="geometry" />
+        <!-- Start Node -->
+        <mxCell id="node_start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="486" y="85" width="28" height="28" as="geometry" />
         </mxCell>
 
-        <mxCell id="chk_seq" value="Frame Sequence Intact?&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Check Dropped Frames&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="box_stage1">
-          <mxGeometry x="80" y="50" width="180" height="90" as="geometry" />
+        <!-- Step 1 -->
+        <mxCell id="step1" value="Ingest Synchronized Frame &amp;amp; Encoder Tick" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="135" width="280" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="chk_light" value="Lighting Uniform?&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Histogram Luminance&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="box_stage1">
-          <mxGeometry x="360" y="50" width="180" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk_focus" value="Focus Metric OK?&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Laplacian Variance&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="box_stage1">
-          <mxGeometry x="640" y="50" width="180" height="90" as="geometry" />
-        </mxCell>
-
-        <mxCell id="warn_node" value="&lt;b&gt;Calculate Span &amp;amp; Flag Section as UNINSPECTED&lt;/b&gt;&lt;br&gt;Generate Alert &amp;bull; Bypasses AI Model &amp;bull; Not Defect-Free" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#ef4444;strokeWidth=2;fontColor=#991b1b;fontSize=11;" vertex="1" parent="box_stage1">
-          <mxGeometry x="250" y="165" width="460" height="45" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_s1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="chk_seq" target="chk_light" parent="box_stage1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_s2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="chk_light" target="chk_focus" parent="box_stage1">
+        <mxCell id="e_start_step1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="node_start" target="step1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="e_drop_warn" value="Fail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="chk_seq" target="warn_node" parent="box_stage1">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- Step 2 -->
+        <mxCell id="step2" value="Check Connectivity, Lighting &amp;amp; Sharpness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="205" width="280" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="e_light_warn" value="Fail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="chk_light" target="warn_node" parent="box_stage1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_focus_warn" value="Fail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" source="chk_focus" target="warn_node" parent="box_stage1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="edge_in_s1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#0284c7;strokeWidth=2;" edge="1" source="node_input" target="chk_seq" parent="1">
+        <mxCell id="e_1_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step1" target="step2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Stage 2 Box -->
-        <mxCell id="box_stage2" value="&lt;b&gt;Stage 2: Image Conditioning &amp;amp; Deep Learning Inference&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#9333ea;strokeWidth=2;fontSize=12;fontColor=#581c87;" vertex="1" parent="1">
-          <mxGeometry x="220" y="440" width="1060" height="200" as="geometry" />
+        <!-- Decision 1 -->
+        <mxCell id="dec1" value="Frame Reliable?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="275" width="140" height="70" as="geometry" />
         </mxCell>
-
-        <mxCell id="node_roi" value="ROI Extraction &amp;amp; Distortion Correction&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Crop fabric web boundary&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c084fc;fontSize=11;" vertex="1" parent="box_stage2">
-          <mxGeometry x="60" y="50" width="220" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="node_clahe" value="Adaptive CLAHE Normalization&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Highlight weft/warp anomalies&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c084fc;fontSize=11;" vertex="1" parent="box_stage2">
-          <mxGeometry x="340" y="50" width="220" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="node_yolo" value="&lt;b&gt;YOLO Defect Detector Backbone&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Hole, Stain, Warp/Weft, Float, Oil Spot&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9333ea;strokeWidth=2;fontSize=11;fontColor=#581c87;" vertex="1" parent="box_stage2">
-          <mxGeometry x="620" y="50" width="260" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="chk_defect" value="Defects Detected?&lt;br&gt;(Conf &amp;gt;= &amp;theta;)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="box_stage2">
-          <mxGeometry x="665" y="120" width="170" height="65" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_roi_clahe" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" source="node_roi" target="node_clahe" parent="box_stage2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_clahe_yolo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" source="node_clahe" target="node_yolo" parent="box_stage2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_yolo_chk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=1.5;" edge="1" source="node_yolo" target="chk_defect" parent="box_stage2">
+        <mxCell id="e_2_dec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step2" target="dec1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge_focus_roi" value="Pass" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;" edge="1" source="chk_focus" target="node_roi" parent="1">
+        <!-- [No] Branch -->
+        <mxCell id="step_log" value="Log Telemetry Anomaly" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="355" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dec1_log" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" edge="1" parent="1" source="dec1" target="step_log">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="step_uninsp" value="&lt;b&gt;Mark Span as Uninspected&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="425" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_log_uninsp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_log" target="step_uninsp">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Stage 3 Box -->
-        <mxCell id="box_stage3" value="&lt;b&gt;Stage 3: Multi-Frame Tracking &amp;amp; Deduplication&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;fontColor=#1e3a8a;" vertex="1" parent="1">
-          <mxGeometry x="220" y="670" width="1060" height="190" as="geometry" />
+        <!-- [Yes] Branch -->
+        <mxCell id="step_roi" value="ROI Crop &amp;amp; Undistortion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="380" width="280" height="42" as="geometry" />
         </mxCell>
-
-        <mxCell id="node_tracker" value="&lt;b&gt;Multi-Frame Tracker&lt;/b&gt;&lt;br&gt;IoU Matching + Kalman Filter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#60a5fa;fontSize=11;" vertex="1" parent="box_stage3">
-          <mxGeometry x="100" y="55" width="220" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="chk_existing" value="Already Tracked&lt;br&gt;in Recent Window?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;fontSize=11;" vertex="1" parent="box_stage3">
-          <mxGeometry x="380" y="42.5" width="170" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="node_update_trk" value="Update Trajectory &amp;amp;&lt;br&gt;Accumulate Score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#60a5fa;fontSize=11;" vertex="1" parent="box_stage3">
-          <mxGeometry x="610" y="35" width="170" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="node_new_trk" value="Initialize New Unique&lt;br&gt;Defect Track ID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#60a5fa;fontSize=11;" vertex="1" parent="box_stage3">
-          <mxGeometry x="610" y="90" width="170" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="node_dedup_gate" value="&lt;b&gt;Deduplication Gate&lt;/b&gt;&lt;br&gt;Merge redundant bounding boxes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;strokeWidth=2;fontSize=11;" vertex="1" parent="box_stage3">
-          <mxGeometry x="840" y="55" width="180" height="50" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_trk_chk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="node_tracker" target="chk_existing" parent="box_stage3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_chk_upd" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="chk_existing" target="node_update_trk" parent="box_stage3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_chk_new" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="chk_existing" target="node_new_trk" parent="box_stage3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_upd_dedup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="node_update_trk" target="node_dedup_gate" parent="box_stage3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_new_dedup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563eb;strokeWidth=1.5;" edge="1" source="node_new_trk" target="node_dedup_gate" parent="box_stage3">
+        <mxCell id="e_dec1_roi" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" edge="1" parent="1" source="dec1" target="step_roi">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge_chk_tracker" value="Yes (Defect)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333ea;strokeWidth=2;" edge="1" source="chk_defect" target="node_tracker" parent="1">
+        <mxCell id="step_yolo" value="Execute AI Defect Detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="450" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_roi_yolo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_roi" target="step_yolo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Stage 4 Box -->
-        <mxCell id="box_stage4" value="&lt;b&gt;Stage 4: Metrology &amp;amp; Physical Coordinate Estimation&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2;fontSize=12;fontColor=#14532d;" vertex="1" parent="1">
-          <mxGeometry x="220" y="890" width="1060" height="150" as="geometry" />
+        <!-- Decision 2: Defect Found? -->
+        <mxCell id="dec2" value="Defect Found?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="520" width="140" height="70" as="geometry" />
         </mxCell>
-
-        <mxCell id="node_enc_calc" value="&lt;b&gt;Longitudinal Metric Position (Y)&lt;/b&gt;&lt;br&gt;Y_meters = Pulses &amp;times; Resolution (m/pulse)&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Rotary Encoder Integration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="box_stage4">
-          <mxGeometry x="100" y="45" width="260" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="node_cam_calc" value="&lt;b&gt;Lateral Metric Position (X)&lt;/b&gt;&lt;br&gt;X_cm = BBox_center_x &amp;times; (cm/pixel)&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Camera-to-Fabric Calibration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#86efac;fontSize=11;" vertex="1" parent="box_stage4">
-          <mxGeometry x="420" y="45" width="260" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="node_final_rec" value="&lt;b&gt;Consolidated Defect Record&lt;/b&gt;&lt;br&gt;{Track_ID, Class, Conf, X_cm, Y_m, Crop}&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Payload Ready for Local DB &amp;amp; Sync&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#16a34a;strokeWidth=2;fontSize=11;fontColor=#14532d;" vertex="1" parent="box_stage4">
-          <mxGeometry x="740" y="45" width="280" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="e_enc_cam" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="node_enc_calc" target="node_cam_calc" parent="box_stage4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e_cam_rec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=1.5;" edge="1" source="node_cam_calc" target="node_final_rec" parent="box_stage4">
+        <mxCell id="e_yolo_dec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_yolo" target="dec2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge_dedup_metrology" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#16a34a;strokeWidth=2;" edge="1" source="node_dedup_gate" target="node_enc_calc" parent="1">
+        <!-- [No Defect] Branch -->
+        <mxCell id="step_clean" value="Record Clean Verified Meterage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="650" y="600" width="240" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dec2_clean" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" edge="1" parent="1" source="dec2" target="step_clean">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- [Yes Defect] Branch -->
+        <mxCell id="step_track" value="Track Defect Across Consecutive Frames" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="625" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dec2_track" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontStyle=1;fontColor=#000000;" edge="1" parent="1" source="dec2" target="step_track">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_dedup" value="Filter Duplicate Defect Instances" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="695" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_track_dedup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_track" target="step_dedup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_coord" value="Calculate Physical Coordinates (X, Y)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="765" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_dedup_coord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_dedup" target="step_coord">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Merge Node -->
+        <mxCell id="merge1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="480" y="835" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="e_uninsp_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_uninsp" target="merge1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="845" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_clean_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_clean" target="merge1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="845" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_coord_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_coord" target="merge1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step: Assemble Payload -->
+        <mxCell id="step_payload" value="Assemble Inspection Record Payload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="875" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_merge_payload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="merge1" target="step_payload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step: SQLite -->
+        <mxCell id="step_sqlite" value="Commit Record to Local Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="945" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_payload_sqlite" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_payload" target="step_sqlite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step: Outbox -->
+        <mxCell id="step_outbox" value="Enqueue to Synchronization Outbox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1015" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sqlite_outbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_sqlite" target="step_outbox">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- End Node -->
+        <mxCell id="node_end_outer" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="486" y="1095" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="node_end_inner" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="492" y="1101" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="e_outbox_end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="step_outbox" target="node_end_outer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
