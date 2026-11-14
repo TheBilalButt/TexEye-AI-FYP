@@ -122,12 +122,12 @@
           <mxGeometry x="50" y="110" width="220" height="42" as="geometry" />
         </mxCell>
         <mxCell id="uc_rel" value="&lt;b&gt;UC-20&lt;/b&gt;&lt;br&gt;Monitor Reliability" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;" vertex="1" parent="box_auto">
-          <mxGeometry x="50" y="175" width="220" height="42" as="geometry" />
+          <mxGeometry x="50" y="165" width="220" height="42" as="geometry" />
         </mxCell>
         <mxCell id="uc_uninsp" value="&lt;b&gt;UC-21&lt;/b&gt;&lt;br&gt;Mark Uninspected Section" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=10.5;fontColor=#000000;fontStyle=1;" vertex="1" parent="box_auto">
-          <mxGeometry x="50" y="240" width="220" height="42" as="geometry" />
+          <mxGeometry x="50" y="248" width="220" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="rel_ext_rel" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=#ffffff;endArrow=open;endFill=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9;" edge="1" parent="box_auto" source="uc_uninsp" target="uc_rel">
+        <mxCell id="rel_ext_rel" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;" edge="1" parent="box_auto" source="uc_uninsp" target="uc_rel">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 

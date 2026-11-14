@@ -121,7 +121,7 @@
 
   <!-- TABLE 7: INVENTORY_RECORDS -->
   <g transform="translate(60, 720)">
-    <rect width="260" height="175" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <rect width="260" height="195" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
     <rect width="260" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="130" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">INVENTORY_RECORDS</text>
     
@@ -135,21 +135,22 @@
 
   <!-- TABLE 8: SYNC_OUTBOX (Edge Queue) -->
   <g transform="translate(420, 720)">
-    <rect width="270" height="175" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <rect width="270" height="195" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">SYNC_OUTBOX</text>
     
     <text x="14" y="48" fill="#000000" font-size="11">PK  queue_id : UUID</text>
-    <text x="14" y="70" fill="#000000" font-size="11">    entity_type : VARCHAR(30)</text>
-    <text x="14" y="92" fill="#000000" font-size="11">    payload_json : JSONB</text>
-    <text x="14" y="114" fill="#000000" font-size="11">    sync_status : VARCHAR(20)</text>
-    <text x="14" y="136" fill="#000000" font-size="11">    retry_count : INT</text>
-    <text x="14" y="158" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
+    <text x="14" y="70" fill="#000000" font-size="11">FK  defect_id : UUID</text>
+    <text x="14" y="92" fill="#000000" font-size="11">    entity_type : VARCHAR(30)</text>
+    <text x="14" y="114" fill="#000000" font-size="11">    payload_json : JSONB</text>
+    <text x="14" y="136" fill="#000000" font-size="11">    sync_status : VARCHAR(20)</text>
+    <text x="14" y="158" fill="#000000" font-size="11">    retry_count : INT</text>
+    <text x="14" y="180" fill="#000000" font-size="11">    created_at : TIMESTAMP</text>
   </g>
 
   <!-- TABLE 9: ALERTS -->
   <g transform="translate(810, 720)">
-    <rect width="270" height="175" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <rect width="270" height="195" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
     <rect width="270" height="28" fill="#f3f4f6" stroke="#000000" stroke-width="1"/>
     <text x="135" y="19" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">ALERTS</text>
     
@@ -184,5 +185,8 @@
 
   <!-- 7. FABRIC_ROLLS (1) to INVENTORY_RECORDS (1) - Routed cleanly through vertical corridor with markers in place -->
   <path d="M 420 310 L 350 310 L 350 780 L 320 780" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#one-end)"/>
+
+  <!-- 8. DEFECT_RECORDS (1) to SYNC_OUTBOX (Many) - Clean Vertical Link linking Outbox into schema -->
+  <line x1="555" y1="655" x2="555" y2="720" stroke="#000000" stroke-width="1.2" marker-start="url(#one-start)" marker-end="url(#many-end)"/>
 
 </svg>
