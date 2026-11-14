@@ -29,7 +29,7 @@
 
   <!-- ==================== COLUMN 1: SHOP FLOOR & QUALITY INSPECTOR ==================== -->
 
-  <!-- --- Floor Operator Dedicated Use Cases (UC-01 to UC-04) --- -->
+  <!-- Floor Operator Dedicated Use Cases (UC-01 to UC-04) -->
   <!-- UC-01: Scan Roll QR Code -->
   <g id="uc-scan">
     <ellipse cx="490" cy="205" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
@@ -59,7 +59,7 @@
   </g>
 
 
-  <!-- --- Quality Inspector Dedicated Use Cases (UC-05 to UC-09) --- -->
+  <!-- Quality Inspector Dedicated Use Cases (UC-05 to UC-09) -->
   <!-- UC-05: View Digital Defect Map -->
   <g id="uc-map">
     <ellipse cx="490" cy="450" rx="125" ry="22" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
@@ -83,7 +83,7 @@
 
   <!-- Extend arrow from UC-07 up to UC-06: Direct vertical connection between adjacent use cases -->
   <path d="M 490 548 L 490 532" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#openArrow)"/>
-  <rect x="502" y="531" width="56" height="18" fill="#ffffff" stroke="#000000" stroke-width="0.8" rx="3"/>
+  <rect x="502" y="531" width="56" height="18" fill="#ffffff" stroke="none"/>
   <text x="530" y="544" fill="#000000" font-size="9" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
 
   <!-- UC-08: Confirm Fabric Grading -->
@@ -101,7 +101,7 @@
 
   <!-- Include arrow from UC-08 down to Calculate 4-Point Grade -->
   <path d="M 490 652 L 490 668" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#openArrow)"/>
-  <rect x="502" y="651" width="58" height="18" fill="#ffffff" stroke="#000000" stroke-width="0.8" rx="3"/>
+  <rect x="502" y="651" width="58" height="18" fill="#ffffff" stroke="none"/>
   <text x="531" y="664" fill="#000000" font-size="9" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
 
   <!-- UC-09: Generate Inspection Report -->
