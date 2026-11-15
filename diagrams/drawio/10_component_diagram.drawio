@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_comp" name="Figure 5.2: UML Component Diagram of TexEye AI">
+    <mxGraphModel dx="1350" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Academic Double Frame -->
+        <mxCell id="frame_outer" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="15" y="15" width="1320" height="870" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_inner" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=0.8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1310" height="860" as="geometry" />
+        </mxCell>
+
+        <!-- Title Caption -->
+        <mxCell id="caption" value="&lt;b&gt;Figure 5.2: UML Component Diagram of TexEye AI&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="375" y="35" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Subsystem 1: Edge Core -->
+        <mxCell id="sub_edge" value="&lt;b&gt;&amp;lt;&amp;lt;subsystem&amp;gt;&amp;gt; texeye-edge-core&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="85" width="580" height="770" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cam" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;CameraIngestion&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="25" y="45" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_enc" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;EncoderTelemetry&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="325" y="45" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rel" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;ReliabilityMonitor&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="175" y="155" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_det" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DefectDetector (YOLO)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="25" y="265" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_track" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;MultiFrameTracker&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="325" y="265" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dedup" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DuplicateReduction&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="175" y="375" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_outbox" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;OutboxBuffer&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="25" y="485" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sql" value="&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;LocalDB (SQLite WAL)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="325" y="485" width="230" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sync" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;SyncDaemon&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_edge">
+          <mxGeometry x="175" y="605" width="230" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Subsystem 2: Cloud Core -->
+        <mxCell id="sub_cloud" value="&lt;b&gt;&amp;lt;&amp;lt;subsystem&amp;gt;&amp;gt; texeye-cloud-core&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="670" y="85" width="410" height="770" as="geometry" />
+        </mxCell>
+        <mxCell id="c_api" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;IngestionAPI (FastAPI)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="45" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_def_srv" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DefectService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="165" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_grade_eng" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;GradingEngine (ASTM 4-Point)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="285" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_push" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;PushHub (WebSocket)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="405" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pg" value="&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Central Database (PostgreSQL)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="515" width="340" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_s3" value="&amp;lt;&amp;lt;storage&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Object Storage (MinIO / S3)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontColor=#000000;" vertex="1" parent="sub_cloud">
+          <mxGeometry x="35" y="625" width="340" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Client Layer Components -->
+        <mxCell id="c_mob" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;MobileInspectionApp&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="130" width="200" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="c_web" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;WebQualityDashboard&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="370" width="200" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Interconnects -->
+        <mxCell id="e_sync_api" value="HTTPS Batch Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_sync" target="c_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_mob" value="WSS Live Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_push" target="c_mob">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_web" value="REST &amp;amp; Defect Maps" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_def_srv" target="c_web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

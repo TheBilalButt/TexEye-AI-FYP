@@ -38,15 +38,36 @@ All system diagrams are available in **editable Draw.io XML (`diagrams/drawio/`)
 | **03. Offline/Online Sync** | Edge-first storage, offline sync queue &amp; cloud batch updates | [Draw.io](diagrams/drawio/03_offline_sync_workflow.drawio) &bull; [SVG](diagrams/svg/03_offline_sync_workflow.svg) &bull; [PNG](diagrams/png/03_offline_sync_workflow.png) |
 | **04. Hardware Architecture** | Camera, rotary encoder, lighting driver, alert beacon &amp; edge computer | [Draw.io](diagrams/drawio/04_hardware_architecture.drawio) &bull; [SVG](diagrams/svg/04_hardware_architecture.svg) &bull; [PNG](diagrams/png/04_hardware_architecture.png) |
 | **05. Software Architecture** | 5-Tier layered architecture &amp; inter-service protocols | [Draw.io](diagrams/drawio/05_software_architecture.drawio) &bull; [SVG](diagrams/svg/05_software_architecture.svg) &bull; [PNG](diagrams/png/05_software_architecture.png) |
-| **06. UML Use Cases** | System boundary, 5 human actors, and automated edge subsystem | [Draw.io](diagrams/drawio/06_use_case_overall.drawio) &bull; [SVG](diagrams/svg/06_use_case_overall.svg) &bull; [PNG](diagrams/png/06_use_case_overall.png) |
-| **07. Context Diagram** | System boundaries and data flows with external entities | [Draw.io](diagrams/drawio/07_context_and_dfd.drawio) &bull; [SVG](diagrams/svg/07_context_diagram.svg) &bull; [PNG](diagrams/png/07_context_diagram.png) |
-| **08. DFD Level 0** | 5 major system processes and 4 data stores (D1 to D4) | [Draw.io](diagrams/drawio/07_context_and_dfd.drawio) &bull; [SVG](diagrams/svg/08_dfd_level_0.svg) &bull; [PNG](diagrams/png/08_dfd_level_0.png) |
-| **09. DFD Level 1** | Sub-process decomposition: ingestion, AI metrology &amp; 4-point grading | [Draw.io](diagrams/drawio/07_context_and_dfd.drawio) &bull; [SVG](diagrams/svg/09_dfd_level_1.svg) &bull; [PNG](diagrams/png/09_dfd_level_1.png) |
-| **10. Component Diagram** | Software components, exposed interfaces &amp; socket dependencies | [Draw.io](diagrams/drawio/08_component_and_deployment.drawio) &bull; [SVG](diagrams/svg/10_component_diagram.svg) &bull; [PNG](diagrams/png/10_component_diagram.png) |
-| **11. Deployment Diagram** | Execution environments, physical nodes, network buses &amp; protocols | [Draw.io](diagrams/drawio/08_component_and_deployment.drawio) &bull; [SVG](diagrams/svg/11_deployment_diagram.svg) &bull; [PNG](diagrams/png/11_deployment_diagram.png) |
-| **12. Sequence: Inspection** | Real-time sensor stream, reliability checks &amp; uninspected span handling | [Draw.io](diagrams/drawio/09_sequence_diagrams.drawio) &bull; [SVG](diagrams/svg/12_sequence_inspection.svg) &bull; [PNG](diagrams/png/12_sequence_inspection.png) |
-| **13. Sequence: Offline Sync** | Heartbeat check, chunked batch sync &amp; idempotent cloud updates | [Draw.io](diagrams/drawio/09_sequence_diagrams.drawio) &bull; [SVG](diagrams/svg/13_sequence_sync.svg) &bull; [PNG](diagrams/png/13_sequence_sync.png) |
-| **14. Entity Relationship** | 9 relational entities, primary/foreign keys &amp; complete data dictionary | [Draw.io](diagrams/drawio/10_entity_relationship_diagram.drawio) &bull; [SVG](diagrams/svg/14_entity_relationship_diagram.svg) &bull; [PNG](diagrams/png/14_entity_relationship_diagram.png) |
+| **06. UML Use Cases** | System boundary, 4 human actors, and 2 hardware actors (21 Use Cases) | [Draw.io](diagrams/drawio/06_use_case_overall.drawio) &bull; [SVG](diagrams/svg/06_use_case_overall.svg) &bull; [PNG](diagrams/png/06_use_case_overall.png) |
+| **07. Context Diagram** | System boundaries and data flows with external entities | [Draw.io](diagrams/drawio/07_context_diagram.drawio) &bull; [SVG](diagrams/svg/07_context_diagram.svg) &bull; [PNG](diagrams/png/07_context_diagram.png) |
+| **08. DFD Level 0** | 4 major system processes and 2 data stores (D1, D2) | [Draw.io](diagrams/drawio/08_dfd_level_0.drawio) &bull; [SVG](diagrams/svg/08_dfd_level_0.svg) &bull; [PNG](diagrams/png/08_dfd_level_0.png) |
+| **09. DFD Level 1** | Sub-process decomposition: ingestion, AI metrology &amp; 4-point grading | [Draw.io](diagrams/drawio/09_dfd_level_1.drawio) &bull; [SVG](diagrams/svg/09_dfd_level_1.svg) &bull; [PNG](diagrams/png/09_dfd_level_1.png) |
+| **10. Component Diagram** | Software components, exposed interfaces &amp; socket dependencies | [Draw.io](diagrams/drawio/10_component_diagram.drawio) &bull; [SVG](diagrams/svg/10_component_diagram.svg) &bull; [PNG](diagrams/png/10_component_diagram.png) |
+| **11. Deployment Diagram** | Execution environments, physical nodes, network buses &amp; protocols | [Draw.io](diagrams/drawio/11_deployment_diagram.drawio) &bull; [SVG](diagrams/svg/11_deployment_diagram.svg) &bull; [PNG](diagrams/png/11_deployment_diagram.png) |
+| **12. Sequence: Inspection** | Real-time sensor stream, reliability checks &amp; uninspected span handling | [Draw.io](diagrams/drawio/12_sequence_inspection.drawio) &bull; [SVG](diagrams/svg/12_sequence_inspection.svg) &bull; [PNG](diagrams/png/12_sequence_inspection.png) |
+| **13. Sequence: Offline Sync** | Heartbeat check, chunked batch sync &amp; idempotent cloud updates | [Draw.io](diagrams/drawio/13_sequence_sync.drawio) &bull; [SVG](diagrams/svg/13_sequence_sync.svg) &bull; [PNG](diagrams/png/13_sequence_sync.png) |
+| **14. Entity Relationship** | 9 relational entities, primary/foreign keys &amp; complete data dictionary | [Draw.io](diagrams/drawio/14_entity_relationship_diagram.drawio) &bull; [SVG](diagrams/svg/14_entity_relationship_diagram.svg) &bull; [PNG](diagrams/png/14_entity_relationship_diagram.png) |
+
+---
+
+## 3. Official Documentation (COMSATS SRDS Standard)
+
+The complete academic specification is available in the formal COMSATS University Islamabad (Wah Campus) format:
+- **Master Specification Document:** [TexEye AI SRDS (COMSATS Edition)](docs/TexEye_AI_SRDS_COMSATS.md)
+- **Modular Analysis & Design Chapters:**
+  1. [01. Project Overview & Problem Statement](docs/01_project_overview.md)
+  2. [02. System Workflow & Reliability Gate](docs/02_system_workflow.md)
+  3. [03. Hardware Architecture & Interfaces](docs/03_hardware_architecture.md)
+  4. [04. Software Architecture & Invariant Guard](docs/04_software_architecture.md)
+  5. [05. Actors & Formal Use Cases](docs/05_actors_and_use_cases.md)
+  6. [06. Data Flow Diagrams (Context, DFD Level 0 & 1)](docs/06_data_flow_diagrams.md)
+  7. [07. Component & Deployment Models](docs/07_component_and_deployment.md)
+  8. [08. Sequence Diagrams (Inspection & Sync)](docs/08_sequence_diagrams.md)
+  9. [09. Entity Relationship Diagram & Data Dictionary](docs/09_entity_relationship_diagram.md)
+  10. [10. Team Responsibilities & Work Division](docs/10_team_responsibilities.md)
+  11. [11. Hardware Selection Checklist](docs/11_hardware_selection_checklist.md)
+  12. [12. Assumptions, Limitations & Future Scope](docs/12_assumptions_and_limitations.md)
+  13. [Roman Urdu Defense Preparation Guide](docs/roman_urdu_defense_guide.md)
 
 ---
 

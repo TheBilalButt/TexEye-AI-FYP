@@ -1,0 +1,172 @@
+<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_seq_sync" name="Figure 5.5: Sequence Diagram — Edge-to-Cloud Batch Synchronization">
+    <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Academic Double Frame -->
+        <mxCell id="frame_outer" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="15" y="15" width="1070" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_inner" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=0.8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1060" height="810" as="geometry" />
+        </mxCell>
+
+        <!-- Title Caption -->
+        <mxCell id="caption" value="&lt;b&gt;Figure 5.5: Sequence Diagram: Edge-to-Cloud Synchronization&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="250" y="35" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="ll_daemon" value="&lt;b&gt;Edge Sync Daemon&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="85" width="140" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_daemon" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_daemon">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ll_sqlite" value="&lt;b&gt;Local SQLite DB&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="230" y="85" width="130" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sqlite" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_sqlite">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ll_cache" value="&lt;b&gt;Local Image Cache&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="85" width="130" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_cache" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_cache">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="455" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ll_fastapi" value="&lt;b&gt;Central FastAPI Server&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="550" y="85" width="150" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_fastapi" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_fastapi">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ll_pg" value="&lt;b&gt;PostgreSQL&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="85" width="110" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_pg" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_pg">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ll_s3" value="&lt;b&gt;MinIO S3&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;fontSize=11.5;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="870" y="85" width="100" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="line_s3" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="ll_s3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Messages -->
+        <mxCell id="m1" value="SelectPendingBatches(limit=50)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="150" as="sourcePoint" />
+            <mxPoint x="295" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="PendingRecordsList" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="185" as="sourcePoint" />
+            <mxPoint x="130" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m3" value="GET /health" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="230" as="sourcePoint" />
+            <mxPoint x="625" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="HTTP_200_OK(ready=true)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="265" as="sourcePoint" />
+            <mxPoint x="130" y="265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m5" value="ReadImageCrops(file_keys)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="315" as="sourcePoint" />
+            <mxPoint x="455" y="315" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="BinaryJPEGPayload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="455" y="350" as="sourcePoint" />
+            <mxPoint x="130" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m7" value="POST /api/v1/sync/batch (Multipart JSON + JPEGs)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="395" as="sourcePoint" />
+            <mxPoint x="625" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m8" value="UpsertDefectRecords()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="440" as="sourcePoint" />
+            <mxPoint x="785" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="RecordsCommitted" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="475" as="sourcePoint" />
+            <mxPoint x="625" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m10" value="PutObject(crops)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="520" as="sourcePoint" />
+            <mxPoint x="920" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="UploadConfirmed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="555" as="sourcePoint" />
+            <mxPoint x="625" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m12" value="HTTP_200_OK(synced_batch_ids)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="605" as="sourcePoint" />
+            <mxPoint x="130" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="m13" value="MarkOutboxSynced()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="660" as="sourcePoint" />
+            <mxPoint x="295" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m14" value="EvictSyncedImages()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="715" as="sourcePoint" />
+            <mxPoint x="455" y="715" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

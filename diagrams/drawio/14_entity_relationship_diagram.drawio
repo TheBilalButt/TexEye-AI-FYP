@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-14T18:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_erd" name="Figure 5.6: Entity Relationship Diagram (ERD)">
     <mxGraphModel dx="1350" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="950" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -83,6 +83,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="rel_d_a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_defects" target="t_alerts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_d_outbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="1" source="t_defects" target="t_outbox">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
