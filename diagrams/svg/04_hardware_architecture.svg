@@ -24,38 +24,31 @@
 
   <!-- Row 1: Camera (Center Y = 185) -->
   <rect x="75" y="155" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="180" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Industrial Camera</text>
-  <text x="190" y="198" fill="#444444" font-size="10" text-anchor="middle">Area-Scan Sensor &amp; Lens</text>
+  <text x="190" y="189" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Industrial Camera</text>
 
   <!-- Row 2: Encoder (Center Y = 265) -->
   <rect x="75" y="235" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="260" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Rotary Optical Encoder</text>
-  <text x="190" y="278" fill="#444444" font-size="10" text-anchor="middle">Quadrature Pulses (Roller-Coupled)</text>
+  <text x="190" y="269" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Rotary Optical Encoder</text>
 
   <!-- Row 3: Stack Light & Buzzer (Center Y = 345) -->
   <rect x="75" y="315" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="340" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Stack Light &amp; Buzzer</text>
-  <text x="190" y="358" fill="#444444" font-size="10" text-anchor="middle">Audio-Visual Floor Warning</text>
+  <text x="190" y="349" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Stack Light &amp; Buzzer</text>
 
   <!-- Row 4: Lighting Rig (Center Y = 425) -->
   <rect x="75" y="395" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="420" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">High-CRI LED Lighting Rig</text>
-  <text x="190" y="438" fill="#444444" font-size="10" text-anchor="middle">Constant-Current DC Illumination</text>
+  <text x="190" y="429" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">High-CRI LED Lighting Rig</text>
 
   <!-- Row 5: Moving Fabric Web (Center Y = 505) -->
   <rect x="75" y="475" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="500" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Moving Fabric Web</text>
-  <text x="190" y="518" fill="#444444" font-size="10" text-anchor="middle">Linear Speed ~0.2 to 0.5 m/s</text>
+  <text x="190" y="509" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Moving Fabric Web</text>
 
   <!-- Row 6: Constant-Current Power (Center Y = 585) -->
   <rect x="75" y="555" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="580" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DIN-Rail Power Supply</text>
-  <text x="190" y="598" fill="#444444" font-size="10" text-anchor="middle">24V DC Industrial Regulated Bus</text>
+  <text x="190" y="589" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DIN-Rail Power Supply</text>
 
   <!-- Row 7: Stand Physical Frame (Center Y = 665) -->
   <rect x="75" y="635" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="660" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Extruded Aluminum Frame</text>
-  <text x="190" y="678" fill="#444444" font-size="10" text-anchor="middle">Vibration-Damped Optical Mount</text>
+  <text x="190" y="669" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Extruded Aluminum Frame</text>
 
 
   <!-- ==================== BLOCK 2: INDUSTRIAL EDGE UNIT ==================== -->
@@ -65,38 +58,31 @@
 
   <!-- Row 1: Camera Driver (Center Y = 185) -->
   <rect x="485" y="155" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="180" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Camera Ingestion Driver</text>
-  <text x="600" y="198" fill="#444444" font-size="10" text-anchor="middle">V4L2 Ring Buffer &amp; Frame Gate</text>
+  <text x="600" y="189" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Camera Ingestion Driver</text>
 
   <!-- Row 2: GPIO Driver (Center Y = 265) -->
   <rect x="485" y="235" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="260" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Pulse Counter / GPIO Driver</text>
-  <text x="600" y="278" fill="#444444" font-size="10" text-anchor="middle">Hardware Interrupt Counter</text>
+  <text x="600" y="269" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Pulse Counter / GPIO Driver</text>
 
   <!-- Row 3: Relay Actuation Driver (Center Y = 345) -->
   <rect x="485" y="315" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="340" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Relay Actuation Driver</text>
-  <text x="600" y="358" fill="#444444" font-size="10" text-anchor="middle">Opto-Isolated GPIO Trigger</text>
+  <text x="600" y="349" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Relay Actuation Driver</text>
 
   <!-- Row 4: Reliability Monitor (Center Y = 425) -->
   <rect x="485" y="395" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="420" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Inspection Reliability Monitor</text>
-  <text x="600" y="438" fill="#444444" font-size="10" text-anchor="middle">Speed &amp; Lighting Invariant Guard</text>
+  <text x="600" y="429" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Inspection Reliability Monitor</text>
 
   <!-- Row 5: AI Inference (Center Y = 505) -->
   <rect x="485" y="475" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="500" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">AI Inference &amp; Tracker (YOLO)</text>
-  <text x="600" y="518" fill="#444444" font-size="10" text-anchor="middle">TensorRT FP16 &amp; ByteTrack</text>
+  <text x="600" y="509" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">AI Inference &amp; Tracker (YOLO)</text>
 
   <!-- Row 6: SQLite Buffer (Center Y = 585) -->
   <rect x="485" y="555" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="580" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Local SQLite Buffer (WAL)</text>
-  <text x="600" y="598" fill="#444444" font-size="10" text-anchor="middle">Transactional Outbox Queue</text>
+  <text x="600" y="589" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Local SQLite Buffer (WAL)</text>
 
   <!-- Row 7: Sync Daemon (Center Y = 665) -->
   <rect x="485" y="635" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="600" y="660" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Edge Sync Daemon (HTTPS)</text>
-  <text x="600" y="678" fill="#444444" font-size="10" text-anchor="middle">Outbox Dispatcher &amp; Image Sync</text>
+  <text x="600" y="669" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Edge Sync Daemon (HTTPS)</text>
 
 
   <!-- ==================== BLOCK 3: CENTRAL CLOUD / ENTERPRISE ==================== -->
@@ -106,28 +92,23 @@
 
   <!-- Row 1: Central FastAPI Server (Center Y = 185) -->
   <rect x="895" y="155" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1010" y="180" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Central FastAPI Application</text>
-  <text x="1010" y="198" fill="#444444" font-size="10" text-anchor="middle">REST Ingestion &amp; WebSocket Hub</text>
+  <text x="1010" y="189" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Central FastAPI Application</text>
 
   <!-- Row 2: PostgreSQL (Center Y = 265) -->
   <rect x="895" y="235" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1010" y="260" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">PostgreSQL Database</text>
-  <text x="1010" y="278" fill="#444444" font-size="10" text-anchor="middle">Roll, Defect &amp; Audit Records</text>
+  <text x="1010" y="269" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">PostgreSQL Database</text>
 
   <!-- Row 3: MinIO / S3 (Center Y = 345) -->
   <rect x="895" y="315" width="230" height="60" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1010" y="340" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Image Object Store (MinIO / S3)</text>
-  <text x="1010" y="358" fill="#444444" font-size="10" text-anchor="middle">Defect Image Crops Archive</text>
+  <text x="1010" y="349" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Image Object Store (MinIO / S3)</text>
 
   <!-- Row 4: Web Dashboard Workstation (Center Y = 450) -->
   <rect x="895" y="420" width="230" height="65" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1010" y="447" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Web Dashboard Workstation</text>
-  <text x="1010" y="467" fill="#444444" font-size="10" text-anchor="middle">Quality &amp; Production Management</text>
+  <text x="1010" y="457" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Web Dashboard Workstation</text>
 
   <!-- Row 5: Floor Mobile Device (Center Y = 560) -->
   <rect x="895" y="530" width="230" height="65" rx="4" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1010" y="557" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Floor Mobile Device</text>
-  <text x="1010" y="577" fill="#444444" font-size="10" text-anchor="middle">Operator QR Scanner &amp; Alerts</text>
+  <text x="1010" y="567" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Floor Mobile Device</text>
 
 
   <!-- ==================== FULLY SYNCHRONIZED PARALLEL CONNECTORS (ZERO CUTS) ==================== -->
@@ -149,10 +130,10 @@
   <text x="395" y="415" fill="#000000" font-size="10" text-anchor="middle">Sensor Feedback</text>
 
 
-  <!-- ==================== CLEAN ORTHOGONAL EDGE-TO-CLOUD UPLINK (ZERO CUTS) ==================== -->
-  <!-- Leaves Edge Sync Daemon at Y=665, runs orthogonally via open channel at X=805, and enters FastAPI at Y=185 -->
-  <path d="M 715 665 L 805 665 L 805 185 L 895 185" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="760" y="655" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">HTTPS REST Batches</text>
+  <!-- ==================== CLEAN ORTHOGONAL EDGE-TO-CLOUD UPLINK (ZERO CUTS, LABELED ABOVE LINE) ==================== -->
+  <!-- Leaves Edge Sync Daemon at Y=665, runs horizontally to X=858, runs up to Y=185, and enters FastAPI -->
+  <path d="M 715 665 L 858 665 L 858 185 L 895 185" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="799" y="652" fill="#000000" font-size="10" font-weight="bold" text-anchor="middle">HTTPS REST Batches</text>
 
 
   <!-- ==================== INTERNAL CLOUD SPINE CONNECTORS ==================== -->

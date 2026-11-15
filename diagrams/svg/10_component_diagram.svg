@@ -19,17 +19,17 @@
 
   <!-- Component 1: Camera Ingestion -->
   <rect x="75" y="130" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="155" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="190" y="155" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="190" y="175" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">CameraIngestion</text>
 
   <!-- Component 2: Encoder Telemetry -->
   <rect x="375" y="130" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="490" y="155" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="490" y="155" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="490" y="175" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">EncoderTelemetry</text>
 
   <!-- Component 3: Reliability Monitor -->
   <rect x="225" y="240" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="340" y="265" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="340" y="265" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="340" y="285" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">ReliabilityMonitor</text>
 
   <!-- Camera & Encoder to Reliability -->
@@ -41,12 +41,12 @@
 
   <!-- Component 4: Defect Detector -->
   <rect x="75" y="350" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="375" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="190" y="375" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="190" y="395" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DefectDetector (YOLO)</text>
 
   <!-- Component 5: Multi-Frame Tracker -->
   <rect x="375" y="350" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="490" y="375" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="490" y="375" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="490" y="395" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">MultiFrameTracker</text>
 
   <!-- Reliability to Detector -->
@@ -59,7 +59,7 @@
 
   <!-- Component 6: Coordinate Mapper -->
   <rect x="225" y="460" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="340" y="485" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="340" y="485" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="340" y="505" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">CoordinateMapper (X, Y)</text>
 
   <!-- Tracker to Mapper -->
@@ -68,12 +68,12 @@
 
   <!-- Component 7: Local Persistence -->
   <rect x="75" y="570" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="190" y="595" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="190" y="595" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="190" y="615" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">LocalPersistenceManager</text>
 
   <!-- Component 8: Edge Sync Client -->
   <rect x="375" y="570" width="230" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="490" y="595" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="490" y="595" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="490" y="615" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">EdgeSyncClient</text>
 
   <!-- Mapper to Persistence -->
@@ -86,7 +86,7 @@
 
   <!-- Local SQLite DB node inside Edge Core -->
   <rect x="225" y="680" width="230" height="55" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="340" y="705" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;database&gt;&gt;</text>
+  <text x="340" y="705" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;database&gt;&gt;</text>
   <text x="340" y="722" fill="#000000" font-size="11.5" font-weight="bold" text-anchor="middle">SQLite Local Outbox</text>
 
   <!-- Persistence to Local DB -->
@@ -100,52 +100,52 @@
 
   <!-- Component: Sync Receiver -->
   <rect x="745" y="130" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="865" y="155" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="865" y="155" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="865" y="175" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">SyncReceiverService</text>
 
   <!-- Component: Auth Service -->
   <rect x="1035" y="130" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1155" y="155" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="1155" y="155" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="1155" y="175" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">Auth &amp; RBAC Service</text>
 
   <!-- Component: Roll Manager -->
   <rect x="745" y="240" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="865" y="265" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="865" y="265" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="865" y="285" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">RollManagerService</text>
 
   <!-- Component: Defect Manager -->
   <rect x="1035" y="240" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1155" y="265" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="1155" y="265" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="1155" y="285" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">DefectManagerService</text>
 
   <!-- Component: Grading Engine -->
   <rect x="745" y="350" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="865" y="375" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="865" y="375" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="865" y="395" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">GradingEngine (4-Point)</text>
 
   <!-- Component: Inventory Service -->
   <rect x="1035" y="350" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1155" y="375" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="1155" y="375" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="1155" y="395" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">InventoryService</text>
 
   <!-- Component: Report Generator -->
   <rect x="745" y="460" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="865" y="485" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="865" y="485" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="865" y="505" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">ReportGenerator (PDF)</text>
 
   <!-- Component: Notification Hub -->
   <rect x="1035" y="460" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1155" y="485" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
+  <text x="1155" y="485" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;component&gt;&gt;</text>
   <text x="1155" y="505" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">NotificationHub (WSS)</text>
 
   <!-- Central Database representation -->
   <rect x="745" y="570" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="865" y="595" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;database&gt;&gt;</text>
+  <text x="865" y="595" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;database&gt;&gt;</text>
   <text x="865" y="615" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">PostgreSQL Database</text>
 
   <!-- Central Object Storage -->
   <rect x="1035" y="570" width="240" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-  <text x="1155" y="595" fill="#444444" font-size="10" text-anchor="middle">&lt;&lt;storage&gt;&gt;</text>
+  <text x="1155" y="595" fill="#000000" font-size="10" text-anchor="middle">&lt;&lt;storage&gt;&gt;</text>
   <text x="1155" y="615" fill="#000000" font-size="12" font-weight="bold" text-anchor="middle">MinIO / S3 Storage</text>
 
 

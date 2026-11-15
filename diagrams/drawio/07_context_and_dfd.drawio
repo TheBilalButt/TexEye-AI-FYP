@@ -24,24 +24,24 @@
         </mxCell>
 
         <!-- External Entities -->
-        <mxCell id="ent_sensor" value="&lt;b&gt;Camera &amp;amp; Sensors&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Rig &amp;amp; Rotary Encoder)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="50" y="105" width="220" height="75" as="geometry" />
+        <mxCell id="ent_sensor" value="&lt;b&gt;Camera &amp;amp; Sensors&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="105" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Mobile Application)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="50" y="665" width="220" height="75" as="geometry" />
+        <mxCell id="ent_op" value="&lt;b&gt;Floor Operator&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="665" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Web Workstation)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="830" y="105" width="220" height="75" as="geometry" />
+        <mxCell id="ent_qi" value="&lt;b&gt;Quality Inspector&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="105" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(Analytics Dashboard)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+        <mxCell id="ent_pm" value="&lt;b&gt;Production Manager&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="830" y="415" width="220" height="70" as="geometry" />
         </mxCell>
 
-        <mxCell id="ent_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;(ERP / Warehouse Stock)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="830" y="665" width="220" height="75" as="geometry" />
+        <mxCell id="ent_im" value="&lt;b&gt;Inventory Manager&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="830" y="665" width="220" height="70" as="geometry" />
         </mxCell>
 
         <!-- Clean Zero-Overlap Connectors -->
