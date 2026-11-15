@@ -426,6 +426,15 @@ function Get-Compact-Pages-22-to-31 {
               Figure 5.5: Sequence Diagram: Real-Time Inspection &amp; Defect Detection
             </div>
             <svg viewBox="0 0 740 200" width="100%" height="135" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="seq55-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+                </marker>
+                <marker id="seq55-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polyline points="2 1, 7 4, 2 7" fill="none" stroke="#000000" stroke-width="1.2"/>
+                </marker>
+              </defs>
+
               <!-- Participants -->
               <rect x="20" y="10" width="110" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="75" y="26" font-size="8" font-weight="bold" text-anchor="middle">Floor Operator</text>
@@ -444,30 +453,29 @@ function Get-Compact-Pages-22-to-31 {
               <line x1="590" y1="35" x2="590" y2="190" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <!-- Message 1 -->
-              <line x1="75" y1="55" x2="240" y2="55" stroke="#000" stroke-width="1" marker-end="url(#arr)"/>
-              <text x="157" y="50" font-size="7.5" font-weight="bold" text-anchor="middle">StartRollSession(roll_id)</text>
+              <line x1="75" y1="55" x2="240" y2="55" stroke="#000" stroke-width="1.2" marker-end="url(#seq55-arr)"/>
+              <text x="157" y="47" font-size="7.5" font-weight="bold" text-anchor="middle">StartRollSession(roll_id)</text>
 
               <!-- Message 2 -->
-              <line x1="240" y1="75" x2="75" y2="75" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="157" y="70" font-size="7" text-anchor="middle">SessionInitialized</text>
+              <line x1="240" y1="75" x2="75" y2="75" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq55-ret)"/>
+              <text x="157" y="67" font-size="7" text-anchor="middle">SessionInitialized</text>
 
               <!-- Message 3 -->
-              <line x1="415" y1="95" x2="240" y2="95" stroke="#000" stroke-width="1"/>
-              <text x="327" y="90" font-size="7.5" font-weight="bold" text-anchor="middle">FrameReady(frame_id, pulses)</text>
+              <line x1="415" y1="95" x2="240" y2="95" stroke="#000" stroke-width="1.2" marker-end="url(#seq55-arr)"/>
+              <text x="327" y="87" font-size="7.5" font-weight="bold" text-anchor="middle">FrameReady(frame_id, pulses)</text>
 
-              <!-- Internal YOLO -->
-              <line x1="240" y1="115" x2="270" y2="115" stroke="#000" stroke-width="0.8"/>
-              <line x1="270" y1="115" x2="270" y2="130" stroke="#000" stroke-width="0.8"/>
-              <line x1="270" y1="130" x2="240" y2="130" stroke="#000" stroke-width="0.8"/>
-              <text x="275" y="125" font-size="7">YOLO Inference &amp; Kalman Track</text>
+              <!-- Internal Processing -->
+              <path d="M 240 115 L 270 115 L 270 130 L 240 130" fill="none" stroke="#000" stroke-width="1" marker-end="url(#seq55-arr)"/>
+              <text x="278" y="125" font-size="7">AI Inference &amp; Kalman Track</text>
 
-              <!-- Message 4 -->
-              <line x1="240" y1="150" x2="590" y2="150" stroke="#000" stroke-width="1"/>
-              <text x="415" y="145" font-size="7.5" font-weight="bold" text-anchor="middle">InsertDefect(flaw, X_mm, Y_m)</text>
+              <!-- Message 4: Across intermediate lifeline at x=415 -->
+              <rect x="330" y="132" width="220" height="15" fill="#ffffff"/>
+              <text x="440" y="143" font-size="7.5" font-weight="bold" text-anchor="middle">InsertDefect(flaw, X_mm, Y_m)</text>
+              <line x1="240" y1="150" x2="590" y2="150" stroke="#000" stroke-width="1.2" marker-end="url(#seq55-arr)"/>
 
               <!-- Message 5 -->
-              <line x1="240" y1="175" x2="75" y2="175" stroke="#000" stroke-width="1"/>
-              <text x="157" y="170" font-size="7.5" font-weight="bold" text-anchor="middle">PushVibrationAlert(flaw_type)</text>
+              <line x1="240" y1="175" x2="75" y2="175" stroke="#000" stroke-width="1.2" marker-end="url(#seq55-arr)"/>
+              <text x="157" y="167" font-size="7.5" font-weight="bold" text-anchor="middle">PushVibrationAlert(flaw_type)</text>
             </svg>
           </div>
 
@@ -475,50 +483,55 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 1.5mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.6: Sequence Diagram: Inspection Reliability &amp; Hardware Invariant Gating
             </div>
-            <svg viewBox="0 0 740 190" width="100%" height="130" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <svg viewBox="0 0 740 195" width="100%" height="132" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="seq56-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+                </marker>
+              </defs>
+
               <!-- Participants -->
               <rect x="20" y="10" width="120" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="80" y="26" font-size="8" font-weight="bold" text-anchor="middle">Camera &amp; Encoder</text>
-              <line x1="80" y1="35" x2="80" y2="180" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <line x1="80" y1="35" x2="80" y2="185" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <rect x="200" y="10" width="130" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="265" y="26" font-size="8" font-weight="bold" text-anchor="middle">Reliability Guard</text>
-              <line x1="265" y1="35" x2="265" y2="180" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <line x1="265" y1="35" x2="265" y2="185" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <rect x="390" y="10" width="130" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="455" y="26" font-size="8" font-weight="bold" text-anchor="middle">Relay Actuator</text>
-              <line x1="455" y1="35" x2="455" y2="180" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <line x1="455" y1="35" x2="455" y2="185" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <rect x="580" y="10" width="120" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="640" y="26" font-size="8" font-weight="bold" text-anchor="middle">Local SQLite WAL</text>
-              <line x1="640" y1="35" x2="640" y2="180" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
+              <line x1="640" y1="35" x2="640" y2="185" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <!-- Message 1 -->
-              <line x1="80" y1="55" x2="265" y2="55" stroke="#000" stroke-width="1"/>
-              <text x="172" y="50" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=420, v=0.62m/s)</text>
+              <line x1="80" y1="55" x2="265" y2="55" stroke="#000" stroke-width="1.2" marker-end="url(#seq56-arr)"/>
+              <text x="172" y="47" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=420, v=0.62m/s)</text>
 
               <!-- Internal Evaluation -->
-              <line x1="265" y1="75" x2="295" y2="75" stroke="#000" stroke-width="0.8"/>
-              <line x1="295" y1="75" x2="295" y2="90" stroke="#000" stroke-width="0.8"/>
-              <line x1="295" y1="90" x2="265" y2="90" stroke="#000" stroke-width="0.8"/>
+              <path d="M 265 75 L 295 75 L 295 90 L 265 90" fill="none" stroke="#000" stroke-width="1" marker-end="url(#seq56-arr)"/>
               <text x="300" y="85" font-size="7">EvaluateInvariants() -&gt; FAULT</text>
 
               <!-- Message 2 -->
-              <line x1="265" y1="110" x2="455" y2="110" stroke="#000" stroke-width="1"/>
-              <text x="360" y="105" font-size="7.5" font-weight="bold" text-anchor="middle">ActuateRelay(AMBER_LIGHT, ON)</text>
+              <line x1="265" y1="110" x2="455" y2="110" stroke="#000" stroke-width="1.2" marker-end="url(#seq56-arr)"/>
+              <text x="360" y="102" font-size="7.5" font-weight="bold" text-anchor="middle">ActuateRelay(AMBER_LIGHT, ON)</text>
 
-              <!-- Message 3 -->
-              <line x1="265" y1="135" x2="640" y2="135" stroke="#000" stroke-width="1"/>
-              <rect x="340" y="121" width="225" height="13" fill="#ffffff"/>
-              <text x="452" y="130" font-size="7.5" font-weight="bold" text-anchor="middle">RecordUninspectedSpan(Y_start=14.2m)</text>
+              <!-- Message 3: Across intermediate lifeline at x=455 -->
+              <rect x="340" y="117" width="230" height="15" fill="#ffffff"/>
+              <text x="455" y="128" font-size="7.5" font-weight="bold" text-anchor="middle">RecordUninspectedSpan(Y_start=14.2m)</text>
+              <line x1="265" y1="135" x2="640" y2="135" stroke="#000" stroke-width="1.2" marker-end="url(#seq56-arr)"/>
 
-              <!-- Recovery -->
-              <line x1="80" y1="160" x2="265" y2="160" stroke="#000" stroke-width="1"/>
-              <text x="172" y="155" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=950, v=0.35m/s)</text>
+              <!-- Recovery Telemetry -->
+              <line x1="80" y1="158" x2="265" y2="158" stroke="#000" stroke-width="1.2" marker-end="url(#seq56-arr)"/>
+              <text x="172" y="150" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=950, v=0.35m/s)</text>
 
-              <line x1="265" y1="175" x2="640" y2="175" stroke="#000" stroke-width="1"/>
-              <rect x="345" y="161" width="215" height="13" fill="#ffffff"/>
-              <text x="452" y="170" font-size="7.5" font-weight="bold" text-anchor="middle">CloseUninspectedSpan(Y_end=15.8m)</text>
+              <!-- Message 5: Across intermediate lifeline at x=455 -->
+              <rect x="345" y="160" width="220" height="15" fill="#ffffff"/>
+              <text x="455" y="171" font-size="7.5" font-weight="bold" text-anchor="middle">CloseUninspectedSpan(Y_end=15.8m)</text>
+              <line x1="265" y1="178" x2="640" y2="178" stroke="#000" stroke-width="1.2" marker-end="url(#seq56-arr)"/>
             </svg>
           </div>
 '@
@@ -536,6 +549,15 @@ function Get-Compact-Pages-22-to-31 {
               Figure 5.7: Sequence Diagram: Offline Buffering &amp; Outbox Synchronization
             </div>
             <svg viewBox="0 0 740 195" width="100%" height="135" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="seq57-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+                </marker>
+                <marker id="seq57-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polyline points="2 1, 7 4, 2 7" fill="none" stroke="#000000" stroke-width="1.2"/>
+                </marker>
+              </defs>
+
               <!-- Participants -->
               <rect x="20" y="10" width="120" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="80" y="26" font-size="8" font-weight="bold" text-anchor="middle">Sync Daemon</text>
@@ -554,29 +576,30 @@ function Get-Compact-Pages-22-to-31 {
               <line x1="605" y1="35" x2="605" y2="185" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <!-- Message 1 -->
-              <line x1="80" y1="55" x2="250" y2="55" stroke="#000" stroke-width="1"/>
-              <text x="165" y="50" font-size="7.5" font-weight="bold" text-anchor="middle">QueryPendingBatches(limit=50)</text>
+              <line x1="80" y1="55" x2="250" y2="55" stroke="#000" stroke-width="1.2" marker-end="url(#seq57-arr)"/>
+              <text x="165" y="47" font-size="7.5" font-weight="bold" text-anchor="middle">QueryPendingBatches(limit=50)</text>
 
-              <line x1="250" y1="75" x2="80" y2="75" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="165" y="70" font-size="7" text-anchor="middle">PendingEventsList</text>
+              <!-- Response 1 -->
+              <line x1="250" y1="75" x2="80" y2="75" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq57-ret)"/>
+              <text x="165" y="67" font-size="7" text-anchor="middle">PendingEventsList</text>
 
-              <!-- Message 2 -->
-              <line x1="80" y1="100" x2="425" y2="100" stroke="#000" stroke-width="1"/>
-              <rect x="135" y="86" width="235" height="13" fill="#ffffff"/>
-              <text x="252" y="95" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/sync/batch (Multipart JSON + Crops)</text>
+              <!-- Message 2: Across intermediate lifeline at x=250 -->
+              <rect x="135" y="82" width="235" height="15" fill="#ffffff"/>
+              <text x="252" y="93" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/sync/batch (Multipart JSON + Crops)</text>
+              <line x1="80" y1="100" x2="425" y2="100" stroke="#000" stroke-width="1.2" marker-end="url(#seq57-arr)"/>
 
               <!-- Message 3 -->
-              <line x1="425" y1="125" x2="605" y2="125" stroke="#000" stroke-width="1"/>
-              <text x="515" y="120" font-size="7.5" font-weight="bold" text-anchor="middle">CommitTransaction()</text>
+              <line x1="425" y1="125" x2="605" y2="125" stroke="#000" stroke-width="1.2" marker-end="url(#seq57-arr)"/>
+              <text x="515" y="117" font-size="7.5" font-weight="bold" text-anchor="middle">CommitTransaction()</text>
 
-              <!-- Message 4 -->
-              <line x1="425" y1="150" x2="80" y2="150" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <rect x="180" y="136" width="145" height="13" fill="#ffffff"/>
-              <text x="252" y="145" font-size="7" text-anchor="middle">HTTP 200 OK (synced_ids)</text>
+              <!-- Message 4: Across intermediate lifeline at x=250 -->
+              <rect x="180" y="132" width="145" height="15" fill="#ffffff"/>
+              <text x="252" y="143" font-size="7" text-anchor="middle">HTTP 200 OK (synced_ids)</text>
+              <line x1="425" y1="150" x2="80" y2="150" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq57-ret)"/>
 
               <!-- Message 5 -->
-              <line x1="80" y1="170" x2="250" y2="170" stroke="#000" stroke-width="1"/>
-              <text x="165" y="165" font-size="7.5" font-weight="bold" text-anchor="middle">MarkOutboxSynced(synced_ids)</text>
+              <line x1="80" y1="172" x2="250" y2="172" stroke="#000" stroke-width="1.2" marker-end="url(#seq57-arr)"/>
+              <text x="165" y="164" font-size="7.5" font-weight="bold" text-anchor="middle">MarkOutboxSynced(synced_ids)</text>
             </svg>
           </div>
 
@@ -585,6 +608,15 @@ function Get-Compact-Pages-22-to-31 {
               Figure 5.8: Sequence Diagram: Central Review &amp; ASTM 4-Point Grading Finalization
             </div>
             <svg viewBox="0 0 740 190" width="100%" height="130" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="seq58-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+                </marker>
+                <marker id="seq58-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polyline points="2 1, 7 4, 2 7" fill="none" stroke="#000000" stroke-width="1.2"/>
+                </marker>
+              </defs>
+
               <!-- Participants -->
               <rect x="20" y="10" width="120" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="80" y="26" font-size="8" font-weight="bold" text-anchor="middle">QA Manager</text>
@@ -603,27 +635,28 @@ function Get-Compact-Pages-22-to-31 {
               <line x1="605" y1="35" x2="605" y2="180" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <!-- Message 1 -->
-              <line x1="80" y1="55" x2="250" y2="55" stroke="#000" stroke-width="1"/>
-              <text x="165" y="50" font-size="7.5" font-weight="bold" text-anchor="middle">OpenRollReview(roll_id)</text>
+              <line x1="80" y1="55" x2="250" y2="55" stroke="#000" stroke-width="1.2" marker-end="url(#seq58-arr)"/>
+              <text x="165" y="47" font-size="7.5" font-weight="bold" text-anchor="middle">OpenRollReview(roll_id)</text>
 
               <!-- Message 2 -->
-              <line x1="250" y1="75" x2="425" y2="75" stroke="#000" stroke-width="1"/>
+              <line x1="250" y1="78" x2="425" y2="78" stroke="#000" stroke-width="1.2" marker-end="url(#seq58-arr)"/>
               <text x="337" y="70" font-size="7.5" font-weight="bold" text-anchor="middle">GET /api/v1/rolls/{id}/defects</text>
 
               <!-- Message 3 -->
-              <line x1="80" y1="105" x2="250" y2="105" stroke="#000" stroke-width="1"/>
-              <text x="165" y="100" font-size="7.5" font-weight="bold" text-anchor="middle">UpdateDefect(id, confirmed=True)</text>
+              <line x1="80" y1="105" x2="250" y2="105" stroke="#000" stroke-width="1.2" marker-end="url(#seq58-arr)"/>
+              <text x="165" y="97" font-size="7.5" font-weight="bold" text-anchor="middle">UpdateDefect(id, confirmed=True)</text>
 
               <!-- Message 4 -->
-              <line x1="250" y1="130" x2="425" y2="130" stroke="#000" stroke-width="1"/>
-              <text x="337" y="125" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/rolls/{id}/finalize</text>
+              <line x1="250" y1="130" x2="425" y2="130" stroke="#000" stroke-width="1.2" marker-end="url(#seq58-arr)"/>
+              <text x="337" y="122" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/rolls/{id}/finalize</text>
 
               <!-- Message 5 -->
-              <line x1="425" y1="150" x2="605" y2="150" stroke="#000" stroke-width="1"/>
-              <text x="515" y="145" font-size="7.5" font-weight="bold" text-anchor="middle">CalculateD5430Points(defects)</text>
+              <line x1="425" y1="152" x2="605" y2="152" stroke="#000" stroke-width="1.2" marker-end="url(#seq58-arr)"/>
+              <text x="515" y="144" font-size="7.5" font-weight="bold" text-anchor="middle">CalculateD5430Points(defects)</text>
 
-              <line x1="605" y1="170" x2="425" y2="170" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="515" y="165" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100m²)</text>
+              <!-- Response -->
+              <line x1="605" y1="172" x2="425" y2="172" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq58-ret)"/>
+              <text x="515" y="164" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100m²)</text>
             </svg>
           </div>
 '@
@@ -641,6 +674,15 @@ function Get-Compact-Pages-22-to-31 {
               Figure 5.9: Sequence Diagram: Production Inspection PDF Export
             </div>
             <svg viewBox="0 0 740 185" width="100%" height="125" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="seq59-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+                </marker>
+                <marker id="seq59-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polyline points="2 1, 7 4, 2 7" fill="none" stroke="#000000" stroke-width="1.2"/>
+                </marker>
+              </defs>
+
               <!-- Participants -->
               <rect x="20" y="10" width="120" height="25" fill="#fff" stroke="#000" stroke-width="1.2"/>
               <text x="80" y="26" font-size="8" font-weight="bold" text-anchor="middle">Plant Client</text>
@@ -659,24 +701,24 @@ function Get-Compact-Pages-22-to-31 {
               <line x1="610" y1="35" x2="610" y2="175" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3"/>
 
               <!-- Message 1 -->
-              <line x1="80" y1="55" x2="255" y2="55" stroke="#000" stroke-width="1"/>
-              <text x="167" y="50" font-size="7.5" font-weight="bold" text-anchor="middle">GET /api/v1/reports/{roll_id}/pdf</text>
+              <line x1="80" y1="55" x2="255" y2="55" stroke="#000" stroke-width="1.2" marker-end="url(#seq59-arr)"/>
+              <text x="167" y="47" font-size="7.5" font-weight="bold" text-anchor="middle">GET /api/v1/reports/{roll_id}/pdf</text>
 
               <!-- Message 2 -->
-              <line x1="255" y1="80" x2="435" y2="80" stroke="#000" stroke-width="1"/>
-              <text x="345" y="75" font-size="7.5" font-weight="bold" text-anchor="middle">BuildInspectionPDF(roll_metadata, defects)</text>
+              <line x1="255" y1="80" x2="435" y2="80" stroke="#000" stroke-width="1.2" marker-end="url(#seq59-arr)"/>
+              <text x="345" y="72" font-size="7.5" font-weight="bold" text-anchor="middle">BuildInspectionPDF(roll_metadata, defects)</text>
 
               <!-- Message 3 -->
-              <line x1="435" y1="105" x2="610" y2="105" stroke="#000" stroke-width="1"/>
-              <text x="522" y="100" font-size="7.5" font-weight="bold" text-anchor="middle">StorePDFArchive(filename, bytes)</text>
+              <line x1="435" y1="105" x2="610" y2="105" stroke="#000" stroke-width="1.2" marker-end="url(#seq59-arr)"/>
+              <text x="522" y="97" font-size="7.5" font-weight="bold" text-anchor="middle">StorePDFArchive(filename, bytes)</text>
 
               <!-- Message 4 -->
-              <line x1="435" y1="130" x2="255" y2="130" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="345" y="125" font-size="7" text-anchor="middle">BinaryPDFStream</text>
+              <line x1="435" y1="130" x2="255" y2="130" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq59-ret)"/>
+              <text x="345" y="122" font-size="7" text-anchor="middle">BinaryPDFStream</text>
 
               <!-- Message 5 -->
-              <line x1="255" y1="155" x2="80" y2="155" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="167" y="150" font-size="7" text-anchor="middle">HTTP 200 (application/pdf attachment)</text>
+              <line x1="255" y1="155" x2="80" y2="155" stroke="#000" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#seq59-ret)"/>
+              <text x="167" y="147" font-size="7" text-anchor="middle">HTTP 200 (application/pdf attachment)</text>
             </svg>
           </div>
 
@@ -759,81 +801,76 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.10: State Machine Diagram: Roll Inspection Run FSM
             </div>
-            <!-- Redesigned with generous clearances, clean orthogonal paths, and all labels placed strictly ABOVE arrows -->
-            <svg viewBox="0 0 760 280" width="100%" height="175" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <!-- Clean, professional UML layout: unbroken whole arrows, solid arrowheads, text strictly above/beside lines -->
+            <svg viewBox="0 0 760 290" width="100%" height="180" style="background: #ffffff; font-family: Arial, sans-serif;">
               <defs>
-                <marker id="fsm-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                <marker id="fsm-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
                 </marker>
               </defs>
 
-              <!-- Start Circle -->
-              <circle cx="380" cy="14" r="8" fill="#000"/>
-              <line x1="380" y1="22" x2="380" y2="44" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <text x="395" y="35" font-size="7.5" font-weight="bold">scan_qr</text>
+              <!-- Start Node -->
+              <circle cx="380" cy="14" r="7" fill="#000000"/>
+              <line x1="380" y1="21" x2="380" y2="44" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="392" y="35" font-size="7.5" font-weight="bold">scan_qr</text>
 
               <!-- State 1: INITIALIZING -->
-              <rect x="260" y="44" width="240" height="36" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <rect x="270" y="44" width="220" height="34" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
               <text x="380" y="58" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
-              <text x="380" y="71" font-size="7.5" text-anchor="middle">Do: Zero encoder, check sensors</text>
+              <text x="380" y="70" font-size="7" text-anchor="middle">Do: Zero encoder, check sensors</text>
 
-              <!-- Transition to RUNNING -->
-              <line x1="380" y1="80" x2="380" y2="102" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <text x="395" y="94" font-size="7.5" font-weight="bold">sensors_ok</text>
+              <!-- Transition: INITIALIZING -> RUNNING -->
+              <line x1="380" y1="78" x2="380" y2="100" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="392" y="92" font-size="7.5" font-weight="bold">sensors_ok</text>
 
               <!-- State 2: RUNNING (Center) -->
-              <rect x="250" y="102" width="260" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
-              <text x="380" y="118" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
-              <text x="380" y="131" font-size="7.5" text-anchor="middle">Do: Ingest, infer AI, track defects</text>
+              <rect x="250" y="100" width="260" height="38" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+              <text x="380" y="116" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
+              <text x="380" y="129" font-size="7" text-anchor="middle">Do: Ingest, infer AI, track defects</text>
 
-              <!-- Left Transition: operator_pause -->
-              <path d="M 250 115 L 130 115 L 130 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="145" y="102" width="90" height="14" fill="#ffffff"/>
-              <text x="190" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">operator_pause</text>
+              <!-- Left Branch: RUNNING -> PAUSED -->
+              <path d="M 250 112 L 130 112 L 130 150" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="190" y="104" font-size="7.5" font-weight="bold" text-anchor="middle">operator_pause</text>
 
               <!-- State 3: PAUSED (Left) -->
-              <rect x="30" y="152" width="200" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="130" y="168" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
-              <text x="130" y="181" font-size="7.5" text-anchor="middle">Do: Freeze displacement counter</text>
+              <rect x="30" y="150" width="200" height="38" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="130" y="166" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
+              <text x="130" y="179" font-size="7" text-anchor="middle">Do: Freeze displacement counter</text>
 
-              <!-- Resume path: from PAUSED to RUNNING -->
-              <path d="M 230 171 L 285 171 L 285 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="232" y="159" width="85" height="13" fill="#ffffff"/>
-              <text x="274" y="168" font-size="7" font-weight="bold" text-anchor="middle">operator_resume</text>
+              <!-- Resume: PAUSED -> RUNNING -->
+              <path d="M 230 169 L 300 169 L 300 138" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="265" y="161" font-size="7.5" font-weight="bold" text-anchor="middle">operator_resume</text>
 
-              <!-- Right Transition: sensor_fault -->
-              <path d="M 510 115 L 635 115 L 635 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="520" y="102" width="105" height="14" fill="#ffffff"/>
-              <text x="572" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
+              <!-- Right Branch: RUNNING -> UNINSPECTED_FAULT -->
+              <path d="M 510 112 L 635 112 L 635 150" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="572" y="104" font-size="7.5" font-weight="bold" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
 
               <!-- State 4: UNINSPECTED_FAULT (Right) -->
-              <rect x="525" y="152" width="220" height="48" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="635" y="167" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
-              <text x="635" y="180" font-size="7.5" text-anchor="middle">Do: Suspend AI, record span</text>
-              <text x="635" y="192" font-size="7.5" text-anchor="middle">Actuate Amber Stack Light</text>
+              <rect x="525" y="150" width="220" height="46" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="635" y="165" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
+              <text x="635" y="177" font-size="7" text-anchor="middle">Do: Suspend AI, record span</text>
+              <text x="635" y="188" font-size="7" text-anchor="middle">Actuate Amber Stack Light</text>
 
-              <!-- Recovery path: from UNINSPECTED_FAULT to RUNNING -->
-              <path d="M 525 176 L 475 176 L 475 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="445" y="164" width="85" height="13" fill="#ffffff"/>
-              <text x="487" y="173" font-size="7" font-weight="bold" text-anchor="middle">sensors_recovered</text>
+              <!-- Recovery: UNINSPECTED_FAULT -> RUNNING -->
+              <path d="M 525 169 L 460 169 L 460 138" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="492" y="161" font-size="7.5" font-weight="bold" text-anchor="middle">sensors_recovered</text>
 
-              <!-- Center Transition: critical_defect to ALARM_ACTIVE -->
-              <line x1="380" y1="140" x2="380" y2="202" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="325" y="163" width="110" height="14" fill="#ffffff"/>
-              <text x="380" y="173" font-size="7" font-weight="bold" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
+              <!-- Center Branch: RUNNING -> ALARM_ACTIVE -->
+              <line x1="380" y1="138" x2="380" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="392" y="175" font-size="7.5" font-weight="bold">critical_defect [hole&gt;25mm]</text>
 
               <!-- State 5: ALARM_ACTIVE -->
-              <rect x="270" y="202" width="220" height="42" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="380" y="218" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
-              <text x="380" y="233" font-size="7.5" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
+              <rect x="270" y="206" width="220" height="40" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="380" y="222" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
+              <text x="380" y="236" font-size="7" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
 
-              <!-- Terminal State -->
-              <line x1="380" y1="244" x2="380" y2="260" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
-              <rect x="392" y="247" width="60" height="12" fill="#ffffff"/>
-              <text x="395" y="255" font-size="7" text-anchor="start">operator_ack</text>
+              <!-- Terminal Transition: ALARM_ACTIVE -> Bullseye -->
+              <line x1="380" y1="246" x2="380" y2="268" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <text x="392" y="259" font-size="7.5">operator_ack</text>
 
-              <circle cx="380" cy="268" r="8" fill="none" stroke="#000" stroke-width="1.2"/>
-              <circle cx="380" cy="268" r="4.5" fill="#000"/>
+              <!-- Terminal Circle (Bullseye) -->
+              <circle cx="380" cy="276" r="8" fill="none" stroke="#000000" stroke-width="1.2"/>
+              <circle cx="380" cy="276" r="4.5" fill="#000000"/>
             </svg>
           </div>
 
@@ -841,51 +878,47 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.11: State Machine Diagram: Offline Sync Outbox FSM
             </div>
-            <!-- Redesigned with generous horizontal spacing, clear arrows, and labels strictly above lines -->
-            <svg viewBox="0 0 760 125" width="100%" height="82" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <!-- Clean, professional layout: whole arrows, solid arrowheads, labels strictly above lines -->
+            <svg viewBox="0 0 760 120" width="100%" height="80" style="background: #ffffff; font-family: Arial, sans-serif;">
               <defs>
-                <marker id="sync-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                <marker id="sync-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
                 </marker>
               </defs>
 
               <!-- Start Circle -->
-              <circle cx="35" cy="45" r="8" fill="#000"/>
+              <circle cx="35" cy="46" r="7" fill="#000000"/>
               
-              <!-- Transition 1 -->
-              <line x1="43" y1="45" x2="135" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
-              <rect x="52" y="28" width="70" height="14" fill="#ffffff"/>
-              <text x="87" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
+              <!-- Transition 1: insert_event -->
+              <line x1="42" y1="46" x2="135" y2="46" stroke="#000000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <text x="88" y="36" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
 
               <!-- State 1: PENDING -->
-              <rect x="135" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="210" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
-              <text x="210" y="54" font-size="7.5" text-anchor="middle">Committed in SQLite</text>
+              <rect x="135" y="26" width="150" height="40" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="210" y="42" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
+              <text x="210" y="55" font-size="7" text-anchor="middle">Committed in SQLite</text>
 
-              <!-- Transition 2 -->
-              <line x1="285" y1="45" x2="395" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
-              <rect x="295" y="28" width="90" height="14" fill="#ffffff"/>
-              <text x="340" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
+              <!-- Transition 2: net_online & send -->
+              <line x1="285" y1="46" x2="395" y2="46" stroke="#000000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <text x="340" y="36" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
 
               <!-- State 2: IN_FLIGHT -->
-              <rect x="395" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="470" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
-              <text x="470" y="54" font-size="7.5" text-anchor="middle">HTTPS POST active</text>
+              <rect x="395" y="26" width="150" height="40" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="470" y="42" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
+              <text x="470" y="55" font-size="7" text-anchor="middle">HTTPS POST active</text>
 
-              <!-- Transition 3: Success -->
-              <line x1="545" y1="45" x2="655" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
-              <rect x="562" y="28" width="80" height="14" fill="#ffffff"/>
-              <text x="602" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
+              <!-- Transition 3: HTTP 200 OK -->
+              <line x1="545" y1="46" x2="655" y2="46" stroke="#000000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <text x="600" y="36" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
 
               <!-- State 3: SYNCED -->
-              <rect x="655" y="25" width="90" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="700" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">SYNCED</text>
-              <text x="700" y="54" font-size="7.5" text-anchor="middle">Marked complete</text>
+              <rect x="655" y="26" width="90" height="40" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <text x="700" y="42" font-size="8.5" font-weight="bold" text-anchor="middle">SYNCED</text>
+              <text x="700" y="55" font-size="7" text-anchor="middle">Marked complete</text>
 
               <!-- Transition 4: Retry Loop -->
-              <path d="M 470 65 L 470 98 L 210 98 L 210 67" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
-              <rect x="245" y="88" width="190" height="16" fill="#ffffff"/>
-              <text x="340" y="100" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
+              <path d="M 470 66 L 470 98 L 210 98 L 210 66" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <text x="340" y="90" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
             </svg>
           </div>
 
