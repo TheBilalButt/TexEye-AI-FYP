@@ -1,4 +1,4 @@
-﻿# Compact, Clean, Professional COMSATS Wah Capstone SRDS - Part 3 (Pages 22 to 31)
+# Compact, Clean, Professional COMSATS Wah Capstone SRDS - Part 3 (Pages 22 to 31)
 function Get-Compact-Pages-22-to-31 {
     $pages = [System.Collections.Generic.List[string]]::new()
 
@@ -1291,3 +1291,4 @@ Output: TotalPoints, PointsPer100SqMeters, FinalGrade in {Grade A, Grade B, Reje
 }
 
 Write-Output "Compact Pages 22 to 31 module loaded."
+

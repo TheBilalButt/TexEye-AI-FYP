@@ -297,30 +297,35 @@ function Get-Compact-Pages-12-to-21 {
           <p>
             TexEye AI delivers two graphical interfaces: a high-contrast Flutter mobile app for floor operators and a React web dashboard for quality managers.
           </p>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.5mm;">Table 3.13: Screens of the TexEye AI web and mobile clients</div>
+          <div style="font-weight: bold; font-size: 8.5pt; margin-bottom: 1mm; font-style: italic;">Table 3.13: Screens of the TexEye AI web and mobile clients</div>
           <table class="formal-table">
             <thead>
-              <tr><th style="width: 12%;">Screen ID</th><th style="width: 18%;">Target Client</th><th style="width: 20%;">Target Users</th><th style="width: 50%;">Purpose and Main User Interface Elements</th></tr>
+              <tr>
+                <th style="width: 14%; text-align: center;">Screen ID</th>
+                <th style="width: 18%;">Target Client</th>
+                <th style="width: 18%;">Target Users</th>
+                <th style="width: 50%;">Purpose and Main User Interface Elements</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
-              <tr><td><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
-              <tr><td><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
-              <tr><td><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
-              <tr><td><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In & MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
-              <tr><td><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
-              <tr><td><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
-              <tr><td><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
-              <tr><td><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
-              <tr><td><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate & Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
+              <tr><td style="text-align: center;"><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
+              <tr><td style="text-align: center;"><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
+              <tr><td style="text-align: center;"><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
+              <tr><td style="text-align: center;"><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
+              <tr><td style="text-align: center;"><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
+              <tr><td style="text-align: center;"><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
+              <tr><td style="text-align: center;"><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
+              <tr><td style="text-align: center;"><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
+              <tr><td style="text-align: center;"><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
+              <tr><td style="text-align: center;"><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
             </tbody>
           </table>
 
           <h3 class="subsec-heading" style="margin-top: 2.5mm;">3.3.3 Software Interfaces</h3>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.5mm;">Table 3.14: Software interfaces</div>
+          <div style="font-weight: bold; font-size: 8.5pt; margin-bottom: 1mm; font-style: italic;">Table 3.14: Software interfaces</div>
           <table class="formal-table">
             <thead>
-              <tr><th style="width: 25%;">Component</th><th style="width: 75%;">Purpose and Data Exchanged</th></tr>
+              <tr><th style="width: 28%;">Component</th><th style="width: 72%;">Purpose and Data Exchanged</th></tr>
             </thead>
             <tbody>
               <tr><td><b>Linux Kernel V4L2 / GenICam</b></td><td>Zero-copy camera frame buffer ingestion; camera exposure and gain register configuration via standard ioctl calls.</td></tr>
@@ -461,3 +466,4 @@ function Get-Compact-Pages-12-to-21 {
 }
 
 Write-Output "Compact Pages 12 to 21 module loaded."
+

@@ -102,24 +102,36 @@
     margin-bottom: 0.6mm;
     text-align: justify;
   }
-  table.req-table {
+  /* Comprehensive Table Styling (Matching ReDez COMSATS Standard) */
+  table, table.formal-table, table.req-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 7.2pt;
-    margin: 1mm 0 1.8mm 0;
-  }
-  table.req-table th {
-    background-color: #edf2f7;
+    line-height: 1.35;
+    margin: 1.2mm 0 2mm 0;
     border: 1px solid #718096;
-    padding: 2.5px 4px;
+    background-color: #ffffff;
+  }
+  table th, table.formal-table th, table.req-table th {
+    background-color: #e2e8f0;
+    border: 1px solid #718096;
+    padding: 2.8px 4.5px;
     font-weight: bold;
     text-align: left;
     color: #000000;
+    vertical-align: middle;
   }
-  table.req-table td {
-    border: 1px solid #cbd5e0;
-    padding: 2px 4px;
+  table td, table.formal-table td, table.req-table td {
+    border: 1px solid #a0aec0;
+    padding: 2.2px 4.5px;
     vertical-align: top;
+    color: #000000;
+    background-color: #ffffff;
+  }
+  table.formal-table th {
+    background-color: #edf2f7;
+    border: 1px solid #718096;
+    font-weight: bold;
     color: #000000;
   }
   .toc-line {
@@ -159,43 +171,46 @@
       <div class="page-inner-frame">
 
         <div class="page-content">
-          <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 10mm 6mm;">
-            <!-- Top Dark Banner -->
-            <div style="background-color: #1a202c; color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 8px 18px; border-radius: 3px;">
-              <span style="font-size: 13pt; font-weight: bold; letter-spacing: 0.5px;">FYP Capstone Project &ldquo;TexEye AI&rdquo;</span>
-              <span style="background-color: #edf2f7; color: #1a202c; padding: 2px 14px; font-weight: bold; font-size: 11pt; border-radius: 2px;">2026 - 2027</span>
+          <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 4mm;">
+            <!-- Top Dark Banner (Exact ReDez Standard) -->
+            <div style="display: flex; height: 11mm; border: 1px solid #2d3748;">
+              <div style="flex: 1; background-color: #2d3748; color: #ffffff; display: flex; align-items: center; padding-left: 5mm; font-size: 13pt; font-weight: bold; letter-spacing: 0.5px;">
+                FYP Document &ldquo;TexEye AI&rdquo;
+              </div>
+              <div style="width: 28mm; background-color: #cbd5e0; color: #000000; display: flex; align-items: center; justify-content: center; font-size: 12pt; font-weight: bold;">
+                2026
+              </div>
             </div>
 
             <!-- University & Department Header -->
-            <div style="text-align: center; margin-top: 16mm;">
-              <div style="font-size: 16pt; font-weight: 800; color: #1a202c; letter-spacing: 0.4px;">COMSATS University Islamabad, Wah Cantt Campus</div>
-              <div style="font-size: 13pt; color: #4a5568; margin-top: 2.5mm; font-weight: 600;">Department of Computer Science</div>
-              <div style="font-size: 11pt; color: #718096; margin-top: 1.5mm;">Bachelor of Science in Artificial Intelligence (BS-AI)</div>
+            <div style="text-align: center; margin-top: 14mm;">
+              <div style="font-size: 14.5pt; font-weight: bold; color: #000000;">COMSATS University Islamabad, Wah Campus</div>
+              <div style="font-size: 12pt; color: #2d3748; margin-top: 2mm;">Department of Computer Science</div>
             </div>
 
             <!-- Main Title & Subtitle -->
-            <div style="text-align: center; margin-top: 14mm;">
-              <div style="font-size: 34pt; font-weight: 900; color: #000000; letter-spacing: 1px;">TexEye AI</div>
-              <div style="font-size: 12.5pt; color: #2d3748; margin-top: 4.5mm; max-width: 150mm; margin-left: auto; margin-right: auto; line-height: 1.45; font-weight: 500;">
-                An Industrial Edge-Cloud System for Real-Time Fabric Defect Detection, Metrology, and ASTM D5430 Quality Grading
+            <div style="text-align: center; margin-top: 20mm;">
+              <div style="font-size: 38pt; font-weight: bold; color: #000000; letter-spacing: 0.5px;">TexEye AI</div>
+              <div style="font-size: 13pt; color: #1a202c; margin-top: 4mm; max-width: 145mm; margin-left: auto; margin-right: auto; line-height: 1.45;">
+                An AI-Based Fabric Defect Detection and Quality Management System
               </div>
             </div>
 
             <!-- Supervisor Block -->
-            <div style="text-align: center; margin-top: 12mm; background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 5mm; max-width: 140mm; margin-left: auto; margin-right: auto;">
-              <div style="font-size: 10pt; font-style: italic; color: #718096;">Supervised by</div>
-              <div style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin-top: 1.5mm;">Dr. Tassawar Iqbal</div>
+            <div style="text-align: center; margin-top: 18mm;">
+              <div style="font-size: 11pt; font-style: italic; color: #4a5568;">Supervised by</div>
+              <div style="font-size: 13.5pt; font-weight: bold; color: #000000; margin-top: 2mm;">Dr. Tassawar Iqbal</div>
               <div style="font-size: 10pt; color: #4a5568; margin-top: 1mm;">Department of Computer Science, COMSATS University Islamabad, Wah Cantt Campus</div>
             </div>
 
-            <!-- Document Category Title & Authors Block -->
-            <div style="margin-top: 16mm; border-top: 1.5pt solid #000000; padding-top: 6mm;">
-              <div style="font-size: 21pt; font-weight: 900; color: #000000; line-height: 1.2;">
-                Software Requirement and Design Specification
+            <!-- Bottom Title & Authors Block (Exact ReDez Standard) -->
+            <div style="margin-top: 28mm; margin-bottom: 6mm;">
+              <div style="font-size: 23pt; font-weight: bold; color: #000000; line-height: 1.25;">
+                Software Requirement and<br/>
+                Design Specification
               </div>
-              <div style="display: flex; justify-content: space-between; margin-top: 6mm; font-size: 10pt; font-weight: bold; color: #2d3748;">
-                <span>Muhammad Afnan Khan (FA23-BAI-028)</span>
-                <span>Muhammad Bilal Butt (FA23-BAI-042)</span>
+              <div style="margin-top: 7mm; font-size: 10.5pt; font-weight: bold; color: #000000; letter-spacing: 0.4px;">
+                MUHAMMAD AFNAN KHAN (FA23-BAI-028) &nbsp;|&nbsp; MUHAMMAD BILAL BUTT (FA23-BAI-042)
               </div>
             </div>
           </div>
@@ -1172,30 +1187,35 @@
           <p>
             TexEye AI delivers two graphical interfaces: a high-contrast Flutter mobile app for floor operators and a React web dashboard for quality managers.
           </p>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.5mm;">Table 3.13: Screens of the TexEye AI web and mobile clients</div>
+          <div style="font-weight: bold; font-size: 8.5pt; margin-bottom: 1mm; font-style: italic;">Table 3.13: Screens of the TexEye AI web and mobile clients</div>
           <table class="formal-table">
             <thead>
-              <tr><th style="width: 12%;">Screen ID</th><th style="width: 18%;">Target Client</th><th style="width: 20%;">Target Users</th><th style="width: 50%;">Purpose and Main User Interface Elements</th></tr>
+              <tr>
+                <th style="width: 14%; text-align: center;">Screen ID</th>
+                <th style="width: 18%;">Target Client</th>
+                <th style="width: 18%;">Target Users</th>
+                <th style="width: 50%;">Purpose and Main User Interface Elements</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
-              <tr><td><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
-              <tr><td><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
-              <tr><td><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
-              <tr><td><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In & MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
-              <tr><td><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
-              <tr><td><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
-              <tr><td><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
-              <tr><td><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
-              <tr><td><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate & Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
+              <tr><td style="text-align: center;"><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
+              <tr><td style="text-align: center;"><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
+              <tr><td style="text-align: center;"><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
+              <tr><td style="text-align: center;"><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
+              <tr><td style="text-align: center;"><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
+              <tr><td style="text-align: center;"><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
+              <tr><td style="text-align: center;"><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
+              <tr><td style="text-align: center;"><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
+              <tr><td style="text-align: center;"><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
+              <tr><td style="text-align: center;"><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
             </tbody>
           </table>
 
           <h3 class="subsec-heading" style="margin-top: 2.5mm;">3.3.3 Software Interfaces</h3>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.5mm;">Table 3.14: Software interfaces</div>
+          <div style="font-weight: bold; font-size: 8.5pt; margin-bottom: 1mm; font-style: italic;">Table 3.14: Software interfaces</div>
           <table class="formal-table">
             <thead>
-              <tr><th style="width: 25%;">Component</th><th style="width: 75%;">Purpose and Data Exchanged</th></tr>
+              <tr><th style="width: 28%;">Component</th><th style="width: 72%;">Purpose and Data Exchanged</th></tr>
             </thead>
             <tbody>
               <tr><td><b>Linux Kernel V4L2 / GenICam</b></td><td>Zero-copy camera frame buffer ingestion; camera exposure and gain register configuration via standard ioctl calls.</td></tr>
@@ -2003,7 +2023,7 @@
               <text x="515" y="145" font-size="7.5" font-weight="bold" text-anchor="middle">CalculateD5430Points(defects)</text>
 
               <line x1="605" y1="170" x2="425" y2="170" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="515" y="165" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100m²)</text>
+              <text x="515" y="165" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100mÂ²)</text>
             </svg>
           </div>
         </div>

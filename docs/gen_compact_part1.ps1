@@ -4,43 +4,46 @@ function Get-Compact-Pages-1-to-11 {
 
     # ==================== PAGE 1: COVER PAGE ====================
     $p1 = @'
-          <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 10mm 6mm;">
-            <!-- Top Dark Banner -->
-            <div style="background-color: #1a202c; color: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 8px 18px; border-radius: 3px;">
-              <span style="font-size: 13pt; font-weight: bold; letter-spacing: 0.5px;">FYP Capstone Project &ldquo;TexEye AI&rdquo;</span>
-              <span style="background-color: #edf2f7; color: #1a202c; padding: 2px 14px; font-weight: bold; font-size: 11pt; border-radius: 2px;">2026 - 2027</span>
+          <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 4mm;">
+            <!-- Top Dark Banner (Exact ReDez Standard) -->
+            <div style="display: flex; height: 11mm; border: 1px solid #2d3748;">
+              <div style="flex: 1; background-color: #2d3748; color: #ffffff; display: flex; align-items: center; padding-left: 5mm; font-size: 13pt; font-weight: bold; letter-spacing: 0.5px;">
+                FYP Document &ldquo;TexEye AI&rdquo;
+              </div>
+              <div style="width: 28mm; background-color: #cbd5e0; color: #000000; display: flex; align-items: center; justify-content: center; font-size: 12pt; font-weight: bold;">
+                2026
+              </div>
             </div>
 
             <!-- University & Department Header -->
-            <div style="text-align: center; margin-top: 16mm;">
-              <div style="font-size: 16pt; font-weight: 800; color: #1a202c; letter-spacing: 0.4px;">COMSATS University Islamabad, Wah Cantt Campus</div>
-              <div style="font-size: 13pt; color: #4a5568; margin-top: 2.5mm; font-weight: 600;">Department of Computer Science</div>
-              <div style="font-size: 11pt; color: #718096; margin-top: 1.5mm;">Bachelor of Science in Artificial Intelligence (BS-AI)</div>
+            <div style="text-align: center; margin-top: 14mm;">
+              <div style="font-size: 14.5pt; font-weight: bold; color: #000000;">COMSATS University Islamabad, Wah Campus</div>
+              <div style="font-size: 12pt; color: #2d3748; margin-top: 2mm;">Department of Computer Science</div>
             </div>
 
             <!-- Main Title & Subtitle -->
-            <div style="text-align: center; margin-top: 14mm;">
-              <div style="font-size: 34pt; font-weight: 900; color: #000000; letter-spacing: 1px;">TexEye AI</div>
-              <div style="font-size: 12.5pt; color: #2d3748; margin-top: 4.5mm; max-width: 150mm; margin-left: auto; margin-right: auto; line-height: 1.45; font-weight: 500;">
-                An Industrial Edge-Cloud System for Real-Time Fabric Defect Detection, Metrology, and ASTM D5430 Quality Grading
+            <div style="text-align: center; margin-top: 20mm;">
+              <div style="font-size: 38pt; font-weight: bold; color: #000000; letter-spacing: 0.5px;">TexEye AI</div>
+              <div style="font-size: 13pt; color: #1a202c; margin-top: 4mm; max-width: 145mm; margin-left: auto; margin-right: auto; line-height: 1.45;">
+                An AI-Based Fabric Defect Detection and Quality Management System
               </div>
             </div>
 
             <!-- Supervisor Block -->
-            <div style="text-align: center; margin-top: 12mm; background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 5mm; max-width: 140mm; margin-left: auto; margin-right: auto;">
-              <div style="font-size: 10pt; font-style: italic; color: #718096;">Supervised by</div>
-              <div style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin-top: 1.5mm;">Dr. Tassawar Iqbal</div>
+            <div style="text-align: center; margin-top: 18mm;">
+              <div style="font-size: 11pt; font-style: italic; color: #4a5568;">Supervised by</div>
+              <div style="font-size: 13.5pt; font-weight: bold; color: #000000; margin-top: 2mm;">Dr. Tassawar Iqbal</div>
               <div style="font-size: 10pt; color: #4a5568; margin-top: 1mm;">Department of Computer Science, COMSATS University Islamabad, Wah Cantt Campus</div>
             </div>
 
-            <!-- Document Category Title & Authors Block -->
-            <div style="margin-top: 16mm; border-top: 1.5pt solid #000000; padding-top: 6mm;">
-              <div style="font-size: 21pt; font-weight: 900; color: #000000; line-height: 1.2;">
-                Software Requirement and Design Specification
+            <!-- Bottom Title & Authors Block (Exact ReDez Standard) -->
+            <div style="margin-top: 28mm; margin-bottom: 6mm;">
+              <div style="font-size: 23pt; font-weight: bold; color: #000000; line-height: 1.25;">
+                Software Requirement and<br/>
+                Design Specification
               </div>
-              <div style="display: flex; justify-content: space-between; margin-top: 6mm; font-size: 10pt; font-weight: bold; color: #2d3748;">
-                <span>Muhammad Afnan Khan (FA23-BAI-028)</span>
-                <span>Muhammad Bilal Butt (FA23-BAI-042)</span>
+              <div style="margin-top: 7mm; font-size: 10.5pt; font-weight: bold; color: #000000; letter-spacing: 0.4px;">
+                MUHAMMAD AFNAN KHAN (FA23-BAI-028) &nbsp;|&nbsp; MUHAMMAD BILAL BUTT (FA23-BAI-042)
               </div>
             </div>
           </div>
@@ -607,3 +610,4 @@ function Get-Compact-Pages-1-to-11 {
 }
 
 Write-Output "Compact Pages 1 to 11 module loaded."
+

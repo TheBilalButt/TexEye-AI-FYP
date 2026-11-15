@@ -142,24 +142,36 @@ $htmlShell = @"
     margin-bottom: 0.6mm;
     text-align: justify;
   }
-  table.req-table {
+  /* Comprehensive Table Styling (Matching ReDez COMSATS Standard) */
+  table, table.formal-table, table.req-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 7.2pt;
-    margin: 1mm 0 1.8mm 0;
-  }
-  table.req-table th {
-    background-color: #edf2f7;
+    line-height: 1.35;
+    margin: 1.2mm 0 2mm 0;
     border: 1px solid #718096;
-    padding: 2.5px 4px;
+    background-color: #ffffff;
+  }
+  table th, table.formal-table th, table.req-table th {
+    background-color: #e2e8f0;
+    border: 1px solid #718096;
+    padding: 2.8px 4.5px;
     font-weight: bold;
     text-align: left;
     color: #000000;
+    vertical-align: middle;
   }
-  table.req-table td {
-    border: 1px solid #cbd5e0;
-    padding: 2px 4px;
+  table td, table.formal-table td, table.req-table td {
+    border: 1px solid #a0aec0;
+    padding: 2.2px 4.5px;
     vertical-align: top;
+    color: #000000;
+    background-color: #ffffff;
+  }
+  table.formal-table th {
+    background-color: #edf2f7;
+    border: 1px solid #718096;
+    font-weight: bold;
     color: #000000;
   }
   .toc-line {
