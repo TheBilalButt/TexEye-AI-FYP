@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_deploy" name="Figure 5.3: UML Deployment Diagram of TexEye AI">
     <mxGraphModel dx="1350" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -88,22 +88,22 @@
         </mxCell>
 
         <!-- Connectors -->
-        <mxCell id="e_t1_t2_cam" value="USB 3.0 / GigE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="t1_cam" target="t2_cap">
+        <mxCell id="e_t1_t2_cam" value="USB 3.0 / GigE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="t1_cam" target="t2_cap">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_t1_t2_enc" value="GPIO Pulses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="t1_enc" target="t2_enc">
+        <mxCell id="e_t1_t2_enc" value="GPIO Pulses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="t1_enc" target="t2_enc">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_t2_t1_relay" value="Relay Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="t2_relay" target="t1_light">
+        <mxCell id="e_t2_t1_relay" value="Relay Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="t2_relay" target="t1_light">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_t2_t3" value="HTTPS REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="t2_sync" target="t3_api">
+        <mxCell id="e_t2_t3" value="HTTPS REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="t2_sync" target="t3_api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_t2_mob" value="Wi-Fi / LAN (Zero-Latency Alerts)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="tier2" target="node_mob">
+        <mxCell id="e_t2_mob" value="Wi-Fi / LAN (Zero-Latency Alerts)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="tier2" target="node_mob">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_t3_ws" value="HTTPS / WSS (Web Analytics)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="tier3" target="node_ws">
+        <mxCell id="e_t3_ws" value="HTTPS / WSS (Web Analytics)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="tier3" target="node_ws">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -111,3 +111,4 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
+

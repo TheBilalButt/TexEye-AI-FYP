@@ -1,5 +1,5 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
-  <diagram id="texeye_seq_insp" name="Figure 5.4: Sequence Diagram — Roll Inspection and Defect Detection">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="texeye_seq_insp" name="Figure 5.4: Sequence Diagram â€” Roll Inspection and Defect Detection">
     <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -65,26 +65,26 @@
         </mxCell>
 
         <!-- Messages -->
-        <mxCell id="m1" value="StartRollSession(roll_qr_code)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m1" value="StartRollSession(roll_qr_code)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="120" y="150" as="sourcePoint" />
             <mxPoint x="555" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m2" value="SessionInitialized" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m2" value="SessionInitialized" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="185" as="sourcePoint" />
             <mxPoint x="120" y="185" as="targetPoint" />
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="m3" value="CaptureFrame(frame_id, pulses)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m3" value="CaptureFrame(frame_id, pulses)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="330" y="225" as="sourcePoint" />
             <mxPoint x="555" y="225" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m4" value="VerifyReliability(light, blur, fps)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m4" value="VerifyReliability(light, blur, fps)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="265" as="sourcePoint" />
             <mxPoint x="575" y="295" as="targetPoint" />
@@ -95,7 +95,7 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="m5" value="DetectDefects(frame, yolo_v8)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m5" value="DetectDefects(frame, yolo_v8)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="340" as="sourcePoint" />
             <mxPoint x="575" y="370" as="targetPoint" />
@@ -105,7 +105,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="m6" value="AssociateTracks(bbox, kf_iou)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m6" value="AssociateTracks(bbox, kf_iou)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="415" as="sourcePoint" />
             <mxPoint x="575" y="445" as="targetPoint" />
@@ -115,7 +115,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="m7" value="CalculatePenaltyPoints(dim_cm)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m7" value="CalculatePenaltyPoints(dim_cm)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="490" as="sourcePoint" />
             <mxPoint x="575" y="520" as="targetPoint" />
@@ -126,32 +126,32 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="m8" value="CommitOutboxBatch(roll_id, defects)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m8" value="CommitOutboxBatch(roll_id, defects)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="565" as="sourcePoint" />
             <mxPoint x="775" y="565" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m9" value="OutboxCommitted(tx_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m9" value="OutboxCommitted(tx_id)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="775" y="600" as="sourcePoint" />
             <mxPoint x="555" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="m10" value="SynchronizeBatch(roll_id, records)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m10" value="SynchronizeBatch(roll_id, records)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="650" as="sourcePoint" />
             <mxPoint x="975" y="650" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m11" value="HTTP_200_OK(synced_ids)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m11" value="HTTP_200_OK(synced_ids)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="975" y="685" as="sourcePoint" />
             <mxPoint x="555" y="685" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m12" value="MarkOutboxSynced()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1">
+        <mxCell id="m12" value="MarkOutboxSynced()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="555" y="730" as="sourcePoint" />
             <mxPoint x="775" y="730" as="targetPoint" />
@@ -162,3 +162,4 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
+

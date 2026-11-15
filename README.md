@@ -53,7 +53,8 @@ All system diagrams are available in **editable Draw.io XML (`diagrams/drawio/`)
 ## 3. Official Documentation (COMSATS SRDS Standard)
 
 The complete academic specification is available in the formal COMSATS University Islamabad (Wah Campus) format:
-- **Master Specification Document:** [TexEye AI SRDS (COMSATS Edition)](docs/TexEye_AI_SRDS_COMSATS.md)
+- **Official Publication PDF (62 Pages):** [TexEye AI SRDS PDF (COMSATS Wah Standard)](docs/TexEye_AI_SRDS_COMSATS.pdf)
+- **Master Markdown Specification:** [TexEye AI SRDS (COMSATS Edition)](docs/TexEye_AI_SRDS_COMSATS.md)
 - **Modular Analysis & Design Chapters:**
   1. [01. Project Overview & Problem Statement](docs/01_project_overview.md)
   2. [02. System Workflow & Reliability Gate](docs/02_system_workflow.md)

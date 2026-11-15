@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_dfd0" name="Figure 4.3: Data Flow Diagram (DFD Level 0)">
     <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -56,28 +56,28 @@
         </mxCell>
 
         <!-- Data Flows -->
-        <mxCell id="f1" value="Raw Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ent_sensors" target="p1">
+        <mxCell id="f1" value="Raw Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ent_sensors" target="p1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f2" value="Sync Frame" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p1" target="p2">
+        <mxCell id="f2" value="Sync Frame" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p1" target="p2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f3" value="Defect Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p2" target="ds1">
+        <mxCell id="f3" value="Defect Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p2" target="ds1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f4" value="Real-Time Flaw &amp;amp; Reliability Alert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p2" target="ent_op">
+        <mxCell id="f4" value="Real-Time Flaw &amp;amp; Reliability Alert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p2" target="ent_op">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f5" value="Queued Batch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ds1" target="p3">
+        <mxCell id="f5" value="Queued Batch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ds1" target="p3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f6" value="Certified Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p3" target="ds2">
+        <mxCell id="f6" value="Certified Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p3" target="ds2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f7" value="Fetch Records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ds2" target="p4">
+        <mxCell id="f7" value="Fetch Records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ds2" target="p4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f8" value="Inspection Reports, Defect Maps &amp;amp; Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p4" target="ent_mgr">
+        <mxCell id="f8" value="Inspection Reports, Defect Maps &amp;amp; Grade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p4" target="ent_mgr">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -85,3 +85,4 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
+

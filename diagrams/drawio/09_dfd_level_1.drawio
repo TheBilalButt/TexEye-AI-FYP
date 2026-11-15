@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_dfd1" name="Figure 4.4: DFD Level 1 (Decomposition of Process 2.0)">
     <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -57,31 +57,31 @@
         </mxCell>
 
         <!-- Connectors -->
-        <mxCell id="f1" value="Frames" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ref_p1" target="p21">
+        <mxCell id="f1" value="Frames" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ref_p1" target="p21">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f2" value="Degraded Frame" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p21" target="p22">
+        <mxCell id="f2" value="Degraded Frame" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p21" target="p22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f3" value="Clean Image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p21" target="p23">
+        <mxCell id="f3" value="Clean Image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p21" target="p23">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f4" value="Detections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p23" target="p24">
+        <mxCell id="f4" value="Detections" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p23" target="p24">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f5" value="Unique Tracks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p24" target="p25">
+        <mxCell id="f5" value="Unique Tracks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p24" target="p25">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f6" value="Dimensions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p25" target="p26">
+        <mxCell id="f6" value="Dimensions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p25" target="p26">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f7" value="Uninspected Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p22" target="ds1">
+        <mxCell id="f7" value="Uninspected Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p22" target="ds1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f8" value="Verified Defect Payload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="p26" target="ds1">
+        <mxCell id="f8" value="Verified Defect Payload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="p26" target="ds1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f9" value="Outbox Batch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="ds1" target="ref_p3">
+        <mxCell id="f9" value="Outbox Batch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10.5;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ds1" target="ref_p3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -89,3 +89,4 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
+

@@ -528,3 +528,4 @@ FA23-BAI-028                                       FA23-BAI-042
 Student, BS Artificial Intelligence                Student, BS Artificial Intelligence
 COMSATS University Islamabad, Wah Campus           COMSATS University Islamabad, Wah Campus
 ```
+

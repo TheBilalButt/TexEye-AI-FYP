@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:20:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_comp" name="Figure 5.2: UML Component Diagram of TexEye AI">
     <mxGraphModel dx="1350" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -82,13 +82,13 @@
         </mxCell>
 
         <!-- Interconnects -->
-        <mxCell id="e_sync_api" value="HTTPS Batch Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_sync" target="c_api">
+        <mxCell id="e_sync_api" value="HTTPS Batch Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="c_sync" target="c_api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_api_mob" value="WSS Live Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_push" target="c_mob">
+        <mxCell id="e_api_mob" value="WSS Live Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="c_push" target="c_mob">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_api_web" value="REST &amp;amp; Defect Maps" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="c_def_srv" target="c_web">
+        <mxCell id="e_api_web" value="REST &amp;amp; Defect Maps" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="c_def_srv" target="c_web">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -96,3 +96,4 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
+

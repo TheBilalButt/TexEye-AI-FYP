@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2026-11-15T12:10:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+﻿<mxfile host="app.diagrams.net" modified="2026-11-15T12:10:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
   <diagram id="texeye_hw_arch" name="Figure 4.1: Hardware Architecture and Physical Interconnect Diagram">
     <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
       <root>
@@ -88,21 +88,21 @@
         </mxCell>
 
         <!-- Fully Synchronized Parallel Interconnects (Unbroken Lines) -->
-        <mxCell id="e_cam" value="USB 3.0 / GigE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="dev_cam" target="edge_cam_drv">
+        <mxCell id="e_cam" value="USB 3.0 / GigE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dev_cam" target="edge_cam_drv">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_enc" value="Quadrature Pulses (GPIO)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="dev_enc" target="edge_gpio_drv">
+        <mxCell id="e_enc" value="Quadrature Pulses (GPIO)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dev_enc" target="edge_gpio_drv">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_relay" value="Relay Trigger (24V DC)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="edge_relay_drv" target="dev_alert">
+        <mxCell id="e_relay" value="Relay Trigger (24V DC)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="edge_relay_drv" target="dev_alert">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_light" value="Sensor Feedback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="dev_light" target="edge_rel_mon">
+        <mxCell id="e_light" value="Sensor Feedback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;strokeColor=#000000;strokeWidth=1.2;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dev_light" target="edge_rel_mon">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- Clean Orthogonal Edge to Cloud Uplink -->
-        <mxCell id="e_sync" value="HTTPS REST Batches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="edge_sync" target="srv_api">
+        <mxCell id="e_sync" value="HTTPS REST Batches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="edge_sync" target="srv_api">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -113,10 +113,10 @@
         <mxCell id="e_api_s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;" edge="1" parent="box_central" source="srv_db" target="srv_s3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_api_web" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="box_central" source="srv_s3" target="cli_web">
+        <mxCell id="e_api_web" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="box_central" source="srv_s3" target="cli_web">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e_api_mob" value="WSS / Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="box_central" source="cli_web" target="cli_mobile">
+        <mxCell id="e_api_mob" value="WSS / Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.2;fontSize=9;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="box_central" source="cli_web" target="cli_mobile">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
