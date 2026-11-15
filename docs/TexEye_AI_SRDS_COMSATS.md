@@ -16,6 +16,9 @@
      *Role:* Mobile Application Development, React Web Dashboard, 2D Defect Map Rendering, ASTM 4-Point Grading Engine, Cloud Synchronization APIs & Reporting Hub.
   2. **Muhammad Bilal Butt** — Registration No: **FA23-BAI-042**  
      *Role:* Deep Learning Computer Vision Pipeline (YOLO), Model Optimization, Hardware Interfacing (Industrial Camera & Rotary Optical Encoder), Shop Floor Reliability Gate & Invariant Enforcement.
+- **Project Supervisor:**
+  **Dr. Tassawar Iqbal**  
+  Department of Computer Science, COMSATS University Islamabad, Wah Cantt Campus
 - **Document Version:** 2.0 (Final Academic Defense Edition)
 - **Reference Standard:** ReDez Software Requirements and Design Specification Standard (COMSATS University Islamabad, Wah Campus), IEEE Std 830-1998 (Recommended Practice for Software Requirements Specifications), ISO/IEC/IEEE 29148:2018, UML 2.5 Specification.
 
