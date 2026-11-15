@@ -103,7 +103,13 @@
 
         <!-- Clean Orthogonal Edge to Cloud Uplink -->
         <mxCell id="e_sync" value="HTTPS REST Batches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="edge_sync" target="srv_api">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="665" />
+              <mxPoint x="780" y="185" />
+            </Array>
+            <mxPoint x="-0.2" y="-12" as="offset" />
+          </mxGeometry>
         </mxCell>
 
         <!-- Internal Cloud Spine Connectors -->

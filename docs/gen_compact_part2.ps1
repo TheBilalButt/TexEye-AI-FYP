@@ -1,4 +1,4 @@
-# Part 2: Pages 12 to 21 (Compact COMSATS Wah Standard)
+﻿# Part 2: Pages 12 to 21 (Compact COMSATS Wah Standard)
 function Get-Compact-Pages-12-to-21 {
     $pages = [System.Collections.Generic.List[string]]::new()
 
@@ -302,22 +302,22 @@ function Get-Compact-Pages-12-to-21 {
             <thead>
               <tr>
                 <th style="width: 10%; text-align: center;">Screen ID</th>
-                <th style="width: 14%; text-align: center;">Target Client</th>
-                <th style="width: 16%; text-align: center;">Target Users</th>
-                <th style="width: 60%;">Purpose and Main User Interface Elements</th>
+                <th style="width: 16%; text-align: left;">Target Client</th>
+                <th style="width: 18%; text-align: left;">Target Users</th>
+                <th style="width: 56%; text-align: left;">Purpose and Main User Interface Elements</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td style="text-align: center; font-weight: bold;">S-01</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-02</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-03</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-04</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-05</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-06</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-07</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-08</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-09</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
-              <tr><td style="text-align: center; font-weight: bold;">S-10</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-01</td><td style="text-align: left;">Mobile App</td><td style="text-align: left;">Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-02</td><td style="text-align: left;">Mobile App</td><td style="text-align: left;">Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-03</td><td style="text-align: left;">Mobile App</td><td style="text-align: left;">Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-04</td><td style="text-align: left;">Mobile App</td><td style="text-align: left;">Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-05</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-06</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-07</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-08</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-09</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-10</td><td style="text-align: left;">Web Dashboard</td><td style="text-align: left;">Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
             </tbody>
           </table>
 
