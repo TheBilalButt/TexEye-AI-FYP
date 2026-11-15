@@ -1,4 +1,4 @@
-# Compact, Clean, Professional COMSATS Wah Capstone SRDS - Part 3 (Pages 22 to 31)
+﻿# Compact, Clean, Professional COMSATS Wah Capstone SRDS - Part 3 (Pages 22 to 31)
 function Get-Compact-Pages-22-to-31 {
     $pages = [System.Collections.Generic.List[string]]::new()
 
@@ -82,22 +82,24 @@ function Get-Compact-Pages-22-to-31 {
 
                 <!-- Connector 1 -->
                 <line x1="140" y1="110" x2="175" y2="110" stroke="#000" stroke-width="1.2"/>
-                <text x="157" y="104" font-size="7" font-weight="bold" text-anchor="middle">USB / GPIO</text>
+                <rect x="141" y="96" width="34" height="14" fill="#ffffff" rx="2"/>
+                <text x="158" y="106" font-size="6.5" font-weight="bold" text-anchor="middle">USB/GPIO</text>
 
                 <!-- Node 2: Edge Unit -->
                 <rect x="175" y="20" width="130" height="185" fill="#fcfcfc" stroke="#000" stroke-width="1.2"/>
                 <text x="240" y="40" font-size="8.5" font-weight="bold" text-anchor="middle">&lt;&lt;execution node&gt;&gt;</text>
-                <text x="240" y="55" font-size="8.5" font-weight="bold" text-anchor="middle">Edge IPC / Jetson</text>
+                <text x="240" y="55" font-size="8.5" font-weight="bold" text-anchor="middle">Edge Computer</text>
                 <line x1="185" y1="62" x2="295" y2="62" stroke="#aaa" stroke-width="0.8"/>
                 <text x="240" y="80" font-size="7.5" text-anchor="middle">Ubuntu Linux 22.04</text>
-                <text x="240" y="100" font-size="7.5" text-anchor="middle">TensorRT / YOLO</text>
+                <text x="240" y="100" font-size="7.5" text-anchor="middle">AI Defect Engine</text>
                 <text x="240" y="120" font-size="7.5" text-anchor="middle">Python Ingestion</text>
                 <text x="240" y="140" font-size="7.5" text-anchor="middle">SQLite WAL Database</text>
                 <text x="240" y="160" font-size="7.5" text-anchor="middle">Systemd Sync Service</text>
 
                 <!-- Connector 2 -->
                 <line x1="305" y1="110" x2="340" y2="110" stroke="#000" stroke-width="1.2"/>
-                <text x="322" y="104" font-size="7" font-weight="bold" text-anchor="middle">HTTPS/TLS</text>
+                <rect x="307" y="96" width="32" height="14" fill="#ffffff" rx="2"/>
+                <text x="323" y="106" font-size="6.5" font-weight="bold" text-anchor="middle">HTTPS</text>
 
                 <!-- Node 3: Cloud -->
                 <rect x="340" y="20" width="125" height="185" fill="#fcfcfc" stroke="#000" stroke-width="1.2"/>
@@ -507,6 +509,7 @@ function Get-Compact-Pages-22-to-31 {
 
               <!-- Message 3 -->
               <line x1="265" y1="135" x2="640" y2="135" stroke="#000" stroke-width="1"/>
+              <rect x="340" y="121" width="225" height="13" fill="#ffffff"/>
               <text x="452" y="130" font-size="7.5" font-weight="bold" text-anchor="middle">RecordUninspectedSpan(Y_start=14.2m)</text>
 
               <!-- Recovery -->
@@ -514,6 +517,7 @@ function Get-Compact-Pages-22-to-31 {
               <text x="172" y="155" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=950, v=0.35m/s)</text>
 
               <line x1="265" y1="175" x2="640" y2="175" stroke="#000" stroke-width="1"/>
+              <rect x="345" y="161" width="215" height="13" fill="#ffffff"/>
               <text x="452" y="170" font-size="7.5" font-weight="bold" text-anchor="middle">CloseUninspectedSpan(Y_end=15.8m)</text>
             </svg>
           </div>
@@ -558,6 +562,7 @@ function Get-Compact-Pages-22-to-31 {
 
               <!-- Message 2 -->
               <line x1="80" y1="100" x2="425" y2="100" stroke="#000" stroke-width="1"/>
+              <rect x="135" y="86" width="235" height="13" fill="#ffffff"/>
               <text x="252" y="95" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/sync/batch (Multipart JSON + Crops)</text>
 
               <!-- Message 3 -->
@@ -566,6 +571,7 @@ function Get-Compact-Pages-22-to-31 {
 
               <!-- Message 4 -->
               <line x1="425" y1="150" x2="80" y2="150" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
+              <rect x="180" y="136" width="145" height="13" fill="#ffffff"/>
               <text x="252" y="145" font-size="7" text-anchor="middle">HTTP 200 OK (synced_ids)</text>
 
               <!-- Message 5 -->
@@ -753,72 +759,81 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.10: State Machine Diagram: Roll Inspection Run FSM
             </div>
-            <!-- Redesigned with generous widths, white masks, and offset arrows to guarantee ZERO OVERLAP -->
-            <svg viewBox="0 0 760 250" width="100%" height="165" style="background: #ffffff; font-family: Arial, sans-serif;">
-              <!-- Initial State -->
-              <circle cx="380" cy="18" r="8" fill="#000"/>
-              <line x1="380" y1="26" x2="380" y2="48" stroke="#000" stroke-width="1.2"/>
-              <rect x="350" y="30" width="60" height="14" fill="#fff"/>
-              <text x="380" y="40" font-size="7.5" font-weight="bold" text-anchor="middle">scan_qr</text>
+            <!-- Redesigned with generous clearances, clean orthogonal paths, and all labels placed strictly ABOVE arrows -->
+            <svg viewBox="0 0 760 280" width="100%" height="175" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="fsm-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                </marker>
+              </defs>
+
+              <!-- Start Circle -->
+              <circle cx="380" cy="14" r="8" fill="#000"/>
+              <line x1="380" y1="22" x2="380" y2="44" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <text x="395" y="35" font-size="7.5" font-weight="bold">scan_qr</text>
 
               <!-- State 1: INITIALIZING -->
-              <rect x="275" y="48" width="210" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="380" y="63" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
-              <text x="380" y="75" font-size="7.5" text-anchor="middle">Do: Zero encoder, check sensors</text>
+              <rect x="260" y="44" width="240" height="36" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="380" y="58" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
+              <text x="380" y="71" font-size="7.5" text-anchor="middle">Do: Zero encoder, check sensors</text>
 
-              <line x1="380" y1="82" x2="380" y2="104" stroke="#000" stroke-width="1.2"/>
-              <rect x="345" y="86" width="70" height="14" fill="#fff"/>
-              <text x="380" y="96" font-size="7.5" font-weight="bold" text-anchor="middle">sensors_ok</text>
+              <!-- Transition to RUNNING -->
+              <line x1="380" y1="80" x2="380" y2="102" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <text x="395" y="94" font-size="7.5" font-weight="bold">sensors_ok</text>
 
               <!-- State 2: RUNNING (Center) -->
-              <rect x="260" y="104" width="240" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
-              <text x="380" y="120" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
-              <text x="380" y="133" font-size="7.5" text-anchor="middle">Do: Ingest, infer YOLO, track Kalman</text>
+              <rect x="250" y="102" width="260" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
+              <text x="380" y="118" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
+              <text x="380" y="131" font-size="7.5" text-anchor="middle">Do: Ingest, infer AI, track defects</text>
 
-              <!-- Left Branch: PAUSED -->
-              <path d="M 260 114 L 140 114 L 140 140" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="155" y="106" width="85" height="14" fill="#fff"/>
-              <text x="197" y="116" font-size="7.5" text-anchor="middle">operator_pause</text>
+              <!-- Left Transition: operator_pause -->
+              <path d="M 250 115 L 130 115 L 130 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="145" y="102" width="90" height="14" fill="#ffffff"/>
+              <text x="190" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">operator_pause</text>
 
-              <rect x="40" y="140" width="200" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="140" y="155" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
-              <text x="140" y="167" font-size="7.5" text-anchor="middle">Do: Freeze encoder accumulator</text>
+              <!-- State 3: PAUSED (Left) -->
+              <rect x="30" y="152" width="200" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="130" y="168" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
+              <text x="130" y="181" font-size="7.5" text-anchor="middle">Do: Freeze displacement counter</text>
 
-              <path d="M 140 174 L 140 195 L 310 195 L 310 142" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="160" y="187" width="90" height="14" fill="#fff"/>
-              <text x="205" y="197" font-size="7.5" text-anchor="middle">operator_resume</text>
+              <!-- Resume path: from PAUSED to RUNNING -->
+              <path d="M 230 171 L 285 171 L 285 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="232" y="159" width="85" height="13" fill="#ffffff"/>
+              <text x="274" y="168" font-size="7" font-weight="bold" text-anchor="middle">operator_resume</text>
 
-              <!-- Right Branch: UNINSPECTED_FAULT (Generous box width=230, generous height=44) -->
-              <path d="M 500 114 L 630 114 L 630 140" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="505" y="106" width="120" height="14" fill="#fff"/>
-              <text x="565" y="116" font-size="7.5" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
+              <!-- Right Transition: sensor_fault -->
+              <path d="M 510 115 L 635 115 L 635 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="520" y="102" width="105" height="14" fill="#ffffff"/>
+              <text x="572" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
 
-              <rect x="520" y="140" width="220" height="42" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="630" y="154" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
-              <text x="630" y="166" font-size="7.5" text-anchor="middle">Do: Suspend AI, record span</text>
-              <text x="630" y="177" font-size="7.5" text-anchor="middle">Actuate Amber Stack Light</text>
+              <!-- State 4: UNINSPECTED_FAULT (Right) -->
+              <rect x="525" y="152" width="220" height="48" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="635" y="167" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
+              <text x="635" y="180" font-size="7.5" text-anchor="middle">Do: Suspend AI, record span</text>
+              <text x="635" y="192" font-size="7.5" text-anchor="middle">Actuate Amber Stack Light</text>
 
-              <!-- Recovery path offset down to avoid line collision -->
-              <path d="M 630 182 L 630 205 L 450 205 L 450 142" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="475" y="197" width="95" height="14" fill="#fff"/>
-              <text x="522" y="207" font-size="7.5" text-anchor="middle">sensors_recovered</text>
+              <!-- Recovery path: from UNINSPECTED_FAULT to RUNNING -->
+              <path d="M 525 176 L 475 176 L 475 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="445" y="164" width="85" height="13" fill="#ffffff"/>
+              <text x="487" y="173" font-size="7" font-weight="bold" text-anchor="middle">sensors_recovered</text>
 
-              <!-- State 4: ALARM_ACTIVE (Straight Down) -->
-              <line x1="380" y1="142" x2="380" y2="162" stroke="#000" stroke-width="1.2"/>
-              <rect x="325" y="146" width="110" height="12" fill="#fff"/>
-              <text x="380" y="155" font-size="7" font-weight="bold" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
+              <!-- Center Transition: critical_defect to ALARM_ACTIVE -->
+              <line x1="380" y1="140" x2="380" y2="202" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="325" y="163" width="110" height="14" fill="#ffffff"/>
+              <text x="380" y="173" font-size="7" font-weight="bold" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
 
-              <rect x="275" y="162" width="210" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="380" y="176" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
-              <text x="380" y="188" font-size="7.5" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
+              <!-- State 5: ALARM_ACTIVE -->
+              <rect x="270" y="202" width="220" height="42" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="380" y="218" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
+              <text x="380" y="233" font-size="7.5" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
 
               <!-- Terminal State -->
-              <line x1="380" y1="196" x2="380" y2="218" stroke="#000" stroke-width="1.2"/>
-              <rect x="340" y="201" width="80" height="14" fill="#fff"/>
-              <text x="380" y="211" font-size="7.5" text-anchor="middle">operator_ack</text>
+              <line x1="380" y1="244" x2="380" y2="260" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="392" y="247" width="60" height="12" fill="#ffffff"/>
+              <text x="395" y="255" font-size="7" text-anchor="start">operator_ack</text>
 
-              <circle cx="380" cy="232" r="9" fill="none" stroke="#000" stroke-width="1.2"/>
-              <circle cx="380" cy="232" r="5" fill="#000"/>
+              <circle cx="380" cy="268" r="8" fill="none" stroke="#000" stroke-width="1.2"/>
+              <circle cx="380" cy="268" r="4.5" fill="#000"/>
             </svg>
           </div>
 
@@ -826,45 +841,51 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.11: State Machine Diagram: Offline Sync Outbox FSM
             </div>
-            <!-- Redesigned with generous horizontal spacing (130px) and clean white text backings -->
-            <svg viewBox="0 0 760 120" width="100%" height="80" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <!-- Redesigned with generous horizontal spacing, clear arrows, and labels strictly above lines -->
+            <svg viewBox="0 0 760 125" width="100%" height="82" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="sync-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                </marker>
+              </defs>
+
               <!-- Start Circle -->
               <circle cx="35" cy="45" r="8" fill="#000"/>
               
               <!-- Transition 1 -->
-              <line x1="43" y1="45" x2="135" y2="45" stroke="#000" stroke-width="1.2"/>
-              <rect x="55" y="34" width="65" height="14" fill="#fff"/>
-              <text x="87" y="44" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
+              <line x1="43" y1="45" x2="135" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="52" y="28" width="70" height="14" fill="#ffffff"/>
+              <text x="87" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
 
               <!-- State 1: PENDING -->
-              <rect x="135" y="25" width="155" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="212" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
-              <text x="212" y="54" font-size="7.5" text-anchor="middle">Committed in SQLite</text>
+              <rect x="135" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="210" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
+              <text x="210" y="54" font-size="7.5" text-anchor="middle">Committed in SQLite</text>
 
               <!-- Transition 2 -->
-              <line x1="290" y1="40" x2="395" y2="40" stroke="#000" stroke-width="1.2"/>
-              <rect x="300" y="29" width="85" height="14" fill="#fff"/>
-              <text x="342" y="39" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
+              <line x1="285" y1="45" x2="395" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="295" y="28" width="90" height="14" fill="#ffffff"/>
+              <text x="340" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
 
               <!-- State 2: IN_FLIGHT -->
-              <rect x="395" y="25" width="155" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="472" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
-              <text x="472" y="54" font-size="7.5" text-anchor="middle">HTTPS POST active</text>
+              <rect x="395" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="470" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
+              <text x="470" y="54" font-size="7.5" text-anchor="middle">HTTPS POST active</text>
 
               <!-- Transition 3: Success -->
-              <line x1="550" y1="45" x2="655" y2="45" stroke="#000" stroke-width="1.2"/>
-              <rect x="562" y="34" width="80" height="14" fill="#fff"/>
-              <text x="602" y="44" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
+              <line x1="545" y1="45" x2="655" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="562" y="28" width="80" height="14" fill="#ffffff"/>
+              <text x="602" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
 
               <!-- State 3: SYNCED -->
               <rect x="655" y="25" width="90" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
               <text x="700" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">SYNCED</text>
               <text x="700" y="54" font-size="7.5" text-anchor="middle">Marked complete</text>
 
-              <!-- Transition 4: Retry Loop (Below boxes with ample clearance) -->
-              <path d="M 472 65 L 472 95 L 212 95 L 212 65" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="250" y="87" width="180" height="15" fill="#fff"/>
-              <text x="340" y="98" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
+              <!-- Transition 4: Retry Loop -->
+              <path d="M 470 65 L 470 98 L 210 98 L 210 67" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="245" y="88" width="190" height="16" fill="#ffffff"/>
+              <text x="340" y="100" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
             </svg>
           </div>
 
@@ -945,46 +966,46 @@ function Get-Compact-Pages-22-to-31 {
               <line x1="205" y1="50" x2="235" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Decision 1 -->
-              <polygon points="235,50 255,35 275,50 255,65" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="255" y="48" font-size="6.5" font-weight="bold" text-anchor="middle">Reliable?</text>
+              <polygon points="225,50 260,30 295,50 260,70" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="260" y="53" font-size="7.5" font-weight="bold" text-anchor="middle">Reliable?</text>
 
               <!-- Branch: Fault -->
-              <line x1="255" y1="65" x2="255" y2="105" stroke="#000" stroke-width="1.2"/>
-              <text x="260" y="80" font-size="7" font-weight="bold">[No]</text>
-              <rect x="195" y="105" width="120" height="32" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="255" y="118" font-size="7.5" font-weight="bold" text-anchor="middle">Actuate Amber Relay</text>
-              <text x="255" y="129" font-size="7" text-anchor="middle">&amp; Record Uninspected</text>
+              <line x1="260" y1="70" x2="260" y2="105" stroke="#000" stroke-width="1.2"/>
+              <text x="267" y="88" font-size="7.5" font-weight="bold">[No]</text>
+              <rect x="195" y="105" width="130" height="34" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="260" y="119" font-size="7.5" font-weight="bold" text-anchor="middle">Actuate Amber Relay</text>
+              <text x="260" y="131" font-size="7" text-anchor="middle">&amp; Record Uninspected</text>
 
               <!-- Branch: Normal -->
-              <line x1="275" y1="50" x2="310" y2="50" stroke="#000" stroke-width="1.2"/>
-              <text x="290" y="44" font-size="7" font-weight="bold">[Yes]</text>
+              <line x1="295" y1="50" x2="320" y2="50" stroke="#000" stroke-width="1.2"/>
+              <text x="307" y="43" font-size="7.5" font-weight="bold">[Yes]</text>
 
               <!-- Activity 2 -->
-              <rect x="310" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="372" y="47" font-size="8" font-weight="bold" text-anchor="middle">Execute TensorRT YOLO</text>
-              <text x="372" y="58" font-size="7" text-anchor="middle">Bounding Box Inference</text>
+              <rect x="320" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="382" y="47" font-size="8" font-weight="bold" text-anchor="middle">Execute YOLO Model</text>
+              <text x="382" y="58" font-size="7" text-anchor="middle">Bounding Box Inference</text>
 
-              <line x1="435" y1="50" x2="465" y2="50" stroke="#000" stroke-width="1.2"/>
+              <line x1="445" y1="50" x2="470" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Activity 3 -->
-              <rect x="465" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="527" y="47" font-size="8" font-weight="bold" text-anchor="middle">Kalman Filter Tracker</text>
-              <text x="527" y="58" font-size="7" text-anchor="middle">&amp; Metric Deduplication</text>
+              <rect x="470" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="532" y="47" font-size="8" font-weight="bold" text-anchor="middle">Kalman Filter Tracker</text>
+              <text x="532" y="58" font-size="7" text-anchor="middle">&amp; Metric Deduplication</text>
 
-              <line x1="590" y1="50" x2="620" y2="50" stroke="#000" stroke-width="1.2"/>
+              <line x1="595" y1="50" x2="615" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Decision 2: Critical? -->
-              <polygon points="620,50 640,35 660,50 640,65" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="640" y="48" font-size="6.5" font-weight="bold" text-anchor="middle">Critical?</text>
+              <polygon points="615,50 650,30 685,50 650,70" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="650" y="53" font-size="7.5" font-weight="bold" text-anchor="middle">Critical?</text>
 
-              <line x1="640" y1="65" x2="640" y2="105" stroke="#000" stroke-width="1.2"/>
-              <text x="645" y="80" font-size="7" font-weight="bold">[Yes]</text>
-              <rect x="580" y="105" width="120" height="32" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="640" y="118" font-size="7.5" font-weight="bold" text-anchor="middle">Sound Buzzer Relay</text>
-              <text x="640" y="129" font-size="7" text-anchor="middle">&amp; Red Stack Light</text>
+              <line x1="650" y1="70" x2="650" y2="105" stroke="#000" stroke-width="1.2"/>
+              <text x="657" y="88" font-size="7.5" font-weight="bold">[Yes]</text>
+              <rect x="585" y="105" width="130" height="34" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="650" y="119" font-size="7.5" font-weight="bold" text-anchor="middle">Sound Buzzer Relay</text>
+              <text x="650" y="131" font-size="7" text-anchor="middle">&amp; Red Stack Light</text>
 
-              <line x1="660" y1="50" x2="690" y2="50" stroke="#000" stroke-width="1.2"/>
-              <text x="672" y="44" font-size="7" font-weight="bold">[No]</text>
+              <line x1="685" y1="50" x2="710" y2="50" stroke="#000" stroke-width="1.2"/>
+              <text x="697" y="43" font-size="7.5" font-weight="bold">[No]</text>
 
               <!-- Activity 4: Local SQLite WAL Insert -->
               <rect x="465" y="175" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
@@ -992,9 +1013,9 @@ function Get-Compact-Pages-22-to-31 {
               <text x="527" y="201" font-size="7" text-anchor="middle">&amp; Trigger Web Alert</text>
 
               <!-- Paths connecting down to SQLite WAL -->
-              <path d="M 690 50 L 720 50 L 720 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
-              <path d="M 640 137 L 640 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
-              <path d="M 255 137 L 255 193 L 465 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 710 50 L 730 50 L 730 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 650 139 L 650 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 260 139 L 260 193 L 465 193" fill="none" stroke="#000" stroke-width="1.2"/>
 
               <line x1="465" y1="193" x2="425" y2="193" stroke="#000" stroke-width="1.2"/>
 

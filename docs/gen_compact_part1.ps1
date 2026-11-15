@@ -149,98 +149,85 @@ function Get-Compact-Pages-1-to-11 {
     # ==================== PAGE 4: CHAPTER 1 INTRODUCTION ====================
     $p4 = @'
           <div class="chapter-bar">1 Introduction</div>
-          <h2 class="sec-heading">1.1 System Introduction</h2>
-          <p>
-            TexEye AI is an industrial edge-cloud quality management system built for high-throughput textile mills. Operating directly on fabric rolling stands, it consumes continuous high-resolution optical video synchronized with physical fabric motion through a rotary optical encoder. Real-time defect detection, classification, multi-frame Kalman tracking, and physical millimeter metrology run locally on an industrial edge unit (NVIDIA Jetson / Linux x86 edge computer) stationed beside the machine.
+          <h2 class="sec-heading">1.1 Project Title and Overview</h2>
+          <p class="body-p">
+            <b>TexEye AI: AI-Based Fabric Defect Detection and Quality Management System</b> is an automated fabric inspection and quality management system developed to replace error-prone manual inspection with modern computer vision, hardware integration, a mobile floor application, and a centralized web management dashboard.
           </p>
-          <p>
-            The system detects and categorizes major fabric defects encountered in Pakistani textile production: broken warp threads, broken weft picks, oil streaks, holes, floats, dirty spots, and stitching irregularities. Crucially, it enforces a strict mathematical invariant: <i>fabric segments passing under degraded lighting, dropped camera frames, or excessive speed are flagged as Uninspected Sections and never certified clean</i>. Inspected records are buffered in an offline-resilient SQLite Write-Ahead Logging (WAL) outbox queue and pushed automatically to an enterprise cloud backend (FastAPI, PostgreSQL, MinIO) whenever connectivity is available.
+          <p class="body-p">
+            During production, a camera captures continuous fabric images while a rotary encoder precisely measures fabric movement to calculate the exact physical locations of defects. The AI model detects fabric flaws and tracks them across consecutive frames, preventing duplicate records of the same defect.
           </p>
-          <h2 class="sec-heading">1.2 Background and Problem Statement</h2>
-          <p>
-            In Pakistan's industrial textile sector, centered in Wah, Taxila, Rawalpindi, and Faisalabad, quality inspection relies on manual human examiners scanning fabric moving at 0.2 to 0.5 meters per second (12 to 30 meters per minute). Visual fatigue and loss of focus cause defect escape rates of 30% to 40% after just 45 to 60 minutes of continuous scanning.
+          <p class="body-p">
+            A central feature of TexEye AI is its proactive inspection reliability monitoring. The system continuously verifies camera connectivity, lighting conditions, image clarity, and frame capture rates. When any condition falls below reliable thresholds, the system alerts operators and marks those fabric sections as uninspected. During network outages, all defect data, images, and roll records are buffered locally on the edge unit and synchronized automatically once connectivity is restored.
           </p>
-          <p>
-            Traditional manual inspection uses handwritten paper logs that record no spatial metric coordinates (lateral X in mm, longitudinal Y in meters). Defects are marked using temporary chalk or adhesive stickers that frequently detach during winding. Paper reports remain disconnected from warehouse Enterprise Resource Planning (ERP) databases, preventing garment cutting rooms from optimizing CAD markers around flaws. Imported automated optical inspection machines cost tens of thousands of dollars and remain out of reach for local weaving units. TexEye AI delivers an open-standard, edge-first AI inspection system engineered specifically for local industrial conditions.
+
+          <h2 class="sec-heading">1.2 Problem Statement</h2>
+          <p class="body-p">
+            Manual fabric inspection during high-speed production frequently misses defects due to human fatigue and visual strain, leading to severe fabric waste, customer returns, and financial losses. Furthermore, manual inspection lacks precise defect location tracking, real-time alerting, and reliable digital records.
           </p>
-          <h2 class="sec-heading">1.3 System Objectives</h2>
+          <p class="body-p">
+            In existing setups, unforeseen camera disconnections, poor lighting, dropped frames, or blurred optical conditions can cause sections of fabric to pass completely uninspected without the operator being aware. TexEye AI solves these critical challenges by detecting and locating defects in real time, actively monitoring inspection reliability, clearly recording uninspected sections, and providing complete digital review, grading, and quality reporting.
+          </p>
+
+          <h2 class="sec-heading">1.3 System Capabilities and Objectives</h2>
           <ul>
-            <li><b>Synchronized Edge Capture:</b> Capture video at 30+ FPS, triggered synchronously with rotary optical encoder pulses.</li>
-            <li><b>Physical Coordinate Metrology:</b> Map pixel coordinates to physical millimeters (X in mm across web width, Y in continuous linear meters).</li>
-            <li><b>Real-Time AI Detection:</b> Execute fine-tuned YOLO single-stage convolutional models via TensorRT FP16 (latency under 25 ms per frame, mAP@0.5 &ge; 88%).</li>
-            <li><b>Multi-Frame Tracking:</b> Track moving flaws across frames via Kalman Filter and IoU association to eliminate duplicate counts.</li>
-            <li><b>Reliability Invariant Guard:</b> Flag degraded frames as Uninspected Sections, preventing false-clean roll certification.</li>
-            <li><b>Automated ASTM D5430-07 Grading:</b> Compute standardized penalty points per 100 square meters with a 4-point linear meter cap, assigning commercial Roll Grades (Grade A, B, C, or Reject).</li>
-            <li><b>Offline Transactional Outbox:</b> Store all data in a local SQLite WAL buffer, ensuring zero data loss during network outages.</li>
-            <li><b>Shop-Floor Alarming & Dual UI:</b> Actuate a physical 24V stack light/buzzer via relay, paired with a mobile operator app and web manager dashboard.</li>
+            <li><b>Automated Defect Detection:</b> Identify surface defects (holes, stains, thread flaws) using computer vision.</li>
+            <li><b>Metric Location Tracking:</b> Estimate physical defect positions (X in mm, Y in meters) using rotary encoder pulses.</li>
+            <li><b>Multi-Frame Deduplication:</b> Track moving defects across consecutive frames to avoid redundant flaw counting.</li>
+            <li><b>Reliability Sentinel:</b> Monitor camera connectivity, lux levels, and image quality; flag uninspected sections on failure.</li>
+            <li><b>Offline Resilience:</b> Securely buffer inspection sessions locally on the stand during network disconnects.</li>
+            <li><b>Mobile Operator App:</b> Enable workers to receive floor alerts, scan roll QR codes, and review detected flaws.</li>
+            <li><b>Web Quality Management:</b> Display 2D defect maps, roll grading records, inventory summaries, and PDF reports.</li>
+            <li><b>Secure Access Control:</b> Enforce authentication and role-based authorization across web and mobile interfaces.</li>
           </ul>
-          <h2 class="sec-heading">1.4 Industrial Significance</h2>
-          <p>
-            TexEye AI reduces fabric defect escape rates from 35% down to under 5%, automating ASTM 4-point scoring to eliminate human bias and protect mills against international export chargebacks. By recording millimeter spatial coordinates for every flaw, garment cutting rooms can optimize CAD pattern nesting around defects, converting otherwise rejected fabric into usable garment panels.
-          </p>
 '@
     $pages.Add((New-Page -PageNumber 4 -Content $p4))
 
     # ==================== PAGE 5: CHAPTER 2 OVERALL DESCRIPTION ====================
     $p5 = @'
           <div class="chapter-bar">2 Overall Description</div>
-          <h2 class="sec-heading">2.1 Product Perspective</h2>
-          <p>
-            TexEye AI is a self-contained cyber-physical quality assurance ecosystem designed to mount non-invasively onto existing motorized fabric inspection tables. An extruded aluminum gantry spans the inspection table (1.6 to 2.2 meters wide), suspending an overhead industrial camera and regulated LED lighting bar. A rotary optical encoder coupled to the fabric drive roller feeds hardware interrupt pulses into the edge computer.
+          <h2 class="sec-heading">2.1 Name and Detail of System Modules</h2>
+          <p class="body-p">
+            TexEye AI is partitioned into five specialized, cohesive modules that coordinate between the physical inspection stand, edge processing, mobile floor clients, and web management systems:
           </p>
-          <p>
-            The software architecture comprises an <b>Industrial Edge Tier</b> (Linux, OpenCV, TensorRT, SQLite WAL outbox, GPIO relay driver) for deterministic real-time processing, and a <b>Central Enterprise Tier</b> (FastAPI, PostgreSQL, MinIO, Redis) for roll analytics, 2D defect maps, and ASTM D5430 grading.
-          </p>
-          <h2 class="sec-heading">2.2 Product Scope Boundaries</h2>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.8mm;">Table 2.1: Scope boundaries of TexEye AI</div>
+          <ul>
+            <li><b>1. AI Defect Detection and Location Module:</b> Detects fabric defects using computer vision, estimates their physical locations along the roll using rotary encoder measurements, and tracks defects across consecutive frames to eliminate duplicate records.</li>
+            <li><b>2. Hardware and Inspection Monitoring Module:</b> Integrates the camera, LED lighting, rotary encoder, and audio-visual alert mechanisms. Continuously monitors camera connectivity, lighting conditions, image sharpness, and dropped frames, identifying and marking fabric sections that were not successfully inspected.</li>
+            <li><b>3. Mobile Floor Application:</b> Equips shop-floor workers with tools to receive instant defect and inspection alerts, scan roll QR codes, view roll specifications, and review or manually correct detected flaws directly at the machine stand.</li>
+            <li><b>4. Web Quality Management and Digital Fabric Map:</b> Displays full roll defect maps, inspection statuses, quality grading, and inventory records. Supports automated digital inspection report generation and handles local storage synchronization when internet connectivity returns.</li>
+            <li><b>5. Smart Operations Module:</b> Maintains long-term quality records, roll inventory data, scrap logs, and defect occurrence statistics to support production auditing, decision making, and compliance reporting.</li>
+          </ul>
+
+          <h2 class="sec-heading">2.2 Member-Wise Module Ownership</h2>
+          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 1mm;">Table 2.1: Member-wise Development Responsibilities</div>
           <table class="formal-table">
             <thead>
               <tr>
-                <th style="width: 50%;">In Scope</th>
-                <th style="width: 50%;">Out of Scope</th>
+                <th style="width: 28%;">Team Member</th>
+                <th style="width: 72%;">Assigned System Modules &amp; Core Responsibilities</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Single-web optical surface inspection on woven and plain-knitted fabrics up to 2.2 meters wide moving at 0.2 to 0.5 m/s.</td>
-                <td>Double-sided inspection (requiring simultaneous bottom-illuminated cameras) or non-woven industrial composite materials.</td>
+                <td><b>Muhammad Afnan Khan</b><br/>(FA23-BAI-028)</td>
+                <td>
+                  <b>Mobile Floor Application &amp; Web Quality Management Modules:</b><br/>
+                  Development of the mobile application and web quality management modules, including QR code scanning, defect review and correction interfaces, the web management dashboard, interactive digital fabric defect maps, roll management, inventory and grading records, digital inspection report generation, and local data synchronization when internet connectivity returns.
+                </td>
               </tr>
               <tr>
-                <td>Detection of six major defect classes: holes, oil stains, warp streaks, weft cracks, floats, and stitching tears.</td>
-                <td>Chemical yarn dye spectroscopy, thread count density microscopy, or tensile strength testing.</td>
-              </tr>
-              <tr>
-                <td>Millimeter coordinate mapping (X in mm, Y in meters) using rotary optical encoder hardware interrupts.</td>
-                <td>Motor speed PID regulation or direct mechanical winder tension control (system senses motion, does not drive motors).</td>
-              </tr>
-              <tr>
-                <td>Local edge inference (latency under 25 ms via TensorRT FP16) and multi-frame Kalman tracking.</td>
-                <td>On-device backpropagation training during live high-speed inspection runs.</td>
-              </tr>
-              <tr>
-                <td>Automated ASTM D5430-07 4-point penalty calculation and commercial roll grading (Grade A, B, C, Reject).</td>
-                <td>Automated cut-plan pattern nesting or direct control of CNC laser cutting machinery.</td>
-              </tr>
-              <tr>
-                <td>Offline-first local SQLite (WAL) buffering guaranteeing zero data loss during plant-wide network dropouts.</td>
-                <td>Full multi-tenant cloud SaaS billing, payment gateways, or payroll integrations.</td>
-              </tr>
-              <tr>
-                <td>Shop floor mobile alerting (Flutter) and executive web dashboard (React) with 2D defect heatmaps and PDF export.</td>
-                <td>Proprietary legacy ERP protocol converters (communication uses standard REST/JSON and CSV exports).</td>
+                <td><b>Muhammad Bilal Butt</b><br/>(FA23-BAI-042)</td>
+                <td>
+                  <b>AI Defect Detection &amp; Hardware Integration Modules:</b><br/>
+                  Development of the AI defect detection and hardware integration modules, including fabric defect dataset preparation, AI model training and evaluation, real-time defect detection and tracking across consecutive frames, rotary encoder-based location estimation, camera integration, lighting and image quality monitoring, camera disconnection and dropped frame detection, hardware alerts, and identification of uninspected fabric sections.
+                </td>
               </tr>
             </tbody>
           </table>
-          <h2 class="sec-heading">2.3 Product Major Functions</h2>
-          <ul>
-            <li><b>QR Roll Binding:</b> Floor operators scan a QR barcode on the raw roll to bind batch metadata into the local session.</li>
-            <li><b>Synchronized Ingestion:</b> Image acquisition is triggered on fixed physical fabric advances, eliminating speed distortion.</li>
-            <li><b>Real-Time YOLO Inference:</b> Local edge neural network evaluates each frame in under 25 ms, predicting flaw class and bounding box.</li>
-            <li><b>Deduplication Tracking:</b> Kalman filter links detections across sequential overlapping frames, merging continuous flaws.</li>
-            <li><b>Audio-Visual Alarming:</b> Opto-isolated relay triggers a 24V red tower beacon and 90 dB buzzer on severe flaws.</li>
-            <li><b>Reliability Sentinel:</b> Halts defect classification and logs Uninspected Sections if illumination or frame rates drop.</li>
-            <li><b>Resilient Cloud Sync:</b> Automatically dispatches queued SQLite outbox batches over HTTPS multipart requests upon network recovery.</li>
-          </ul>
+
+          <h2 class="sec-heading" style="margin-top: 2mm;">2.3 System Prototype Scope</h2>
+          <p class="body-p">
+            The project focuses on creating a fully functional end-to-end prototype demonstration for fabric rolling tables. The scope encompasses synchronized image acquisition, real-time defect detection, rotary encoder coordinate measurement, offline buffering, and multi-user web and mobile interfaces with secure authentication.
+          </p>
 '@
     $pages.Add((New-Page -PageNumber 5 -Content $p5))
 
@@ -329,7 +316,7 @@ function Get-Compact-Pages-1-to-11 {
               </tr>
               <tr>
                 <td><b>Edge Computing Unit</b></td>
-                <td>NVIDIA Jetson Orin Nano (8 GB) or Industrial x86 PC (Intel Core i5 11th Gen, 16 GB RAM, NVIDIA RTX 3050/A2000). OS: Ubuntu 22.04 LTS. TensorRT 8.6+, OpenCV 4.8+, CUDA 12.0+.</td>
+                <td>Standard Edge PC / Workstation (Intel Core i5 / ARM64, 8 GB RAM). OS: Ubuntu Linux 22.04 LTS. Python 3.10+, OpenCV, PyTorch runtime.</td>
               </tr>
               <tr>
                 <td><b>Alarm Actuator Relay</b></td>
@@ -385,7 +372,7 @@ function Get-Compact-Pages-1-to-11 {
               </tr>
             </thead>
             <tbody>
-              <tr><td><b>FR-INF-01</b></td><td>TensorRT Inference Engine</td><td>Execute fine-tuned YOLO model via TensorRT FP16 engine with end-to-end inference latency under 25 ms per frame.</td><td>High</td></tr>
+              <tr><td><b>FR-INF-01</b></td><td>AI Inference Engine</td><td>Execute fine-tuned YOLO model with real-time inference latency under 30 ms per frame.</td><td>High</td></tr>
               <tr><td><b>FR-INF-02</b></td><td>Multi-Class Detection</td><td>Detect six fabric classes: Hole, Oil Stain, Warp Streak, Weft Crack, Float, Stitching Tear (mAP@0.5 &ge; 88%).</td><td>High</td></tr>
               <tr><td><b>FR-INF-03</b></td><td>Bounding Box Extraction</td><td>Output normalized coordinates [u_min, v_min, u_max, v_max] and confidence scores [0.0, 1.0] for each flaw.</td><td>High</td></tr>
               <tr><td><b>FR-INF-04</b></td><td>Metric Width Mapping</td><td>Map lateral pixel span to physical millimeters (W in mm) using calibrated optical scale factor (kx mm/pixel).</td><td>High</td></tr>

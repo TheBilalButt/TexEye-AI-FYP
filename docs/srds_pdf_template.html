@@ -24,7 +24,7 @@
     color: #000000;
     background-color: #ffffff;
     font-size: 8.5pt;
-    line-height: 1.38;
+    line-height: 1.42;
   }
   .page {
     width: 210mm;
@@ -337,35 +337,36 @@
         </div>
         <div class="page-content">
           <div class="chapter-bar">1 Introduction</div>
-          <h2 class="sec-heading">1.1 System Introduction</h2>
-          <p>
-            TexEye AI is an industrial edge-cloud quality management system built for high-throughput textile mills. Operating directly on fabric rolling stands, it consumes continuous high-resolution optical video synchronized with physical fabric motion through a rotary optical encoder. Real-time defect detection, classification, multi-frame Kalman tracking, and physical millimeter metrology run locally on an industrial edge unit (NVIDIA Jetson / Linux x86 edge computer) stationed beside the machine.
+          <h2 class="sec-heading">1.1 Project Title and Overview</h2>
+          <p class="body-p">
+            <b>TexEye AI: AI-Based Fabric Defect Detection and Quality Management System</b> is an automated fabric inspection and quality management system developed to replace error-prone manual inspection with modern computer vision, hardware integration, a mobile floor application, and a centralized web management dashboard.
           </p>
-          <p>
-            The system detects and categorizes major fabric defects encountered in Pakistani textile production: broken warp threads, broken weft picks, oil streaks, holes, floats, dirty spots, and stitching irregularities. Crucially, it enforces a strict mathematical invariant: <i>fabric segments passing under degraded lighting, dropped camera frames, or excessive speed are flagged as Uninspected Sections and never certified clean</i>. Inspected records are buffered in an offline-resilient SQLite Write-Ahead Logging (WAL) outbox queue and pushed automatically to an enterprise cloud backend (FastAPI, PostgreSQL, MinIO) whenever connectivity is available.
+          <p class="body-p">
+            During production, a camera captures continuous fabric images while a rotary encoder precisely measures fabric movement to calculate the exact physical locations of defects. The AI model detects fabric flaws and tracks them across consecutive frames, preventing duplicate records of the same defect.
           </p>
-          <h2 class="sec-heading">1.2 Background and Problem Statement</h2>
-          <p>
-            In Pakistan's industrial textile sector, centered in Wah, Taxila, Rawalpindi, and Faisalabad, quality inspection relies on manual human examiners scanning fabric moving at 0.2 to 0.5 meters per second (12 to 30 meters per minute). Visual fatigue and loss of focus cause defect escape rates of 30% to 40% after just 45 to 60 minutes of continuous scanning.
+          <p class="body-p">
+            A central feature of TexEye AI is its proactive inspection reliability monitoring. The system continuously verifies camera connectivity, lighting conditions, image clarity, and frame capture rates. When any condition falls below reliable thresholds, the system alerts operators and marks those fabric sections as uninspected. During network outages, all defect data, images, and roll records are buffered locally on the edge unit and synchronized automatically once connectivity is restored.
           </p>
-          <p>
-            Traditional manual inspection uses handwritten paper logs that record no spatial metric coordinates (lateral X in mm, longitudinal Y in meters). Defects are marked using temporary chalk or adhesive stickers that frequently detach during winding. Paper reports remain disconnected from warehouse Enterprise Resource Planning (ERP) databases, preventing garment cutting rooms from optimizing CAD markers around flaws. Imported automated optical inspection machines cost tens of thousands of dollars and remain out of reach for local weaving units. TexEye AI delivers an open-standard, edge-first AI inspection system engineered specifically for local industrial conditions.
+
+          <h2 class="sec-heading">1.2 Problem Statement</h2>
+          <p class="body-p">
+            Manual fabric inspection during high-speed production frequently misses defects due to human fatigue and visual strain, leading to severe fabric waste, customer returns, and financial losses. Furthermore, manual inspection lacks precise defect location tracking, real-time alerting, and reliable digital records.
           </p>
-          <h2 class="sec-heading">1.3 System Objectives</h2>
+          <p class="body-p">
+            In existing setups, unforeseen camera disconnections, poor lighting, dropped frames, or blurred optical conditions can cause sections of fabric to pass completely uninspected without the operator being aware. TexEye AI solves these critical challenges by detecting and locating defects in real time, actively monitoring inspection reliability, clearly recording uninspected sections, and providing complete digital review, grading, and quality reporting.
+          </p>
+
+          <h2 class="sec-heading">1.3 System Capabilities and Objectives</h2>
           <ul>
-            <li><b>Synchronized Edge Capture:</b> Capture video at 30+ FPS, triggered synchronously with rotary optical encoder pulses.</li>
-            <li><b>Physical Coordinate Metrology:</b> Map pixel coordinates to physical millimeters (X in mm across web width, Y in continuous linear meters).</li>
-            <li><b>Real-Time AI Detection:</b> Execute fine-tuned YOLO single-stage convolutional models via TensorRT FP16 (latency under 25 ms per frame, mAP@0.5 &ge; 88%).</li>
-            <li><b>Multi-Frame Tracking:</b> Track moving flaws across frames via Kalman Filter and IoU association to eliminate duplicate counts.</li>
-            <li><b>Reliability Invariant Guard:</b> Flag degraded frames as Uninspected Sections, preventing false-clean roll certification.</li>
-            <li><b>Automated ASTM D5430-07 Grading:</b> Compute standardized penalty points per 100 square meters with a 4-point linear meter cap, assigning commercial Roll Grades (Grade A, B, C, or Reject).</li>
-            <li><b>Offline Transactional Outbox:</b> Store all data in a local SQLite WAL buffer, ensuring zero data loss during network outages.</li>
-            <li><b>Shop-Floor Alarming & Dual UI:</b> Actuate a physical 24V stack light/buzzer via relay, paired with a mobile operator app and web manager dashboard.</li>
+            <li><b>Automated Defect Detection:</b> Identify surface defects (holes, stains, thread flaws) using computer vision.</li>
+            <li><b>Metric Location Tracking:</b> Estimate physical defect positions (X in mm, Y in meters) using rotary encoder pulses.</li>
+            <li><b>Multi-Frame Deduplication:</b> Track moving defects across consecutive frames to avoid redundant flaw counting.</li>
+            <li><b>Reliability Sentinel:</b> Monitor camera connectivity, lux levels, and image quality; flag uninspected sections on failure.</li>
+            <li><b>Offline Resilience:</b> Securely buffer inspection sessions locally on the stand during network disconnects.</li>
+            <li><b>Mobile Operator App:</b> Enable workers to receive floor alerts, scan roll QR codes, and review detected flaws.</li>
+            <li><b>Web Quality Management:</b> Display 2D defect maps, roll grading records, inventory summaries, and PDF reports.</li>
+            <li><b>Secure Access Control:</b> Enforce authentication and role-based authorization across web and mobile interfaces.</li>
           </ul>
-          <h2 class="sec-heading">1.4 Industrial Significance</h2>
-          <p>
-            TexEye AI reduces fabric defect escape rates from 35% down to under 5%, automating ASTM 4-point scoring to eliminate human bias and protect mills against international export chargebacks. By recording millimeter spatial coordinates for every flaw, garment cutting rooms can optimize CAD pattern nesting around defects, converting otherwise rejected fabric into usable garment panels.
-          </p>
         </div>
       </div>
     </div>
@@ -379,63 +380,49 @@
         </div>
         <div class="page-content">
           <div class="chapter-bar">2 Overall Description</div>
-          <h2 class="sec-heading">2.1 Product Perspective</h2>
-          <p>
-            TexEye AI is a self-contained cyber-physical quality assurance ecosystem designed to mount non-invasively onto existing motorized fabric inspection tables. An extruded aluminum gantry spans the inspection table (1.6 to 2.2 meters wide), suspending an overhead industrial camera and regulated LED lighting bar. A rotary optical encoder coupled to the fabric drive roller feeds hardware interrupt pulses into the edge computer.
+          <h2 class="sec-heading">2.1 Name and Detail of System Modules</h2>
+          <p class="body-p">
+            TexEye AI is partitioned into five specialized, cohesive modules that coordinate between the physical inspection stand, edge processing, mobile floor clients, and web management systems:
           </p>
-          <p>
-            The software architecture comprises an <b>Industrial Edge Tier</b> (Linux, OpenCV, TensorRT, SQLite WAL outbox, GPIO relay driver) for deterministic real-time processing, and a <b>Central Enterprise Tier</b> (FastAPI, PostgreSQL, MinIO, Redis) for roll analytics, 2D defect maps, and ASTM D5430 grading.
-          </p>
-          <h2 class="sec-heading">2.2 Product Scope Boundaries</h2>
-          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 0.8mm;">Table 2.1: Scope boundaries of TexEye AI</div>
+          <ul>
+            <li><b>1. AI Defect Detection and Location Module:</b> Detects fabric defects using computer vision, estimates their physical locations along the roll using rotary encoder measurements, and tracks defects across consecutive frames to eliminate duplicate records.</li>
+            <li><b>2. Hardware and Inspection Monitoring Module:</b> Integrates the camera, LED lighting, rotary encoder, and audio-visual alert mechanisms. Continuously monitors camera connectivity, lighting conditions, image sharpness, and dropped frames, identifying and marking fabric sections that were not successfully inspected.</li>
+            <li><b>3. Mobile Floor Application:</b> Equips shop-floor workers with tools to receive instant defect and inspection alerts, scan roll QR codes, view roll specifications, and review or manually correct detected flaws directly at the machine stand.</li>
+            <li><b>4. Web Quality Management and Digital Fabric Map:</b> Displays full roll defect maps, inspection statuses, quality grading, and inventory records. Supports automated digital inspection report generation and handles local storage synchronization when internet connectivity returns.</li>
+            <li><b>5. Smart Operations Module:</b> Maintains long-term quality records, roll inventory data, scrap logs, and defect occurrence statistics to support production auditing, decision making, and compliance reporting.</li>
+          </ul>
+
+          <h2 class="sec-heading">2.2 Member-Wise Module Ownership</h2>
+          <div style="font-weight: bold; font-size: 8pt; margin-bottom: 1mm;">Table 2.1: Member-wise Development Responsibilities</div>
           <table class="formal-table">
             <thead>
               <tr>
-                <th style="width: 50%;">In Scope</th>
-                <th style="width: 50%;">Out of Scope</th>
+                <th style="width: 28%;">Team Member</th>
+                <th style="width: 72%;">Assigned System Modules &amp; Core Responsibilities</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Single-web optical surface inspection on woven and plain-knitted fabrics up to 2.2 meters wide moving at 0.2 to 0.5 m/s.</td>
-                <td>Double-sided inspection (requiring simultaneous bottom-illuminated cameras) or non-woven industrial composite materials.</td>
+                <td><b>Muhammad Afnan Khan</b><br/>(FA23-BAI-028)</td>
+                <td>
+                  <b>Mobile Floor Application &amp; Web Quality Management Modules:</b><br/>
+                  Development of the mobile application and web quality management modules, including QR code scanning, defect review and correction interfaces, the web management dashboard, interactive digital fabric defect maps, roll management, inventory and grading records, digital inspection report generation, and local data synchronization when internet connectivity returns.
+                </td>
               </tr>
               <tr>
-                <td>Detection of six major defect classes: holes, oil stains, warp streaks, weft cracks, floats, and stitching tears.</td>
-                <td>Chemical yarn dye spectroscopy, thread count density microscopy, or tensile strength testing.</td>
-              </tr>
-              <tr>
-                <td>Millimeter coordinate mapping (X in mm, Y in meters) using rotary optical encoder hardware interrupts.</td>
-                <td>Motor speed PID regulation or direct mechanical winder tension control (system senses motion, does not drive motors).</td>
-              </tr>
-              <tr>
-                <td>Local edge inference (latency under 25 ms via TensorRT FP16) and multi-frame Kalman tracking.</td>
-                <td>On-device backpropagation training during live high-speed inspection runs.</td>
-              </tr>
-              <tr>
-                <td>Automated ASTM D5430-07 4-point penalty calculation and commercial roll grading (Grade A, B, C, Reject).</td>
-                <td>Automated cut-plan pattern nesting or direct control of CNC laser cutting machinery.</td>
-              </tr>
-              <tr>
-                <td>Offline-first local SQLite (WAL) buffering guaranteeing zero data loss during plant-wide network dropouts.</td>
-                <td>Full multi-tenant cloud SaaS billing, payment gateways, or payroll integrations.</td>
-              </tr>
-              <tr>
-                <td>Shop floor mobile alerting (Flutter) and executive web dashboard (React) with 2D defect heatmaps and PDF export.</td>
-                <td>Proprietary legacy ERP protocol converters (communication uses standard REST/JSON and CSV exports).</td>
+                <td><b>Muhammad Bilal Butt</b><br/>(FA23-BAI-042)</td>
+                <td>
+                  <b>AI Defect Detection &amp; Hardware Integration Modules:</b><br/>
+                  Development of the AI defect detection and hardware integration modules, including fabric defect dataset preparation, AI model training and evaluation, real-time defect detection and tracking across consecutive frames, rotary encoder-based location estimation, camera integration, lighting and image quality monitoring, camera disconnection and dropped frame detection, hardware alerts, and identification of uninspected fabric sections.
+                </td>
               </tr>
             </tbody>
           </table>
-          <h2 class="sec-heading">2.3 Product Major Functions</h2>
-          <ul>
-            <li><b>QR Roll Binding:</b> Floor operators scan a QR barcode on the raw roll to bind batch metadata into the local session.</li>
-            <li><b>Synchronized Ingestion:</b> Image acquisition is triggered on fixed physical fabric advances, eliminating speed distortion.</li>
-            <li><b>Real-Time YOLO Inference:</b> Local edge neural network evaluates each frame in under 25 ms, predicting flaw class and bounding box.</li>
-            <li><b>Deduplication Tracking:</b> Kalman filter links detections across sequential overlapping frames, merging continuous flaws.</li>
-            <li><b>Audio-Visual Alarming:</b> Opto-isolated relay triggers a 24V red tower beacon and 90 dB buzzer on severe flaws.</li>
-            <li><b>Reliability Sentinel:</b> Halts defect classification and logs Uninspected Sections if illumination or frame rates drop.</li>
-            <li><b>Resilient Cloud Sync:</b> Automatically dispatches queued SQLite outbox batches over HTTPS multipart requests upon network recovery.</li>
-          </ul>
+
+          <h2 class="sec-heading" style="margin-top: 2mm;">2.3 System Prototype Scope</h2>
+          <p class="body-p">
+            The project focuses on creating a fully functional end-to-end prototype demonstration for fabric rolling tables. The scope encompasses synchronized image acquisition, real-time defect detection, rotary encoder coordinate measurement, offline buffering, and multi-user web and mobile interfaces with secure authentication.
+          </p>
         </div>
       </div>
     </div>
@@ -538,7 +525,7 @@
               </tr>
               <tr>
                 <td><b>Edge Computing Unit</b></td>
-                <td>NVIDIA Jetson Orin Nano (8 GB) or Industrial x86 PC (Intel Core i5 11th Gen, 16 GB RAM, NVIDIA RTX 3050/A2000). OS: Ubuntu 22.04 LTS. TensorRT 8.6+, OpenCV 4.8+, CUDA 12.0+.</td>
+                <td>Standard Edge PC / Workstation (Intel Core i5 / ARM64, 8 GB RAM). OS: Ubuntu Linux 22.04 LTS. Python 3.10+, OpenCV, PyTorch runtime.</td>
               </tr>
               <tr>
                 <td><b>Alarm Actuator Relay</b></td>
@@ -601,7 +588,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><b>FR-INF-01</b></td><td>TensorRT Inference Engine</td><td>Execute fine-tuned YOLO model via TensorRT FP16 engine with end-to-end inference latency under 25 ms per frame.</td><td>High</td></tr>
+              <tr><td><b>FR-INF-01</b></td><td>AI Inference Engine</td><td>Execute fine-tuned YOLO model with real-time inference latency under 30 ms per frame.</td><td>High</td></tr>
               <tr><td><b>FR-INF-02</b></td><td>Multi-Class Detection</td><td>Detect six fabric classes: Hole, Oil Stain, Warp Streak, Weft Crack, Float, Stitching Tear (mAP@0.5 &ge; 88%).</td><td>High</td></tr>
               <tr><td><b>FR-INF-03</b></td><td>Bounding Box Extraction</td><td>Output normalized coordinates [u_min, v_min, u_max, v_max] and confidence scores [0.0, 1.0] for each flaw.</td><td>High</td></tr>
               <tr><td><b>FR-INF-04</b></td><td>Metric Width Mapping</td><td>Map lateral pixel span to physical millimeters (W in mm) using calibrated optical scale factor (kx mm/pixel).</td><td>High</td></tr>
@@ -917,7 +904,7 @@
             <tr><th>Postconditions</th><td>Confirmed defects saved to SQLite with metric coordinates (X, Y), physical dimensions, and JPEG crop.</td></tr>
             <tr><th>Main Success Scenario</th><td>
               1. Encoder pulse count reaches frame advance threshold; camera driver captures rectified frame.<br>
-              2. Edge engine submits frame tensor to TensorRT YOLO FP16 inference engine.<br>
+              2. Edge engine submits frame to fine-tuned YOLO defect detection engine.<br>
               3. YOLO detects candidate anomaly bounding boxes [u_min, v_min, u_max, v_max] with confidence &ge; 0.40.<br>
               4. 2D Kalman Filter predicts active track positions and associates detections via Hungarian IoU matching.<br>
               5. When a candidate matches an active track, its trajectory and physical length L (mm) are updated.<br>
@@ -1191,23 +1178,23 @@
           <table class="formal-table">
             <thead>
               <tr>
-                <th style="width: 14%; text-align: center;">Screen ID</th>
-                <th style="width: 18%;">Target Client</th>
-                <th style="width: 18%;">Target Users</th>
-                <th style="width: 50%;">Purpose and Main User Interface Elements</th>
+                <th style="width: 10%; text-align: center;">Screen ID</th>
+                <th style="width: 14%; text-align: center;">Target Client</th>
+                <th style="width: 16%; text-align: center;">Target Users</th>
+                <th style="width: 60%;">Purpose and Main User Interface Elements</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td style="text-align: center;"><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
-              <tr><td style="text-align: center;"><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
-              <tr><td style="text-align: center;"><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
-              <tr><td style="text-align: center;"><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
-              <tr><td style="text-align: center;"><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
-              <tr><td style="text-align: center;"><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
-              <tr><td style="text-align: center;"><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
-              <tr><td style="text-align: center;"><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
-              <tr><td style="text-align: center;"><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
-              <tr><td style="text-align: center;"><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-01</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-02</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-03</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-04</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-05</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-06</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-07</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-08</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-09</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-10</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
             </tbody>
           </table>
 
@@ -1220,7 +1207,7 @@
             <tbody>
               <tr><td><b>Linux Kernel V4L2 / GenICam</b></td><td>Zero-copy camera frame buffer ingestion; camera exposure and gain register configuration via standard ioctl calls.</td></tr>
               <tr><td><b>Linux GPIO Subsystem (gpiod)</b></td><td>Kernel-level edge hardware interrupt handling on quadrature pulse pins for high-speed displacement tracking.</td></tr>
-              <tr><td><b>NVIDIA TensorRT 8.6+ / CUDA 12</b></td><td>Execution of optimized FP16 YOLO engine; binds GPU memory buffers for batch inference and coordinate tensor output.</td></tr>
+              <tr><td><b>AI Vision Framework (PyTorch / ONNX)</b></td><td>Execution of fine-tuned YOLO model; memory buffers for real-time frame defect detection and coordinate bounding boxes.</td></tr>
               <tr><td><b>SQLite 3.40+ (WAL Mode)</b></td><td>Local edge ACID storage; stores session headers, outbox queue events, and defect entities with sub-5ms commit latency.</td></tr>
               <tr><td><b>FastAPI (Python 3.11+)</b></td><td>Central enterprise application server; exposes authenticated REST endpoints and WebSocket servers.</td></tr>
               <tr><td><b>PostgreSQL 15+ & SQLAlchemy</b></td><td>Relational enterprise persistence for multi-stand roll histories, defect coordinates, user accounts, and immutable audit logs.</td></tr>
@@ -1282,7 +1269,7 @@
               <tr><th style="width: 12%;">ID</th><th style="width: 25%;">Requirement Specification</th><th style="width: 18%;">Target Metric</th><th style="width: 45%;">Engineering Rationale</th></tr>
             </thead>
             <tbody>
-              <tr><td><b>PR-01</b></td><td>AI Inference Latency</td><td>&le; 25 ms / frame</td><td>Guarantees 40+ FPS edge throughput via TensorRT FP16, easily exceeding 30 FPS camera capture rate.</td></tr>
+              <tr><td><b>PR-01</b></td><td>AI Inference Latency</td><td>&le; 30 ms / frame</td><td>Guarantees 30+ FPS edge throughput via optimized model inference, exceeding continuous camera capture rate.</td></tr>
               <tr><td><b>PR-02</b></td><td>End-to-End Edge Pipeline Latency</td><td>&le; 60 ms total</td><td>From optical exposure to Kalman tracking and SQLite commit; ensures immediate flaw localization.</td></tr>
               <tr><td><b>PR-03</b></td><td>Alarm Relay Actuation Time</td><td>&le; 50 ms</td><td>From confirmed critical flaw to relay closure; allows operator or emergency stop to halt fabric in 25 mm.</td></tr>
               <tr><td><b>PR-04</b></td><td>Mobile Alert Notification Latency</td><td>&le; 200 ms</td><td>From flaw confirmation to mobile terminal vibration; maintains real-time operator awareness.</td></tr>
@@ -1460,22 +1447,24 @@
 
                 <!-- Connector 1 -->
                 <line x1="140" y1="110" x2="175" y2="110" stroke="#000" stroke-width="1.2"/>
-                <text x="157" y="104" font-size="7" font-weight="bold" text-anchor="middle">USB / GPIO</text>
+                <rect x="141" y="96" width="34" height="14" fill="#ffffff" rx="2"/>
+                <text x="158" y="106" font-size="6.5" font-weight="bold" text-anchor="middle">USB/GPIO</text>
 
                 <!-- Node 2: Edge Unit -->
                 <rect x="175" y="20" width="130" height="185" fill="#fcfcfc" stroke="#000" stroke-width="1.2"/>
                 <text x="240" y="40" font-size="8.5" font-weight="bold" text-anchor="middle">&lt;&lt;execution node&gt;&gt;</text>
-                <text x="240" y="55" font-size="8.5" font-weight="bold" text-anchor="middle">Edge IPC / Jetson</text>
+                <text x="240" y="55" font-size="8.5" font-weight="bold" text-anchor="middle">Edge Computer</text>
                 <line x1="185" y1="62" x2="295" y2="62" stroke="#aaa" stroke-width="0.8"/>
                 <text x="240" y="80" font-size="7.5" text-anchor="middle">Ubuntu Linux 22.04</text>
-                <text x="240" y="100" font-size="7.5" text-anchor="middle">TensorRT / YOLO</text>
+                <text x="240" y="100" font-size="7.5" text-anchor="middle">AI Defect Engine</text>
                 <text x="240" y="120" font-size="7.5" text-anchor="middle">Python Ingestion</text>
                 <text x="240" y="140" font-size="7.5" text-anchor="middle">SQLite WAL Database</text>
                 <text x="240" y="160" font-size="7.5" text-anchor="middle">Systemd Sync Service</text>
 
                 <!-- Connector 2 -->
                 <line x1="305" y1="110" x2="340" y2="110" stroke="#000" stroke-width="1.2"/>
-                <text x="322" y="104" font-size="7" font-weight="bold" text-anchor="middle">HTTPS/TLS</text>
+                <rect x="307" y="96" width="32" height="14" fill="#ffffff" rx="2"/>
+                <text x="323" y="106" font-size="6.5" font-weight="bold" text-anchor="middle">HTTPS</text>
 
                 <!-- Node 3: Cloud -->
                 <rect x="340" y="20" width="125" height="185" fill="#fcfcfc" stroke="#000" stroke-width="1.2"/>
@@ -1906,6 +1895,7 @@
 
               <!-- Message 3 -->
               <line x1="265" y1="135" x2="640" y2="135" stroke="#000" stroke-width="1"/>
+              <rect x="340" y="121" width="225" height="13" fill="#ffffff"/>
               <text x="452" y="130" font-size="7.5" font-weight="bold" text-anchor="middle">RecordUninspectedSpan(Y_start=14.2m)</text>
 
               <!-- Recovery -->
@@ -1913,6 +1903,7 @@
               <text x="172" y="155" font-size="7.5" font-weight="bold" text-anchor="middle">SensorTelemetry(lux=950, v=0.35m/s)</text>
 
               <line x1="265" y1="175" x2="640" y2="175" stroke="#000" stroke-width="1"/>
+              <rect x="345" y="161" width="215" height="13" fill="#ffffff"/>
               <text x="452" y="170" font-size="7.5" font-weight="bold" text-anchor="middle">CloseUninspectedSpan(Y_end=15.8m)</text>
             </svg>
           </div>
@@ -1964,6 +1955,7 @@
 
               <!-- Message 2 -->
               <line x1="80" y1="100" x2="425" y2="100" stroke="#000" stroke-width="1"/>
+              <rect x="135" y="86" width="235" height="13" fill="#ffffff"/>
               <text x="252" y="95" font-size="7.5" font-weight="bold" text-anchor="middle">POST /api/v1/sync/batch (Multipart JSON + Crops)</text>
 
               <!-- Message 3 -->
@@ -1972,6 +1964,7 @@
 
               <!-- Message 4 -->
               <line x1="425" y1="150" x2="80" y2="150" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
+              <rect x="180" y="136" width="145" height="13" fill="#ffffff"/>
               <text x="252" y="145" font-size="7" text-anchor="middle">HTTP 200 OK (synced_ids)</text>
 
               <!-- Message 5 -->
@@ -2023,7 +2016,7 @@
               <text x="515" y="145" font-size="7.5" font-weight="bold" text-anchor="middle">CalculateD5430Points(defects)</text>
 
               <line x1="605" y1="170" x2="425" y2="170" stroke="#000" stroke-width="0.8" stroke-dasharray="3 2"/>
-              <text x="515" y="165" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100mÂ²)</text>
+              <text x="515" y="165" font-size="7" text-anchor="middle">RollGradeResult (Grade A, 8.4 pts / 100m²)</text>
             </svg>
           </div>
         </div>
@@ -2173,72 +2166,81 @@
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.10: State Machine Diagram: Roll Inspection Run FSM
             </div>
-            <!-- Redesigned with generous widths, white masks, and offset arrows to guarantee ZERO OVERLAP -->
-            <svg viewBox="0 0 760 250" width="100%" height="165" style="background: #ffffff; font-family: Arial, sans-serif;">
-              <!-- Initial State -->
-              <circle cx="380" cy="18" r="8" fill="#000"/>
-              <line x1="380" y1="26" x2="380" y2="48" stroke="#000" stroke-width="1.2"/>
-              <rect x="350" y="30" width="60" height="14" fill="#fff"/>
-              <text x="380" y="40" font-size="7.5" font-weight="bold" text-anchor="middle">scan_qr</text>
+            <!-- Redesigned with generous clearances, clean orthogonal paths, and all labels placed strictly ABOVE arrows -->
+            <svg viewBox="0 0 760 280" width="100%" height="175" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="fsm-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                </marker>
+              </defs>
+
+              <!-- Start Circle -->
+              <circle cx="380" cy="14" r="8" fill="#000"/>
+              <line x1="380" y1="22" x2="380" y2="44" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <text x="395" y="35" font-size="7.5" font-weight="bold">scan_qr</text>
 
               <!-- State 1: INITIALIZING -->
-              <rect x="275" y="48" width="210" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="380" y="63" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
-              <text x="380" y="75" font-size="7.5" text-anchor="middle">Do: Zero encoder, check sensors</text>
+              <rect x="260" y="44" width="240" height="36" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="380" y="58" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
+              <text x="380" y="71" font-size="7.5" text-anchor="middle">Do: Zero encoder, check sensors</text>
 
-              <line x1="380" y1="82" x2="380" y2="104" stroke="#000" stroke-width="1.2"/>
-              <rect x="345" y="86" width="70" height="14" fill="#fff"/>
-              <text x="380" y="96" font-size="7.5" font-weight="bold" text-anchor="middle">sensors_ok</text>
+              <!-- Transition to RUNNING -->
+              <line x1="380" y1="80" x2="380" y2="102" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <text x="395" y="94" font-size="7.5" font-weight="bold">sensors_ok</text>
 
               <!-- State 2: RUNNING (Center) -->
-              <rect x="260" y="104" width="240" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
-              <text x="380" y="120" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
-              <text x="380" y="133" font-size="7.5" text-anchor="middle">Do: Ingest, infer YOLO, track Kalman</text>
+              <rect x="250" y="102" width="260" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
+              <text x="380" y="118" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
+              <text x="380" y="131" font-size="7.5" text-anchor="middle">Do: Ingest, infer AI, track defects</text>
 
-              <!-- Left Branch: PAUSED -->
-              <path d="M 260 114 L 140 114 L 140 140" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="155" y="106" width="85" height="14" fill="#fff"/>
-              <text x="197" y="116" font-size="7.5" text-anchor="middle">operator_pause</text>
+              <!-- Left Transition: operator_pause -->
+              <path d="M 250 115 L 130 115 L 130 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="145" y="102" width="90" height="14" fill="#ffffff"/>
+              <text x="190" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">operator_pause</text>
 
-              <rect x="40" y="140" width="200" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="140" y="155" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
-              <text x="140" y="167" font-size="7.5" text-anchor="middle">Do: Freeze encoder accumulator</text>
+              <!-- State 3: PAUSED (Left) -->
+              <rect x="30" y="152" width="200" height="38" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="130" y="168" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
+              <text x="130" y="181" font-size="7.5" text-anchor="middle">Do: Freeze displacement counter</text>
 
-              <path d="M 140 174 L 140 195 L 310 195 L 310 142" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="160" y="187" width="90" height="14" fill="#fff"/>
-              <text x="205" y="197" font-size="7.5" text-anchor="middle">operator_resume</text>
+              <!-- Resume path: from PAUSED to RUNNING -->
+              <path d="M 230 171 L 285 171 L 285 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="232" y="159" width="85" height="13" fill="#ffffff"/>
+              <text x="274" y="168" font-size="7" font-weight="bold" text-anchor="middle">operator_resume</text>
 
-              <!-- Right Branch: UNINSPECTED_FAULT (Generous box width=230, generous height=44) -->
-              <path d="M 500 114 L 630 114 L 630 140" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="505" y="106" width="120" height="14" fill="#fff"/>
-              <text x="565" y="116" font-size="7.5" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
+              <!-- Right Transition: sensor_fault -->
+              <path d="M 510 115 L 635 115 L 635 152" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="520" y="102" width="105" height="14" fill="#ffffff"/>
+              <text x="572" y="112" font-size="7.5" font-weight="bold" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
 
-              <rect x="520" y="140" width="220" height="42" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="630" y="154" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
-              <text x="630" y="166" font-size="7.5" text-anchor="middle">Do: Suspend AI, record span</text>
-              <text x="630" y="177" font-size="7.5" text-anchor="middle">Actuate Amber Stack Light</text>
+              <!-- State 4: UNINSPECTED_FAULT (Right) -->
+              <rect x="525" y="152" width="220" height="48" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="635" y="167" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
+              <text x="635" y="180" font-size="7.5" text-anchor="middle">Do: Suspend AI, record span</text>
+              <text x="635" y="192" font-size="7.5" text-anchor="middle">Actuate Amber Stack Light</text>
 
-              <!-- Recovery path offset down to avoid line collision -->
-              <path d="M 630 182 L 630 205 L 450 205 L 450 142" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="475" y="197" width="95" height="14" fill="#fff"/>
-              <text x="522" y="207" font-size="7.5" text-anchor="middle">sensors_recovered</text>
+              <!-- Recovery path: from UNINSPECTED_FAULT to RUNNING -->
+              <path d="M 525 176 L 475 176 L 475 142" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="445" y="164" width="85" height="13" fill="#ffffff"/>
+              <text x="487" y="173" font-size="7" font-weight="bold" text-anchor="middle">sensors_recovered</text>
 
-              <!-- State 4: ALARM_ACTIVE (Straight Down) -->
-              <line x1="380" y1="142" x2="380" y2="162" stroke="#000" stroke-width="1.2"/>
-              <rect x="325" y="146" width="110" height="12" fill="#fff"/>
-              <text x="380" y="155" font-size="7" font-weight="bold" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
+              <!-- Center Transition: critical_defect to ALARM_ACTIVE -->
+              <line x1="380" y1="140" x2="380" y2="202" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="325" y="163" width="110" height="14" fill="#ffffff"/>
+              <text x="380" y="173" font-size="7" font-weight="bold" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
 
-              <rect x="275" y="162" width="210" height="34" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="380" y="176" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
-              <text x="380" y="188" font-size="7.5" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
+              <!-- State 5: ALARM_ACTIVE -->
+              <rect x="270" y="202" width="220" height="42" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="380" y="218" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
+              <text x="380" y="233" font-size="7.5" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
 
               <!-- Terminal State -->
-              <line x1="380" y1="196" x2="380" y2="218" stroke="#000" stroke-width="1.2"/>
-              <rect x="340" y="201" width="80" height="14" fill="#fff"/>
-              <text x="380" y="211" font-size="7.5" text-anchor="middle">operator_ack</text>
+              <line x1="380" y1="244" x2="380" y2="260" stroke="#000" stroke-width="1.2" marker-end="url(#fsm-arrow)"/>
+              <rect x="392" y="247" width="60" height="12" fill="#ffffff"/>
+              <text x="395" y="255" font-size="7" text-anchor="start">operator_ack</text>
 
-              <circle cx="380" cy="232" r="9" fill="none" stroke="#000" stroke-width="1.2"/>
-              <circle cx="380" cy="232" r="5" fill="#000"/>
+              <circle cx="380" cy="268" r="8" fill="none" stroke="#000" stroke-width="1.2"/>
+              <circle cx="380" cy="268" r="4.5" fill="#000"/>
             </svg>
           </div>
 
@@ -2246,45 +2248,51 @@
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.11: State Machine Diagram: Offline Sync Outbox FSM
             </div>
-            <!-- Redesigned with generous horizontal spacing (130px) and clean white text backings -->
-            <svg viewBox="0 0 760 120" width="100%" height="80" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <!-- Redesigned with generous horizontal spacing, clear arrows, and labels strictly above lines -->
+            <svg viewBox="0 0 760 125" width="100%" height="82" style="background: #ffffff; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="sync-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                  <polygon points="0 0, 7 3.5, 0 7" fill="#000000"/>
+                </marker>
+              </defs>
+
               <!-- Start Circle -->
               <circle cx="35" cy="45" r="8" fill="#000"/>
               
               <!-- Transition 1 -->
-              <line x1="43" y1="45" x2="135" y2="45" stroke="#000" stroke-width="1.2"/>
-              <rect x="55" y="34" width="65" height="14" fill="#fff"/>
-              <text x="87" y="44" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
+              <line x1="43" y1="45" x2="135" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="52" y="28" width="70" height="14" fill="#ffffff"/>
+              <text x="87" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">insert_event</text>
 
               <!-- State 1: PENDING -->
-              <rect x="135" y="25" width="155" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="212" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
-              <text x="212" y="54" font-size="7.5" text-anchor="middle">Committed in SQLite</text>
+              <rect x="135" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="210" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">PENDING</text>
+              <text x="210" y="54" font-size="7.5" text-anchor="middle">Committed in SQLite</text>
 
               <!-- Transition 2 -->
-              <line x1="290" y1="40" x2="395" y2="40" stroke="#000" stroke-width="1.2"/>
-              <rect x="300" y="29" width="85" height="14" fill="#fff"/>
-              <text x="342" y="39" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
+              <line x1="285" y1="45" x2="395" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="295" y="28" width="90" height="14" fill="#ffffff"/>
+              <text x="340" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">net_online &amp; send</text>
 
               <!-- State 2: IN_FLIGHT -->
-              <rect x="395" y="25" width="155" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
-              <text x="472" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
-              <text x="472" y="54" font-size="7.5" text-anchor="middle">HTTPS POST active</text>
+              <rect x="395" y="25" width="150" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="470" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">IN_FLIGHT</text>
+              <text x="470" y="54" font-size="7.5" text-anchor="middle">HTTPS POST active</text>
 
               <!-- Transition 3: Success -->
-              <line x1="550" y1="45" x2="655" y2="45" stroke="#000" stroke-width="1.2"/>
-              <rect x="562" y="34" width="80" height="14" fill="#fff"/>
-              <text x="602" y="44" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
+              <line x1="545" y1="45" x2="655" y2="45" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="562" y="28" width="80" height="14" fill="#ffffff"/>
+              <text x="602" y="38" font-size="7.5" font-weight="bold" text-anchor="middle">HTTP 200 OK</text>
 
               <!-- State 3: SYNCED -->
               <rect x="655" y="25" width="90" height="40" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
               <text x="700" y="41" font-size="8.5" font-weight="bold" text-anchor="middle">SYNCED</text>
               <text x="700" y="54" font-size="7.5" text-anchor="middle">Marked complete</text>
 
-              <!-- Transition 4: Retry Loop (Below boxes with ample clearance) -->
-              <path d="M 472 65 L 472 95 L 212 95 L 212 65" fill="none" stroke="#000" stroke-width="1.2"/>
-              <rect x="250" y="87" width="180" height="15" fill="#fff"/>
-              <text x="340" y="98" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
+              <!-- Transition 4: Retry Loop -->
+              <path d="M 470 65 L 470 98 L 210 98 L 210 67" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#sync-arr)"/>
+              <rect x="245" y="88" width="190" height="16" fill="#ffffff"/>
+              <text x="340" y="100" font-size="7.5" font-weight="bold" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
             </svg>
           </div>
 
@@ -2372,46 +2380,46 @@
               <line x1="205" y1="50" x2="235" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Decision 1 -->
-              <polygon points="235,50 255,35 275,50 255,65" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="255" y="48" font-size="6.5" font-weight="bold" text-anchor="middle">Reliable?</text>
+              <polygon points="225,50 260,30 295,50 260,70" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="260" y="53" font-size="7.5" font-weight="bold" text-anchor="middle">Reliable?</text>
 
               <!-- Branch: Fault -->
-              <line x1="255" y1="65" x2="255" y2="105" stroke="#000" stroke-width="1.2"/>
-              <text x="260" y="80" font-size="7" font-weight="bold">[No]</text>
-              <rect x="195" y="105" width="120" height="32" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="255" y="118" font-size="7.5" font-weight="bold" text-anchor="middle">Actuate Amber Relay</text>
-              <text x="255" y="129" font-size="7" text-anchor="middle">&amp; Record Uninspected</text>
+              <line x1="260" y1="70" x2="260" y2="105" stroke="#000" stroke-width="1.2"/>
+              <text x="267" y="88" font-size="7.5" font-weight="bold">[No]</text>
+              <rect x="195" y="105" width="130" height="34" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="260" y="119" font-size="7.5" font-weight="bold" text-anchor="middle">Actuate Amber Relay</text>
+              <text x="260" y="131" font-size="7" text-anchor="middle">&amp; Record Uninspected</text>
 
               <!-- Branch: Normal -->
-              <line x1="275" y1="50" x2="310" y2="50" stroke="#000" stroke-width="1.2"/>
-              <text x="290" y="44" font-size="7" font-weight="bold">[Yes]</text>
+              <line x1="295" y1="50" x2="320" y2="50" stroke="#000" stroke-width="1.2"/>
+              <text x="307" y="43" font-size="7.5" font-weight="bold">[Yes]</text>
 
               <!-- Activity 2 -->
-              <rect x="310" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="372" y="47" font-size="8" font-weight="bold" text-anchor="middle">Execute TensorRT YOLO</text>
-              <text x="372" y="58" font-size="7" text-anchor="middle">Bounding Box Inference</text>
+              <rect x="320" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="382" y="47" font-size="8" font-weight="bold" text-anchor="middle">Execute YOLO Model</text>
+              <text x="382" y="58" font-size="7" text-anchor="middle">Bounding Box Inference</text>
 
-              <line x1="435" y1="50" x2="465" y2="50" stroke="#000" stroke-width="1.2"/>
+              <line x1="445" y1="50" x2="470" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Activity 3 -->
-              <rect x="465" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="527" y="47" font-size="8" font-weight="bold" text-anchor="middle">Kalman Filter Tracker</text>
-              <text x="527" y="58" font-size="7" text-anchor="middle">&amp; Metric Deduplication</text>
+              <rect x="470" y="32" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="532" y="47" font-size="8" font-weight="bold" text-anchor="middle">Kalman Filter Tracker</text>
+              <text x="532" y="58" font-size="7" text-anchor="middle">&amp; Metric Deduplication</text>
 
-              <line x1="590" y1="50" x2="620" y2="50" stroke="#000" stroke-width="1.2"/>
+              <line x1="595" y1="50" x2="615" y2="50" stroke="#000" stroke-width="1.2"/>
 
               <!-- Decision 2: Critical? -->
-              <polygon points="620,50 640,35 660,50 640,65" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="640" y="48" font-size="6.5" font-weight="bold" text-anchor="middle">Critical?</text>
+              <polygon points="615,50 650,30 685,50 650,70" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+              <text x="650" y="53" font-size="7.5" font-weight="bold" text-anchor="middle">Critical?</text>
 
-              <line x1="640" y1="65" x2="640" y2="105" stroke="#000" stroke-width="1.2"/>
-              <text x="645" y="80" font-size="7" font-weight="bold">[Yes]</text>
-              <rect x="580" y="105" width="120" height="32" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
-              <text x="640" y="118" font-size="7.5" font-weight="bold" text-anchor="middle">Sound Buzzer Relay</text>
-              <text x="640" y="129" font-size="7" text-anchor="middle">&amp; Red Stack Light</text>
+              <line x1="650" y1="70" x2="650" y2="105" stroke="#000" stroke-width="1.2"/>
+              <text x="657" y="88" font-size="7.5" font-weight="bold">[Yes]</text>
+              <rect x="585" y="105" width="130" height="34" rx="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
+              <text x="650" y="119" font-size="7.5" font-weight="bold" text-anchor="middle">Sound Buzzer Relay</text>
+              <text x="650" y="131" font-size="7" text-anchor="middle">&amp; Red Stack Light</text>
 
-              <line x1="660" y1="50" x2="690" y2="50" stroke="#000" stroke-width="1.2"/>
-              <text x="672" y="44" font-size="7" font-weight="bold">[No]</text>
+              <line x1="685" y1="50" x2="710" y2="50" stroke="#000" stroke-width="1.2"/>
+              <text x="697" y="43" font-size="7.5" font-weight="bold">[No]</text>
 
               <!-- Activity 4: Local SQLite WAL Insert -->
               <rect x="465" y="175" width="125" height="36" rx="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
@@ -2419,9 +2427,9 @@
               <text x="527" y="201" font-size="7" text-anchor="middle">&amp; Trigger Web Alert</text>
 
               <!-- Paths connecting down to SQLite WAL -->
-              <path d="M 690 50 L 720 50 L 720 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
-              <path d="M 640 137 L 640 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
-              <path d="M 255 137 L 255 193 L 465 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 710 50 L 730 50 L 730 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 650 139 L 650 193 L 590 193" fill="none" stroke="#000" stroke-width="1.2"/>
+              <path d="M 260 139 L 260 193 L 465 193" fill="none" stroke="#000" stroke-width="1.2"/>
 
               <line x1="465" y1="193" x2="425" y2="193" stroke="#000" stroke-width="1.2"/>
 

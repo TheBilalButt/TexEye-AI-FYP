@@ -62,7 +62,7 @@ function Get-Compact-Pages-12-to-21 {
             <tr><th>Postconditions</th><td>Confirmed defects saved to SQLite with metric coordinates (X, Y), physical dimensions, and JPEG crop.</td></tr>
             <tr><th>Main Success Scenario</th><td>
               1. Encoder pulse count reaches frame advance threshold; camera driver captures rectified frame.<br>
-              2. Edge engine submits frame tensor to TensorRT YOLO FP16 inference engine.<br>
+              2. Edge engine submits frame to fine-tuned YOLO defect detection engine.<br>
               3. YOLO detects candidate anomaly bounding boxes [u_min, v_min, u_max, v_max] with confidence &ge; 0.40.<br>
               4. 2D Kalman Filter predicts active track positions and associates detections via Hungarian IoU matching.<br>
               5. When a candidate matches an active track, its trajectory and physical length L (mm) are updated.<br>
@@ -301,23 +301,23 @@ function Get-Compact-Pages-12-to-21 {
           <table class="formal-table">
             <thead>
               <tr>
-                <th style="width: 14%; text-align: center;">Screen ID</th>
-                <th style="width: 18%;">Target Client</th>
-                <th style="width: 18%;">Target Users</th>
-                <th style="width: 50%;">Purpose and Main User Interface Elements</th>
+                <th style="width: 10%; text-align: center;">Screen ID</th>
+                <th style="width: 14%; text-align: center;">Target Client</th>
+                <th style="width: 16%; text-align: center;">Target Users</th>
+                <th style="width: 60%;">Purpose and Main User Interface Elements</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td style="text-align: center;"><b>S-01</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
-              <tr><td style="text-align: center;"><b>S-02</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
-              <tr><td style="text-align: center;"><b>S-03</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
-              <tr><td style="text-align: center;"><b>S-04</b></td><td>Mobile App</td><td>Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
-              <tr><td style="text-align: center;"><b>S-05</b></td><td>Web Dashboard</td><td>All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
-              <tr><td style="text-align: center;"><b>S-06</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
-              <tr><td style="text-align: center;"><b>S-07</b></td><td>Web Dashboard</td><td>Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
-              <tr><td style="text-align: center;"><b>S-08</b></td><td>Web Dashboard</td><td>Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
-              <tr><td style="text-align: center;"><b>S-09</b></td><td>Web Dashboard</td><td>Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
-              <tr><td style="text-align: center;"><b>S-10</b></td><td>Web Dashboard</td><td>Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-01</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>QR Roll Scanner:</b> Viewfinder for scanning roll QR tags, displays Batch ID, Article, GSM, and 'Start' action.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-02</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Live Floor Monitor:</b> Real-time video preview, speed gauge (m/s), length counter, recent flaw thumbnail, pause/stop.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-03</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Alarm Modal:</b> High-contrast full-screen red warning dialog with vibration pulse, defect metrics, and 'Acknowledge' button.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-04</td><td style="text-align: center;">Mobile App</td><td style="text-align: center;">Floor Operator</td><td><b>Manual Flaw Tag Sheet:</b> Modal sheet with buttons for manual defects (Shade variation, Selvage curl, Foreign yarn).</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-05</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">All Roles</td><td><b>Sign In &amp; MFA:</b> Username and password form with JWT token issuance and role-based redirect.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-06</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Rolls Overview Table:</b> Filterable list of inspected rolls, showing Batch ID, date, length, points, grade, and sync status.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-07</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Inspector, Manager</td><td><b>Interactive 2D Defect Map:</b> Canvas rendering full fabric roll web, color-coded flaw glyphs, uninspected hazard spans.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-08</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Inspector</td><td><b>Defect Review Gallery:</b> High-resolution crop viewer with zoom, calipers, AI confidence bar, and reclassification selector.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-09</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Quality Manager</td><td><b>ASTM 4-Point Scorecard:</b> Points breakdown by flaw length, 1-meter capping chart, points/100m2, and Grade widget.</td></tr>
+              <tr><td style="text-align: center; font-weight: bold;">S-10</td><td style="text-align: center;">Web Dashboard</td><td style="text-align: center;">Manager, Admin</td><td><b>Certificate &amp; Export Hub:</b> PDF certificate preview with download button, ERP JSON/CSV export, and SHA-256 hash display.</td></tr>
             </tbody>
           </table>
 
@@ -330,7 +330,7 @@ function Get-Compact-Pages-12-to-21 {
             <tbody>
               <tr><td><b>Linux Kernel V4L2 / GenICam</b></td><td>Zero-copy camera frame buffer ingestion; camera exposure and gain register configuration via standard ioctl calls.</td></tr>
               <tr><td><b>Linux GPIO Subsystem (gpiod)</b></td><td>Kernel-level edge hardware interrupt handling on quadrature pulse pins for high-speed displacement tracking.</td></tr>
-              <tr><td><b>NVIDIA TensorRT 8.6+ / CUDA 12</b></td><td>Execution of optimized FP16 YOLO engine; binds GPU memory buffers for batch inference and coordinate tensor output.</td></tr>
+              <tr><td><b>AI Vision Framework (PyTorch / ONNX)</b></td><td>Execution of fine-tuned YOLO model; memory buffers for real-time frame defect detection and coordinate bounding boxes.</td></tr>
               <tr><td><b>SQLite 3.40+ (WAL Mode)</b></td><td>Local edge ACID storage; stores session headers, outbox queue events, and defect entities with sub-5ms commit latency.</td></tr>
               <tr><td><b>FastAPI (Python 3.11+)</b></td><td>Central enterprise application server; exposes authenticated REST endpoints and WebSocket servers.</td></tr>
               <tr><td><b>PostgreSQL 15+ & SQLAlchemy</b></td><td>Relational enterprise persistence for multi-stand roll histories, defect coordinates, user accounts, and immutable audit logs.</td></tr>
@@ -378,7 +378,7 @@ function Get-Compact-Pages-12-to-21 {
               <tr><th style="width: 12%;">ID</th><th style="width: 25%;">Requirement Specification</th><th style="width: 18%;">Target Metric</th><th style="width: 45%;">Engineering Rationale</th></tr>
             </thead>
             <tbody>
-              <tr><td><b>PR-01</b></td><td>AI Inference Latency</td><td>&le; 25 ms / frame</td><td>Guarantees 40+ FPS edge throughput via TensorRT FP16, easily exceeding 30 FPS camera capture rate.</td></tr>
+              <tr><td><b>PR-01</b></td><td>AI Inference Latency</td><td>&le; 30 ms / frame</td><td>Guarantees 30+ FPS edge throughput via optimized model inference, exceeding continuous camera capture rate.</td></tr>
               <tr><td><b>PR-02</b></td><td>End-to-End Edge Pipeline Latency</td><td>&le; 60 ms total</td><td>From optical exposure to Kalman tracking and SQLite commit; ensures immediate flaw localization.</td></tr>
               <tr><td><b>PR-03</b></td><td>Alarm Relay Actuation Time</td><td>&le; 50 ms</td><td>From confirmed critical flaw to relay closure; allows operator or emergency stop to halt fabric in 25 mm.</td></tr>
               <tr><td><b>PR-04</b></td><td>Mobile Alert Notification Latency</td><td>&le; 200 ms</td><td>From flaw confirmation to mobile terminal vibration; maintains real-time operator awareness.</td></tr>

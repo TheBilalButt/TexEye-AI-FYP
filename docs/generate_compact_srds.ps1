@@ -64,7 +64,7 @@ $htmlShell = @"
     color: #000000;
     background-color: #ffffff;
     font-size: 8.5pt;
-    line-height: 1.38;
+    line-height: 1.42;
   }
   .page {
     width: 210mm;
