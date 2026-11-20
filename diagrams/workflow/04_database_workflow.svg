@@ -1,0 +1,159 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#d97706"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Database Workflow &amp; Offline-to-Cloud Data Pipeline</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Complete Data Lifecycle: Edge SQLite Buffer &rarr; Transactional Outbox &rarr; Central PostgreSQL &amp; MinIO &rarr; Analytical Queries</text>
+
+  <!-- Tier 1: Edge Local Buffer -->
+  <rect x="25" y="75" width="1270" height="150" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="280" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="172" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">1. EDGE STAND LOCAL STORAGE (Zero-Latency)</text>
+
+  <rect x="50" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="185" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: rolls_active</text>
+  <text x="185" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; roll_id (UUID, PK), batch_id</text>
+  <text x="185" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; start_time, end_time, total_length_m</text>
+  <text x="185" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; operator_id, stand_id, status</text>
+  <text x="185" y="195" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">[INSERT on QR Scan]</text>
+
+  <rect x="360" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="495" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: defects_local</text>
+  <text x="495" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; defect_id (UUID, PK), roll_id (FK)</text>
+  <text x="495" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; X_coord_cm, Y_coord_m, flaw_class</text>
+  <text x="495" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; confidence, crop_file_path</text>
+  <text x="495" y="195" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">[INSERT on AI Detection]</text>
+
+  <rect x="670" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="805" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: uninspected_spans</text>
+  <text x="805" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; span_id (UUID, PK), roll_id (FK)</text>
+  <text x="805" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Y_start_m, Y_end_m, reason_code</text>
+  <text x="805" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; lux_val, blur_score, timestamp</text>
+  <text x="805" y="195" font-size="8.5" fill="#be123c" font-weight="bold" text-anchor="middle">[INSERT on Sensor Fault]</text>
+
+  <rect x="980" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1115" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local NVMe Disk Image Store</text>
+  <text x="1115" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Path: /data/crops/{roll_id}/</text>
+  <text x="1115" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Format: High-Res JPEG (256x256)</text>
+  <text x="1115" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Indexed by defect_id.jpg</text>
+  <text x="1115" y="195" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">[Direct File System Write]</text>
+
+  <!-- Tier 2: Transactional Outbox State Machine -->
+  <rect x="25" y="240" width="1270" height="130" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="247" width="310" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="187" y="263" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">2. TRANSACTIONAL OUTBOX SYNC STATE MACHINE</text>
+
+  <!-- Start Circle -->
+  <circle cx="80" cy="305" r="8" fill="#0f172a"/>
+  
+  <line x1="88" y1="305" x2="190" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="100" y="290" width="75" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="137" y="301" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">insert_event</text>
+
+  <!-- State 1: PENDING -->
+  <rect x="190" y="280" width="180" height="50" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="5"/>
+  <text x="280" y="300" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">PENDING</text>
+  <text x="280" y="316" font-size="8" fill="#475569" text-anchor="middle">Committed in SQLite Buffer</text>
+
+  <!-- State 2: IN_FLIGHT -->
+  <line x1="370" y1="305" x2="490" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="385" y="290" width="90" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430" y="301" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">net_online &amp; send</text>
+
+  <rect x="490" y="280" width="180" height="50" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="5"/>
+  <text x="580" y="300" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">IN_FLIGHT</text>
+  <text x="580" y="316" font-size="8" fill="#475569" text-anchor="middle">HTTPS POST Payload Active</text>
+
+  <!-- Retry Backoff -->
+  <path d="M 580 330 L 580 355 L 280 355 L 280 330" fill="none" stroke="#d97706" stroke-width="1.3" marker-end="url(#arr-amber)"/>
+  <rect x="360" y="347" width="145" height="16" fill="#fffbeb" stroke="#d97706" rx="3"/>
+  <text x="432" y="359" font-size="7.5" font-weight="bold" fill="#92400e" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
+
+  <!-- State 3: SYNCED -->
+  <line x1="670" y1="305" x2="790" y2="305" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr-green)"/>
+  <rect x="690" y="290" width="80" height="15" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="730" y="301" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">HTTP 200 OK</text>
+
+  <rect x="790" y="280" width="180" height="50" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3" rx="5"/>
+  <text x="880" y="300" font-size="10.5" font-weight="bold" fill="#15803d" text-anchor="middle">SYNCED</text>
+  <text x="880" y="316" font-size="8" fill="#166534" text-anchor="middle">Marked complete in outbox</text>
+
+  <!-- Terminal Circle -->
+  <line x1="970" y1="305" x2="1030" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <circle cx="1040" cy="305" r="9" fill="none" stroke="#0f172a" stroke-width="1.3"/>
+  <circle cx="1040" cy="305" r="5" fill="#0f172a"/>
+  <text x="1110" y="309" font-size="8.5" fill="#475569">Archived after 7 Days</text>
+
+  <!-- Tier 3: Central Enterprise DB & Object Storage -->
+  <rect x="25" y="385" width="1270" height="175" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="392" width="310" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="187" y="408" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">3. CENTRAL ENTERPRISE DATA PERSISTENCE</text>
+
+  <!-- PostgreSQL Master Tables -->
+  <rect x="50" y="425" width="360" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="230" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL: Master Roll &amp; Defect Tables</text>
+  <text x="230" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; fabric_rolls: roll_id, batch_id, length_m, grade, astm_points</text>
+  <text x="230" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; detected_defects: defect_id, roll_id, X_cm, Y_m, class, verified_class</text>
+  <text x="230" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; uninspected_spans: span_id, roll_id, Y_start, Y_end, fault_type</text>
+  <text x="230" y="516" font-size="8.5" fill="#334155" text-anchor="middle">&bull; audit_logs: audit_id, defect_id, changed_by, old_class, new_class</text>
+
+  <!-- MinIO S3 Object Buckets -->
+  <rect x="450" y="425" width="360" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="630" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">MinIO Object Store (S3 Buckets)</text>
+  <text x="630" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; defect-crops-hd/roll_{id}/{defect_id}.jpg (256x256 Crop)</text>
+  <text x="630" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; inspection-certificates-pdf/cert_{roll_id}.pdf (Official PDF)</text>
+  <text x="630" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Immutable Object Lock &amp; Fast CDN Cache Header</text>
+  <text x="630" y="516" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Pre-Signed URL Access with 60-Minute Expiry</text>
+
+  <!-- ASTM Scoring Record -->
+  <rect x="850" y="425" width="400" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1050" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL: astm_scorecards Table</text>
+  <text x="1050" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; roll_id (FK), pts_1 (length &lt; 75mm), pts_2 (75-150mm)</text>
+  <text x="1050" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; pts_3 (150-230mm), pts_4 (&gt; 230mm or holes &gt; 25mm)</text>
+  <text x="1050" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; points_per_100_sqm = (Total Points &times; 10000) / (Length &times; Width)</text>
+  <text x="1050" y="516" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&bull; Grade Threshold: Grade A (&le; 20 pts), Grade B (&le; 40), Scrap (&gt; 40)</text>
+
+  <!-- Tier 4: Query & CRUD Patterns -->
+  <rect x="25" y="575" width="1270" height="165" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="582" width="280" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="172" y="598" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">4. CRUD ACCESS PATTERNS &amp; CONSUMERS</text>
+
+  <rect x="50" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="190" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 1: 2D Defect Map Render</text>
+  <text x="190" y="655" font-size="8" fill="#334155" text-anchor="middle">SELECT X_cm, Y_m, class</text>
+  <text x="190" y="670" font-size="8" fill="#334155" text-anchor="middle">FROM detected_defects</text>
+  <text x="190" y="685" font-size="8" fill="#334155" text-anchor="middle">WHERE roll_id = :id ORDER BY Y_m;</text>
+  <text x="190" y="705" font-size="8" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Consumer: Web Canvas View</text>
+
+  <rect x="360" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="500" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 2: Defect Reclassification</text>
+  <text x="500" y="655" font-size="8" fill="#334155" text-anchor="middle">UPDATE detected_defects</text>
+  <text x="500" y="670" font-size="8" fill="#334155" text-anchor="middle">SET verified_class = :new_class,</text>
+  <text x="500" y="685" font-size="8" fill="#334155" text-anchor="middle">reviewed_by = :inspector_id;</text>
+  <text x="500" y="705" font-size="8" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Consumer: Quality Inspector Review</text>
+
+  <rect x="670" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="810" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 3: ASTM Finalization</text>
+  <text x="810" y="655" font-size="8" fill="#334155" text-anchor="middle">UPDATE fabric_rolls</text>
+  <text x="810" y="670" font-size="8" fill="#334155" text-anchor="middle">SET grade = 'Grade A',</text>
+  <text x="810" y="685" font-size="8" fill="#334155" text-anchor="middle">astm_points = :computed_points;</text>
+  <text x="810" y="705" font-size="8" fill="#16a34a" font-weight="bold" text-anchor="middle">&rarr; Consumer: Smart Operations Engine</text>
+
+  <rect x="980" y="615" width="270" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="1115" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 4: PDF Report Generation</text>
+  <text x="1115" y="655" font-size="8" fill="#334155" text-anchor="middle">JOIN fabric_rolls, batches,</text>
+  <text x="1115" y="670" font-size="8" fill="#334155" text-anchor="middle">detected_defects, scorecards</text>
+  <text x="1115" y="685" font-size="8" fill="#334155" text-anchor="middle">Render vector PDF &amp; store S3;</text>
+  <text x="1115" y="705" font-size="8" fill="#16a34a" font-weight="bold" text-anchor="middle">&rarr; Consumer: Quality Manager Export</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Database Workflow):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; Offline-First Guarantee: Inspection never waits for cloud database latency. Detections write instantly to local SQLite WAL file.</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Outbox State Machine: PENDING &rarr; IN_FLIGHT &rarr; SYNCED. Guarantees at-least-once delivery with zero data loss even across power outages.</text>
+</svg>

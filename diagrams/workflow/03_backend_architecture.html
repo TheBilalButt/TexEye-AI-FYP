@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagram 3: Backend Architecture & Service Decomposition | TexEye AI</title>
+  <style>
+    @page { size: A4 landscape; margin: 6mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #ffffff; color: #0f172a; }
+    .page-container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 10px 14px; }
+    .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0284c7; padding-bottom: 6px; margin-bottom: 8px; }
+    .header-title h1 { margin: 0; font-size: 15pt; font-weight: 800; color: #0f172a; }
+    .header-title p { margin: 2px 0 0 0; font-size: 8.5pt; color: #475569; }
+    .header-badge { text-align: right; font-size: 8pt; color: #64748b; line-height: 1.3; }
+    .header-badge strong { color: #0284c7; }
+    .svg-wrapper { width: 100%; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px; }
+    .svg-wrapper svg { width: 100%; height: auto; display: block; }
+    .explanation-box { margin-top: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 12px; font-size: 8pt; line-height: 1.4; }
+    .explanation-box h3 { margin: 0 0 4px 0; font-size: 9.5pt; color: #0f172a; display: flex; align-items: center; gap: 6px; }
+    .explanation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+    .exp-col { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 6px 8px; }
+    .exp-col strong { color: #0369a1; display: block; margin-bottom: 2px; font-size: 8pt; }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="header-bar">
+      <div class="header-title">
+        <h1>Diagram 3: Backend Architecture & Service Decomposition</h1>
+        <p>Physical Separation of Edge Inspection Stand Services and Central Enterprise Cloud Backend</p>
+      </div>
+      <div class="header-badge">
+        <strong>TexEye AI</strong> &bull; FYP Architecture Series<br>
+        COMSATS University Islamabad, Wah Campus<br>
+        Supervisor: Dr. Tassawar Iqbal
+      </div>
+    </div>
+    <div class="svg-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Backend Architecture &amp; Service Decomposition</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Separation of Concerns between Stand Edge Backend (Python) and Central Cloud Backend (FastAPI)</text>
+
+  <!-- Left: Edge Stand Backend -->
+  <rect x="25" y="75" width="620" height="665" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="340" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="202" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">EDGE STAND BACKEND (Local Python Service)</text>
+
+  <!-- Subsystem 1: Hardware Abstraction Layer -->
+  <rect x="45" y="120" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="140" font-size="10.5" font-weight="bold" fill="#0369a1">1. Hardware Abstraction &amp; Ingestion Subsystem</text>
+  
+  <rect x="60" y="150" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Camera Ingester</text>
+  <text x="145" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; OpenCV / V4L2</text>
+  <text x="145" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; 1080p @ 30-60 FPS</text>
+  <text x="145" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Frame Buffer Ring</text>
+
+  <rect x="250" y="150" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Encoder Driver</text>
+  <text x="335" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; GPIO / Serial Interrupts</text>
+  <text x="335" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Optical 1000 PPR</text>
+  <text x="335" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Pulse &rarr; mm Conversion</text>
+
+  <rect x="440" y="150" width="170" height="75" fill="#fff1f2" stroke="#fca5a5" stroke-width="1" rx="4"/>
+  <text x="525" y="170" font-size="9.5" font-weight="bold" fill="#9f1239" text-anchor="middle">Reliability Guard</text>
+  <text x="525" y="186" font-size="8" fill="#be123c" text-anchor="middle">&bull; Lux Level &lt; 800 Check</text>
+  <text x="525" y="199" font-size="8" fill="#be123c" text-anchor="middle">&bull; Laplacian Blur Detector</text>
+  <text x="525" y="212" font-size="8" fill="#be123c" text-anchor="middle">&bull; Dropped Frame Sentinel</text>
+
+  <!-- Subsystem 2: Edge AI & Tracking -->
+  <rect x="45" y="255" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="275" font-size="10.5" font-weight="bold" fill="#0369a1">2. Edge AI Inference &amp; Deduplication Engine</text>
+
+  <rect x="60" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">YOLO Inference</text>
+  <text x="145" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Fabric Defect Model</text>
+  <text x="145" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Flaw Bounding Box</text>
+  <text x="145" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Class Conf &gt; 0.65</text>
+
+  <rect x="250" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Metric Localization</text>
+  <text x="335" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Pixel-to-mm Mapping</text>
+  <text x="335" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; X Across Width (cm)</text>
+  <text x="335" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Y Along Length (m)</text>
+
+  <rect x="440" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="525" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Kalman Deduplicator</text>
+  <text x="525" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Multi-Frame Tracking</text>
+  <text x="525" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Trajectory Association</text>
+  <text x="525" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Zero Duplicate Counts</text>
+
+  <!-- Subsystem 3: Local Storage & Sync -->
+  <rect x="45" y="390" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="410" font-size="10.5" font-weight="bold" fill="#0369a1">3. Local Resilience &amp; Outbox Storage</text>
+
+  <rect x="60" y="420" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="440" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite WAL</text>
+  <text x="145" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; Zero-Delay Commits</text>
+  <text x="145" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; rolls &amp; defects Tables</text>
+  <text x="145" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; uninspected_intervals</text>
+
+  <rect x="250" y="420" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="440" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">NVMe Crop Store</text>
+  <text x="335" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; High-Res JPEG Crops</text>
+  <text x="335" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; 256x256 BBox Region</text>
+  <text x="335" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; Lossless Disk Write</text>
+
+  <rect x="440" y="420" width="170" height="75" fill="#fffbeb" stroke="#fcd34d" stroke-width="1" rx="4"/>
+  <text x="525" y="440" font-size="9.5" font-weight="bold" fill="#92400e" text-anchor="middle">Outbox Sync Worker</text>
+  <text x="525" y="456" font-size="8" fill="#b45309" text-anchor="middle">&bull; Polling &amp; Heartbeat</text>
+  <text x="525" y="469" font-size="8" fill="#b45309" text-anchor="middle">&bull; HTTPS Batch POST</text>
+  <text x="525" y="482" font-size="8" fill="#b45309" text-anchor="middle">&bull; Exponential Backoff</text>
+
+  <!-- Subsystem 4: Hardware Relay Controller -->
+  <rect x="45" y="525" width="580" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="545" font-size="10.5" font-weight="bold" fill="#0369a1">4. Physical Actuation &amp; Alarm Controller</text>
+  <text x="60" y="565" font-size="8.5" fill="#334155">&bull; USB / GPIO Relay Controller connected to industrial stack light &amp; audible buzzer.</text>
+  <text x="60" y="580" font-size="8.5" fill="#334155">&bull; Relays: Relay 1 (Amber Light - Sensor Fault), Relay 2 (Red Light - Critical Flaw), Relay 3 (85dB Audible Siren).</text>
+  <text x="60" y="595" font-size="8.5" fill="#334155">&bull; Safety Invariant: Hardware alarm state automatically cleared only on explicit operator acknowledgment.</text>
+
+  <!-- Right: Central Cloud Backend -->
+  <rect x="675" y="75" width="620" height="665" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="682" y="82" width="360" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="202" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">CENTRAL ENTERPRISE BACKEND (FastAPI / Cloud)</text>
+
+  <!-- Central Layer 1: API Gateway & Security -->
+  <rect x="695" y="120" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="140" font-size="10.5" font-weight="bold" fill="#0369a1">1. API Gateway, Ingestion &amp; WebSocket Broadcast</text>
+
+  <rect x="710" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="795" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Ingestion REST API</text>
+  <text x="795" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; /api/v1/sync/batch</text>
+  <text x="795" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Transactional Commit</text>
+  <text x="795" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; High-Throughput JSON</text>
+
+  <rect x="900" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="985" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Auth &amp; RBAC Service</text>
+  <text x="985" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; JWT Token Validation</text>
+  <text x="985" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Bcrypt Passwords</text>
+  <text x="985" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Role Permissions Guard</text>
+
+  <rect x="1090" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="1175" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">WebSocket Hub</text>
+  <text x="1175" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; Real-Time Broadcast</text>
+  <text x="1175" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Multi-Client Fanout</text>
+  <text x="1175" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Stand Heartbeat Ping</text>
+
+  <!-- Central Layer 2: Business Logic & ASTM Grading -->
+  <rect x="695" y="255" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="275" font-size="10.5" font-weight="bold" fill="#0369a1">2. Quality Computation &amp; Report Intelligence</text>
+
+  <rect x="710" y="285" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="795" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ASTM 4-Point Engine</text>
+  <text x="795" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Points Formula D5430</text>
+  <text x="795" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; 1-Meter Capping Rule</text>
+  <text x="795" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Grade A / B / Scrap</text>
+
+  <rect x="900" y="285" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="985" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Audit &amp; Review Service</text>
+  <text x="985" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Flaw Reclassification</text>
+  <text x="985" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Inspector Timestamp</text>
+  <text x="985" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Immutable History Log</text>
+
+  <rect x="1090" y="285" width="170" height="75" fill="#f0fdf4" stroke="#86efac" stroke-width="1" rx="4"/>
+  <text x="1175" y="305" font-size="9.5" font-weight="bold" fill="#15803d" text-anchor="middle">PDF Certificate Service</text>
+  <text x="1175" y="321" font-size="8" fill="#166534" text-anchor="middle">&bull; Vector Document Engine</text>
+  <text x="1175" y="334" font-size="8" fill="#166534" text-anchor="middle">&bull; Embedded Defect Table</text>
+  <text x="1175" y="347" font-size="8" fill="#166534" text-anchor="middle">&bull; SHA-256 Digital Seal</text>
+
+  <!-- Central Layer 3: Enterprise Persistence -->
+  <rect x="695" y="390" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="410" font-size="10.5" font-weight="bold" fill="#0369a1">3. Enterprise Relational Database &amp; Object Storage</text>
+
+  <rect x="730" y="420" width="240" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="850" y="440" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL Database</text>
+  <text x="850" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; Normalized Relational Schema</text>
+  <text x="850" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; batches, rolls, defects, audits</text>
+  <text x="850" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; B-Tree Index on (roll_id, Y_m)</text>
+
+  <rect x="1010" y="420" width="240" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="1130" y="440" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">MinIO Object Store (S3 API)</text>
+  <text x="1130" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; defect-crops-hd/ Bucket</text>
+  <text x="1130" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; inspection-certificates-pdf/ Bucket</text>
+  <text x="1130" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; Pre-Signed URLs for Frontend</text>
+
+  <!-- Central Layer 4: Enterprise Integration -->
+  <rect x="695" y="525" width="580" height="85" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="545" font-size="10.5" font-weight="bold" fill="#0369a1">4. ERP Integration &amp; Security Services</text>
+  <text x="710" y="565" font-size="8.5" fill="#334155">&bull; ERP Data Exporter: Automated JSON/CSV dispatch to SAP, Oracle Netsuite, or textile ERP.</text>
+  <text x="710" y="580" font-size="8.5" fill="#334155">&bull; SHA-256 Hashing Engine: Generates tamper-proof cryptographic audit checksum for every finalized certificate.</text>
+  <text x="710" y="595" font-size="8.5" fill="#334155">&bull; Data Retention Policy: Automatic archival of processed rolls while retaining flaw telemetry.</text>
+
+  <!-- Clean Communication Channel Across Backends -->
+  <line x1="645" y1="455" x2="675" y2="455" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-blue)"/>
+  <rect x="625" y="435" width="70" height="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="0.8" rx="3"/>
+  <text x="660" y="447" font-size="7.5" font-weight="bold" fill="#1d4ed8" text-anchor="middle">HTTPS Sync</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Backend Architecture):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; Edge Stand Backend (Left): Runs locally on Stand PC. Owns camera frames, encoder interrupts, YOLO inference, local SQLite buffer, and physical relays.</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Central Cloud Backend (Right): Runs FastAPI. Owns cloud sync ingestion, PostgreSQL, MinIO storage, automated ASTM 4-point grading, and PDF report creation.</text>
+</svg>
+    </div>
+        <div class="explanation-box">
+      <h3><span>&#128221;</span> How to Draw and Explain Backend Architecture to Your Supervisor:</h3>
+      <div class="explanation-grid">
+        <div class="exp-col">
+          <strong>1. Stand Edge Backend (Left Box)</strong>
+          Explain: "Sir, on the inspection stand itself, we run a lightweight local Python backend. It handles real-time tasks: camera frames, rotary encoder pulses, YOLO defect inference, and local SQLite caching."
+        </div>
+        <div class="exp-col">
+          <strong>2. Central Cloud Backend (Right Box)</strong>
+          Explain: "Sir, in the cloud or factory server, we run a FastAPI server. It receives synced batches, manages PostgreSQL and MinIO storage, runs the ASTM D5430 grading engine, and generates PDF certificates."
+        </div>
+        <div class="exp-col">
+          <strong>3. Complete Edge Autonomy</strong>
+          Explain: "Even if the network cable to the cloud server is cut, the stand edge backend never halts. It continues inspecting fabric, triggers local stack lights, and saves records into SQLite."
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

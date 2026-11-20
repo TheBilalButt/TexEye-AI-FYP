@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagram 5: Complete Closed-Loop System Flow | TexEye AI</title>
+  <style>
+    @page { size: A4 landscape; margin: 6mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #ffffff; color: #0f172a; }
+    .page-container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 10px 14px; }
+    .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0284c7; padding-bottom: 6px; margin-bottom: 8px; }
+    .header-title h1 { margin: 0; font-size: 15pt; font-weight: 800; color: #0f172a; }
+    .header-title p { margin: 2px 0 0 0; font-size: 8.5pt; color: #475569; }
+    .header-badge { text-align: right; font-size: 8pt; color: #64748b; line-height: 1.3; }
+    .header-badge strong { color: #0284c7; }
+    .svg-wrapper { width: 100%; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px; }
+    .svg-wrapper svg { width: 100%; height: auto; display: block; }
+    .explanation-box { margin-top: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 12px; font-size: 8pt; line-height: 1.4; }
+    .explanation-box h3 { margin: 0 0 4px 0; font-size: 9.5pt; color: #0f172a; display: flex; align-items: center; gap: 6px; }
+    .explanation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+    .exp-col { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 6px 8px; }
+    .exp-col strong { color: #0369a1; display: block; margin-bottom: 2px; font-size: 8pt; }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="header-bar">
+      <div class="header-title">
+        <h1>Diagram 5: Complete Closed-Loop System Flow</h1>
+        <p>Step-by-Step 10-Stage Trace: User &rarr; Frontend &rarr; Stand Backend &rarr; Database &rarr; Backend &rarr; Frontend &rarr; User</p>
+      </div>
+      <div class="header-badge">
+        <strong>TexEye AI</strong> &bull; FYP Architecture Series<br>
+        COMSATS University Islamabad, Wah Campus<br>
+        Supervisor: Dr. Tassawar Iqbal
+      </div>
+    </div>
+    <div class="svg-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#dc2626"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Complete Closed-Loop System Flow</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Step-by-Step Execution Trace: User &rarr; Frontend &rarr; Stand Backend &rarr; Edge DB &rarr; Central DB &rarr; Web Frontend &rarr; Supervisor/User</text>
+
+  <!-- Step 1: User Action -->
+  <rect x="40" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 1</text>
+  <text x="150" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Floor Operator</text>
+  <text x="150" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Scans QR tag on fabric roll</text>
+
+  <!-- Step 2: Mobile App Frontend -->
+  <line x1="260" y1="122" x2="310" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  
+  <rect x="310" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="320" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="355" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 2</text>
+  <text x="420" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Mobile Frontend</text>
+  <text x="420" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Sends POST /session/start</text>
+
+  <!-- Step 3: Stand Edge Backend -->
+  <line x1="530" y1="122" x2="580" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="580" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="590" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="625" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 3</text>
+  <text x="690" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Stand Backend</text>
+  <text x="690" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Zeros encoder &amp; starts sensors</text>
+
+  <!-- Step 4: Decision: Reliable? -->
+  <line x1="800" y1="122" x2="850" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <polygon points="850,122 915,92 980,122 915,152" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="915" y="119" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">Reliable?</text>
+  <text x="915" y="132" font-size="8" fill="#64748b" text-anchor="middle">(Lux/Blur/FPS)</text>
+
+  <!-- Step 4 Fault Branch (Right) -->
+  <line x1="980" y1="122" x2="1050" y2="122" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-red)"/>
+  <rect x="990" y="108" width="50" height="15" fill="#fff1f2" stroke="#e11d48" rx="3"/>
+  <text x="1015" y="119" font-size="7.5" font-weight="bold" fill="#be123c" text-anchor="middle">[NO]</text>
+
+  <rect x="1050" y="85" width="230" height="75" fill="#fff1f2" stroke="#e11d48" stroke-width="1.4" rx="6"/>
+  <text x="1165" y="112" font-size="10" font-weight="bold" fill="#9f1239" text-anchor="middle">Safety Trip &amp; Span Mark</text>
+  <text x="1165" y="128" font-size="8" fill="#be123c" text-anchor="middle">Fires Amber stack light + buzzer</text>
+  <text x="1165" y="142" font-size="8" fill="#be123c" text-anchor="middle">Logs uninspected [Y1, Y2] in SQLite</text>
+
+  <!-- Step 4 YES Branch (Down to Step 5) -->
+  <path d="M 915 152 L 915 220 L 150 220 L 150 270" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="880" y="175" width="70" height="18" fill="#f0fdf4" stroke="#16a34a" rx="3"/>
+  <text x="915" y="188" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">[YES: Clear]</text>
+
+  <!-- Step 5: YOLO Detection & Tracking -->
+  <rect x="40" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 5</text>
+  <text x="150" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">AI Vision Detection</text>
+  <text x="150" y="328" font-size="8.5" fill="#334155" text-anchor="middle">YOLO BBox + (X, Y) metric map</text>
+  <text x="150" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Multi-frame Kalman deduplication</text>
+
+  <!-- Step 6: Local SQLite Buffer Commit -->
+  <line x1="260" y1="312" x2="310" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="310" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="320" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="355" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 6</text>
+  <text x="420" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite Buffer</text>
+  <text x="420" y="328" font-size="8.5" fill="#334155" text-anchor="middle">Commits flaw row instantly</text>
+  <text x="420" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Saves crop JPEG to local NVMe</text>
+
+  <!-- Step 7: Central Cloud Backend Sync -->
+  <line x1="530" y1="312" x2="580" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="580" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="590" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="625" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 7</text>
+  <text x="690" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Central Cloud Sync</text>
+  <text x="690" y="328" font-size="8.5" fill="#334155" text-anchor="middle">FastAPI ingests batch via HTTPS</text>
+  <text x="690" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Stores PostgreSQL &amp; MinIO S3</text>
+
+  <!-- Step 8: ASTM 4-Point Grading Engine -->
+  <line x1="800" y1="312" x2="850" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="850" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="860" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="895" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 8</text>
+  <text x="960" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ASTM 4-Point Grading</text>
+  <text x="960" y="328" font-size="8.5" fill="#334155" text-anchor="middle">Computes penalty points/100m²</text>
+  <text x="960" y="342" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">Assigns Grade A / B / Scrap</text>
+
+  <!-- Step 8 to Step 9 Route -->
+  <path d="M 1070 312 L 1165 312 L 1165 410 L 150 410 L 150 460" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <!-- Step 9: Web Quality Dashboard Map Render -->
+  <rect x="40" y="460" width="280" height="90" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="468" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="481" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 9</text>
+  <text x="180" y="503" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Web Dashboard 2D Map</text>
+  <text x="180" y="521" font-size="8.5" fill="#334155" text-anchor="middle">Canvas renders fabric roll defect layout</text>
+  <text x="180" y="536" font-size="8.5" fill="#334155" text-anchor="middle">Inspector audits &amp; reclassifies flaw tags</text>
+
+  <!-- Step 10: Final PDF Certificate Export -->
+  <line x1="320" y1="505" x2="380" y2="505" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+
+  <rect x="380" y="460" width="310" height="90" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" rx="6"/>
+  <rect x="390" y="468" width="70" height="18" fill="#16a34a" rx="3"/>
+  <text x="425" y="481" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 10</text>
+  <text x="535" y="503" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Quality Manager / PDF Certificate</text>
+  <text x="535" y="521" font-size="8.5" fill="#166534" text-anchor="middle">Official ASTM Quality Certificate generated</text>
+  <text x="535" y="536" font-size="8.5" fill="#166534" font-weight="bold" text-anchor="middle">Cryptographic SHA-256 seal &amp; ERP Export</text>
+
+  <!-- Complete System Closed Loop Badge -->
+  <rect x="740" y="460" width="540" height="90" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="1010" y="485" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Closed-Loop Architecture Verification:</text>
+  <text x="1010" y="505" font-size="9" fill="#334155" text-anchor="middle">User &rarr; Frontend &rarr; Stand Backend &rarr; Edge DB &rarr; Central DB &rarr; Web Frontend &rarr; User</text>
+  <text x="1010" y="525" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&check; Every single architectural layer participates with verified traceability.</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="585" width="1270" height="85" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="605" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Complete System Flow):</text>
+  <text x="40" y="623" font-size="8.5" fill="#334155">&bull; 10 Numbered Rectangles: Connect them sequentially with arrows. Show Decision 4 (Reliability Gate) branching to safety alarm.</text>
+  <text x="40" y="639" font-size="8.5" fill="#334155">&bull; This single diagram answers: "Walk me through how data flows from the moment the worker turns on the machine until the manager prints the certificate."</text>
+</svg>
+    </div>
+        <div class="explanation-box">
+      <h3><span>&#128221;</span> How to Walk Your Supervisor Through the 10-Step Closed Loop Flow:</h3>
+      <div class="explanation-grid">
+        <div class="exp-col">
+          <strong>Steps 1 to 4: Ingestion &amp; Reliability</strong>
+          Explain: "1. Worker scans QR code on phone. 2. Phone sends session start. 3. Stand zeros encoder and checks camera. 4. If lighting is below 800 lux or frames drop, amber light fires and span is flagged."
+        </div>
+        <div class="exp-col">
+          <strong>Steps 5 to 8: AI &amp; Quality Intelligence</strong>
+          Explain: "5. YOLO detects defects and Kalman tracks without duplicates. 6. Saved to local SQLite first. 7. Synced to cloud FastAPI, PostgreSQL, and MinIO. 8. ASTM 4-point engine assigns Grade A, B, or Scrap."
+        </div>
+        <div class="exp-col">
+          <strong>Steps 9 to 10: 2D Review &amp; Official Certificate</strong>
+          Explain: "9. Quality manager opens web dashboard to inspect the 2D roll defect map. 10. Manager approves grades and exports the final PDF certificate with a tamper-proof SHA-256 seal."
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

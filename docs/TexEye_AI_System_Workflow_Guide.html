@@ -2,587 +2,1547 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TexEye AI - System Workflow & Architecture Presentation Guide</title>
+  <title>TexEye AI — Complete System Workflow & Architecture Guide</title>
   <style>
     @page {
       size: A4 portrait;
-      margin: 12mm 14mm 12mm 14mm;
+      margin: 12mm 14mm 14mm 14mm;
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-size: 8pt;
+        color: #64748b;
+      }
     }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       font-size: 9pt;
-      line-height: 1.45;
+      line-height: 1.5;
       color: #0f172a;
       background: #ffffff;
       margin: 0;
       padding: 0;
     }
-    .page {
+    .cover-page {
       page-break-after: always;
-      position: relative;
-    }
-    .page:last-child {
-      page-break-after: avoid;
-    }
-    .doc-header {
-      border-bottom: 2px solid #0284c7;
-      padding-bottom: 3mm;
-      margin-bottom: 4mm;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .doc-title {
-      font-size: 14pt;
-      font-weight: 800;
-      color: #0f172a;
-    }
-    .doc-subtitle {
-      font-size: 9pt;
-      color: #64748b;
-      font-weight: 600;
-    }
-    .doc-badge {
-      font-size: 8pt;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-    h2 {
-      font-size: 11pt;
-      color: #0369a1;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 1.5mm;
-      margin: 4mm 0 2mm 0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    h3 {
-      font-size: 9.5pt;
-      color: #0f172a;
-      margin: 2.5mm 0 1.5mm 0;
-    }
-    p {
-      margin: 1.5mm 0 2mm 0;
-    }
-    .highlight-box {
-      background: #f8fafc;
-      border-left: 3.5px solid #0284c7;
-      padding: 2.5mm 3.5mm;
-      margin: 2mm 0 3mm 0;
-      border-radius: 0 4px 4px 0;
-    }
-    .alert-box {
-      background: #fff1f2;
-      border-left: 3.5px solid #e11d48;
-      padding: 2.5mm 3.5mm;
-      margin: 2mm 0 3mm 0;
-      border-radius: 0 4px 4px 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 8pt;
-      margin: 2mm 0 3mm 0;
-    }
-    th {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      padding: 4px 6px;
-      text-align: left;
-      font-weight: bold;
-      color: #1e293b;
-    }
-    td {
-      border: 1px solid #e2e8f0;
-      padding: 3.5px 6px;
-      vertical-align: top;
-    }
-    pre.ascii-box {
-      background: #0f172a;
-      color: #38bdf8;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 7.2pt;
-      line-height: 1.25;
-      overflow: hidden;
-      margin: 2mm 0;
-    }
-    .diagram-container {
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      padding: 3mm;
-      background: #ffffff;
-      margin: 3mm 0;
+      padding: 25mm 10mm 15mm 10mm;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 245mm;
+      border: 2px solid #0284c7;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
     }
-    .diagram-container img {
-      max-width: 100%;
-      height: auto;
-    }
-    ul, ol {
-      margin: 1mm 0 2mm 4mm;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 1mm;
-    }
-    .qa-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 5px;
-      padding: 2.5mm 3mm;
+    .inst-header {
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #0369a1;
+      text-transform: uppercase;
       margin-bottom: 2mm;
     }
-    .qa-q {
-      font-weight: bold;
+    .dept-header {
+      font-size: 9.5pt;
+      color: #475569;
+      margin-bottom: 12mm;
+    }
+    .badge-fyp {
+      display: inline-block;
+      background: #e0f2fe;
       color: #0369a1;
+      font-weight: 800;
+      font-size: 9pt;
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1px solid #bae6fd;
+      margin-bottom: 8mm;
+      text-transform: uppercase;
+    }
+    .project-title {
+      font-size: 20pt;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.25;
+      margin: 0 0 4mm 0;
+    }
+    .project-subtitle {
+      font-size: 11.5pt;
+      color: #0284c7;
+      font-weight: 600;
+      margin: 0 0 10mm 0;
+    }
+    .doc-type-box {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 10px 18px;
+      display: inline-block;
+      margin: 0 auto 12mm auto;
+      max-width: 85%;
+    }
+    .doc-type-box h2 {
+      margin: 0;
+      font-size: 12pt;
+      color: #0f172a;
+    }
+    .doc-type-box p {
+      margin: 3px 0 0 0;
       font-size: 8.5pt;
+      color: #475569;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      text-align: left;
+      margin-top: 10mm;
+      padding-top: 8mm;
+      border-top: 1px solid #e2e8f0;
+    }
+    .meta-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+    .meta-card strong {
+      display: block;
+      font-size: 8.5pt;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .meta-card .name {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .meta-card .detail {
+      font-size: 8.5pt;
+      color: #475569;
+    }
+    
+    /* Content sections */
+    .page-break { page-break-after: always; }
+    h2.section-header {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 3px;
+      margin: 0 0 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    h2.section-header .subtag {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #64748b;
+    }
+    h3.diagram-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0369a1;
+      margin: 8px 0 4px 0;
+    }
+    p.diagram-desc {
+      font-size: 8.5pt;
+      color: #475569;
+      margin: 0 0 6px 0;
+    }
+    .diagram-frame {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 4px;
+      background: #ffffff;
+      margin-bottom: 8px;
+    }
+    .diagram-frame svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .callout-box {
+      background: #f8fafc;
+      border-left: 3px solid #0284c7;
+      padding: 6px 12px;
+      margin: 6px 0 10px 0;
+      font-size: 8pt;
+      border-radius: 0 4px 4px 0;
+    }
+    .callout-box strong { color: #0f172a; }
+    
+    /* Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0 10px 0;
+      font-size: 8pt;
+    }
+    table.data-table th, table.data-table td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 8px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    table.data-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    
+    /* QA block */
+    .qa-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+    .qa-q {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 3px;
     }
     .qa-a {
-      color: #334155;
       font-size: 8pt;
-      margin-top: 1mm;
+      color: #334155;
+      line-height: 1.45;
     }
   </style>
 </head>
 <body>
 
-  <!-- ==================== PAGE 1: DIAGRAM OVERVIEW & BLUEPRINT ==================== -->
-  <div class="page">
-    <div class="doc-header">
-      <div>
-        <div class="doc-title">TexEye AI — System Workflow Specification</div>
-        <div class="doc-subtitle">Handwritten Paper Workflow Guide for FYP Supervisor Meeting | COMSATS Wah Campus</div>
+  <!-- ==================== COVER PAGE ==================== -->
+  <div class="cover-page">
+    <div>
+      <div class="inst-header">COMSATS University Islamabad &bull; Wah Cantt Campus</div>
+      <div class="dept-header">Department of Computer Science &bull; Final Year Project Blueprint Dossier</div>
+      
+      <div class="badge-fyp">FYP System Workflow &amp; Architecture Package</div>
+      <h1 class="project-title">TexEye AI</h1>
+      <div class="project-subtitle">AI-Based Fabric Defect Detection and Quality Management System</div>
+      
+      <div class="doc-type-box">
+        <h2>Supervisor Meeting Architecture Dossier &amp; Handwritten Drawing Blueprint</h2>
+        <p>Complete 7-Diagram Presentation Portfolio, Component Decompositions, Real-World Data Flows, and Defense Q&amp;A</p>
       </div>
-      <div class="doc-badge">BS AI Final Year Project</div>
     </div>
 
-    <div class="highlight-box">
-      <b>Project Title:</b> TexEye AI: AI-Based Fabric Defect Detection and Quality Management System<br/>
-      <b>Supervised by:</b> Dr. Tassawar Iqbal, Department of Computer Science, COMSATS University Islamabad, Wah Cantt Campus<br/>
-      <b>Team Members:</b> Muhammad Afnan Khan (FA23-BAI-028) &bull; Muhammad Bilal Butt (FA23-BAI-042)
+    <div>
+      <div class="meta-grid">
+        <div class="meta-card">
+          <strong>Project Supervisor</strong>
+          <div class="name">Dr. Tassawar Iqbal</div>
+          <div class="detail">Department of Computer Science</div>
+          <div class="detail">COMSATS University Islamabad, Wah Cantt Campus</div>
+        </div>
+
+        <div class="meta-card">
+          <strong>Project Team Members</strong>
+          <div class="name">Muhammad Bilal Butt <span style="font-weight:normal; font-size:8pt; color:#64748b;">(FA23-BAI-042)</span></div>
+          <div class="detail">&bull; AI Defect Detection &amp; Hardware Integration Modules</div>
+          <div class="name" style="margin-top:4px;">Muhammad Afnan Khan <span style="font-weight:normal; font-size:8pt; color:#64748b;">(FA23-BAI-028)</span></div>
+          <div class="detail">&bull; Mobile Floor App &amp; Web Quality Management Modules</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 6mm; font-size: 8pt; color: #64748b;">
+        Academic Year 2026 &bull; Bachelor of Science in Artificial Intelligence (BS-AI)
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXECUTIVE SUMMARY ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">1. Executive Overview &amp; Proposal Baseline <span class="subtag">Core FYP Identity</span></h2>
+    
+    <div class="callout-box">
+      <strong>Real-World Problem Solved:</strong> Manual textile inspection at commercial speeds (20-60 m/min) misses up to 40% of critical fabric flaws, causing immense fabric wastage, customer returns, and revenue loss. Furthermore, existing automated solutions fail silently during camera disconnections, poor factory illumination, or dropped frames, letting flawed fabric pass as first-grade. <strong>TexEye AI</strong> guarantees 100% inspection reliability by combining YOLO computer vision, rotary encoder metric tracking, real-time sensor guards that flag uninspected spans, offline SQLite buffering, and automated ASTM D5430 4-point grading.
     </div>
 
-    <h2>1. The Visual System Workflow Diagram</h2>
-    <p>Below is the complete end-to-end system workflow structured into four distinct, logical horizontal layers. This diagram represents the actual functional scope of the TexEye AI prototype.</p>
+    <h3 style="font-size: 9.5pt; font-weight: bold; color: #0f172a; margin: 8px 0 4px 0;">The Five Proposal Modules &amp; Student Allocations</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Module Name</th>
+          <th style="width: 18%;">Assigned Lead</th>
+          <th style="width: 54%;">Key Responsibilities &amp; Deliverables</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. AI Defect Detection &amp; Location Module</strong></td>
+          <td>Muhammad Bilal Butt<br><span style="color:#64748b;">FA23-BAI-042</span></td>
+          <td>Fabric defect dataset curation, YOLO model training, real-time defect bounding box inference, rotary encoder pulse-to-metric localization (X cm across width, Y m along length), and multi-frame Kalman tracker deduplication.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Hardware &amp; Inspection Monitoring Module</strong></td>
+          <td>Muhammad Bilal Butt<br><span style="color:#64748b;">FA23-BAI-042</span></td>
+          <td>Industrial camera integration (1080p), optical rotary encoder integration (1000 PPR), lighting monitor (lux &lt; 800 detection), Laplacian blur sentinel, dropped frame detector, physical relay box (amber/red stack light &amp; buzzer), and uninspected span tracking.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Mobile Floor Application</strong></td>
+          <td>Muhammad Afnan Khan<br><span style="color:#64748b;">FA23-BAI-028</span></td>
+          <td>Flutter Android application for floor workers, camera QR roll barcode scanner, live speed and length gauge, instant haptic vibration alert on defect, quick flaw review &amp; correction sheet, and offline roll cache.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Web Quality Management &amp; Digital Fabric Map</strong></td>
+          <td>Muhammad Afnan Khan<br><span style="color:#64748b;">FA23-BAI-028</span></td>
+          <td>React web dashboard, HTML5 canvas interactive 2D defect map, zoomable flaw crop gallery with electronic calipers, reclassification selector, rolls master overview table, and local data synchronization.</td>
+        </tr>
+        <tr>
+          <td><strong>5. Smart Operations Module</strong></td>
+          <td>Joint Collaboration<br><span style="color:#64748b;">Bilal &amp; Afnan</span></td>
+          <td>Automated ASTM D5430 4-Point Grading Engine, points calculation per 100m², roll grade assignment (Grade A, Grade B, Scrap), and tamper-proof PDF Quality Certificate generation with SHA-256 seal.</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="diagram-container">
-      <div style="width: 100%; max-width: 100%; text-align: center; margin: 2mm 0;">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" width="1200" height="850" style="background:#ffffff; font-family:Arial, sans-serif;">
+    <h3 style="font-size: 9.5pt; font-weight: bold; color: #0f172a; margin: 10px 0 4px 0;">30-Second Elevator Pitch for Supervisor Dr. Tassawar Iqbal</h3>
+    <div style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px; font-size:8.5pt; line-height:1.45; font-style:italic;">
+      "Respected Sir, TexEye AI is an offline-first fabric inspection and quality management system. When an operator scans a fabric roll QR tag, our stand camera and rotary encoder measure the fabric as it unwinds. Our YOLO AI model detects flaws and maps their exact metric coordinates without duplicates. Crucially, if factory lighting dips or frames drop, the system actuates a physical amber light and clearly marks that exact meter span as uninspected. If factory Wi-Fi cuts out, everything continues writing safely to local SQLite. When connection returns, it syncs to our cloud FastAPI server, executes standard ASTM 4-point grading, and displays a 2D fabric map on the manager's web dashboard for official PDF quality certificate export."
+    </div>
+  </div>
+
+  <!-- ==================== DIAGRAM 1 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">2. Diagram 1: Overall End-to-End System Workflow <span class="subtag">Core System Blueprint</span></h2>
+    <p class="diagram-desc">4-Tier physical architecture showing zero-overlap routing: Mobile/Web Users &rarr; Sensing &amp; Reliability Gate &rarr; Edge AI &amp; Local SQLite Buffer &rarr; Central FastAPI Backend &amp; ASTM Grading.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
   <defs>
-    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#0f172a"/>
     </marker>
-    <marker id="arr-gray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-      <polygon points="0 1, 8 4, 0 7" fill="#555555"/>
+    <marker id="arr-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#dc2626"/>
+    </marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#d97706"/>
     </marker>
   </defs>
 
-  <!-- Title & Header -->
-  <rect x="20" y="15" width="1160" height="45" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
-  <text x="600" y="38" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Complete End-to-End System Workflow Diagram</text>
-  <text x="600" y="52" font-size="11" fill="#475569" text-anchor="middle">Paper-Reproduction Blueprint for FYP Supervisor Presentation | COMSATS University Islamabad</text>
+  <!-- Title & Header Bar -->
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Complete End-to-End System Workflow Diagram</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Paper-Reproduction Blueprint for FYP Supervisor Presentation | COMSATS University Islamabad, Wah Campus</text>
 
   <!-- ==================== SWIMLANE CONTAINERS ==================== -->
-  
   <!-- 1. Frontend & User Layer (Top) -->
-  <rect x="20" y="70" width="1160" height="150" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
-  <rect x="25" y="75" width="190" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
-  <text x="120" y="91" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">1. USER &amp; FRONTEND LAYER</text>
+  <rect x="25" y="75" width="1270" height="140" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="200" height="22" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="132" y="97" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">1. USER &amp; FRONTEND LAYER</text>
 
   <!-- 2. Hardware Sensing & Reliability (Middle-Top) -->
-  <rect x="20" y="235" width="1160" height="165" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
-  <rect x="25" y="240" width="220" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
-  <text x="135" y="256" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">2. HARDWARE &amp; SENSING LAYER</text>
+  <rect x="25" y="230" width="1270" height="150" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="237" width="225" height="22" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="144" y="252" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">2. HARDWARE &amp; SENSING LAYER</text>
 
   <!-- 3. Edge AI & Local Buffer (Middle-Bottom) -->
-  <rect x="20" y="415" width="1160" height="185" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
-  <rect x="25" y="420" width="240" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
-  <text x="145" y="436" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">3. EDGE AI &amp; LOCAL BUFFER LAYER</text>
+  <rect x="25" y="395" width="1270" height="175" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="402" width="245" height="22" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="154" y="417" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">3. EDGE AI &amp; LOCAL BUFFER LAYER</text>
 
   <!-- 4. Central Backend & Database (Bottom) -->
-  <rect x="20" y="615" width="1160" height="215" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
-  <rect x="25" y="620" width="240" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
-  <text x="145" y="636" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">4. CENTRAL BACKEND &amp; DATABASE</text>
+  <rect x="25" y="585" width="1270" height="175" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="592" width="245" height="22" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="154" y="607" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">4. CENTRAL BACKEND &amp; DATABASE</text>
 
-  <!-- ==================== BOXES & PROCESSES ==================== -->
+  <!-- ==================== PROCESS BOXES & DECISIONS ==================== -->
 
-  <!-- STEP 1: Operator QR Scan (Frontend) -->
-  <rect x="45" y="115" width="170" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="130" y="137" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Floor Operator</text>
-  <text x="130" y="152" font-size="9.5" fill="#334155" text-anchor="middle">Mobile Floor App</text>
-  <text x="130" y="166" font-size="8.5" fill="#64748b" text-anchor="middle">Scan Roll QR &amp; Start Session</text>
+  <!-- STEP 1: Floor Operator (Layer 1) -->
+  <rect x="50" y="115" width="190" height="65" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="145" y="137" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Floor Operator</text>
+  <text x="145" y="152" font-size="9.5" fill="#334155" text-anchor="middle">Mobile Floor App</text>
+  <text x="145" y="167" font-size="8.5" fill="#64748b" text-anchor="middle">Scan Roll QR &amp; Start Session</text>
 
-  <!-- STEP 2: Physical Fabric Loading & Sensing (Hardware) -->
-  <rect x="45" y="280" width="170" height="65" fill="#f1f5f9" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="130" y="301" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Fabric Movement &amp; Sensing</text>
-  <text x="130" y="316" font-size="9" fill="#334155" text-anchor="middle">&bull; Industrial Camera (Frames)</text>
-  <text x="130" y="330" font-size="9" fill="#334155" text-anchor="middle">&bull; Rotary Encoder (Pulses/Dist)</text>
+  <!-- Mobile Live Floor View (Layer 1) -->
+  <rect x="290" y="115" width="200" height="65" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="390" y="137" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Mobile Live Floor View</text>
+  <text x="390" y="152" font-size="9" fill="#334155" text-anchor="middle">&bull; Real-Time Defect Alert (Vibration)</text>
+  <text x="390" y="166" font-size="9" fill="#334155" text-anchor="middle">&bull; Quick Review &amp; Correct Flaw Tag</text>
 
-  <!-- STEP 3: Reliability Gate Decision (Diamond) -->
-  <polygon points="310,312 375,275 440,312 375,349" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="375" y="308" font-size="10" font-weight="bold" fill="#000000" text-anchor="middle">Inspection</text>
-  <text x="375" y="321" font-size="10" font-weight="bold" fill="#000000" text-anchor="middle">Reliable?</text>
+  <!-- Quality Manager & Inspector (Layer 1) -->
+  <rect x="800" y="115" width="240" height="65" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="920" y="136" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Quality Manager / Inspector</text>
+  <text x="920" y="151" font-size="9.5" fill="#334155" text-anchor="middle">Web Management Dashboard</text>
+  <text x="920" y="166" font-size="8.5" fill="#64748b" text-anchor="middle">2D Defect Map &bull; Crop Gallery &bull; Audit</text>
 
-  <!-- FAULT BRANCH: Physical Alert & Mark Uninspected -->
-  <rect x="520" y="275" width="180" height="70" fill="#fff1f2" stroke="#e11d48" stroke-width="1.4" rx="5"/>
-  <text x="610" y="296" font-size="10" font-weight="bold" fill="#9f1239" text-anchor="middle">1. Trigger Hardware Relay</text>
-  <text x="610" y="310" font-size="8.5" fill="#be123c" text-anchor="middle">Amber/Red Light &amp; Buzzer</text>
-  <text x="610" y="324" font-size="10" font-weight="bold" fill="#9f1239" text-anchor="middle">2. Mark Section UNINSPECTED</text>
-  <text x="610" y="337" font-size="8" fill="#e11d48" text-anchor="middle">(Interval [L1, L2] Flagged)</text>
+  <!-- Final Result (Layer 1) -->
+  <rect x="1090" y="115" width="180" height="65" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" rx="6"/>
+  <text x="1180" y="137" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Final Result</text>
+  <text x="1180" y="152" font-size="9" fill="#166534" text-anchor="middle">PDF Quality Certificate</text>
+  <text x="1180" y="167" font-size="8.5" fill="#15803d" text-anchor="middle">Verified ASTM Scorecard</text>
 
-  <!-- STEP 4: AI Defect Detection (Edge AI) -->
-  <rect x="290" y="450" width="170" height="60" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="375" y="471" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">AI Vision Detection</text>
-  <text x="375" y="486" font-size="9" fill="#334155" text-anchor="middle">&bull; YOLO Defect Bounding Box</text>
-  <text x="375" y="499" font-size="9" fill="#334155" text-anchor="middle">&bull; Defect Class (Hole, Stain...)</text>
+  <!-- STEP 2: Fabric Movement & Sensing (Layer 2) -->
+  <rect x="50" y="270" width="190" height="75" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="145" y="293" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Fabric Movement &amp; Sensing</text>
+  <text x="145" y="311" font-size="9" fill="#334155" text-anchor="middle">&bull; Industrial Camera (Video Frames)</text>
+  <text x="145" y="327" font-size="9" fill="#334155" text-anchor="middle">&bull; Rotary Encoder (Pulses / Distance)</text>
 
-  <!-- STEP 5: Metric Coordinate Mapping & Tracking -->
-  <rect x="520" y="450" width="180" height="60" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="610" y="471" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Location &amp; Deduplication</text>
-  <text x="610" y="486" font-size="9" fill="#334155" text-anchor="middle">&bull; Calculate (X_cm, Y_m) via Pulses</text>
-  <text x="610" y="499" font-size="9" fill="#334155" text-anchor="middle">&bull; Multi-Frame Tracker (No Dups)</text>
+  <!-- Decision: Inspection Reliable? (Layer 2) -->
+  <polygon points="300,307 360,277 420,307 360,337" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="360" y="303" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Inspection</text>
+  <text x="360" y="316" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Reliable?</text>
 
-  <!-- STEP 6: Edge Local Buffer (SQLite) -->
-  <rect x="760" y="445" width="180" height="70" fill="#ffffff" stroke="#000000" stroke-width="1.5" rx="5"/>
-  <text x="850" y="468" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Local SQLite Storage</text>
-  <text x="850" y="483" font-size="9" fill="#334155" text-anchor="middle">&bull; Zero Delay / Offline-First</text>
-  <text x="850" y="496" font-size="9" fill="#334155" text-anchor="middle">&bull; Roll Header &amp; Defect Records</text>
-  <text x="850" y="508" font-size="8.5" fill="#64748b" text-anchor="middle">&bull; High-Res JPEG Defect Crops</text>
+  <!-- Hardware Alarm & Mark Uninspected (Layer 2) -->
+  <rect x="540" y="270" width="230" height="75" fill="#fff1f2" stroke="#e11d48" stroke-width="1.4" rx="6"/>
+  <text x="655" y="293" font-size="10.5" font-weight="bold" fill="#9f1239" text-anchor="middle">1. Trigger Hardware Relay</text>
+  <text x="655" y="309" font-size="9" fill="#be123c" text-anchor="middle">Amber / Red Light &amp; Audible Buzzer</text>
+  <text x="655" y="325" font-size="10" font-weight="bold" fill="#9f1239" text-anchor="middle">2. Mark Section UNINSPECTED</text>
+  <text x="655" y="338" font-size="8.5" fill="#e11d48" text-anchor="middle">(Flag Span [Y_start, Y_end])</text>
 
-  <!-- Real-time Mobile Push Alert (from Detection) -->
-  <rect x="360" y="115" width="170" height="65" fill="#f8fafc" stroke="#000000" stroke-width="1.2" rx="5"/>
-  <text x="445" y="137" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Mobile Live Floor View</text>
-  <text x="445" y="152" font-size="9" fill="#334155" text-anchor="middle">&bull; Instant Defect Vibration/Alert</text>
-  <text x="445" y="165" font-size="9" fill="#334155" text-anchor="middle">&bull; Review &amp; Correct Defect Tag</text>
+  <!-- STEP 3: AI Defect Detection (Layer 3) -->
+  <rect x="50" y="445" width="190" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="145" y="468" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">AI Defect Detection</text>
+  <text x="145" y="485" font-size="9" fill="#334155" text-anchor="middle">&bull; YOLO Model Inference</text>
+  <text x="145" y="500" font-size="9" fill="#334155" text-anchor="middle">&bull; Defect Class (Hole, Stain, Yarn)</text>
 
-  <!-- Decision: Network Available? -->
-  <polygon points="995,480 1055,445 1115,480 1055,515" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
-  <text x="1055" y="476" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">Network</text>
-  <text x="1055" y="489" font-size="9.5" font-weight="bold" fill="#000000" text-anchor="middle">Online?</text>
+  <!-- STEP 4: Location & Deduplication (Layer 3) -->
+  <rect x="290" y="445" width="200" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="390" y="468" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Location &amp; Deduplication</text>
+  <text x="390" y="485" font-size="9" fill="#334155" text-anchor="middle">&bull; Calculate (X cm, Y m) via Pulses</text>
+  <text x="390" y="500" font-size="9" fill="#334155" text-anchor="middle">&bull; Multi-Frame Tracker (No Dups)</text>
 
-  <!-- Offline Outbox Queue -->
-  <rect x="980" y="360" width="150" height="45" fill="#fffbeb" stroke="#d97706" stroke-width="1.2" rx="4"/>
-  <text x="1055" y="379" font-size="9.5" font-weight="bold" fill="#92400e" text-anchor="middle">Offline Queue (Outbox)</text>
-  <text x="1055" y="393" font-size="8.5" fill="#b45309" text-anchor="middle">Auto-sync when reconnected</text>
+  <!-- STEP 5: Local SQLite Buffer (Layer 3) -->
+  <rect x="540" y="445" width="230" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" rx="6"/>
+  <text x="655" y="468" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite Storage</text>
+  <text x="655" y="484" font-size="9" fill="#334155" text-anchor="middle">&bull; Zero Delay / Offline-First</text>
+  <text x="655" y="497" font-size="9" fill="#334155" text-anchor="middle">&bull; Roll Header &amp; Defect Records</text>
+  <text x="655" y="509" font-size="8.5" fill="#64748b" text-anchor="middle">&bull; High-Res JPEG Defect Crops</text>
 
-  <!-- Central Backend API Server -->
-  <rect x="760" y="660" width="180" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="850" y="683" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Central FastAPI Backend</text>
-  <text x="850" y="698" font-size="9" fill="#334155" text-anchor="middle">&bull; Ingest HTTPS REST Batches</text>
-  <text x="850" y="711" font-size="9" fill="#334155" text-anchor="middle">&bull; WebSocket Broadcast &amp; Auth</text>
+  <!-- Decision: Network Online? (Layer 3) -->
+  <polygon points="805,480 860,452 915,480 860,508" fill="#ffffff" stroke="#0f172a" stroke-width="1.4"/>
+  <text x="860" y="476" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">Network</text>
+  <text x="860" y="489" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">Online?</text>
 
-  <!-- Central Database & MinIO Store -->
-  <rect x="490" y="660" width="200" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="590" y="682" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Central Enterprise DB</text>
-  <text x="590" y="697" font-size="9" fill="#334155" text-anchor="middle">&bull; PostgreSQL (Rolls, Defects, Audit)</text>
-  <text x="590" y="710" font-size="9" fill="#334155" text-anchor="middle">&bull; Image Storage (Defect Crops)</text>
+  <!-- Offline Outbox Queue (Layer 3) -->
+  <rect x="800" y="415" width="165" height="34" fill="#fffbeb" stroke="#d97706" stroke-width="1.2" rx="4"/>
+  <text x="882" y="429" font-size="8.5" font-weight="bold" fill="#92400e" text-anchor="middle">Offline Queue (Outbox)</text>
+  <text x="882" y="441" font-size="7.5" fill="#b45309" text-anchor="middle">Auto-sync when reconnected</text>
 
-  <!-- Smart Operations & ASTM 4-Point Engine -->
-  <rect x="250" y="660" width="180" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="340" y="681" font-size="10.5" font-weight="bold" fill="#000000" text-anchor="middle">Smart Operations Module</text>
-  <text x="340" y="696" font-size="9" fill="#334155" text-anchor="middle">&bull; ASTM D5430 4-Point Grading</text>
-  <text x="340" y="709" font-size="9" fill="#334155" text-anchor="middle">&bull; Grade Assignment (A, B, Scrap)</text>
+  <!-- Central FastAPI Backend (Layer 4) -->
+  <rect x="540" y="635" width="230" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="655" y="658" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Central FastAPI Backend</text>
+  <text x="655" y="675" font-size="9" fill="#334155" text-anchor="middle">&bull; Ingest HTTPS REST Sync Batches</text>
+  <text x="655" y="690" font-size="9" fill="#334155" text-anchor="middle">&bull; WebSocket Broadcast Hub &amp; Auth</text>
 
-  <!-- Web Dashboard Workstation (Frontend) -->
-  <rect x="760" y="115" width="220" height="65" fill="#ffffff" stroke="#000000" stroke-width="1.4" rx="5"/>
-  <text x="870" y="136" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">Quality Manager / Inspector</text>
-  <text x="870" y="151" font-size="9.5" fill="#334155" text-anchor="middle">Web Management Dashboard</text>
-  <text x="870" y="165" font-size="8.5" fill="#64748b" text-anchor="middle">2D Defect Map &bull; Crop Gallery &bull; Audit</text>
+  <!-- Central Enterprise Database (Layer 4) -->
+  <rect x="290" y="635" width="200" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="390" y="658" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Central Enterprise DB</text>
+  <text x="390" y="675" font-size="9" fill="#334155" text-anchor="middle">&bull; PostgreSQL (Rolls, Defects, Audit)</text>
+  <text x="390" y="690" font-size="9" fill="#334155" text-anchor="middle">&bull; MinIO Storage (Defect Crops)</text>
 
-  <!-- Final PDF Certificate -->
-  <rect x="1015" y="115" width="145" height="65" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4" rx="5"/>
-  <text x="1087" y="137" font-size="10.5" font-weight="bold" fill="#15803d" text-anchor="middle">Final Result</text>
-  <text x="1087" y="151" font-size="9" fill="#166534" text-anchor="middle">PDF Quality Certificate</text>
-  <text x="1087" y="165" font-size="8" fill="#15803d" text-anchor="middle">Verified ASTM Scorecard</text>
+  <!-- Smart Operations Module (Layer 4) -->
+  <rect x="50" y="635" width="190" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="145" y="658" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Smart Operations Module</text>
+  <text x="145" y="675" font-size="9" fill="#334155" text-anchor="middle">&bull; ASTM D5430 4-Point Grading</text>
+  <text x="145" y="690" font-size="9" fill="#334155" text-anchor="middle">&bull; Roll Grade (Grade A, B, Scrap)</text>
 
-  <!-- ==================== CONNECTING ARROWS & LABELS ==================== -->
+  <!-- ==================== CLEAN CONNECTING ARROWS & PILL LABELS ==================== -->
 
   <!-- Flow 1: Operator -> Sensing (Start Session) -->
-  <line x1="130" y1="180" x2="130" y2="280" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="138" y="225" font-size="8" font-weight="bold" fill="#000000">1. Start Session</text>
+  <line x1="145" y1="180" x2="145" y2="270" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="95" y="215" width="100" height="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="145" y="228" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">1. Start Session</text>
 
   <!-- Flow 2: Sensing -> Reliability Decision -->
-  <line x1="215" y1="312" x2="310" y2="312" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="262" y="304" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">Raw Data</text>
+  <line x1="240" y1="307" x2="300" y2="307" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="245" y="291" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="270" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Frames</text>
 
-  <!-- Flow 3A: Reliability Decision -> FAULT [NO] -->
-  <line x1="440" y1="312" x2="520" y2="312" stroke="#e11d48" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="475" y="304" font-size="9" font-weight="bold" fill="#e11d48" text-anchor="middle">[NO: Blur/Lux/Disconnect]</text>
+  <!-- Flow 3A: Reliability Decision -> FAULT [NO] (Generous 120px gap, no collision) -->
+  <line x1="420" y1="307" x2="540" y2="307" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-red)"/>
+  <rect x="430" y="291" width="100" height="16" fill="#fff1f2" stroke="#e11d48" stroke-width="0.8" rx="3"/>
+  <text x="480" y="303" font-size="8" font-weight="bold" fill="#be123c" text-anchor="middle">[NO: Sensor Fault]</text>
 
   <!-- Flow 3B: Reliability Decision -> AI Detection [YES] -->
-  <line x1="375" y1="349" x2="375" y2="450" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="382" y="395" font-size="9" font-weight="bold" fill="#000000">[YES: Reliable]</text>
+  <path d="M 360 337 L 360 415 L 145 415 L 145 445" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="305" y="360" width="110" height="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="0.8" rx="3"/>
+  <text x="360" y="373" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">[YES: Reliable Data]</text>
 
-  <!-- Fault Path -> Local Storage -->
-  <path d="M 700 312 L 850 312 L 850 445" fill="none" stroke="#e11d48" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
-  <text x="770" y="305" font-size="8" font-weight="bold" fill="#e11d48">Save Uninspected Span [L1, L2]</text>
+  <!-- Fault Path -> Local SQLite Storage (Clean right-down route, touching NO other box) -->
+  <path d="M 770 307 L 790 307 L 790 480 L 770 480" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arr-red)"/>
+  <rect x="735" y="365" width="110" height="26" fill="#fff1f2" stroke="#e11d48" stroke-width="0.8" rx="3"/>
+  <text x="790" y="377" font-size="7.5" font-weight="bold" fill="#be123c" text-anchor="middle">Save Uninspected</text>
+  <text x="790" y="387" font-size="7" fill="#be123c" text-anchor="middle">Span [Y1, Y2]</text>
 
   <!-- Flow 4: AI Detection -> Metric Tracking -->
-  <line x1="460" y1="480" x2="520" y2="480" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="490" y="472" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">Flaw BBox</text>
+  <line x1="240" y1="480" x2="290" y2="480" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="245" y="468" width="40" height="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="265" y="478" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">BBox</text>
 
-  <!-- Mobile Push Alert from Defect Detection -->
-  <path d="M 375 450 L 375 200 L 445 200 L 445 180" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
-  <text x="410" y="215" font-size="8" font-weight="bold" fill="#2563eb" text-anchor="middle">Live Defect Push</text>
+  <!-- Mobile Live Push Alert (Dashed Blue Arrow Up into Mobile Live View) -->
+  <path d="M 240 460 L 265 460 L 265 180 L 290 180" fill="none" stroke="#2563eb" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-blue)"/>
+  <rect x="225" y="210" width="80" height="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="0.8" rx="3"/>
+  <text x="265" y="222" font-size="7.5" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Live Defect Push</text>
 
   <!-- Flow 5: Metric Tracking -> Local SQLite Buffer -->
-  <line x1="700" y1="480" x2="760" y2="480" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="730" y="472" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">(X, Y) Recs</text>
+  <line x1="490" y1="480" x2="540" y2="480" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="495" y="468" width="40" height="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="515" y="478" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">(X, Y)</text>
 
   <!-- Flow 6: Local Buffer -> Network Decision -->
-  <line x1="940" y1="480" x2="995" y2="480" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="770" y1="480" x2="805" y2="480" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
 
   <!-- Offline Branch: Network Decision -> Queue [NO] -->
-  <line x1="1055" y1="445" x2="1055" y2="405" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="1063" y="428" font-size="8.5" font-weight="bold" fill="#d97706">[NO: Offline]</text>
+  <line x1="860" y1="452" x2="860" y2="449" stroke="#d97706" stroke-width="1.4" marker-end="url(#arr-amber)"/>
 
   <!-- Queue -> Sync when restored -->
-  <path d="M 1130 382 L 1150 382 L 1150 560 L 1055 560 L 1055 515" fill="none" stroke="#d97706" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr)"/>
-  <text x="1152" y="470" font-size="7.5" fill="#d97706" text-anchor="middle" transform="rotate(90, 1152, 470)">When Link Restored</text>
+  <path d="M 800 432 L 780 432 L 780 460 L 805 475" fill="none" stroke="#d97706" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-amber)"/>
 
   <!-- Online Branch: Network Decision -> Central Backend [YES] -->
-  <path d="M 1055 515 L 1055 692 L 940 692" fill="none" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="1025" y="605" font-size="8.5" font-weight="bold" fill="#000000">[YES: Online Sync (HTTPS REST / WSS)]</text>
+  <path d="M 860 508 L 860 672 L 770 672" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="805" y="555" width="110" height="24" fill="#f0fdf4" stroke="#16a34a" stroke-width="0.8" rx="3"/>
+  <text x="860" y="567" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">[YES: Online Sync]</text>
+  <text x="860" y="576" font-size="7" fill="#15803d" text-anchor="middle">HTTPS REST / WSS</text>
 
   <!-- Flow 7: Central Backend -> Enterprise Database -->
-  <line x1="760" y1="692" x2="690" y2="692" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="725" y="684" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">Save Batches</text>
+  <line x1="540" y1="672" x2="490" y2="672" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="495" y="660" width="40" height="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="515" y="670" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Commit</text>
 
   <!-- Flow 8: Database -> ASTM 4-Point Engine -->
-  <line x1="490" y1="692" x2="430" y2="692" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="460" y="684" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">Compute Grade</text>
+  <line x1="290" y1="672" x2="240" y2="672" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="245" y="660" width="40" height="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" rx="3"/>
+  <text x="265" y="670" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Grade</text>
 
-  <!-- Flow 9: Backend -> Web Dashboard -->
-  <path d="M 850 660 L 850 180" fill="none" stroke="#000000" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="860" y="225" font-size="8" font-weight="bold" fill="#000000">Load 2D Map &amp; Audit Data</text>
+  <!-- Flow 9: Central Backend -> Web Dashboard (Dedicated Open Vertical Channel at x=980) -->
+  <!-- At x=980: Layer 4 is open; Layer 3 is open; Layer 2 is open; Enters Web Dashboard directly! ZERO BOXES CROSSED! -->
+  <path d="M 770 655 L 980 655 L 980 180" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arr-black)"/>
+  <rect x="910" y="300" width="140" height="22" fill="#ffffff" stroke="#0f172a" stroke-width="1" rx="4"/>
+  <text x="980" y="315" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Load 2D Map &amp; Audit Data</text>
 
   <!-- Flow 10: Web Dashboard -> PDF Certificate Export -->
-  <line x1="980" y1="147" x2="1015" y2="147" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="997" y="140" font-size="8" font-weight="bold" fill="#16a34a" text-anchor="middle">Export</text>
+  <line x1="1040" y1="147" x2="1090" y2="147" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+  <rect x="1045" y="137" width="40" height="15" fill="#f0fdf4" stroke="#16a34a" stroke-width="0.8" rx="3"/>
+  <text x="1065" y="148" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">Export</text>
 
-  <!-- Bottom Legend / Note -->
-  <rect x="45" y="755" width="1115" height="55" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
-  <text x="55" y="774" font-size="9.5" font-weight="bold" fill="#0f172a">Supervisor Hand-Drawing Guide (A4 Paper Representation):</text>
-  <text x="55" y="790" font-size="8.5" fill="#334155">&bull; 4 Tiers: [Top: User &amp; Screens] &rarr; [Upper Mid: Camera/Encoder &amp; Quality Check] &rarr; [Lower Mid: AI Detection &amp; Local Buffer] &rarr; [Bottom: Cloud Backend &amp; Grading]</text>
-  <text x="55" y="802" font-size="8.5" fill="#334155">&bull; Key Decisions: 1. Is camera/light data reliable? (If No, warn &amp; mark uninspected). 2. Is internet up? (If No, buffer locally in SQLite; line never stops!).</text>
+  <!-- Bottom Legend / Hand-Drawing Blueprint -->
+  <rect x="50" y="775" width="1220" height="65" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="65" y="795" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for FYP Supervisor Presentation (Handwritten A4 Notes):</text>
+  <text x="65" y="812" font-size="8.5" fill="#334155">&bull; 4 Clean Tiers: [Tier 1: Users &amp; Apps] &rarr; [Tier 2: Stand Hardware &amp; Reliability Gate] &rarr; [Tier 3: Edge AI, Tracker &amp; Local SQLite] &rarr; [Tier 4: Cloud Server &amp; ASTM Grading].</text>
+  <text x="65" y="828" font-size="8.5" fill="#334155">&bull; 2 Critical Decision Diamonds: 1. Is camera/lux reliable? (If No, ring buzzer &amp; mark uninspected). 2. Is network online? (If No, buffer locally in SQLite; zero production halt!).</text>
 </svg>
-
-</div>
     </div>
 
-    <h2>2. How to Draw This Diagram by Hand on Paper (Step-by-Step Blueprint)</h2>
-    <p>When drawing this on an A4 sheet or notebook page for your supervisor, draw <b>4 horizontal sections</b> using simple boxes and diamonds:</p>
-
-    <pre class="ascii-box">
-+----------------------------------------------------------------------------------------------------------+
-| LAYER 1: USER & FRONTEND                                                                                 |
-|   [Floor Operator] ---> Opens Mobile App ---> [Scan Roll QR Code]       [Quality Manager] ---> [Web App] |
-|   (Receives live flaw alerts & corrects tags)                           (Views 2D Defect Map & Exports)  |
-+----------------------------------------------------------------------------------------------------------+
-                                       |                                                ^
-                        1. Start Roll  v                                                | 7. Load Data
-+----------------------------------------------------------------------------------------------------------+
-| LAYER 2: HARDWARE & SENSING (Edge Stand)                                                                 |
-|   [Camera + Rotary Encoder + LED Light] ---> < Inspection Reliable? > --[NO]--> [Amber Light / Buzzer]   |
-|                                                      |                                  + [Mark UNINSPECTED]
-+------------------------------------------------------|---------------------------------------------------+
-                                                       | [YES: Clean Frames]
-+------------------------------------------------------v---------------------------------------------------+
-| LAYER 3: EDGE AI & LOCAL BUFFER (Edge PC)                                                                |
-|   [YOLO Detection] ---> [Metric (X, Y) Mapping + Tracker] ---> [Save to Local SQLite Buffer (WAL)]       |
-|                                                                                |                         |
-|                                          [Offline Outbox Queue] <--[NO]-- < Network Online? >            |
-+--------------------------------------------------------------------------------|-------------------------+
-                                                                                 | [YES: HTTPS Sync]
-+--------------------------------------------------------------------------------v-------------------------+
-| LAYER 4: CENTRAL BACKEND & STORAGE (Central Server)                                                      |
-|   [Central FastAPI Backend] ---> Stores in [PostgreSQL & Image Storage] ---> [ASTM 4-Point Grade & PDF]  |
-+----------------------------------------------------------------------------------------------------------+
-    </pre>
+    <div class="callout-box">
+      <strong>Key Supervisor Alignment Highlights:</strong><br>
+      &bull; <strong>Reliability Gate:</strong> If camera disconnects, frames drop, or lux &lt; 800, we NEVER guess. We immediately actuate the physical amber relay and mark interval [Y1, Y2] as UNINSPECTED.<br>
+      &bull; <strong>Dedicated Vertical Highway:</strong> Notice the clean vertical data bus at x=980 where the Central FastAPI Backend loads the 2D Map &amp; Audit Data into the Web Dashboard without passing through SQLite!
+    </div>
   </div>
 
-  <!-- ==================== PAGE 2: ARCHITECTURE LAYERS & SYSTEM FLOW ==================== -->
-  <div class="page">
-    <div class="doc-header">
-      <div>
-        <div class="doc-title">TexEye AI — System Architecture & Workflow Breakdown</div>
-        <div class="doc-subtitle">Frontend, Backend, Database, and Flow Analysis</div>
-      </div>
-      <div class="doc-badge">Page 2</div>
+  <!-- ==================== DIAGRAM 2 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">3. Diagram 2: Frontend Architecture &amp; Client Flow <span class="subtag">Mobile &amp; Web Presentation</span></h2>
+    <p class="diagram-desc">Hierarchical view of the Flutter Mobile App (Screens S-01 to S-04) and React Web Dashboard (Screens S-05 to S-10) interfacing with dual-protocol REST and WebSocket adapters.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Frontend Architecture &amp; Client Interaction Flow</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Complete Component Hierarchy for Mobile Floor Application &amp; Web Quality Management Dashboard</text>
+
+  <!-- Left: Mobile Floor App Container -->
+  <rect x="25" y="75" width="620" height="460" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="280" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="172" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">MOBILE FLOOR APP (Flutter / Android)</text>
+
+  <!-- Screen S-01 -->
+  <rect x="45" y="120" width="270" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="180" y="142" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">S-01: QR Roll Scanner</text>
+  <text x="180" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Camera Viewfinder &amp; Torch Toggle</text>
+  <text x="180" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Batch ID, Article, GSM Metadata Card</text>
+  <text x="180" y="186" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&bull; Action: 'Start Inspection Run'</text>
+
+  <!-- Screen S-02 -->
+  <rect x="355" y="120" width="270" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="490" y="142" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">S-02: Live Floor Monitor</text>
+  <text x="490" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Real-Time Fabric Speed Gauge (m/min)</text>
+  <text x="490" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Cumulative Length Counter &amp; Flaw Count</text>
+  <text x="490" y="186" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Recent Defect Thumbnail &amp; Pause/Stop</text>
+
+  <!-- Screen S-03 -->
+  <rect x="45" y="240" width="270" height="85" fill="#fff1f2" stroke="#e11d48" stroke-width="1.3" rx="6"/>
+  <text x="180" y="262" font-size="11" font-weight="bold" fill="#9f1239" text-anchor="middle">S-03: Urgent Alarm Modal</text>
+  <text x="180" y="278" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; High-Contrast Red Warning Banner</text>
+  <text x="180" y="292" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; Device Haptic Vibration Pulse</text>
+  <text x="180" y="306" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; Action: 'Acknowledge &amp; Silence'</text>
+
+  <!-- Screen S-04 -->
+  <rect x="355" y="240" width="270" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="490" y="262" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">S-04: Manual Flaw Tag Sheet</text>
+  <text x="490" y="278" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Quick-Tag: Selvage Curl, Shading</text>
+  <text x="490" y="292" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Foreign Yarn, Oil Spot, Hole Buttons</text>
+  <text x="490" y="306" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Stamped with Current Pulses / Meter</text>
+
+  <!-- Local Mobile Storage -->
+  <rect x="180" y="360" width="310" height="50" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="5"/>
+  <text x="335" y="381" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Mobile Local Storage (SQLite / SharedPrefs)</text>
+  <text x="335" y="396" font-size="8" fill="#475569" text-anchor="middle">Caches Offline Rolls, Session State &amp; JWT Credentials</text>
+
+  <!-- Right: Web Management Dashboard Container -->
+  <rect x="675" y="75" width="620" height="460" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="682" y="82" width="320" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="842" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">WEB QUALITY DASHBOARD (React.js SPA)</text>
+
+  <!-- Screen S-05 & S-06 -->
+  <rect x="695" y="120" width="275" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="832" y="142" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">S-05: Sign-In &amp; Role-Based Access</text>
+  <text x="832" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; JWT Token Issuance &amp; Route Guard</text>
+  <text x="832" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Roles: Operator, Inspector, Manager, Admin</text>
+
+  <rect x="1005" y="120" width="270" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1140" y="142" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">S-06: Inspected Rolls Master Table</text>
+  <text x="1140" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Filter by Batch, Date, Shift, Grade</text>
+  <text x="1140" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Roll Length, Defect Count, Sync Status</text>
+
+  <!-- Screen S-07 & S-08 -->
+  <rect x="695" y="215" width="275" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="832" y="237" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">S-07: Interactive 2D Defect Map</text>
+  <text x="832" y="253" font-size="8.5" fill="#334155" text-anchor="middle">&bull; HTML5 Canvas Full Fabric Roll Web</text>
+  <text x="832" y="267" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Color-Coded Defect Glyphs by Class</text>
+  <text x="832" y="281" font-size="8.5" fill="#e11d48" font-weight="bold" text-anchor="middle">&bull; Highlighted Uninspected Hazard Spans</text>
+
+  <rect x="1005" y="215" width="270" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1140" y="237" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">S-08: Defect Review Gallery</text>
+  <text x="1140" y="253" font-size="8.5" fill="#334155" text-anchor="middle">&bull; High-Res Defect Crop Zoom Viewer</text>
+  <text x="1140" y="267" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Digital Calipers &amp; AI Confidence Bar</text>
+  <text x="1140" y="281" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&bull; Reclassification Dropdown Selector</text>
+
+  <!-- Screen S-09 & S-10 -->
+  <rect x="695" y="320" width="275" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="832" y="342" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">S-09: ASTM 4-Point Scorecard</text>
+  <text x="832" y="358" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Automated Points Breakdown (1, 2, 3, 4)</text>
+  <text x="832" y="372" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 1-Meter Capping Calculation Engine</text>
+  <text x="832" y="386" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&bull; Roll Grade Badge: Grade A, B, or Scrap</text>
+
+  <rect x="1005" y="320" width="270" height="85" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3" rx="6"/>
+  <text x="1140" y="342" font-size="10.5" font-weight="bold" fill="#15803d" text-anchor="middle">S-10: Certificate &amp; Export Hub</text>
+  <text x="1140" y="358" font-size="8.5" fill="#166534" text-anchor="middle">&bull; PDF Quality Certificate Preview &amp; Print</text>
+  <text x="1140" y="372" font-size="8.5" fill="#166534" text-anchor="middle">&bull; ERP CSV / JSON Batch Export</text>
+  <text x="1140" y="386" font-size="8.5" fill="#166534" font-weight="bold" text-anchor="middle">&bull; Cryptographic SHA-256 Audit Seal</text>
+
+  <!-- Bottom: Frontend-to-Backend Communication Bus -->
+  <rect x="25" y="555" width="1270" height="190" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="562" width="340" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="202" y="578" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">FRONTEND-TO-BACKEND COMMUNICATION BUS</text>
+
+  <!-- Channel 1: HTTPS REST API -->
+  <rect x="55" y="605" width="360" height="115" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="235" y="628" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">HTTPS REST API Adapter (Axios / Fetch)</text>
+  <text x="235" y="647" font-size="8.5" fill="#334155" text-anchor="middle">&bull; POST /api/v1/session/start (QR Initialization)</text>
+  <text x="235" y="662" font-size="8.5" fill="#334155" text-anchor="middle">&bull; GET /api/v1/rolls/{id}/defects (2D Map &amp; Gallery Data)</text>
+  <text x="235" y="677" font-size="8.5" fill="#334155" text-anchor="middle">&bull; PATCH /api/v1/defects/{id} (Defect Reclassification)</text>
+  <text x="235" y="692" font-size="8.5" fill="#334155" text-anchor="middle">&bull; GET /api/v1/reports/{id}/pdf (Download Certificate)</text>
+
+  <!-- Channel 2: WebSocket Real-Time Adapter -->
+  <rect x="475" y="605" width="370" height="115" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="660" y="628" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">WebSocket Adapter (WSS / Socket.io)</text>
+  <text x="660" y="647" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Event: 'defect_detected' &rarr; Instant Mobile Vibration</text>
+  <text x="660" y="662" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Event: 'encoder_tick' &rarr; Real-Time Speed &amp; Length</text>
+  <text x="660" y="677" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Event: 'hardware_fault' &rarr; Amber Warning Trigger</text>
+  <text x="660" y="692" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Event: 'sync_status' &rarr; Edge Stand Connectivity State</text>
+
+  <!-- Channel 3: Offline Sync Engine -->
+  <rect x="905" y="605" width="370" height="115" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1090" y="628" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Offline Synchronization Engine</text>
+  <text x="1090" y="647" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Network Connectivity Ping / Heartbeat Monitor</text>
+  <text x="1090" y="662" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Transactional Queue Drain (Auto-Sync upon Reconnect)</text>
+  <text x="1090" y="677" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Optimistic UI Updates &amp; Conflict Resolution</text>
+  <text x="1090" y="692" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Zero Factory Downtime During Cloud Internet Loss</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="760" width="1270" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="780" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Frontend Architecture):</text>
+  <text x="40" y="798" font-size="8.5" fill="#334155">&bull; 2 Independent Frontends: Left is Mobile Floor App (Flutter) for Floor Operator; Right is Web Dashboard (React) for Quality Manager &amp; Inspector.</text>
+  <text x="40" y="814" font-size="8.5" fill="#334155">&bull; 2 Communication Modes: REST API handles static queries, logins, and PDF downloads; WebSockets handle real-time speed, live flaw alerts, and buzzer states.</text>
+</svg>
     </div>
 
-    <h2>3. Overall System Workflow (End-to-End)</h2>
-    <ol>
-      <li><b>Session Start:</b> The operator mounts a fabric roll onto the unwinding stand, opens the mobile app, and scans the roll's QR code. This creates a new inspection session with roll details (Roll ID, Fabric Type, Width).</li>
-      <li><b>Continuous Sensing:</b> The fabric starts rolling. The industrial camera captures continuous frames under controlled LED illumination, while a rotary encoder tracks physical fabric movement down to the millimeter.</li>
-      <li><b>Data Reliability Guard:</b> Before running AI, the edge computer verifies four conditions: camera connection active, lighting brightness within threshold, image sharp (no blur), and zero dropped frames.
-        <ul>
-          <li><b>If Reliable:</b> The frame proceeds directly to the AI vision model.</li>
-          <li><b>If Unreliable (Fault):</b> A physical relay actuates the amber stack light and floor buzzer, and the fabric distance $[L_1, L_2]$ is logged as <code>UNINSPECTED</code> (never assumed defect-free!).</li>
-        </ul>
-      </li>
-      <li><b>AI Vision & Location Mapping:</b> The YOLO model detects defects (holes, stains, weaving faults) and generates bounding boxes. The multi-frame tracker deduplicates detections across consecutive frames, and the rotary encoder translates frame coordinates into real physical roll coordinates: $X$ across width (cm) and $Y$ along length (m).</li>
-      <li><b>Local Edge Saving:</b> Defect records and uninspected spans are immediately saved to the local SQLite database. This guarantees zero latency and ensures inspection never stops if internet fails.</li>
-      <li><b>Cloud Synchronization:</b> If internet is available, batches are sent via HTTPS REST and WebSockets to the central server. If internet is down, records buffer safely in an offline outbox queue and automatically sync when restored.</li>
-      <li><b>Quality Management & Result:</b> The Quality Manager opens the web dashboard, inspects the 2D Digital Fabric Map, verifies ASTM D5430 4-point penalty grades, and exports the final PDF Quality Inspection Certificate.</li>
-    </ol>
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> Dual frontend separation guarantees that floor workers are never distracted by administrative grading screens, while quality managers in the office receive live push updates via WebSockets without manual page refreshes.
+    </div>
+  </div>
 
-    <h2>4. Frontend Architecture</h2>
-    <table>
+  <!-- ==================== DIAGRAM 3 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">4. Diagram 3: Backend Architecture &amp; Service Decomposition <span class="subtag">Edge Stand vs Cloud Server</span></h2>
+    <p class="diagram-desc">Separation between the local Python edge service running on the Stand PC (HAL, YOLO, Kalman tracker, SQLite) and the central FastAPI cloud server (Ingestion, ASTM grading, PostgreSQL, MinIO).</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Backend Architecture &amp; Service Decomposition</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Separation of Concerns between Stand Edge Backend (Python) and Central Cloud Backend (FastAPI)</text>
+
+  <!-- Left: Edge Stand Backend -->
+  <rect x="25" y="75" width="620" height="665" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="340" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="202" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">EDGE STAND BACKEND (Local Python Service)</text>
+
+  <!-- Subsystem 1: Hardware Abstraction Layer -->
+  <rect x="45" y="120" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="140" font-size="10.5" font-weight="bold" fill="#0369a1">1. Hardware Abstraction &amp; Ingestion Subsystem</text>
+  
+  <rect x="60" y="150" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Camera Ingester</text>
+  <text x="145" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; OpenCV / V4L2</text>
+  <text x="145" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; 1080p @ 30-60 FPS</text>
+  <text x="145" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Frame Buffer Ring</text>
+
+  <rect x="250" y="150" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Encoder Driver</text>
+  <text x="335" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; GPIO / Serial Interrupts</text>
+  <text x="335" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Optical 1000 PPR</text>
+  <text x="335" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Pulse &rarr; mm Conversion</text>
+
+  <rect x="440" y="150" width="170" height="75" fill="#fff1f2" stroke="#fca5a5" stroke-width="1" rx="4"/>
+  <text x="525" y="170" font-size="9.5" font-weight="bold" fill="#9f1239" text-anchor="middle">Reliability Guard</text>
+  <text x="525" y="186" font-size="8" fill="#be123c" text-anchor="middle">&bull; Lux Level &lt; 800 Check</text>
+  <text x="525" y="199" font-size="8" fill="#be123c" text-anchor="middle">&bull; Laplacian Blur Detector</text>
+  <text x="525" y="212" font-size="8" fill="#be123c" text-anchor="middle">&bull; Dropped Frame Sentinel</text>
+
+  <!-- Subsystem 2: Edge AI & Tracking -->
+  <rect x="45" y="255" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="275" font-size="10.5" font-weight="bold" fill="#0369a1">2. Edge AI Inference &amp; Deduplication Engine</text>
+
+  <rect x="60" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">YOLO Inference</text>
+  <text x="145" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Fabric Defect Model</text>
+  <text x="145" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Flaw Bounding Box</text>
+  <text x="145" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Class Conf &gt; 0.65</text>
+
+  <rect x="250" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Metric Localization</text>
+  <text x="335" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Pixel-to-mm Mapping</text>
+  <text x="335" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; X Across Width (cm)</text>
+  <text x="335" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Y Along Length (m)</text>
+
+  <rect x="440" y="285" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="525" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Kalman Deduplicator</text>
+  <text x="525" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Multi-Frame Tracking</text>
+  <text x="525" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Trajectory Association</text>
+  <text x="525" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Zero Duplicate Counts</text>
+
+  <!-- Subsystem 3: Local Storage & Sync -->
+  <rect x="45" y="390" width="580" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="410" font-size="10.5" font-weight="bold" fill="#0369a1">3. Local Resilience &amp; Outbox Storage</text>
+
+  <rect x="60" y="420" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="145" y="440" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite WAL</text>
+  <text x="145" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; Zero-Delay Commits</text>
+  <text x="145" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; rolls &amp; defects Tables</text>
+  <text x="145" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; uninspected_intervals</text>
+
+  <rect x="250" y="420" width="170" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="335" y="440" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">NVMe Crop Store</text>
+  <text x="335" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; High-Res JPEG Crops</text>
+  <text x="335" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; 256x256 BBox Region</text>
+  <text x="335" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; Lossless Disk Write</text>
+
+  <rect x="440" y="420" width="170" height="75" fill="#fffbeb" stroke="#fcd34d" stroke-width="1" rx="4"/>
+  <text x="525" y="440" font-size="9.5" font-weight="bold" fill="#92400e" text-anchor="middle">Outbox Sync Worker</text>
+  <text x="525" y="456" font-size="8" fill="#b45309" text-anchor="middle">&bull; Polling &amp; Heartbeat</text>
+  <text x="525" y="469" font-size="8" fill="#b45309" text-anchor="middle">&bull; HTTPS Batch POST</text>
+  <text x="525" y="482" font-size="8" fill="#b45309" text-anchor="middle">&bull; Exponential Backoff</text>
+
+  <!-- Subsystem 4: Hardware Relay Controller -->
+  <rect x="45" y="525" width="580" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="60" y="545" font-size="10.5" font-weight="bold" fill="#0369a1">4. Physical Actuation &amp; Alarm Controller</text>
+  <text x="60" y="565" font-size="8.5" fill="#334155">&bull; USB / GPIO Relay Controller connected to industrial stack light &amp; audible buzzer.</text>
+  <text x="60" y="580" font-size="8.5" fill="#334155">&bull; Relays: Relay 1 (Amber Light - Sensor Fault), Relay 2 (Red Light - Critical Flaw), Relay 3 (85dB Audible Siren).</text>
+  <text x="60" y="595" font-size="8.5" fill="#334155">&bull; Safety Invariant: Hardware alarm state automatically cleared only on explicit operator acknowledgment.</text>
+
+  <!-- Right: Central Cloud Backend -->
+  <rect x="675" y="75" width="620" height="665" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="682" y="82" width="360" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="202" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">CENTRAL ENTERPRISE BACKEND (FastAPI / Cloud)</text>
+
+  <!-- Central Layer 1: API Gateway & Security -->
+  <rect x="695" y="120" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="140" font-size="10.5" font-weight="bold" fill="#0369a1">1. API Gateway, Ingestion &amp; WebSocket Broadcast</text>
+
+  <rect x="710" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="795" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Ingestion REST API</text>
+  <text x="795" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; /api/v1/sync/batch</text>
+  <text x="795" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Transactional Commit</text>
+  <text x="795" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; High-Throughput JSON</text>
+
+  <rect x="900" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="985" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Auth &amp; RBAC Service</text>
+  <text x="985" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; JWT Token Validation</text>
+  <text x="985" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Bcrypt Passwords</text>
+  <text x="985" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Role Permissions Guard</text>
+
+  <rect x="1090" y="150" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="1175" y="170" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">WebSocket Hub</text>
+  <text x="1175" y="186" font-size="8" fill="#475569" text-anchor="middle">&bull; Real-Time Broadcast</text>
+  <text x="1175" y="199" font-size="8" fill="#475569" text-anchor="middle">&bull; Multi-Client Fanout</text>
+  <text x="1175" y="212" font-size="8" fill="#475569" text-anchor="middle">&bull; Stand Heartbeat Ping</text>
+
+  <!-- Central Layer 2: Business Logic & ASTM Grading -->
+  <rect x="695" y="255" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="275" font-size="10.5" font-weight="bold" fill="#0369a1">2. Quality Computation &amp; Report Intelligence</text>
+
+  <rect x="710" y="285" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="795" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ASTM 4-Point Engine</text>
+  <text x="795" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Points Formula D5430</text>
+  <text x="795" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; 1-Meter Capping Rule</text>
+  <text x="795" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Grade A / B / Scrap</text>
+
+  <rect x="900" y="285" width="170" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="985" y="305" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Audit &amp; Review Service</text>
+  <text x="985" y="321" font-size="8" fill="#475569" text-anchor="middle">&bull; Flaw Reclassification</text>
+  <text x="985" y="334" font-size="8" fill="#475569" text-anchor="middle">&bull; Inspector Timestamp</text>
+  <text x="985" y="347" font-size="8" fill="#475569" text-anchor="middle">&bull; Immutable History Log</text>
+
+  <rect x="1090" y="285" width="170" height="75" fill="#f0fdf4" stroke="#86efac" stroke-width="1" rx="4"/>
+  <text x="1175" y="305" font-size="9.5" font-weight="bold" fill="#15803d" text-anchor="middle">PDF Certificate Service</text>
+  <text x="1175" y="321" font-size="8" fill="#166534" text-anchor="middle">&bull; Vector Document Engine</text>
+  <text x="1175" y="334" font-size="8" fill="#166534" text-anchor="middle">&bull; Embedded Defect Table</text>
+  <text x="1175" y="347" font-size="8" fill="#166534" text-anchor="middle">&bull; SHA-256 Digital Seal</text>
+
+  <!-- Central Layer 3: Enterprise Persistence -->
+  <rect x="695" y="390" width="580" height="120" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="410" font-size="10.5" font-weight="bold" fill="#0369a1">3. Enterprise Relational Database &amp; Object Storage</text>
+
+  <rect x="730" y="420" width="240" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="850" y="440" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL Database</text>
+  <text x="850" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; Normalized Relational Schema</text>
+  <text x="850" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; batches, rolls, defects, audits</text>
+  <text x="850" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; B-Tree Index on (roll_id, Y_m)</text>
+
+  <rect x="1010" y="420" width="240" height="75" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="1130" y="440" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">MinIO Object Store (S3 API)</text>
+  <text x="1130" y="456" font-size="8" fill="#475569" text-anchor="middle">&bull; defect-crops-hd/ Bucket</text>
+  <text x="1130" y="469" font-size="8" fill="#475569" text-anchor="middle">&bull; inspection-certificates-pdf/ Bucket</text>
+  <text x="1130" y="482" font-size="8" fill="#475569" text-anchor="middle">&bull; Pre-Signed URLs for Frontend</text>
+
+  <!-- Central Layer 4: Enterprise Integration -->
+  <rect x="695" y="525" width="580" height="85" fill="#f8fafc" stroke="#0f172a" stroke-width="1.2" rx="6"/>
+  <text x="710" y="545" font-size="10.5" font-weight="bold" fill="#0369a1">4. ERP Integration &amp; Security Services</text>
+  <text x="710" y="565" font-size="8.5" fill="#334155">&bull; ERP Data Exporter: Automated JSON/CSV dispatch to SAP, Oracle Netsuite, or textile ERP.</text>
+  <text x="710" y="580" font-size="8.5" fill="#334155">&bull; SHA-256 Hashing Engine: Generates tamper-proof cryptographic audit checksum for every finalized certificate.</text>
+  <text x="710" y="595" font-size="8.5" fill="#334155">&bull; Data Retention Policy: Automatic archival of processed rolls while retaining flaw telemetry.</text>
+
+  <!-- Clean Communication Channel Across Backends -->
+  <line x1="645" y1="455" x2="675" y2="455" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-blue)"/>
+  <rect x="625" y="435" width="70" height="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="0.8" rx="3"/>
+  <text x="660" y="447" font-size="7.5" font-weight="bold" fill="#1d4ed8" text-anchor="middle">HTTPS Sync</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Backend Architecture):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; Edge Stand Backend (Left): Runs locally on Stand PC. Owns camera frames, encoder interrupts, YOLO inference, local SQLite buffer, and physical relays.</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Central Cloud Backend (Right): Runs FastAPI. Owns cloud sync ingestion, PostgreSQL, MinIO storage, automated ASTM 4-point grading, and PDF report creation.</text>
+</svg>
+    </div>
+
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> By running YOLO and SQLite on the Stand PC, zero cloud network latency is introduced during fabric motion. The cloud backend is strictly responsible for aggregation, grading, and multi-user dashboard APIs.
+    </div>
+  </div>
+
+  <!-- ==================== DIAGRAM 4 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">5. Diagram 4: Database Workflow &amp; Outbox Pipeline <span class="subtag">Offline-First Persistence</span></h2>
+    <p class="diagram-desc">Offline-to-cloud transactional lifecycle: Local SQLite buffer &rarr; Outbox FSM (PENDING &rarr; IN_FLIGHT &rarr; SYNCED with exponential backoff) &rarr; PostgreSQL relational schema and MinIO object storage.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#d97706"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Database Workflow &amp; Offline-to-Cloud Data Pipeline</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Complete Data Lifecycle: Edge SQLite Buffer &rarr; Transactional Outbox &rarr; Central PostgreSQL &amp; MinIO &rarr; Analytical Queries</text>
+
+  <!-- Tier 1: Edge Local Buffer -->
+  <rect x="25" y="75" width="1270" height="150" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="280" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="172" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">1. EDGE STAND LOCAL STORAGE (Zero-Latency)</text>
+
+  <rect x="50" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="185" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: rolls_active</text>
+  <text x="185" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; roll_id (UUID, PK), batch_id</text>
+  <text x="185" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; start_time, end_time, total_length_m</text>
+  <text x="185" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; operator_id, stand_id, status</text>
+  <text x="185" y="195" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">[INSERT on QR Scan]</text>
+
+  <rect x="360" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="495" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: defects_local</text>
+  <text x="495" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; defect_id (UUID, PK), roll_id (FK)</text>
+  <text x="495" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; X_coord_cm, Y_coord_m, flaw_class</text>
+  <text x="495" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; confidence, crop_file_path</text>
+  <text x="495" y="195" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">[INSERT on AI Detection]</text>
+
+  <rect x="670" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="805" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">SQLite Table: uninspected_spans</text>
+  <text x="805" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; span_id (UUID, PK), roll_id (FK)</text>
+  <text x="805" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Y_start_m, Y_end_m, reason_code</text>
+  <text x="805" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; lux_val, blur_score, timestamp</text>
+  <text x="805" y="195" font-size="8.5" fill="#be123c" font-weight="bold" text-anchor="middle">[INSERT on Sensor Fault]</text>
+
+  <rect x="980" y="115" width="270" height="95" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1115" y="135" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local NVMe Disk Image Store</text>
+  <text x="1115" y="152" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Path: /data/crops/{roll_id}/</text>
+  <text x="1115" y="166" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Format: High-Res JPEG (256x256)</text>
+  <text x="1115" y="180" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Indexed by defect_id.jpg</text>
+  <text x="1115" y="195" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">[Direct File System Write]</text>
+
+  <!-- Tier 2: Transactional Outbox State Machine -->
+  <rect x="25" y="240" width="1270" height="130" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="247" width="310" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="187" y="263" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">2. TRANSACTIONAL OUTBOX SYNC STATE MACHINE</text>
+
+  <!-- Start Circle -->
+  <circle cx="80" cy="305" r="8" fill="#0f172a"/>
+  
+  <line x1="88" y1="305" x2="190" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="100" y="290" width="75" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="137" y="301" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">insert_event</text>
+
+  <!-- State 1: PENDING -->
+  <rect x="190" y="280" width="180" height="50" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="5"/>
+  <text x="280" y="300" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">PENDING</text>
+  <text x="280" y="316" font-size="8" fill="#475569" text-anchor="middle">Committed in SQLite Buffer</text>
+
+  <!-- State 2: IN_FLIGHT -->
+  <line x1="370" y1="305" x2="490" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="385" y="290" width="90" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430" y="301" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">net_online &amp; send</text>
+
+  <rect x="490" y="280" width="180" height="50" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="5"/>
+  <text x="580" y="300" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">IN_FLIGHT</text>
+  <text x="580" y="316" font-size="8" fill="#475569" text-anchor="middle">HTTPS POST Payload Active</text>
+
+  <!-- Retry Backoff -->
+  <path d="M 580 330 L 580 355 L 280 355 L 280 330" fill="none" stroke="#d97706" stroke-width="1.3" marker-end="url(#arr-amber)"/>
+  <rect x="360" y="347" width="145" height="16" fill="#fffbeb" stroke="#d97706" rx="3"/>
+  <text x="432" y="359" font-size="7.5" font-weight="bold" fill="#92400e" text-anchor="middle">timeout / net_fail [backoff retry &lt; 5]</text>
+
+  <!-- State 3: SYNCED -->
+  <line x1="670" y1="305" x2="790" y2="305" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr-green)"/>
+  <rect x="690" y="290" width="80" height="15" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="730" y="301" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">HTTP 200 OK</text>
+
+  <rect x="790" y="280" width="180" height="50" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3" rx="5"/>
+  <text x="880" y="300" font-size="10.5" font-weight="bold" fill="#15803d" text-anchor="middle">SYNCED</text>
+  <text x="880" y="316" font-size="8" fill="#166534" text-anchor="middle">Marked complete in outbox</text>
+
+  <!-- Terminal Circle -->
+  <line x1="970" y1="305" x2="1030" y2="305" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <circle cx="1040" cy="305" r="9" fill="none" stroke="#0f172a" stroke-width="1.3"/>
+  <circle cx="1040" cy="305" r="5" fill="#0f172a"/>
+  <text x="1110" y="309" font-size="8.5" fill="#475569">Archived after 7 Days</text>
+
+  <!-- Tier 3: Central Enterprise DB & Object Storage -->
+  <rect x="25" y="385" width="1270" height="175" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="392" width="310" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="187" y="408" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">3. CENTRAL ENTERPRISE DATA PERSISTENCE</text>
+
+  <!-- PostgreSQL Master Tables -->
+  <rect x="50" y="425" width="360" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="230" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL: Master Roll &amp; Defect Tables</text>
+  <text x="230" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; fabric_rolls: roll_id, batch_id, length_m, grade, astm_points</text>
+  <text x="230" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; detected_defects: defect_id, roll_id, X_cm, Y_m, class, verified_class</text>
+  <text x="230" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; uninspected_spans: span_id, roll_id, Y_start, Y_end, fault_type</text>
+  <text x="230" y="516" font-size="8.5" fill="#334155" text-anchor="middle">&bull; audit_logs: audit_id, defect_id, changed_by, old_class, new_class</text>
+
+  <!-- MinIO S3 Object Buckets -->
+  <rect x="450" y="425" width="360" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="630" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">MinIO Object Store (S3 Buckets)</text>
+  <text x="630" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; defect-crops-hd/roll_{id}/{defect_id}.jpg (256x256 Crop)</text>
+  <text x="630" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; inspection-certificates-pdf/cert_{roll_id}.pdf (Official PDF)</text>
+  <text x="630" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Immutable Object Lock &amp; Fast CDN Cache Header</text>
+  <text x="630" y="516" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Pre-Signed URL Access with 60-Minute Expiry</text>
+
+  <!-- ASTM Scoring Record -->
+  <rect x="850" y="425" width="400" height="120" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="1050" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL: astm_scorecards Table</text>
+  <text x="1050" y="465" font-size="8.5" fill="#334155" text-anchor="middle">&bull; roll_id (FK), pts_1 (length &lt; 75mm), pts_2 (75-150mm)</text>
+  <text x="1050" y="482" font-size="8.5" fill="#334155" text-anchor="middle">&bull; pts_3 (150-230mm), pts_4 (&gt; 230mm or holes &gt; 25mm)</text>
+  <text x="1050" y="499" font-size="8.5" fill="#334155" text-anchor="middle">&bull; points_per_100_sqm = (Total Points &times; 10000) / (Length &times; Width)</text>
+  <text x="1050" y="516" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&bull; Grade Threshold: Grade A (&le; 20 pts), Grade B (&le; 40), Scrap (&gt; 40)</text>
+
+  <!-- Tier 4: Query & CRUD Patterns -->
+  <rect x="25" y="575" width="1270" height="165" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="582" width="280" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="172" y="598" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">4. CRUD ACCESS PATTERNS &amp; CONSUMERS</text>
+
+  <rect x="50" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="190" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 1: 2D Defect Map Render</text>
+  <text x="190" y="655" font-size="8" fill="#334155" text-anchor="middle">SELECT X_cm, Y_m, class</text>
+  <text x="190" y="670" font-size="8" fill="#334155" text-anchor="middle">FROM detected_defects</text>
+  <text x="190" y="685" font-size="8" fill="#334155" text-anchor="middle">WHERE roll_id = :id ORDER BY Y_m;</text>
+  <text x="190" y="705" font-size="8" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Consumer: Web Canvas View</text>
+
+  <rect x="360" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="500" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 2: Defect Reclassification</text>
+  <text x="500" y="655" font-size="8" fill="#334155" text-anchor="middle">UPDATE detected_defects</text>
+  <text x="500" y="670" font-size="8" fill="#334155" text-anchor="middle">SET verified_class = :new_class,</text>
+  <text x="500" y="685" font-size="8" fill="#334155" text-anchor="middle">reviewed_by = :inspector_id;</text>
+  <text x="500" y="705" font-size="8" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Consumer: Quality Inspector Review</text>
+
+  <rect x="670" y="615" width="280" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="810" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 3: ASTM Finalization</text>
+  <text x="810" y="655" font-size="8" fill="#334155" text-anchor="middle">UPDATE fabric_rolls</text>
+  <text x="810" y="670" font-size="8" fill="#334155" text-anchor="middle">SET grade = 'Grade A',</text>
+  <text x="810" y="685" font-size="8" fill="#334155" text-anchor="middle">astm_points = :computed_points;</text>
+  <text x="810" y="705" font-size="8" fill="#16a34a" font-weight="bold" text-anchor="middle">&rarr; Consumer: Smart Operations Engine</text>
+
+  <rect x="980" y="615" width="270" height="105" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="1115" y="635" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">Pattern 4: PDF Report Generation</text>
+  <text x="1115" y="655" font-size="8" fill="#334155" text-anchor="middle">JOIN fabric_rolls, batches,</text>
+  <text x="1115" y="670" font-size="8" fill="#334155" text-anchor="middle">detected_defects, scorecards</text>
+  <text x="1115" y="685" font-size="8" fill="#334155" text-anchor="middle">Render vector PDF &amp; store S3;</text>
+  <text x="1115" y="705" font-size="8" fill="#16a34a" font-weight="bold" text-anchor="middle">&rarr; Consumer: Quality Manager Export</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Database Workflow):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; Offline-First Guarantee: Inspection never waits for cloud database latency. Detections write instantly to local SQLite WAL file.</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Outbox State Machine: PENDING &rarr; IN_FLIGHT &rarr; SYNCED. Guarantees at-least-once delivery with zero data loss even across power outages.</text>
+</svg>
+    </div>
+
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> The Transactional Outbox pattern guarantees at-least-once delivery with zero data loss. If power or factory Wi-Fi cuts out mid-roll, no inspection data is ever lost.
+    </div>
+  </div>
+
+  <!-- ==================== DIAGRAM 5 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">6. Diagram 5: Complete Closed-Loop System Flow <span class="subtag">Step-by-Step 10-Stage Trace</span></h2>
+    <p class="diagram-desc">Sequential end-to-end execution path: User &rarr; Frontend &rarr; Stand Backend &rarr; Edge DB &rarr; Central DB &rarr; Web Frontend &rarr; User with decision branches.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#dc2626"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Complete Closed-Loop System Flow</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Step-by-Step Execution Trace: User &rarr; Frontend &rarr; Stand Backend &rarr; Edge DB &rarr; Central DB &rarr; Web Frontend &rarr; Supervisor/User</text>
+
+  <!-- Step 1: User Action -->
+  <rect x="40" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 1</text>
+  <text x="150" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Floor Operator</text>
+  <text x="150" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Scans QR tag on fabric roll</text>
+
+  <!-- Step 2: Mobile App Frontend -->
+  <line x1="260" y1="122" x2="310" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  
+  <rect x="310" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="320" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="355" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 2</text>
+  <text x="420" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Mobile Frontend</text>
+  <text x="420" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Sends POST /session/start</text>
+
+  <!-- Step 3: Stand Edge Backend -->
+  <line x1="530" y1="122" x2="580" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="580" y="85" width="220" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="590" y="93" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="625" y="106" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 3</text>
+  <text x="690" y="125" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Stand Backend</text>
+  <text x="690" y="142" font-size="8.5" fill="#334155" text-anchor="middle">Zeros encoder &amp; starts sensors</text>
+
+  <!-- Step 4: Decision: Reliable? -->
+  <line x1="800" y1="122" x2="850" y2="122" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <polygon points="850,122 915,92 980,122 915,152" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="915" y="119" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">Reliable?</text>
+  <text x="915" y="132" font-size="8" fill="#64748b" text-anchor="middle">(Lux/Blur/FPS)</text>
+
+  <!-- Step 4 Fault Branch (Right) -->
+  <line x1="980" y1="122" x2="1050" y2="122" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-red)"/>
+  <rect x="990" y="108" width="50" height="15" fill="#fff1f2" stroke="#e11d48" rx="3"/>
+  <text x="1015" y="119" font-size="7.5" font-weight="bold" fill="#be123c" text-anchor="middle">[NO]</text>
+
+  <rect x="1050" y="85" width="230" height="75" fill="#fff1f2" stroke="#e11d48" stroke-width="1.4" rx="6"/>
+  <text x="1165" y="112" font-size="10" font-weight="bold" fill="#9f1239" text-anchor="middle">Safety Trip &amp; Span Mark</text>
+  <text x="1165" y="128" font-size="8" fill="#be123c" text-anchor="middle">Fires Amber stack light + buzzer</text>
+  <text x="1165" y="142" font-size="8" fill="#be123c" text-anchor="middle">Logs uninspected [Y1, Y2] in SQLite</text>
+
+  <!-- Step 4 YES Branch (Down to Step 5) -->
+  <path d="M 915 152 L 915 220 L 150 220 L 150 270" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="880" y="175" width="70" height="18" fill="#f0fdf4" stroke="#16a34a" rx="3"/>
+  <text x="915" y="188" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">[YES: Clear]</text>
+
+  <!-- Step 5: YOLO Detection & Tracking -->
+  <rect x="40" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 5</text>
+  <text x="150" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">AI Vision Detection</text>
+  <text x="150" y="328" font-size="8.5" fill="#334155" text-anchor="middle">YOLO BBox + (X, Y) metric map</text>
+  <text x="150" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Multi-frame Kalman deduplication</text>
+
+  <!-- Step 6: Local SQLite Buffer Commit -->
+  <line x1="260" y1="312" x2="310" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="310" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="320" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="355" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 6</text>
+  <text x="420" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite Buffer</text>
+  <text x="420" y="328" font-size="8.5" fill="#334155" text-anchor="middle">Commits flaw row instantly</text>
+  <text x="420" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Saves crop JPEG to local NVMe</text>
+
+  <!-- Step 7: Central Cloud Backend Sync -->
+  <line x1="530" y1="312" x2="580" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="580" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="590" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="625" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 7</text>
+  <text x="690" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Central Cloud Sync</text>
+  <text x="690" y="328" font-size="8.5" fill="#334155" text-anchor="middle">FastAPI ingests batch via HTTPS</text>
+  <text x="690" y="342" font-size="8.5" fill="#334155" text-anchor="middle">Stores PostgreSQL &amp; MinIO S3</text>
+
+  <!-- Step 8: ASTM 4-Point Grading Engine -->
+  <line x1="800" y1="312" x2="850" y2="312" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <rect x="850" y="270" width="220" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="860" y="278" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="895" y="291" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 8</text>
+  <text x="960" y="312" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ASTM 4-Point Grading</text>
+  <text x="960" y="328" font-size="8.5" fill="#334155" text-anchor="middle">Computes penalty points/100m²</text>
+  <text x="960" y="342" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">Assigns Grade A / B / Scrap</text>
+
+  <!-- Step 8 to Step 9 Route -->
+  <path d="M 1070 312 L 1165 312 L 1165 410 L 150 410 L 150 460" fill="none" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+
+  <!-- Step 9: Web Quality Dashboard Map Render -->
+  <rect x="40" y="460" width="280" height="90" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <rect x="50" y="468" width="70" height="18" fill="#0284c7" rx="3"/>
+  <text x="85" y="481" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 9</text>
+  <text x="180" y="503" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Web Dashboard 2D Map</text>
+  <text x="180" y="521" font-size="8.5" fill="#334155" text-anchor="middle">Canvas renders fabric roll defect layout</text>
+  <text x="180" y="536" font-size="8.5" fill="#334155" text-anchor="middle">Inspector audits &amp; reclassifies flaw tags</text>
+
+  <!-- Step 10: Final PDF Certificate Export -->
+  <line x1="320" y1="505" x2="380" y2="505" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+
+  <rect x="380" y="460" width="310" height="90" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" rx="6"/>
+  <rect x="390" y="468" width="70" height="18" fill="#16a34a" rx="3"/>
+  <text x="425" y="481" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 10</text>
+  <text x="535" y="503" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Quality Manager / PDF Certificate</text>
+  <text x="535" y="521" font-size="8.5" fill="#166534" text-anchor="middle">Official ASTM Quality Certificate generated</text>
+  <text x="535" y="536" font-size="8.5" fill="#166534" font-weight="bold" text-anchor="middle">Cryptographic SHA-256 seal &amp; ERP Export</text>
+
+  <!-- Complete System Closed Loop Badge -->
+  <rect x="740" y="460" width="540" height="90" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="1010" y="485" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Closed-Loop Architecture Verification:</text>
+  <text x="1010" y="505" font-size="9" fill="#334155" text-anchor="middle">User &rarr; Frontend &rarr; Stand Backend &rarr; Edge DB &rarr; Central DB &rarr; Web Frontend &rarr; User</text>
+  <text x="1010" y="525" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&check; Every single architectural layer participates with verified traceability.</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="585" width="1270" height="85" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="605" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Complete System Flow):</text>
+  <text x="40" y="623" font-size="8.5" fill="#334155">&bull; 10 Numbered Rectangles: Connect them sequentially with arrows. Show Decision 4 (Reliability Gate) branching to safety alarm.</text>
+  <text x="40" y="639" font-size="8.5" fill="#334155">&bull; This single diagram answers: "Walk me through how data flows from the moment the worker turns on the machine until the manager prints the certificate."</text>
+</svg>
+    </div>
+
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> This diagram provides the exact linear response required when the supervisor asks: <em>"Walk me through what happens from the second the operator powers on the inspection line until the buyer receives the certificate."</em>
+    </div>
+  </div>
+
+  <!-- ==================== DIAGRAM 6 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">7. Diagram 6: User Roles &amp; System Use Cases <span class="subtag">Actor-Function Boundary</span></h2>
+    <p class="diagram-desc">UML Use Case representation showing 5 distinct actors (Floor Operator, Stand Hardware, Quality Inspector, Quality Manager, System Admin) across 12 core system use cases.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — User Roles &amp; System Use Cases</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Actors, Functional Boundaries, and Use Case Associations for COMSATS FYP Presentation</text>
+
+  <!-- Left: Floor Actors -->
+  <!-- Actor 1: Floor Operator -->
+  <rect x="40" y="110" width="180" height="90" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="130" y="135" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">&laquo;Actor&raquo;</text>
+  <text x="130" y="153" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">Floor Operator</text>
+  <text x="130" y="172" font-size="8.5" fill="#475569" text-anchor="middle">(Mobile Floor App)</text>
+
+  <!-- Actor 2: Autonomous Stand -->
+  <rect x="40" y="440" width="180" height="90" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="130" y="465" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">&laquo;System Actor&raquo;</text>
+  <text x="130" y="483" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">Hardware Stand</text>
+  <text x="130" y="502" font-size="8.5" fill="#475569" text-anchor="middle">(Camera &amp; Encoder)</text>
+
+  <!-- Right: Management Actors -->
+  <!-- Actor 3: Quality Inspector -->
+  <rect x="1100" y="100" width="180" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="1190" y="125" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">&laquo;Actor&raquo;</text>
+  <text x="1190" y="143" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">Quality Inspector</text>
+  <text x="1190" y="162" font-size="8.5" fill="#475569" text-anchor="middle">(Web Dashboard)</text>
+
+  <!-- Actor 4: Quality Manager -->
+  <rect x="1100" y="270" width="180" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="1190" y="295" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">&laquo;Actor&raquo;</text>
+  <text x="1190" y="313" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">Quality Manager</text>
+  <text x="1190" y="332" font-size="8.5" fill="#475569" text-anchor="middle">(Web Dashboard)</text>
+
+  <!-- Actor 5: System Admin -->
+  <rect x="1100" y="440" width="180" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="1190" y="465" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">&laquo;Actor&raquo;</text>
+  <text x="1190" y="483" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">System Admin</text>
+  <text x="1190" y="502" font-size="8.5" fill="#475569" text-anchor="middle">(Admin Portal)</text>
+
+  <!-- System Boundary Container -->
+  <rect x="260" y="75" width="800" height="660" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5" rx="8"/>
+  <text x="660" y="100" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI Quality Management System Boundary</text>
+
+  <!-- Use Case Pills (Column 1: Floor & Stand Use Cases) -->
+  <rect x="290" y="120" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="145" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-01: Scan Roll QR Tag</text>
+
+  <rect x="290" y="180" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="205" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-02: Start / Pause Run</text>
+
+  <rect x="290" y="240" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="265" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-03: Live Defect Alerts</text>
+
+  <rect x="290" y="300" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="325" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-04: Tag Manual Flaw</text>
+
+  <rect x="290" y="390" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="415" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-05: Monitor Reliability</text>
+
+  <rect x="290" y="450" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="475" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-06: Autonomous Detection</text>
+
+  <rect x="290" y="510" width="220" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="400" y="535" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-07: Offline Sync Outbox</text>
+
+  <!-- Use Case Pills (Column 2: Management & Quality Use Cases) -->
+  <rect x="560" y="120" width="240" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="680" y="145" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-08: View 2D Defect Map</text>
+
+  <rect x="560" y="180" width="240" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="680" y="205" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-09: Reclassify Flaw Images</text>
+
+  <rect x="560" y="270" width="240" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="680" y="295" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-10: Compute ASTM Grade</text>
+
+  <rect x="560" y="330" width="240" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="680" y="355" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-11: Export PDF Certificate</text>
+
+  <rect x="560" y="440" width="240" height="42" fill="#ffffff" stroke="#0f172a" stroke-width="1.2" rx="21"/>
+  <text x="680" y="465" font-size="9" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-12: Manage Users &amp; Stand</text>
+
+  <!-- Clean Associations -->
+  <!-- Floor Operator to UC 1-4 -->
+  <line x1="220" y1="140" x2="290" y2="140" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="220" y1="150" x2="290" y2="200" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="220" y1="160" x2="290" y2="260" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="220" y1="170" x2="290" y2="320" stroke="#0f172a" stroke-width="1.2"/>
+
+  <!-- Autonomous Stand to UC 5-7 -->
+  <line x1="220" y1="470" x2="290" y2="410" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="220" y1="485" x2="290" y2="470" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="220" y1="500" x2="290" y2="530" stroke="#0f172a" stroke-width="1.2"/>
+
+  <!-- Quality Inspector to UC 8-9 -->
+  <line x1="1100" y1="140" x2="800" y2="140" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="1100" y1="150" x2="800" y2="200" stroke="#0f172a" stroke-width="1.2"/>
+
+  <!-- Quality Manager to UC 8, 10, 11 -->
+  <line x1="1100" y1="290" x2="800" y2="155" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="1100" y1="310" x2="800" y2="290" stroke="#0f172a" stroke-width="1.2"/>
+  <line x1="1100" y1="330" x2="800" y2="350" stroke="#0f172a" stroke-width="1.2"/>
+
+  <!-- System Admin to UC 12 -->
+  <line x1="1100" y1="480" x2="800" y2="460" stroke="#0f172a" stroke-width="1.2"/>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (User Roles &amp; Use Cases):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; 5 Clean Actors: Floor Operator (mobile floor actions), Hardware Stand (autonomous sensing/lighting), Quality Inspector (review/calipers), Quality Manager (grading/reports), Admin (config).</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Strict Role Separation: Floor workers never modify grading formulas; managers never operate hardware cameras directly.</text>
+</svg>
+    </div>
+
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> Strict role separation ensures floor operators cannot alter ASTM quality thresholds or delete audit logs, while the Autonomous Stand acts as an independent system actor.
+    </div>
+  </div>
+
+  <!-- ==================== DIAGRAM 7 ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">8. Diagram 7: Infrastructure &amp; Deployment Topology <span class="subtag">Physical Hardware &amp; Cloud</span></h2>
+    <p class="diagram-desc">Physical hardware stand setup (camera, encoder, relays, Stand PC), factory network topology (gigabit switch, Wi-Fi 6), presentation devices, and containerized central server node.</p>
+    
+    <div class="diagram-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Infrastructure &amp; Physical Deployment Topology</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Physical Hardware, Network Topologies, and Distributed Cloud Deployment Specifications</text>
+
+  <!-- Zone 1: Inspection Stand Node -->
+  <rect x="25" y="75" width="400" height="665" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="32" y="82" width="310" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="187" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">1. FABRIC INSPECTION STAND (Edge Node)</text>
+
+  <!-- Hardware Sensors -->
+  <rect x="45" y="120" width="360" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="225" y="142" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Industrial Camera (USB 3.0 / GigE)</text>
+  <text x="225" y="160" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 1080p @ 30-60 FPS &bull; Low distortion C-mount lens</text>
+  <text x="225" y="174" font-size="8.5" fill="#334155" text-anchor="middle">&bull; High-CRI LED bar illumination (&gt; 1000 lux)</text>
+  <text x="225" y="188" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Connects to Stand PC via USB 3.0</text>
+
+  <rect x="45" y="220" width="360" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="225" y="242" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Rotary Encoder (Optical 1000 PPR)</text>
+  <text x="225" y="260" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Mounted on fabric idler roller (200mm circ)</text>
+  <text x="225" y="274" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 0.2mm precision displacement tracking</text>
+  <text x="225" y="288" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Connects to Stand PC via Serial / GPIO</text>
+
+  <rect x="45" y="320" width="360" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="225" y="342" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Relay Controller &amp; Stack Light</text>
+  <text x="225" y="360" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Amber Light: Sensor Uninspected Fault</text>
+  <text x="225" y="374" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Red Light + 85dB Siren: Critical Defect Stop</text>
+  <text x="225" y="388" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Connects to Stand PC via USB Relay Module</text>
+
+  <!-- Stand Edge PC -->
+  <rect x="45" y="420" width="360" height="200" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="6"/>
+  <text x="225" y="445" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Stand Edge PC (Intel i5 / Mini-PC)</text>
+  <text x="225" y="468" font-size="9" fill="#334155" text-anchor="middle">&bull; OS: Ubuntu Linux 22.04 LTS / Windows IoT</text>
+  <text x="225" y="488" font-size="9" fill="#334155" text-anchor="middle">&bull; Runtime: Python 3.11 Stand Daemon</text>
+  <text x="225" y="508" font-size="9" fill="#334155" text-anchor="middle">&bull; Model: YOLOv8 / YOLOv11 Optimized</text>
+  <text x="225" y="528" font-size="9" fill="#334155" text-anchor="middle">&bull; Local Storage: 512GB NVMe SSD (SQLite WAL)</text>
+  <text x="225" y="548" font-size="9" fill="#334155" text-anchor="middle">&bull; Network: Dual Gigabit Ethernet + Wi-Fi</text>
+  <text x="225" y="575" font-size="9" font-weight="bold" fill="#16a34a" text-anchor="middle">&check; Autonomous Operation Without Cloud Connection</text>
+
+  <!-- Zone 2: Factory Network -->
+  <rect x="450" y="75" width="230" height="665" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="457" y="82" width="200" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="557" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">2. FACTORY NETWORK</text>
+
+  <rect x="465" y="150" width="200" height="110" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="565" y="175" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Gigabit Switch (LAN)</text>
+  <text x="565" y="198" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Cat6 Shielded Ethernet</text>
+  <text x="565" y="215" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 1000 Mbps Full Duplex</text>
+  <text x="565" y="232" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Dedicated VLAN for Stands</text>
+
+  <rect x="465" y="320" width="200" height="110" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="565" y="345" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Industrial Wi-Fi AP</text>
+  <text x="565" y="368" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 802.11ax (Wi-Fi 6)</text>
+  <text x="565" y="385" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 5GHz Band (Low Noise)</text>
+  <text x="565" y="402" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Floor Tablet Connectivity</text>
+
+  <rect x="465" y="490" width="200" height="110" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <text x="565" y="515" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Factory Gateway</text>
+  <text x="565" y="538" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Hardware Firewall</text>
+  <text x="565" y="555" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Port 443 HTTPS Only</text>
+  <text x="565" y="572" font-size="8.5" fill="#334155" text-anchor="middle">&bull; VPN / Zero Trust Access</text>
+
+  <!-- Zone 3: Client Devices -->
+  <rect x="705" y="75" width="265" height="665" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="712" y="82" width="230" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="827" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">3. CLIENT PRESENTATION</text>
+
+  <rect x="720" y="160" width="235" height="150" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="837" y="185" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Floor Tablet / Smartphone</text>
+  <text x="837" y="208" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Rugged Android 12+ Tablet</text>
+  <text x="837" y="225" font-size="8.5" fill="#334155" text-anchor="middle">&bull; TexEye Mobile App (Flutter)</text>
+  <text x="837" y="242" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Camera Viewfinder for QR Scan</text>
+  <text x="837" y="259" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Vibration Haptic Alerts</text>
+  <text x="837" y="278" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Connects via Factory Wi-Fi</text>
+
+  <rect x="720" y="380" width="235" height="150" fill="#ffffff" stroke="#0f172a" stroke-width="1.3" rx="6"/>
+  <text x="837" y="405" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Quality Manager Workstation</text>
+  <text x="837" y="428" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Office Desktop PC / Laptop</text>
+  <text x="837" y="445" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Google Chrome / Firefox</text>
+  <text x="837" y="462" font-size="8.5" fill="#334155" text-anchor="middle">&bull; TexEye Web SPA (React.js)</text>
+  <text x="837" y="479" font-size="8.5" fill="#334155" text-anchor="middle">&bull; 2D Canvas Defect Map &amp; PDF</text>
+  <text x="837" y="498" font-size="8.5" fill="#0284c7" font-weight="bold" text-anchor="middle">&rarr; Connects via Office LAN</text>
+
+  <!-- Zone 4: Central Enterprise Server -->
+  <rect x="995" y="75" width="300" height="665" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="1002" y="82" width="260" height="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="1132" y="98" font-size="10.5" font-weight="bold" fill="#1e293b" text-anchor="middle">4. CENTRAL ENTERPRISE SERVER</text>
+
+  <rect x="1010" y="140" width="270" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="1145" y="165" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">FastAPI Gateway (Port 8000)</text>
+  <text x="1145" y="188" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Python 3.11 Async Engine</text>
+  <text x="1145" y="205" font-size="8.5" fill="#334155" text-anchor="middle">&bull; HTTPS REST Ingestion Endpoints</text>
+  <text x="1145" y="222" font-size="8.5" fill="#334155" text-anchor="middle">&bull; WSS Real-Time WebSocket Hub</text>
+  <text x="1145" y="239" font-size="8.5" fill="#334155" text-anchor="middle">&bull; JWT Security &amp; Rate Limiter</text>
+
+  <rect x="1010" y="295" width="270" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="1145" y="320" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">PostgreSQL DB (Port 5432)</text>
+  <text x="1145" y="343" font-size="8.5" fill="#334155" text-anchor="middle">&bull; PostgreSQL 15 Relational Store</text>
+  <text x="1145" y="360" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Batches, Rolls, Defects Telemetry</text>
+  <text x="1145" y="377" font-size="8.5" fill="#334155" text-anchor="middle">&bull; ASTM Scorecards &amp; Audit Logs</text>
+  <text x="1145" y="394" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Automated Nightly Backups</text>
+
+  <rect x="1010" y="450" width="270" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="1145" y="475" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">MinIO Object Store (Port 9000)</text>
+  <text x="1145" y="498" font-size="8.5" fill="#334155" text-anchor="middle">&bull; S3-Compatible Cloud Storage</text>
+  <text x="1145" y="515" font-size="8.5" fill="#334155" text-anchor="middle">&bull; High-Res Flaw Crop Images</text>
+  <text x="1145" y="532" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Signed PDF Inspection Reports</text>
+  <text x="1145" y="549" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Distributed Block Storage</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="755" width="1270" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="775" font-size="10" font-weight="bold" fill="#0f172a">Paper-Reproduction Guide for Supervisor Presentation (Infrastructure &amp; Deployment):</text>
+  <text x="40" y="793" font-size="8.5" fill="#334155">&bull; 4 Physical Zones: Stand Node (Edge PC, Camera, Encoder, Relays) &rarr; Factory Network (Switch &amp; Wi-Fi) &rarr; Client Devices &rarr; Enterprise Server (FastAPI, Postgres, MinIO).</text>
+  <text x="40" y="809" font-size="8.5" fill="#334155">&bull; Flexible Server Deployment: Can be hosted On-Premises on a factory server room machine or deployed on a Cloud VM (AWS, Azure, DigitalOcean) without changing any code.</text>
+</svg>
+    </div>
+
+    <div class="callout-box">
+      <strong>Supervisor Defense Note:</strong> The central server stack (FastAPI, PostgreSQL, MinIO) is fully containerized with Docker, allowing identical zero-change deployment whether on a factory server room PC or a cloud VPS.
+    </div>
+  </div>
+
+  <!-- ==================== SUPERVISOR Q&A ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">9. Anticipated Supervisor Questions &amp; Defense Script <span class="subtag">COMSATS FYP Meeting Prep</span></h2>
+    
+    <div class="qa-item">
+      <div class="qa-q">Q1: How does your system calculate the exact location of a defect on moving fabric?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, we combine two physical measurements: Across the fabric width (X coordinate), our camera lens is calibrated so each pixel corresponds to a fixed millimeter width. Along the fabric length (Y coordinate), an optical rotary encoder (1000 pulses per revolution) is mounted directly to the idler roller. As fabric unwinds, each encoder pulse represents exactly 0.2 mm of movement. When YOLO detects a flaw in frame N, we read the current pulse accumulator to compute the exact meter position along the roll."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q2: How do you prevent counting the same defect multiple times across consecutive video frames?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, because the camera captures at 30 to 60 FPS, a single defect remains visible across 10 to 20 consecutive frames. We implement a multi-frame Kalman filter tracker. The tracker projects the expected position of the flaw based on current roller speed. Consecutive detections matching the same trajectory within a spatial gating threshold are merged into a single unique defect entity."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q3: What happens if factory lighting fluctuates or the camera cable is accidentally disconnected?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, this is our core innovation: the Hardware &amp; Inspection Monitoring Module. We continuously compute mean luminance (lux) and Laplacian variance (blur) on incoming frames. If lux drops below 800 or frames drop, the system immediately trips an amber stack light relay, sounds a warning buzzer, and logs an uninspected span [Y_start, Y_end] in SQLite. We never let uninspected fabric pass silently."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q4: What if the factory loses internet connection during a 500-meter roll inspection?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, our architecture is 100% Offline-First. The inspection stand PC runs a local SQLite WAL database. Every defect coordinate, uninspected interval, and high-resolution JPEG crop writes to local NVMe storage with zero delay. A background sync daemon continuously checks connectivity; once the link is restored, it drains the outbox queue to the cloud server with zero production halt."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q5: How does the ASTM D5430 4-Point grading system actually work?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, the standard ASTM D5430 assigns penalty points based on defect length: 1 point for flaws &le; 3 inches (75 mm), 2 points for 3-6 inches (75-150 mm), 3 points for 6-9 inches (150-230 mm), and 4 points for flaws &gt; 9 inches or holes &gt; 1 inch. No single meter can exceed 4 points. The engine computes Total Points per 100 Square Meters: (Total Points &times; 10,000) / (Length &times; Width). If points &le; 20, it is Grade A; if &le; 40, Grade B; otherwise Scrap."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q6: Can a quality inspector override an AI classification if the model makes a mistake?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, yes. On the Web Dashboard (Screen S-08: Defect Review Gallery), the inspector can zoom into high-res crop images, use digital electronic calipers to verify flaw dimensions, and select a corrected defect class from a dropdown. This updates the database and creates an immutable audit trail entry recording who modified the record and at what timestamp."</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q7: Why did you split the system into an Edge Stand Backend and a Central Cloud Backend?</div>
+      <div class="qa-a"><strong>Answer:</strong> "Sir, physical fabric inspection is an ultra-low-latency real-time task requiring 30 FPS inference and microsecond encoder interrupts. Cloud networks suffer from latency spikes and outages. By delegating real-time sensing, AI detection, and safety relays to a local Stand PC, we achieve 100% reliability, while the central cloud backend provides centralized reporting, multi-user web access, and ERP integration."</div>
+    </div>
+  </div>
+
+  <!-- ==================== HAND-DRAWING GUIDE ==================== -->
+  <div class="page-break">
+    <h2 class="section-header">10. Step-by-Step Handwritten A4 Drawing Instructions <span class="subtag">Notebook Blueprint</span></h2>
+    
+    <div class="callout-box">
+      <strong>Supervisor Meeting Strategy:</strong> Dr. Tassawar Iqbal requested a rough handwritten workflow diagram on paper before your next meeting. Follow these exact steps to sketch Diagram 1 onto an A4 page:
+    </div>
+
+    <table class="data-table">
       <thead>
         <tr>
-          <th style="width: 25%;">Client Application</th>
-          <th style="width: 35%;">What User Sees & Interacts With</th>
-          <th style="width: 40%;">User Inputs & Communication to Backend</th>
+          <th style="width: 15%;">Step #</th>
+          <th style="width: 25%;">Drawing Action on A4 Paper</th>
+          <th style="width: 60%;">What to Draw &amp; Label</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>Mobile Floor App</b><br/>(Flutter / React Native)<br/><i>Owner: Muhammad Afnan Khan</i></td>
-          <td>
-            &bull; QR Code Viewfinder scanner<br/>
-            &bull; Live Floor Monitor (meters rolled, speed, alert status)<br/>
-            &bull; Instant High-Contrast Warning Modal (vibration pulse)<br/>
-            &bull; Manual Defect Tagging Modal
-          </td>
-          <td>
-            &bull; <b>Inputs:</b> Scans roll QR code, acknowledges alarm buzzer, taps to correct AI defect label, submits manual flaw.<br/>
-            &bull; <b>Communication:</b> HTTPS REST for roll session start/stop; WebSockets (WSS) for real-time defect alert push.
-          </td>
+          <td><strong>Step 1</strong></td>
+          <td>Divide page into 4 horizontal bands</td>
+          <td>Draw 3 horizontal dotted lines to create 4 tiers: Top = Tier 1 (Users &amp; Screens), Upper-Mid = Tier 2 (Sensors &amp; Reliability), Lower-Mid = Tier 3 (Edge AI &amp; Local SQLite), Bottom = Tier 4 (Cloud Server &amp; Grading).</td>
         </tr>
         <tr>
-          <td><b>Web Management Dashboard</b><br/>(React with TypeScript & Canvas)<br/><i>Owner: Muhammad Afnan Khan</i></td>
-          <td>
-            &bull; Inspected Rolls Overview table<br/>
-            &bull; Interactive 2D Fabric Defect Map (color-coded flaw glyphs & uninspected spans)<br/>
-            &bull; High-Resolution Defect Crop Gallery with zoom & calipers<br/>
-            &bull; ASTM 4-Point Scorecard & Grade (A, B, Scrap)<br/>
-            &bull; Digital PDF Certificate Preview & Download
-          </td>
-          <td>
-            &bull; <b>Inputs:</b> Filter by batch/date, click defect pin to view crop image, accept/reclassify AI flaw labels, click 'Generate PDF'.<br/>
-            &bull; <b>Communication:</b> HTTPS REST endpoints (JSON payloads) and secure JWT authentication.
-          </td>
+          <td><strong>Step 2</strong></td>
+          <td>Draw Tier 1 (Top Band)</td>
+          <td>Draw 3 rectangles: Left = [Floor Operator (Mobile App)], Middle = [Mobile Live View (Alerts)], Right = [Quality Manager (Web Dashboard)], Far Right = [Final PDF Certificate].</td>
+        </tr>
+        <tr>
+          <td><strong>Step 3</strong></td>
+          <td>Draw Tier 2 (Upper-Mid Band)</td>
+          <td>Draw Left box [Camera + Rotary Encoder]. Draw an arrow into a Center Diamond labelled [Reliable? (Lux/Blur/FPS)]. Draw [NO] arrow right into [Hardware Alarm (Amber Light + Buzzer)].</td>
+        </tr>
+        <tr>
+          <td><strong>Step 4</strong></td>
+          <td>Draw Tier 3 (Lower-Mid Band)</td>
+          <td>Draw [YES] arrow down from Diamond into [AI YOLO Defect Detection]. Draw arrow right into [Location &amp; Kalman Tracker (X, Y)]. Draw arrow right into [Local SQLite Buffer]. Show fault line from Hardware Alarm down into SQLite labeled "Flag Uninspected Span [Y1, Y2]".</td>
+        </tr>
+        <tr>
+          <td><strong>Step 5</strong></td>
+          <td>Draw Tier 4 (Bottom Band)</td>
+          <td>Draw Diamond [Network Online?]. [NO] goes to [Offline Outbox Queue]. [YES] goes down into [Central FastAPI Backend]. Connect left to [Central PostgreSQL DB] and [ASTM 4-Point Grading Engine].</td>
+        </tr>
+        <tr>
+          <td><strong>Step 6</strong></td>
+          <td>Draw the Upward Return Arrow</td>
+          <td>From right edge of [Central FastAPI Backend], draw a line right into the open space and straight UP through the corridor directly into the bottom of [Quality Manager (Web Dashboard)]. Label it "Load 2D Map &amp; Audit Data".</td>
+        </tr>
+        <tr>
+          <td><strong>Step 7</strong></td>
+          <td>Draw Final Export Arrow</td>
+          <td>Draw an arrow from [Quality Manager (Web Dashboard)] right into [Final PDF Certificate]. Label it "Export Signed PDF".</td>
         </tr>
       </tbody>
     </table>
 
-    <h2>5. Backend Architecture</h2>
-    <p>The backend is divided into two focused operational layers:</p>
-    <ul>
-      <li><b>Edge Processing Node (On-Premises Inspection Stand):</b>
-        <ul>
-          <li><i>Camera Ingestion & GPIO Driver:</i> Grabs frames from camera and reads hardware interrupt pulses from rotary encoder.</li>
-          <li><i>Inspection Reliability Monitor:</i> Evaluates Laplacian blur variance and illumination threshold to detect failures.</li>
-          <li><i>YOLO AI Detector & Multi-Frame Tracker:</i> Inferences defect bounding boxes and deduplicates detections.</li>
-          <li><i>Local Sync Daemon:</i> Manages the SQLite transactional outbox queue and image sync dispatcher.</li>
-        </ul>
-      </li>
-      <li><b>Central Server Node (FastAPI Cloud / On-Premises Server):</b>
-        <ul>
-          <li><i>REST Ingestion Gateway:</i> Exposes authenticated endpoints (<code>/api/v1/sync/batch</code>) to receive roll data and crops.</li>
-          <li><i>WebSocket Event Hub:</i> Broadcasts live defect notifications to connected web and mobile clients.</li>
-          <li><i>ASTM D5430 Calculator:</i> Computes penalty points based on physical flaw length and assigns roll quality grade.</li>
-          <li><i>PDF Report Engine:</i> Compiles official inspection certificates with summary tables, defect maps, and verification hashes.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <!-- ==================== PAGE 3: DATABASE, ROLES & SUPERVISOR DEFENSE ==================== -->
-  <div class="page">
-    <div class="doc-header">
-      <div>
-        <div class="doc-title">TexEye AI — Database, Deployment & Defense Q&A</div>
-        <div class="doc-subtitle">Supervisor Q&A Guide & Implementation Invariants</div>
-      </div>
-      <div class="doc-badge">Page 3</div>
+    <div style="margin-top: 10mm; padding: 12px 16px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; text-align: center;">
+      <strong style="color: #15803d; font-size: 10pt;">&check; Complete Architecture Presentation Dossier Verified &amp; Ready</strong><br>
+      <span style="font-size: 8.5pt; color: #166534;">Every diagram is available as an individual high-resolution PNG image and standalone vector PDF in <code>diagrams/workflow/</code>.</span>
     </div>
-
-    <h2>6. Database Workflow</h2>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 25%;">Database Component</th>
-          <th style="width: 40%;">What Information is Stored</th>
-          <th style="width: 35%;">How Data Moves (Read / Write / Sync)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>Local SQLite Buffer (Edge)</b><br/><i>WAL (Write-Ahead Log) Mode</i></td>
-          <td>
-            &bull; Active Roll Session metadata (Batch, GSM, width)<br/>
-            &bull; Real-time Defect events $(X_{cm}, Y_m, \text{class}, \text{confidence})$<br/>
-            &bull; Uninspected spans $[Y_{start}, Y_{end}]$ with reason<br/>
-            &bull; Transactional Outbox Queue (sync status: pending/synced)
-          </td>
-          <td>
-            &bull; <b>Write:</b> Written locally by edge AI pipeline in &lt; 5 ms.<br/>
-            &bull; <b>Read:</b> Local sync worker reads unsynced batches.<br/>
-            &bull; <b>Update:</b> Status updated to <code>synced</code> after HTTP 200 from central server.
-          </td>
-        </tr>
-        <tr>
-          <td><b>Central PostgreSQL Database</b><br/><i>Enterprise Relational DB</i></td>
-          <td>
-            &bull; Master Roll records & historical inspection archives<br/>
-            &bull; Verified defect records with inspector corrections<br/>
-            &bull; ASTM 4-Point quality grades and scrap penalty scores<br/>
-            &bull; User credentials, roles, and cryptographic audit logs
-          </td>
-          <td>
-            &bull; <b>Write:</b> Ingested via FastAPI batch endpoints.<br/>
-            &bull; <b>Read:</b> Queried by React Web Dashboard to display 2D defect map, gallery, and analytics.
-          </td>
-        </tr>
-        <tr>
-          <td><b>Local Disk & Central Image Store</b></td>
-          <td>
-            &bull; High-resolution JPEG image crops of detected defects<br/>
-            &bull; Stored locally in edge folder; synced to MinIO / S3 on cloud
-          </td>
-          <td>
-            &bull; Referenced by unique URI in defect database records.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>7. User Roles & Use Cases</h2>
-    <ul>
-      <li><b>Floor Operator (Mobile App):</b> Mounts roll, scans QR tag to start inspection, receives buzzer/vibration alerts on critical flaws, pauses line if necessary, submits manual tags for unobservable flaws (e.g. shade variation).</li>
-      <li><b>Quality Inspector (Web Dashboard):</b> Reviews flagged defect crop pictures, confirms or corrects AI classifications, visually checks uninspected sections.</li>
-      <li><b>Quality Manager (Web Dashboard):</b> Reviews final ASTM D5430 roll scorecard (Grade A, B, or Scrap), approves inspection reports, and downloads signed PDF certificates.</li>
-    </ul>
-
-    <h2>8. Key Questions Your Supervisor Might Ask (With Confident Answers!)</h2>
-
-    <div class="qa-card">
-      <div class="qa-q">Q1: "Why do you need both an edge computer and a central server? Why not do everything in the cloud?"</div>
-      <div class="qa-a"><b>Answer:</b> "Sir, fabric mills in Pakistan often face unstable internet connections. If we depended on the cloud for real-time video inspection, a temporary internet drop would stop the entire factory line. With our edge design, camera capture, encoder counting, and AI detection run locally in real time and save to a local SQLite buffer. Even during an internet blackout, inspection never stops. Once internet returns, data automatically synchronizes to the central server."</div>
-    </div>
-
-    <div class="qa-card">
-      <div class="qa-q">Q2: "How do you know the exact physical location of a defect on a moving roll?"</div>
-      <div class="qa-a"><b>Answer:</b> "Sir, we couple an industrial rotary optical encoder to the fabric roller. As fabric moves, the encoder generates electrical pulses proportional to displacement. Our edge code converts these pulses into physical length in meters ($Y$). Meanwhile, the bounding box pixel coordinate across the camera image is mapped to physical width in centimeters ($X$) using pre-calibrated millimeter-per-pixel scaling."</div>
-    </div>
-
-    <div class="qa-card">
-      <div class="qa-q">Q3: "What happens if the lighting fails, camera disconnects, or image is blurry?"</div>
-      <div class="qa-a"><b>Answer:</b> "Sir, this is a core innovation of TexEye AI called the <i>Inspection Reliability Guard</i>. If lighting drops below 800 lux, camera frames freeze, or blur variance drops, the system triggers an amber stack light and buzzer. Crucially, it records the exact fabric interval $[L_1, L_2]$ as <b>UNINSPECTED</b>. Our system will <b>never</b> mark an uninspected section as clean fabric, completely preventing false-clear errors."</div>
-    </div>
-
-    <div class="qa-card">
-      <div class="qa-q">Q4: "What is the role division between both group members?"</div>
-      <div class="qa-a"><b>Answer:</b> "Sir, <b>Muhammad Bilal Butt (FA23-BAI-042)</b> leads the AI defect detection, YOLO model training, rotary encoder location mapping, multi-frame tracking, and hardware reliability guard. <b>Muhammad Afnan Khan (FA23-BAI-028)</b> leads the mobile floor application, web quality dashboard, 2D fabric defect map, ASTM 4-point grading module, and PDF report generation."</div>
-    </div>
-
   </div>
 
 </body>
