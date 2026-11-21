@@ -806,76 +806,93 @@ function Get-Compact-Pages-22-to-31 {
             <div style="font-weight: bold; font-size: 8.5pt; text-align: center; margin-bottom: 2mm; border-bottom: 1px solid #ccc; padding-bottom: 1mm;">
               Figure 5.10: State Machine Diagram: Roll Inspection Run FSM
             </div>
-            <!-- Clean, professional UML layout: unbroken whole arrows, solid arrowheads, text strictly above/beside lines -->
-            <svg viewBox="0 0 780 290" width="100%" height="180" style="background: #ffffff; font-family: Arial, sans-serif;">
+            <!-- Clean, professional UML layout: unbroken whole arrows, solid arrowheads, spacious pills -->
+            <svg viewBox="0 0 840 380" width="100%" height="220" style="background:#ffffff; font-family:Arial, sans-serif;">
               <defs>
                 <marker id="fsm-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
                   <polygon points="0 1, 8 4, 0 7" fill="#000000"/>
                 </marker>
+                <marker id="fsm-arr-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#dc2626"/>
+                </marker>
+                <marker id="fsm-arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 1, 8 4, 0 7" fill="#16a34a"/>
+                </marker>
               </defs>
 
-              <!-- Start Node -->
-              <circle cx="390" cy="14" r="7" fill="#000000"/>
-              <line x1="390" y1="21" x2="390" y2="44" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="402" y="35" font-size="7.5" font-weight="bold">scan_qr</text>
+              <!-- Initial State (Solid Circle) -->
+              <circle cx="420" cy="20" r="7" fill="#000000"/>
+              
+              <!-- Transition: Start -> INITIALIZING -->
+              <line x1="420" y1="27" x2="420" y2="52" stroke="#000000" stroke-width="1.3" marker-end="url(#fsm-arr)"/>
+              <rect x="435" y="32" width="70" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+              <text x="470" y="43" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">scan_qr</text>
 
               <!-- State 1: INITIALIZING -->
-              <rect x="280" y="44" width="220" height="34" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-              <text x="390" y="58" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
-              <text x="390" y="70" font-size="7" text-anchor="middle">Do: Zero encoder, check sensors</text>
+              <rect x="290" y="52" width="260" height="38" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>
+              <text x="420" y="66" font-size="8.5" font-weight="bold" text-anchor="middle">INITIALIZING</text>
+              <text x="420" y="79" font-size="7" text-anchor="middle">entry / Zero encoder; POST /session/start</text>
 
               <!-- Transition: INITIALIZING -> RUNNING -->
-              <line x1="390" y1="78" x2="390" y2="100" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="402" y="92" font-size="7.5" font-weight="bold">sensors_ok</text>
+              <line x1="420" y1="90" x2="420" y2="115" stroke="#000000" stroke-width="1.3" marker-end="url(#fsm-arr)"/>
+              <rect x="435" y="96" width="75" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+              <text x="472" y="107" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">sensors_ok</text>
 
-              <!-- State 2: RUNNING (Center) -->
-              <rect x="260" y="100" width="260" height="38" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
-              <text x="390" y="116" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
-              <text x="390" y="129" font-size="7" text-anchor="middle">Do: Ingest, infer AI, track defects</text>
+              <!-- State 2: RUNNING (Center Core) -->
+              <rect x="270" y="115" width="300" height="46" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+              <text x="420" y="130" font-size="9" font-weight="bold" text-anchor="middle">RUNNING</text>
+              <text x="420" y="143" font-size="7" text-anchor="middle">do / Ingest 30fps frames &amp; count optical pulses</text>
+              <text x="420" y="154" font-size="7" text-anchor="middle">infer YOLO defect bboxes &amp; Kalman track (X, Y)</text>
 
               <!-- Left Branch: RUNNING -> PAUSED -->
-              <path d="M 260 112 L 130 112 L 130 150" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="190" y="104" font-size="7.5" font-weight="bold" text-anchor="middle">operator_pause</text>
+              <path d="M 270 128 L 140 128 L 140 195" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#fsm-arr)"/>
+              <rect x="155" y="120" width="95" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+              <text x="202" y="131" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">operator_pause</text>
 
-              <!-- State 3: PAUSED (Left) -->
-              <rect x="30" y="150" width="200" height="38" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-              <text x="130" y="166" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
-              <text x="130" y="179" font-size="7" text-anchor="middle">Do: Freeze displacement counter</text>
+              <!-- State 3: PAUSED -->
+              <rect x="25" y="195" width="225" height="42" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>
+              <text x="137" y="210" font-size="8.5" font-weight="bold" text-anchor="middle">PAUSED</text>
+              <text x="137" y="224" font-size="7" text-anchor="middle">do / Freeze displacement counter</text>
 
               <!-- Resume: PAUSED -> RUNNING -->
-              <path d="M 230 169 L 300 169 L 300 138" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="265" y="161" font-size="7.5" font-weight="bold" text-anchor="middle">operator_resume</text>
+              <path d="M 220 195 L 220 152 L 270 152" fill="none" stroke="#16a34a" stroke-width="1.3" marker-end="url(#fsm-arr-green)"/>
+              <rect x="175" y="162" width="90" height="15" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+              <text x="220" y="173" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">operator_resume</text>
 
               <!-- Right Branch: RUNNING -> UNINSPECTED_FAULT -->
-              <path d="M 520 110 L 660 110 L 660 150" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="590" y="102" font-size="7.5" font-weight="bold" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
+              <path d="M 570 128 L 700 128 L 700 195" fill="none" stroke="#dc2626" stroke-width="1.3" marker-end="url(#fsm-arr-red)"/>
+              <rect x="585" y="120" width="130" height="15" fill="#fff1f2" stroke="#fca5a5" rx="3"/>
+              <text x="650" y="131" font-size="7.5" font-weight="bold" fill="#9f1239" text-anchor="middle">sensor_fault [lux&lt;800|blur]</text>
 
-              <!-- State 4: UNINSPECTED_FAULT (Right) -->
-              <rect x="550" y="150" width="210" height="46" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-              <text x="655" y="165" font-size="8.5" font-weight="bold" text-anchor="middle">UNINSPECTED_FAULT</text>
-              <text x="655" y="177" font-size="7" text-anchor="middle">Do: Suspend AI, record span</text>
-              <text x="655" y="188" font-size="7" text-anchor="middle">Actuate Amber Stack Light</text>
+              <!-- State 4: UNINSPECTED_FAULT -->
+              <rect x="585" y="195" width="235" height="46" rx="5" fill="#fff1f2" stroke="#dc2626" stroke-width="1.3"/>
+              <text x="702" y="209" font-size="8.5" font-weight="bold" fill="#991b1b" text-anchor="middle">UNINSPECTED_FAULT</text>
+              <text x="702" y="222" font-size="7" fill="#be123c" text-anchor="middle">entry / Actuate Amber stack light &amp; buzzer</text>
+              <text x="702" y="233" font-size="7" fill="#be123c" text-anchor="middle">do / Suspend AI; record span [Y1, Y2]</text>
 
-              <!-- Recovery: UNINSPECTED_FAULT -> RUNNING (Leaves top, enters right side of RUNNING cleanly) -->
-              <path d="M 590 150 L 590 128 L 520 128" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="555" y="122" font-size="7.5" font-weight="bold" text-anchor="middle">sensors_recovered</text>
+              <!-- Recovery: UNINSPECTED_FAULT -> RUNNING -->
+              <path d="M 620 195 L 620 152 L 570 152" fill="none" stroke="#16a34a" stroke-width="1.3" marker-end="url(#fsm-arr-green)"/>
+              <rect x="575" y="162" width="95" height="15" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+              <text x="622" y="173" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">sensors_recovered</text>
 
-              <!-- Center Branch: RUNNING -> ALARM_ACTIVE (Completely open space, zero collision) -->
-              <line x1="390" y1="138" x2="390" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="402" y="174" font-size="7.5" font-weight="bold">critical_defect [hole&gt;25mm]</text>
+              <!-- Center Branch: RUNNING -> ALARM_ACTIVE -->
+              <line x1="420" y1="161" x2="420" y2="202" stroke="#dc2626" stroke-width="1.4" marker-end="url(#fsm-arr-red)"/>
+              <rect x="340" y="174" width="160" height="15" fill="#fff1f2" stroke="#fca5a5" rx="3"/>
+              <text x="420" y="185" font-size="7.5" font-weight="bold" fill="#9f1239" text-anchor="middle">critical_defect [hole&gt;25mm]</text>
 
               <!-- State 5: ALARM_ACTIVE -->
-              <rect x="280" y="206" width="220" height="40" rx="5" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-              <text x="390" y="222" font-size="8.5" font-weight="bold" text-anchor="middle">ALARM_ACTIVE</text>
-              <text x="390" y="236" font-size="7" text-anchor="middle">Do: Relay Red light, sound buzzer</text>
+              <rect x="290" y="202" width="260" height="40" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.3"/>
+              <text x="420" y="217" font-size="8.5" font-weight="bold" fill="#991b1b" text-anchor="middle">ALARM_ACTIVE</text>
+              <text x="420" y="231" font-size="7" text-anchor="middle">entry / Actuate Red light &amp; buzzer; push WS haptic</text>
 
-              <!-- Terminal Transition: ALARM_ACTIVE -> Bullseye -->
-              <line x1="390" y1="246" x2="390" y2="268" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
-              <text x="402" y="259" font-size="7.5">operator_ack</text>
+              <!-- Transition: ALARM_ACTIVE -> Bullseye -->
+              <line x1="420" y1="242" x2="420" y2="265" stroke="#000000" stroke-width="1.2" marker-end="url(#fsm-arr)"/>
+              <rect x="435" y="247" width="80" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+              <text x="475" y="258" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">operator_ack</text>
 
-              <!-- Terminal Circle (Bullseye) -->
-              <circle cx="390" cy="276" r="8" fill="none" stroke="#000000" stroke-width="1.2"/>
-              <circle cx="390" cy="276" r="4.5" fill="#000000"/>
+              <!-- Terminal State (Bullseye) -->
+              <circle cx="420" cy="275" r="8" fill="none" stroke="#000000" stroke-width="1.3"/>
+              <circle cx="420" cy="275" r="4.5" fill="#000000"/>
             </svg>
           </div>
 
@@ -1352,4 +1369,5 @@ Output: TotalPoints, PointsPer100SqMeters, FinalGrade in {Grade A, Grade B, Reje
 }
 
 Write-Output "Compact Pages 22 to 31 module loaded."
+
 

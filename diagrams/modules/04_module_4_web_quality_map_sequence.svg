@@ -67,12 +67,12 @@
 
   <!-- Fetch High Res Crop -->
   <line x1="340" y1="440" x2="1180" y2="440" stroke="#2563eb" stroke-width="1.3" marker-end="url(#arr-blue)"/>
-  <rect x="670" y="427" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
-  <text x="760" y="439" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">6. fetch_crop_url(defect_id)</text>
+  <rect x="775" y="427" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="865" y="439" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">6. fetch_crop_url(defect_id)</text>
 
   <line x1="1180" y1="480" x2="340" y2="480" stroke="#2563eb" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-blue)"/>
-  <rect x="670" y="467" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
-  <text x="760" y="479" font-size="8" fill="#1e40af" text-anchor="middle">crop_image_blob (256x256)</text>
+  <rect x="775" y="467" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="865" y="479" font-size="8" fill="#1e40af" text-anchor="middle">crop_image_blob (256x256)</text>
 
   <!-- Display Modal & Calipers -->
   <line x1="340" y1="520" x2="130" y2="520" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>

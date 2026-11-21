@@ -1,4 +1,4 @@
-﻿# scripts/compile_meeting_master_pdf.ps1
+# scripts/compile_meeting_master_pdf.ps1
 # Compiles the comprehensive Master Meeting Dossier with all diagrams embedded inline
 
 $ErrorActionPreference = "Stop"

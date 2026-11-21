@@ -1,4 +1,4 @@
-﻿# scripts/make_meeting_diagrams_part3.ps1
+# scripts/make_meeting_diagrams_part3.ps1
 # Generates Diagrams 04, 05, 06, 07
 
 $ErrorActionPreference = "Stop"
