@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<VisioDocument xmlns='http://schemas.microsoft.com/visio/2003/core'>
+  <DocumentProperties>
+    <Title>UC-OP-01: Login / Logout</Title>
+    <Creator>TexEye AI Team</Creator>
+    <Company>COMSATS University Islamabad</Company>
+  </DocumentProperties>
+  <Pages>
+    <Page ID='0' Name='UC-OP-01: Login / Logout'>
+      <PageSheet>
+        <PageProps>
+          <PageWidth>11</PageWidth>
+          <PageHeight>8.5</PageHeight>
+        </PageProps>
+      </PageSheet>
+      <Shapes>
+      <Shape ID='1' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>7.8</PinY>
+          <Width>8.5</Width>
+          <Height>0.6</Height>
+        </XForm>
+        <Text>Sequence Diagram: UC-OP-01: Login / Logout</Text>
+      </Shape>
+      <Shape ID='2' Type='Shape'>
+        <XForm>
+          <PinX>1.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>1.5</Width>
+          <Height>5.0</Height>
+        </XForm>
+        <Text>:FloorOperator</Text>
+      </Shape>
+      <Shape ID='3' Type='Shape'>
+        <XForm>
+          <PinX>3.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>1.5</Width>
+          <Height>5.0</Height>
+        </XForm>
+        <Text>:MobileUI (Flutter)</Text>
+      </Shape>
+      <Shape ID='4' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>1.5</Width>
+          <Height>5.0</Height>
+        </XForm>
+        <Text>:FastAPIGateway</Text>
+      </Shape>
+      <Shape ID='5' Type='Shape'>
+        <XForm>
+          <PinX>7.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>1.5</Width>
+          <Height>5.0</Height>
+        </XForm>
+        <Text>:AuthService</Text>
+      </Shape>
+      <Shape ID='6' Type='Shape'>
+        <XForm>
+          <PinX>9.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>1.5</Width>
+          <Height>5.0</Height>
+        </XForm>
+        <Text>:SecureStorage</Text>
+      </Shape>
+      <Shape ID='7' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>0.8</PinY>
+          <Width>9.5</Width>
+          <Height>0.5</Height>
+        </XForm>
+        <Text>Summary: Floor operator authenticates at the machine stand tablet, validates operator credentials, receives a signed JWT token, and accesses the floor run interface.</Text>
+      </Shape>
+      </Shapes>
+    </Page>
+  </Pages>
+</VisioDocument>

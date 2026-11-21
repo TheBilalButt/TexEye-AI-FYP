@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-11-22T00:00:00.000Z" agent="TexEye AI Architect" version="22.1.0" type="device">
+  <diagram id="uc_op_05_review_detected_defects" name="uc_op_05_review_detected_defects">
+    <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;UC-OP-05: Review Detected Defects on Mobile Screen&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="150" y="20" width="800" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_10" value=":FloorOperator" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.2;fontColor=#0f172a;fontStyle=1;fontSize=10;size=36;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="120" height="710" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_11" value=":MobileUI (Flutter)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.2;fontColor=#0f172a;fontStyle=1;fontSize=10;size=36;" vertex="1" parent="1">
+          <mxGeometry x="210" y="70" width="120" height="710" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_12" value=":EdgeAPIServer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.2;fontColor=#0f172a;fontStyle=1;fontSize=10;size=36;" vertex="1" parent="1">
+          <mxGeometry x="370" y="70" width="120" height="710" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_13" value=":DiskCropStore" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.2;fontColor=#0f172a;fontStyle=1;fontSize=10;size=36;" vertex="1" parent="1">
+          <mxGeometry x="530" y="70" width="120" height="710" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_14" value=":SQLiteBuffer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=1.2;fontColor=#0f172a;fontStyle=1;fontSize=10;size=36;" vertex="1" parent="1">
+          <mxGeometry x="690" y="70" width="120" height="710" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_15" value="1. tap_view_detected_defects()" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="130" as="sourcePoint"/>
+            <mxPoint x="270" y="130" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_16" value="2. GET /sessions/current/defects" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="168" as="sourcePoint"/>
+            <mxPoint x="430" y="168" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_17" value="3. SELECT id, flaw_class, coord_x, coord_y FROM defects" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="430" y="206" as="sourcePoint"/>
+            <mxPoint x="750" y="206" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_18" value="4. return defects_list_meta" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="244" as="sourcePoint"/>
+            <mxPoint x="430" y="244" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_19" value="5. read_crop_image(crop_uuid.jpg)" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="430" y="282" as="sourcePoint"/>
+            <mxPoint x="590" y="282" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_20" value="6. return jpeg_bytes(256x256)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="590" y="320" as="sourcePoint"/>
+            <mxPoint x="430" y="320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_21" value="7. render_defect_card_carousel()" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;strokeColor=#0f172a;strokeWidth=1.2;fontColor=#0f172a;fontSize=9;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="358" as="sourcePoint"/>
+            <mxPoint x="110" y="358" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

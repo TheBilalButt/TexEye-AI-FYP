@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<VisioDocument xmlns='http://schemas.microsoft.com/visio/2003/core'>
+  <DocumentProperties>
+    <Title>Module 1 AI Detection Sequence</Title>
+    <Creator>TexEye AI Team</Creator>
+    <Company>COMSATS University Islamabad</Company>
+  </DocumentProperties>
+  <Pages>
+    <Page ID='0' Name='Module 1 AI Detection Sequence'>
+      <PageSheet>
+        <PageProps>
+          <PageWidth>11</PageWidth>
+          <PageHeight>8.5</PageHeight>
+        </PageProps>
+      </PageSheet>
+      <Shapes>
+      <Shape ID='1' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>7.8</PinY>
+          <Width>8.0</Width>
+          <Height>0.6</Height>
+        </XForm>
+        <Text>TexEye AI: Module 1 AI Detection Sequence</Text>
+      </Shape>
+      <Shape ID='2' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>4.5</PinY>
+          <Width>9.5</Width>
+          <Height>5.5</Height>
+        </XForm>
+        <Text>Visual Architecture: Module 1 AI Detection Sequence (Refer to companion SVG/PDF for vector view)</Text>
+      </Shape>
+      <Shape ID='3' Type='Shape'>
+        <XForm>
+          <PinX>5.5</PinX>
+          <PinY>0.8</PinY>
+          <Width>8.0</Width>
+          <Height>0.4</Height>
+        </XForm>
+        <Text>COMSATS University Islamabad &bull; Dr. Tassawar Iqbal &bull; TexEye AI FYP</Text>
+      </Shape>
+      </Shapes>
+    </Page>
+  </Pages>
+</VisioDocument>
