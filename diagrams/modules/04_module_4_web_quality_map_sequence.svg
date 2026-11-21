@@ -1,0 +1,104 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">Sequence Diagram &bull; Module 4: Web Quality Management &amp; Digital Fabric Map</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Owner: Muhammad Afnan Khan (FA23-BAI-028) &bull; 2D Canvas Roll Web, Crop Gallery, Electronic Calipers &amp; Defect Reclassification</text>
+
+  <!-- Lifeline Headers -->
+  <rect x="50" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="130" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="130" y1="120" x2="130" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="260" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="340" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:WebDashboard (React)</text>
+  <line x1="340" y1="120" x2="340" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="470" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="550" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:Canvas2DMap</text>
+  <line x1="550" y1="120" x2="550" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="680" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="760" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="760" y1="120" x2="760" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="890" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="970" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="970" y1="120" x2="970" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="1100" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="1180" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:MinIOObjectStore</text>
+  <line x1="1180" y1="120" x2="1180" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- Messages -->
+  <line x1="130" y1="150" x2="340" y2="150" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="137" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="149" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_roll(roll_id)</text>
+
+  <line x1="340" y1="190" x2="760" y2="190" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="470" y="177" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="550" y="189" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/rolls/{id}/map</text>
+
+  <line x1="760" y1="230" x2="970" y2="230" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="805" y="217" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="865" y="229" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">3. SELECT defects &amp; spans</text>
+
+  <line x1="970" y1="270" x2="760" y2="270" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="805" y="257" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="865" y="269" font-size="8" fill="#166534" text-anchor="middle">defects_list, spans_list</text>
+
+  <line x1="760" y1="310" x2="340" y2="310" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="470" y="297" width="160" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="550" y="309" font-size="8" fill="#166534" text-anchor="middle">200 OK (map_payload_json)</text>
+
+  <!-- Canvas Draw -->
+  <line x1="340" y1="350" x2="550" y2="350" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="385" y="337" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="445" y="349" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">4. render_2d_web(defects)</text>
+
+  <!-- Inspector clicks flaw glyph -->
+  <line x1="130" y1="400" x2="340" y2="400" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="387" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="399" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">5. click_defect_glyph(#14)</text>
+
+  <!-- Fetch High Res Crop -->
+  <line x1="340" y1="440" x2="1180" y2="440" stroke="#2563eb" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+  <rect x="670" y="427" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="760" y="439" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">6. fetch_crop_url(defect_id)</text>
+
+  <line x1="1180" y1="480" x2="340" y2="480" stroke="#2563eb" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-blue)"/>
+  <rect x="670" y="467" width="180" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="760" y="479" font-size="8" fill="#1e40af" text-anchor="middle">crop_image_blob (256x256)</text>
+
+  <!-- Display Modal & Calipers -->
+  <line x1="340" y1="520" x2="130" y2="520" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="507" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="519" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">7. show_gallery_modal()</text>
+
+  <!-- Reclassification Action -->
+  <line x1="130" y1="570" x2="340" y2="570" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="557" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="569" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">8. reclassify('Foreign Yarn')</text>
+
+  <line x1="340" y1="610" x2="760" y2="610" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="470" y="597" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="550" y="609" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">9. PATCH /api/v1/defects/{id}</text>
+
+  <line x1="760" y1="650" x2="970" y2="650" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr-green)"/>
+  <rect x="805" y="637" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="865" y="649" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">10. UPDATE &amp; INSERT audit</text>
+
+  <line x1="970" y1="690" x2="340" y2="690" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="580" y="677" width="160" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="660" y="689" font-size="8" fill="#166534" text-anchor="middle">200 OK (reclassified, audit_id)</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="775" width="1270" height="60" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="795" font-size="10" font-weight="bold" fill="#0f172a">Module 4 Defense Summary (Afnan Khan):</text>
+  <text x="40" y="812" font-size="8.5" fill="#334155">&bull; 2D Defect Map renders the full fabric roll as an interactive canvas map with color-coded defect glyphs and highlighted uninspected hazard spans.</text>
+  <text x="40" y="826" font-size="8.5" fill="#334155">&bull; Inspector has full audit capability: clicking any defect brings up the high-res crop photo for caliper measurement and reclassification.</text>
+</svg>

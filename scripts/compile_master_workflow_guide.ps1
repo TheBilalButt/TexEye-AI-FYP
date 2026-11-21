@@ -1,4 +1,4 @@
-﻿# compile_master_workflow_guide.ps1
+# compile_master_workflow_guide.ps1
 # Compiles the comprehensive TexEye AI Master Workflow Guide PDF containing all 7 diagrams,
 # architecture breakdowns, supervisor presentation walkthrough, and supervisor Q&A.
 

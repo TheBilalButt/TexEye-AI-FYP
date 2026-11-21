@@ -1,4 +1,4 @@
-﻿# make_diagram_1.ps1
+# make_diagram_1.ps1
 $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $workflowDir = Join-Path $projectRoot "diagrams\workflow"

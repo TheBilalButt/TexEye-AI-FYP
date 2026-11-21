@@ -1,0 +1,105 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">Sequence Diagram &bull; Module 5: Smart Operations Module &amp; ASTM 4-Point Grading</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Joint Collaboration: Bilal &amp; Afnan &bull; ASTM D5430 Penalty Calculation, Grade Assignment &amp; PDF Quality Certificate Export</text>
+
+  <!-- Lifeline Headers -->
+  <rect x="50" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="130" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityManager</text>
+  <line x1="130" y1="120" x2="130" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="260" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="340" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:WebDashboard</text>
+  <line x1="340" y1="120" x2="340" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="470" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="550" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIServer</text>
+  <line x1="550" y1="120" x2="550" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="680" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="760" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:ASTMEngine</text>
+  <line x1="760" y1="120" x2="760" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="890" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="970" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="970" y1="120" x2="970" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="1100" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="1180" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:PDFExportService</text>
+  <line x1="1180" y1="120" x2="1180" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- Messages -->
+  <line x1="130" y1="150" x2="340" y2="150" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="137" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="149" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">1. click_finalize_roll()</text>
+
+  <line x1="340" y1="190" x2="550" y2="190" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="385" y="177" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="445" y="189" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /rolls/{id}/grade</text>
+
+  <line x1="550" y1="230" x2="760" y2="230" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="580" y="217" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="660" y="229" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">3. compute_astm_d5430(roll_id)</text>
+
+  <line x1="760" y1="270" x2="970" y2="270" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="805" y="257" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="865" y="269" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT all defects</text>
+
+  <line x1="970" y1="310" x2="760" y2="310" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="805" y="297" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="865" y="309" font-size="8" fill="#166534" text-anchor="middle">defects with length_mm</text>
+
+  <!-- ASTM Calculation Logic -->
+  <line x1="760" y1="350" x2="760" y2="390" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="760" y1="390" x2="790" y2="390" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="790" y1="390" x2="790" y2="350" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="790" y1="350" x2="765" y2="350" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="770" y="360" width="160" height="16" fill="#f8fafc" stroke="#cbd5e1" rx="3"/>
+  <text x="850" y="372" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">calc: max 4 pts / meter</text>
+
+  <!-- Commit Grade -->
+  <line x1="760" y1="430" x2="970" y2="430" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr-green)"/>
+  <rect x="805" y="417" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="865" y="429" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">5. UPDATE grade = 'Grade A'</text>
+
+  <line x1="760" y1="470" x2="550" y2="470" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="580" y="457" width="160" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="660" y="469" font-size="8" fill="#166534" text-anchor="middle">grade_summary (14.2 pts/100m²)</text>
+
+  <!-- Generate PDF -->
+  <line x1="550" y1="510" x2="1180" y2="510" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="790" y="497" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="870" y="509" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">6. render_pdf(roll, defects, astm)</text>
+
+  <!-- Sign PDF -->
+  <line x1="1180" y1="550" x2="1180" y2="590" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="1180" y1="590" x2="1210" y2="590" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="1210" y1="590" x2="1210" y2="550" stroke="#0f172a" stroke-width="1.3"/>
+  <line x1="1210" y1="550" x2="1185" y2="550" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="1190" y="560" width="110" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="1245" y="572" font-size="7.5" font-weight="bold" fill="#15803d" text-anchor="middle">sign_sha256_hash()</text>
+
+  <!-- Return Download URL -->
+  <line x1="1180" y1="630" x2="550" y2="630" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="790" y="617" width="160" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="870" y="629" font-size="8" fill="#166534" text-anchor="middle">pdf_url, sha256_seal</text>
+
+  <line x1="550" y1="670" x2="340" y2="670" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="385" y="657" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="445" y="669" font-size="8" fill="#166534" text-anchor="middle">200 OK (grade_report_ready)</text>
+
+  <line x1="340" y1="710" x2="130" y2="710" stroke="#16a34a" stroke-width="1.4" marker-end="url(#arr-green)"/>
+  <rect x="175" y="697" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="235" y="709" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">7. display_download_button()</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="775" width="1270" height="60" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="795" font-size="10" font-weight="bold" fill="#0f172a">Module 5 Defense Summary (Joint: Bilal &amp; Afnan):</text>
+  <text x="40" y="812" font-size="8.5" fill="#334155">&bull; ASTM D5430 4-Point System is computed mathematically: 1 to 4 penalty points per flaw, capped at 4 points per linear meter.</text>
+  <text x="40" y="826" font-size="8.5" fill="#334155">&bull; Official PDF Inspection Certificate is signed with a cryptographic SHA-256 seal to prevent tampering by fabric buyers or sellers.</text>
+</svg>

@@ -1,0 +1,183 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#dc2626"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <!-- Title & Header Bar -->
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Rough System Workflow Diagram (Paper-Drawing Blueprint)</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Simplified, Hand-Drawable Layout for Meeting Discussion with Supervisor Dr. Tassawar Iqbal</text>
+
+  <!-- Stage 1 Container: Roll Ingestion & Start -->
+  <rect x="25" y="75" width="1270" height="135" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="35" y="82" width="220" height="22" fill="#e2e8f0" rx="3"/>
+  <text x="145" y="97" font-size="9.5" font-weight="bold" fill="#1e293b" text-anchor="middle">STAGE 1: ROLL INGESTION &amp; START</text>
+
+  <!-- Box 1 -->
+  <rect x="45" y="115" width="260" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="52" y="122" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="79" y="133" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 1</text>
+  <text x="175" y="142" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Floor Worker (Mobile App)</text>
+  <text x="175" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Scans QR code on physical fabric roll</text>
+  <text x="175" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Reads Batch ID, Article, Length</text>
+
+  <!-- Arrow 1 to 2 -->
+  <line x1="305" y1="152" x2="385" y2="152" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="315" y="139" width="60" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="345" y="150" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Start Run</text>
+
+  <!-- Box 2 -->
+  <rect x="385" y="115" width="280" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="392" y="122" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="419" y="133" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 2</text>
+  <text x="525" y="142" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Stand Hardware Initialization</text>
+  <text x="525" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Stand PC zeros rotary encoder counter</text>
+  <text x="525" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Camera stream powers on at 1080p</text>
+
+  <!-- Box 3: Mobile Live Monitor -->
+  <rect x="745" y="115" width="260" height="75" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="752" y="122" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="779" y="133" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 3</text>
+  <text x="875" y="142" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Mobile Live Floor View</text>
+  <text x="875" y="158" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Real-time speed gauge &amp; length meter</text>
+  <text x="875" y="172" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Ready to receive instant flaw push</text>
+
+  <!-- Arrow 2 to 3 -->
+  <line x1="665" y1="152" x2="745" y2="152" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="675" y="139" width="60" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="705" y="150" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Live Sync</text>
+
+  <!-- Stage 2 Container: Real-Time Sensing & Reliability Gate -->
+  <rect x="25" y="225" width="1270" height="155" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="35" y="232" width="280" height="22" fill="#e2e8f0" rx="3"/>
+  <text x="175" y="247" font-size="9.5" font-weight="bold" fill="#1e293b" text-anchor="middle">STAGE 2: SENSING &amp; RELIABILITY GATE</text>
+
+  <!-- Box 4: Physical Sensing -->
+  <rect x="45" y="265" width="260" height="85" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="52" y="272" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="79" y="283" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 4</text>
+  <text x="175" y="293" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Fabric Motion &amp; Sensing</text>
+  <text x="175" y="310" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Fabric moves across motorized stand</text>
+  <text x="175" y="324" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Camera grabs 30-60 frames/sec</text>
+  <text x="175" y="338" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Optical encoder pulses count distance</text>
+
+  <!-- Arrow to Diamond -->
+  <line x1="305" y1="307" x2="385" y2="307" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="320" y="295" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="345" y="306" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Frames</text>
+
+  <!-- Decision Diamond 1: Reliable? -->
+  <polygon points="385,307 465,272 545,307 465,342" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="465" y="303" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Inspection</text>
+  <text x="465" y="316" font-size="9.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Reliable?</text>
+
+  <!-- Branch [NO] -> Box 5 Fault -->
+  <line x1="545" y1="307" x2="685" y2="307" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arr-red)"/>
+  <rect x="560" y="293" width="110" height="18" fill="#fff1f2" stroke="#e11d48" rx="3"/>
+  <text x="615" y="305" font-size="8" font-weight="bold" fill="#be123c" text-anchor="middle">[NO: Sensor Fault]</text>
+
+  <rect x="685" y="265" width="300" height="85" fill="#fff1f2" stroke="#e11d48" stroke-width="1.4" rx="5"/>
+  <rect x="692" y="272" width="55" height="16" fill="#be123c" rx="3"/>
+  <text x="719" y="283" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">FAULT</text>
+  <text x="835" y="293" font-size="10.5" font-weight="bold" fill="#9f1239" text-anchor="middle">Hardware Alarm &amp; Safety Mark</text>
+  <text x="835" y="310" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; USB Relay fires Amber Light + Siren</text>
+  <text x="835" y="324" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; Flags fabric span [Y1, Y2] as UNINSPECTED</text>
+  <text x="835" y="338" font-size="8.5" fill="#be123c" text-anchor="middle">&bull; Prevents uninspected fabric passing silently</text>
+
+  <!-- Branch [YES] -> Goes Down to Stage 3 Box 6 -->
+  <path d="M 465 342 L 465 405 L 175 405 L 175 435" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arr-black)"/>
+  <rect x="410" y="355" width="110" height="18" fill="#f0fdf4" stroke="#16a34a" rx="3"/>
+  <text x="465" y="367" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">[YES: Reliable Data]</text>
+
+  <!-- Stage 3 Container: Edge AI & Local Offline Storage -->
+  <rect x="25" y="395" width="1270" height="175" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="35" y="402" width="310" height="22" fill="#e2e8f0" rx="3"/>
+  <text x="190" y="417" font-size="9.5" font-weight="bold" fill="#1e293b" text-anchor="middle">STAGE 3: EDGE AI &amp; OFFLINE LOCAL BUFFER</text>
+
+  <!-- Box 6: AI Detection -->
+  <rect x="45" y="435" width="260" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="52" y="442" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="79" y="453" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 5</text>
+  <text x="175" y="463" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">YOLO Defect Detection</text>
+  <text x="175" y="480" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Runs AI model inference on frame</text>
+  <text x="175" y="494" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Finds defect bounding box &amp; confidence</text>
+  <text x="175" y="508" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Classifies: Hole, Stain, Thread, etc.</text>
+
+  <!-- Arrow to Box 7 -->
+  <line x1="305" y1="477" x2="385" y2="477" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="320" y="465" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="345" y="476" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">BBox</text>
+
+  <!-- Box 7: Location & Deduplication -->
+  <rect x="385" y="435" width="280" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="392" y="442" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="419" y="453" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 6</text>
+  <text x="525" y="463" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Location &amp; Tracking</text>
+  <text x="525" y="480" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Encoder pulses &rarr; (X cm, Y meters)</text>
+  <text x="525" y="494" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Kalman filter tracks flaw across frames</text>
+  <text x="525" y="508" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Deduplication: Zero duplicate counts!</text>
+
+  <!-- Arrow to Box 8 -->
+  <line x1="665" y1="477" x2="745" y2="477" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="680" y="465" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="705" y="476" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">(X, Y)</text>
+
+  <!-- Box 8: Local SQLite Buffer -->
+  <rect x="745" y="435" width="260" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="752" y="442" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="779" y="453" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 7</text>
+  <text x="875" y="463" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Local SQLite Storage</text>
+  <text x="875" y="480" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Offline-First: Commits flaw instantly</text>
+  <text x="875" y="494" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Saves high-res JPEG crop to NVMe</text>
+  <text x="875" y="508" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Zero delay / Never halts production</text>
+
+  <!-- Stage 4 Container: Central Server, Grading & Dashboard -->
+  <rect x="25" y="585" width="1270" height="165" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" rx="6"/>
+  <rect x="35" y="592" width="310" height="22" fill="#e2e8f0" rx="3"/>
+  <text x="190" y="607" font-size="9.5" font-weight="bold" fill="#1e293b" text-anchor="middle">STAGE 4: CLOUD SERVER, GRADING &amp; REPORTS</text>
+
+  <!-- Box 9: Central FastAPI & DB -->
+  <rect x="45" y="630" width="280" height="85" fill="#f8fafc" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="52" y="637" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="79" y="648" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 8</text>
+  <text x="185" y="658" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Central FastAPI &amp; DB</text>
+  <text x="185" y="675" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Outbox sync pushes batch to FastAPI</text>
+  <text x="185" y="689" font-size="8.5" fill="#334155" text-anchor="middle">&bull; PostgreSQL stores roll &amp; defect records</text>
+  <text x="185" y="703" font-size="8.5" fill="#334155" text-anchor="middle">&bull; MinIO S3 stores high-res flaw crops</text>
+
+  <!-- Arrow to Box 10 -->
+  <line x1="325" y1="672" x2="385" y2="672" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="330" y="660" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="355" y="671" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Defects</text>
+
+  <!-- Box 10: ASTM 4-Point Engine -->
+  <rect x="385" y="630" width="280" height="85" fill="#ffffff" stroke="#0f172a" stroke-width="1.4" rx="5"/>
+  <rect x="392" y="637" width="55" height="16" fill="#0284c7" rx="3"/>
+  <text x="419" y="648" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 9</text>
+  <text x="525" y="658" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Smart Operations (ASTM)</text>
+  <text x="525" y="675" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Runs ASTM D5430 4-point penalty rule</text>
+  <text x="525" y="689" font-size="8.5" fill="#334155" text-anchor="middle">&bull; Calculates points per 100 sq. meters</text>
+  <text x="525" y="703" font-size="8.5" fill="#16a34a" font-weight="bold" text-anchor="middle">&bull; Assigns Grade A, Grade B, or Scrap</text>
+
+  <!-- Arrow to Box 11 -->
+  <line x1="665" y1="672" x2="745" y2="672" stroke="#0f172a" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="680" y="660" width="50" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="705" y="671" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Score</text>
+
+  <!-- Box 11: Web Dashboard & Final PDF -->
+  <rect x="745" y="630" width="310" height="85" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" rx="5"/>
+  <rect x="752" y="637" width="60" height="16" fill="#16a34a" rx="3"/>
+  <text x="782" y="648" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">STEP 10</text>
+  <text x="900" y="658" font-size="10.5" font-weight="bold" fill="#15803d" text-anchor="middle">Quality Manager &amp; PDF Report</text>
+  <text x="900" y="675" font-size="8.5" fill="#166534" text-anchor="middle">&bull; Manager reviews 2D roll map on web</text>
+  <text x="900" y="689" font-size="8.5" fill="#166534" text-anchor="middle">&bull; Checks defect crop gallery &amp; calipers</text>
+  <text x="900" y="703" font-size="8.5" fill="#15803d" font-weight="bold" text-anchor="middle">&bull; Exports signed PDF Quality Certificate</text>
+
+  <!-- Bottom Paper-Drawing Notes Box -->
+  <rect x="25" y="760" width="1270" height="75" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="780" font-size="10" font-weight="bold" fill="#0f172a">How to Hand-Draw this on A4 Paper in 2 Minutes:</text>
+  <text x="40" y="798" font-size="8.5" fill="#334155">1. Draw 4 horizontal rows on paper: [Row 1: QR Scan &amp; App] &rarr; [Row 2: Sensors &amp; Safety Gate] &rarr; [Row 3: AI &amp; Local SQLite] &rarr; [Row 4: Cloud DB &amp; ASTM PDF].</text>
+  <text x="40" y="814" font-size="8.5" fill="#334155">2. Draw the 10 numbered boxes in order and connect them with arrows. Show the single decision diamond branching [NO] to Amber Alarm and [YES] to AI.</text>
+</svg>

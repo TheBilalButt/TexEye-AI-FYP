@@ -1,4 +1,4 @@
-﻿# make_all_diagrams.ps1
+# make_all_diagrams.ps1
 # Complete generator for Diagrams 2 through 7
 $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot

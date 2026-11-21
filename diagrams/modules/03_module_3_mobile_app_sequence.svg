@@ -1,0 +1,98 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#2563eb"/></marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#16a34a"/></marker>
+  </defs>
+
+  <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">Sequence Diagram &bull; Module 3: Mobile Floor Application</text>
+  <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Owner: Muhammad Afnan Khan (FA23-BAI-028) &bull; QR Code Roll Scanning, Live Floor Telemetry, Real-Time Haptic Alert &amp; Manual Tagging</text>
+
+  <!-- Lifeline Headers -->
+  <rect x="50" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="130" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="130" y1="120" x2="130" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="260" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="340" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="340" y1="120" x2="340" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="470" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="550" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:QRScanner</text>
+  <line x1="550" y1="120" x2="550" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="680" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="760" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:WebSocketClient</text>
+  <line x1="760" y1="120" x2="760" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="890" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="970" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:StandEdgePC</text>
+  <line x1="970" y1="120" x2="970" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <rect x="1100" y="80" width="160" height="40" fill="#f8fafc" stroke="#0f172a" stroke-width="1.3" rx="4"/>
+  <text x="1180" y="105" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">:LocalMobileCache</text>
+  <line x1="1180" y1="120" x2="1180" y2="760" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- Messages -->
+  <line x1="130" y1="150" x2="340" y2="150" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="137" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="149" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">1. tap_scan_qr()</text>
+
+  <line x1="340" y1="190" x2="550" y2="190" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="385" y="177" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="445" y="189" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">2. open_viewfinder()</text>
+
+  <line x1="550" y1="230" x2="340" y2="230" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="385" y="217" width="120" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="445" y="229" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">qr_decoded(roll_id, batch)</text>
+
+  <line x1="340" y1="270" x2="970" y2="270" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="580" y="257" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="660" y="269" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">3. POST /session/start(roll_id)</text>
+
+  <line x1="970" y1="310" x2="340" y2="310" stroke="#16a34a" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#arr-green)"/>
+  <rect x="580" y="297" width="160" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="660" y="309" font-size="8" fill="#166534" text-anchor="middle">200 OK (session_active, limits)</text>
+
+  <line x1="340" y1="350" x2="760" y2="350" stroke="#2563eb" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+  <rect x="470" y="337" width="160" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="550" y="349" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">4. connect_websocket(ws_url)</text>
+
+  <!-- Real-Time Push Event -->
+  <line x1="970" y1="410" x2="760" y2="410" stroke="#2563eb" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+  <rect x="805" y="397" width="120" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="865" y="409" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">emit: defect_event(data)</text>
+
+  <line x1="760" y1="450" x2="340" y2="450" stroke="#2563eb" stroke-width="1.3" marker-end="url(#arr-blue)"/>
+  <rect x="470" y="437" width="160" height="16" fill="#eff6ff" stroke="#93c5fd" rx="3"/>
+  <text x="550" y="449" font-size="8" font-weight="bold" fill="#1d4ed8" text-anchor="middle">5. trigger_haptic_vibration()</text>
+
+  <line x1="340" y1="490" x2="130" y2="490" stroke="#dc2626" stroke-width="1.4" marker-end="url(#arr-black)"/>
+  <rect x="175" y="477" width="120" height="16" fill="#fff1f2" stroke="#e11d48" rx="3"/>
+  <text x="235" y="489" font-size="8" font-weight="bold" fill="#be123c" text-anchor="middle">6. display_alarm_modal()</text>
+
+  <!-- Operator Acknowledge -->
+  <line x1="130" y1="530" x2="340" y2="530" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="517" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="529" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">7. tap_acknowledge()</text>
+
+  <!-- Manual Tagging -->
+  <line x1="130" y1="580" x2="340" y2="580" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="175" y="567" width="120" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="235" y="579" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">8. select_manual_flaw('Hole')</text>
+
+  <line x1="340" y1="620" x2="970" y2="620" stroke="#0f172a" stroke-width="1.3" marker-end="url(#arr-black)"/>
+  <rect x="580" y="607" width="160" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="660" y="619" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">9. POST /defects/manual(flaw)</text>
+
+  <line x1="340" y1="660" x2="1180" y2="660" stroke="#16a34a" stroke-width="1.3" marker-end="url(#arr-green)"/>
+  <rect x="670" y="647" width="180" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="760" y="659" font-size="8" font-weight="bold" fill="#15803d" text-anchor="middle">10. cache_local_session(data)</text>
+
+  <!-- Bottom Legend -->
+  <rect x="25" y="775" width="1270" height="60" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="40" y="795" font-size="10" font-weight="bold" fill="#0f172a">Module 3 Defense Summary (Afnan Khan):</text>
+  <text x="40" y="812" font-size="8.5" fill="#334155">&bull; Workers don't stare at a screen all day; WebSocket push triggers instant phone vibration when a critical defect passes.</text>
+  <text x="40" y="826" font-size="8.5" fill="#334155">&bull; Manual flaw tag sheet allows workers to log human-spotted flaws (oil spots, selvage curl) stamped with exact meter position.</text>
+</svg>
