@@ -909,6 +909,59 @@
 </svg>
     </div>
 
+    <!-- SECTION 5B: EXHAUSTIVE 25 USE CASE SPECIFICATION MATRIX -->
+    <h3 class="sub-title">5.1 The 25 Formal Actor Use Cases Matrix (1-to-1 Dynamic Realization)</h3>
+    <p>
+      To satisfy formal UML 2.5 and university SE standards, every functional use case must have its own corresponding Sequence Diagram. In TexEye AI, the 25 actor use cases are organized across 5 user categories:
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Use Case ID &amp; Name</th>
+          <th>Primary Actor</th>
+          <th>Sequence Diagram File</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="5"><b>Floor Operator</b><br>(5 Use Cases)</td><td><code>UC-OP-01</code>: Login / Logout</td><td>Floor Operator</td><td><code>diagrams/usecases/uc_op_01_login_logout.svg</code></td></tr>
+        <tr><td><code>UC-OP-02</code>: Scan Roll QR Code</td><td>Floor Operator</td><td><code>diagrams/usecases/uc_op_02_scan_roll_qr.svg</code></td></tr>
+        <tr><td><code>UC-OP-03</code>: View Active Roll Information</td><td>Floor Operator</td><td><code>diagrams/usecases/uc_op_03_view_active_roll.svg</code></td></tr>
+        <tr><td><code>UC-OP-04</code>: Receive Inspection Warning Alerts</td><td>Floor Operator</td><td><code>diagrams/usecases/uc_op_04_receive_inspection_alerts.svg</code></td></tr>
+        <tr><td><code>UC-OP-05</code>: Review Detected Defects on Mobile Screen</td><td>Floor Operator</td><td><code>diagrams/usecases/uc_op_05_review_detected_defects.svg</code></td></tr>
+
+        <tr><td rowspan="7"><b>Quality Inspector</b><br>(7 Use Cases)</td><td><code>UC-QI-01</code>: Login / Logout</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_01_login_logout.svg</code></td></tr>
+        <tr><td><code>UC-QI-02</code>: View Digital Fabric Defect Map (2D Canvas)</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_02_view_2d_defect_map.svg</code></td></tr>
+        <tr><td><code>UC-QI-03</code>: Review Defect High-Resolution Images &amp; Calipers</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_03_review_defect_crops.svg</code></td></tr>
+        <tr><td><code>UC-QI-04</code>: Correct Defect Record &amp; Audit Trail</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_04_correct_defect_record.svg</code></td></tr>
+        <tr><td><code>UC-QI-05</code>: View Roll Inspection Status &amp; Uninspected Intervals</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_05_view_uninspected_intervals.svg</code></td></tr>
+        <tr><td><code>UC-QI-06</code>: Confirm / Update 4-Point Roll Grading</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_06_confirm_roll_grading.svg</code></td></tr>
+        <tr><td><code>UC-QI-07</code>: Generate Digital Inspection Report &amp; PDF</td><td>Quality Inspector</td><td><code>diagrams/usecases/uc_qi_07_generate_inspection_report.svg</code></td></tr>
+
+        <tr><td rowspan="4"><b>Production Manager</b><br>(4 Use Cases)</td><td><code>UC-PM-01</code>: Login / Logout</td><td>Production Manager</td><td><code>diagrams/usecases/uc_pm_01_login_logout.svg</code></td></tr>
+        <tr><td><code>UC-PM-02</code>: View Production Executive Dashboard</td><td>Production Manager</td><td><code>diagrams/usecases/uc_pm_02_view_production_dashboard.svg</code></td></tr>
+        <tr><td><code>UC-PM-03</code>: View Defect Pareto Statistics &amp; Trend Analytics</td><td>Production Manager</td><td><code>diagrams/usecases/uc_pm_03_view_defect_pareto_stats.svg</code></td></tr>
+        <tr><td><code>UC-PM-04</code>: View Historical Production Quality Records</td><td>Production Manager</td><td><code>diagrams/usecases/uc_pm_04_view_historical_records.svg</code></td></tr>
+
+        <tr><td rowspan="5"><b>Inventory Manager</b><br>(5 Use Cases)</td><td><code>UC-IM-01</code>: Login / Logout</td><td>Inventory Manager</td><td><code>diagrams/usecases/uc_im_01_login_logout.svg</code></td></tr>
+        <tr><td><code>UC-IM-02</code>: View Warehouse Inventory Records</td><td>Inventory Manager</td><td><code>diagrams/usecases/uc_im_02_view_warehouse_inventory.svg</code></td></tr>
+        <tr><td><code>UC-IM-03</code>: Update Roll Warehouse Storage Location</td><td>Inventory Manager</td><td><code>diagrams/usecases/uc_im_03_update_roll_location.svg</code></td></tr>
+        <tr><td><code>UC-IM-04</code>: View Certified Roll Grading Status</td><td>Inventory Manager</td><td><code>diagrams/usecases/uc_im_04_view_certified_grading.svg</code></td></tr>
+        <tr><td><code>UC-IM-05</code>: Manage Scrap &amp; Quarantined Roll Segregation</td><td>Inventory Manager</td><td><code>diagrams/usecases/uc_im_05_manage_scrap_segregation.svg</code></td></tr>
+
+        <tr><td rowspan="4"><b>System Admin</b><br>(4 Use Cases)</td><td><code>UC-ADMIN-01</code>: Login / Logout</td><td>System Admin</td><td><code>diagrams/usecases/uc_admin_01_login_logout.svg</code></td></tr>
+        <tr><td><code>UC-ADMIN-02</code>: Manage User Accounts (CRUD)</td><td>System Admin</td><td><code>diagrams/usecases/uc_admin_02_manage_user_accounts.svg</code></td></tr>
+        <tr><td><code>UC-ADMIN-03</code>: Assign Roles &amp; Scopes (RBAC)</td><td>System Admin</td><td><code>diagrams/usecases/uc_admin_03_assign_roles_scopes.svg</code></td></tr>
+        <tr><td><code>UC-ADMIN-04</code>: Configure Edge Calibration &amp; Quality Thresholds</td><td>System Admin</td><td><code>diagrams/usecases/uc_admin_04_configure_edge_calibration.svg</code></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-success">
+      <strong>Complete 25 Sequence Diagrams Manual Available:</strong> All 25 individual sequence diagrams have been compiled into a dedicated master volume: 
+      <br><strong>Document Link:</strong> <a href="file:///c:/Users/User/Desktop/FYP/docs/TexEye_AI_25_Use_Case_Sequence_Diagrams_Manual.pdf">TexEye_AI_25_Use_Case_Sequence_Diagrams_Manual.pdf</a> (514 KB).
+    </div>
+
     <!-- SECTION 6: SEQUENCE DIAGRAMS (1 PER MODULE) -->
     <div class="page-break"></div>
     <h2 class="section-title">

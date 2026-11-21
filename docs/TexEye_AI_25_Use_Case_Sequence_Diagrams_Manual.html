@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TexEye AI — 25 Use Case Sequence Realization Manual</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 8mm 10mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 9pt;
+      line-height: 1.4;
+      color: #0f172a;
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 10mm 12mm;
+    }
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    .cover-card {
+      border: 2px solid #0f172a;
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+    }
+    .uni-badge {
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .doc-title {
+      font-size: 22pt;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+      color: #ffffff;
+    }
+    .doc-subtitle {
+      font-size: 11pt;
+      color: #94a3b8;
+      margin: 0 0 16px 0;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 14px;
+      font-size: 9pt;
+    }
+    .meta-item strong {
+      display: block;
+      color: #38bdf8;
+      font-size: 8pt;
+      text-transform: uppercase;
+    }
+    .sec-header {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 4px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .sec-header span.badge {
+      font-size: 8pt;
+      background: #e0f2fe;
+      color: #0284c7;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .card-frame {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px;
+      background: #ffffff;
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .card-frame svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    table.summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+      margin: 12px 0 20px 0;
+    }
+    table.summary-table th, table.summary-table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 9px;
+      text-align: left;
+    }
+    table.summary-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cover-card">
+      <div class="uni-badge">COMSATS University Islamabad &bull; Wah Cantt Campus &bull; Department of Computer Science</div>
+      <div class="doc-title">TexEye AI — 25 Use Case Sequence Realization Manual</div>
+      <div class="doc-subtitle">Formal 1-to-1 Dynamic Realization for All 25 Actor Use Cases | Complete Software Engineering Deliverable for Dr. Tassawar Iqbal</div>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <strong>Supervisor</strong>
+          Dr. Tassawar Iqbal
+        </div>
+        <div class="meta-item">
+          <strong>Students</strong>
+          Muhammad Bilal Butt (FA23-BAI-042)<br>
+          Muhammad Afnan Khan (FA23-BAI-028)
+        </div>
+        <div class="meta-item">
+          <strong>Project / Scope</strong>
+          TexEye AI (BS-AI FYP)<br>
+          Exact 1-to-1 Use Case Realizations (25 Total)
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-header">
+      Executive Summary &amp; Formal UML Architecture Rationale
+      <span class="badge">UML Standards</span>
+    </div>
+    <p>
+      In formal software engineering and UML 2.5 standards, <strong>every Use Case in the system requirements specification (SRS/SRDS) is dynamically realized by a dedicated Sequence Diagram</strong>. While our <i>5 Module Architecture Diagrams</i> capture composite component pipelines, this manual provides the <strong>exhaustive 25 Sequence Diagrams</strong> corresponding exactly to the 25 functional use cases across our 5 system actors:
+    </p>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Actor Group</th>
+          <th>Use Case IDs</th>
+          <th>Count</th>
+          <th>Key System Responsibilities Realized</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1. Floor Operator</b></td>
+          <td><code>UC-OP-01</code> to <code>UC-OP-05</code></td>
+          <td><b>5</b></td>
+          <td>Stand login, roll QR code scanning, real-time speed &amp; length telemetry, physical haptic alarm alerts, and floor-level defect thumbnail review.</td>
+        </tr>
+        <tr>
+          <td><b>2. Quality Inspector</b></td>
+          <td><code>UC-QI-01</code> to <code>UC-QI-07</code></td>
+          <td><b>7</b></td>
+          <td>Web QA login, interactive 2D HTML5 canvas fabric map rendering, crop inspection with digital calipers, defect reclassification with immutable audit trails, uninspected span tracking, ASTM grading confirmation, and PDF report export.</td>
+        </tr>
+        <tr>
+          <td><b>3. Production Manager</b></td>
+          <td><code>UC-PM-01</code> to <code>UC-PM-04</code></td>
+          <td><b>4</b></td>
+          <td>Executive portal login, plant-wide shift KPI aggregation, 80/20 Pareto defect root cause distribution, and historical production quality data mining.</td>
+        </tr>
+        <tr>
+          <td><b>4. Inventory Manager</b></td>
+          <td><code>UC-IM-01</code> to <code>UC-IM-05</code></td>
+          <td><b>5</b></td>
+          <td>Warehouse ledger login, roll stock level tracking, physical bay/shelf location reassignment, export order grade verification, and scrap roll quarantine segregation.</td>
+        </tr>
+        <tr>
+          <td><b>5. System Administrator</b></td>
+          <td><code>UC-ADMIN-01</code> to <code>UC-ADMIN-04</code></td>
+          <td><b>4</b></td>
+          <td>Superuser authentication, operator/inspector account management (CRUD), role-based access control (RBAC) scopes, and remote edge stand hardware calibration pushing.</td>
+        </tr>
+        <tr style="background:#f1f5f9; font-weight:bold;">
+          <td>TOTAL COMPREHENSIVE USE CASES</td>
+          <td>All 5 Actor Groups</td>
+          <td><b>25</b></td>
+          <td>Exhaustive 1-to-1 Use Case Dynamic Realization</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-OP-01: Login / Logout</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuthService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SecureStorage</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="85.75" y="111" width="208.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_credentials(pin, stand_id)</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="254.0" y="147" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/auth/floor-login</text>
+  <line x1="430" y1="192" x2="590" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="436.0" y="183" width="148.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. verify_operator_pin()</text>
+  <line x1="590" y1="228" x2="430" y2="228" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="400.0" y="219" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="230" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">4. return jwt_token & operator_profile</text>
+  <line x1="430" y1="264" x2="270" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="262.25" y="255" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. 200 OK (token, expires_in)</text>
+  <line x1="270" y1="300" x2="750" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="422.25" y="291" width="175.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. store_encrypted_jwt(token)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="91.25" y="327" width="197.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. display_stand_home_dashboard()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Floor operator authenticates at the machine stand tablet, validates operator credentials, receives a signed JWT token, and accesses the floor run interface.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-OP-02: Scan Roll QR Code</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QRScannerPlugin</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:EdgeEngine</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SQLiteBuffer</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="124.25" y="111" width="131.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. tap_scan_roll_qr()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="265.0" y="147" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. start_camera_viewfinder()</text>
+  <line x1="430" y1="192" x2="270" y2="192" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="259.5" y="183" width="181.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="194" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">3. qr_decoded('ROLL-2026-X89')</text>
+  <line x1="270" y1="228" x2="590" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="334.0" y="219" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. POST /sessions/start(roll_id)</text>
+  <path d="M 590 264 L 615 264 L 615 282 L 595 282" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="620" y="262" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="625" y="273" font-size="7.5" font-weight="bold" fill="#0f172a">5. zero_encoder_pulses()</text>
+  <line x1="590" y1="300" x2="750" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="291" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. INSERT roll_session(roll_id, status='ACTIVE')</text>
+  <line x1="590" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="328.5" y="327" width="203.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (session_active, limits)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="91.25" y="363" width="197.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. display_ready_to_roll_screen()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Operator scans the fabric roll physical QR tag, initializes the inspection run on the stand edge daemon, zeros the displacement pulse counter, and readies the stand.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 452" width="860" height="452" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-OP-03: View Active Roll Information & Telemetry</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="110" y1="97" x2="110" y2="387" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="270" y1="97" x2="270" y2="387" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:WSClient</text>
+  <line x1="430" y1="97" x2="430" y2="387" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:EdgeEngine</text>
+  <line x1="590" y1="97" x2="590" y2="387" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SQLiteBuffer</text>
+  <line x1="750" y1="97" x2="750" y2="387" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="590" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="270.5" y="111" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. fabric_rolls_on_stand()</text>
+  <line x1="590" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="400.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. emit_telemetry(velocity=0.35m/s, length=42.6m)</text>
+  <line x1="430" y1="192" x2="270" y2="192" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="243.0" y="183" width="214.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="194" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">3. on_speed_update(velocity, meters)</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT count(*) FROM defect_records</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="579.5" y="255" width="181.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return current_flaw_count=3</text>
+  <line x1="270" y1="300" x2="110" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. update_meters_gauge_and_defect_counter()</text>
+  <rect x="20" y="400" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="415" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="428" font-size="7.5" fill="#334155">Displays real-time fabric movement velocity (m/s), elapsed inspection meters, and cumulative defect count via high-speed local WebSocket during active production.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-OP-04: Receive Inspection Warning Alerts</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:WSClient</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReliabilityGuard</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:USBRelayBoard</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <path d="M 590 120 L 615 120 L 615 138 L 595 138" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="620" y="118" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="625" y="129" font-size="7.5" font-weight="bold" fill="#0f172a">1. sensor_fault_detected(lux < 800 | hole > 25mm)</text>
+  <line x1="590" y1="156" x2="750" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="579.5" y="147" width="181.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. trip_relay(AMBER_LIGHT, ON)</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="400.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. emit_alert_event(severity='CRITICAL', flaw='Hole')</text>
+  <line x1="430" y1="228" x2="270" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="240.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. trigger_device_haptic_vibration(500ms)</text>
+  <line x1="270" y1="264" x2="110" y2="264" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.25" y="255" width="219.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="266" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">5. render_high_contrast_alarm_modal()</text>
+  <line x1="110" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="110.5" y="291" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. tap_acknowledge_alarm()</text>
+  <line x1="270" y1="336" x2="590" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="342.25" y="327" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. POST /alerts/ack(alert_id)</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Notifies the floor operator of critical defects or sensor faults through physical stack lights, sirens, and tactile mobile vibration pulses.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-OP-05: Review Detected Defects on Mobile Screen</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FloorOperator</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MobileUI (Flutter)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:EdgeAPIServer</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:DiskCropStore</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SQLiteBuffer</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="99.5" y="111" width="181.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. tap_view_detected_defects()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="254.0" y="147" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /sessions/current/defects</text>
+  <line x1="430" y1="192" x2="750" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. SELECT id, flaw_class, coord_x, coord_y FROM defects</text>
+  <line x1="750" y1="228" x2="430" y2="228" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="507.75" y="219" width="164.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">4. return defects_list_meta</text>
+  <line x1="430" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="411.25" y="255" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="266" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">5. read_crop_image(crop_uuid.jpg)</text>
+  <line x1="590" y1="300" x2="430" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="422.25" y="291" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. return jpeg_bytes(256x256)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="94.0" y="327" width="192.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_defect_card_carousel()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Allows the floor operator to review detected flaws and thumbnail crops directly on the tablet screen without leaving the inspection stand.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-01: Quality Inspector Login / Logout</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuthService</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="105.0" y="111" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_username_password()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="270.5" y="147" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/auth/login</text>
+  <line x1="430" y1="192" x2="590" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="425.0" y="183" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. query_user_roles(user_id)</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT password_hash, role='INSPECTOR'</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="560.25" y="255" width="219.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return user_record_and_permissions</text>
+  <line x1="590" y1="300" x2="430" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="400.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. issue_signed_jwt_token(roles=['QA_INSPECTOR'])</text>
+  <line x1="430" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (access_token, user_profile)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="91.25" y="363" width="197.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. render_qa_control_panel_view()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Quality inspector securely authenticates into the web management dashboard via role-based access control (RBAC).</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-02: View Digital Fabric Defect Map (2D Canvas)</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:HTML5CanvasMap</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:RollService</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_roll(roll_id='ROLL-2026-X89')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="342.25" y="147" width="175.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/rolls/{id}/map</text>
+  <line x1="590" y1="192" x2="750" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. SELECT * FROM defects WHERE roll_id={id}</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT * FROM uninspected_spans WHERE roll_id={id}</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="560.0" y="255" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return roll_defects_and_spans_payload</text>
+  <line x1="590" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="367.0" y="291" width="126.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (map_json)</text>
+  <line x1="270" y1="336" x2="430" y2="336" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="240.0" y="327" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="338" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">7. draw_roll_canvas(length=100m, width=1.8m)</text>
+  <line x1="430" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="160.0" y="363" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="270.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. render_color_pins_and_amber_bands()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Renders a high-performance 2D HTML5 Canvas map representing the entire unwound fabric roll with interactive colored flaw pins and amber uninspected warning bands.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-03: Review Defect High-Resolution Images & Calipers</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:DefectInspectorModal</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MinIOStore</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="91.25" y="111" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. click_defect_pin(defect_id=14)</text>
+  <line x1="270" y1="156" x2="750" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="405.75" y="147" width="208.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/defects/{id}/details</text>
+  <line x1="750" y1="192" x2="270" y2="192" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="400.0" y="183" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">3. return flaw_meta(class='Hole', length=12mm, crop_key)</text>
+  <line x1="270" y1="228" x2="590" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="334.0" y="219" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. GET /storage/crops/{crop_key}</text>
+  <line x1="590" y1="264" x2="270" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="320.0" y="255" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. stream_jpeg_blob(256x256, lossless)</text>
+  <line x1="270" y1="300" x2="430" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="243.0" y="291" width="214.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. open_modal_with_caliper_overlay()</text>
+  <line x1="430" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="160.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="270.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. display_zoomable_crop_with_metrics()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Enables the inspector to inspect high-resolution lossless JPEG crops and use on-screen digital calipers to verify defect millimeter measurements.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-04: Correct Defect Record & Audit Trail</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:DefectService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuditService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_new_class('Foreign Yarn') & enter_reason()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="240.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. PATCH /api/v1/defects/{id} {class, reason}</text>
+  <line x1="430" y1="192" x2="750" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. UPDATE defects SET flaw_class='Foreign Yarn'</text>
+  <line x1="430" y1="228" x2="590" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="400.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. log_audit_trail(defect_id, old='Hole', new='Yarn', inspector)</text>
+  <line x1="590" y1="264" x2="750" y2="264" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="574.0" y="255" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">5. INSERT INTO defect_audit_logs</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (reclassification_committed)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. update_defect_glyph_color_on_canvas()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Allows quality inspectors to override AI classifications with mandatory justification, recording an immutable audit trail for export compliance.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-05: View Roll Inspection Status & Uninspected Intervals</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:CoverageService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:RollService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="118.75" y="111" width="142.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. click_coverage_tab()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="240.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/rolls/{id}/uninspected-spans</text>
+  <line x1="430" y1="192" x2="750" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. SELECT * FROM uninspected_spans WHERE roll_id={id}</text>
+  <line x1="750" y1="228" x2="430" y2="228" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">4. return spans_list [ [14.2m, 15.8m, 'LUX_DROP'] ]</text>
+  <path d="M 430 264 L 455 264 L 455 282 L 435 282" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="460" y="262" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="465" y="273" font-size="7.5" font-weight="bold" fill="#0f172a">5. calculate_coverage_ratio(98.4%)</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (coverage_stats, flag_zones)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_amber_span_table_and_action_flag()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Displays uninspected interval metrics, highlighting gaps caused by lighting or sensor faults and flagging rolls requiring manual re-inspection.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-06: Confirm / Update 4-Point Roll Grading</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ASTMEngine</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:RollService</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="99.5" y="111" width="181.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. tap_calculate_final_grade()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="240.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/rolls/{id}/compute-astm</text>
+  <line x1="430" y1="192" x2="750" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. SELECT length_mm, flaw_class FROM defects</text>
+  <line x1="750" y1="228" x2="430" y2="228" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="496.75" y="219" width="186.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">4. return verified_defects_list</text>
+  <path d="M 430 264 L 455 264 L 455 282 L 435 282" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="460" y="262" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="465" y="273" font-size="7.5" font-weight="bold" fill="#0f172a">5. execute_astm_d5430_penalty_calculation()</text>
+  <line x1="430" y1="300" x2="750" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="291" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. UPDATE fabric_rolls SET grade='Grade A', points=14.2</text>
+  <line x1="430" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (grade='Grade A', points_per_100sqm=14.2)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="94.0" y="363" width="192.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. render_astm_scorecard_badge()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Computes ASTM D5430-07 penalty points based on defect length and standardizes total points per 100 square meters to determine final roll export grade.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-QI-07: Generate Digital Inspection Report & PDF</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QualityInspector</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReportEngine</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:CryptoSigner</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:MinIOStore</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="91.25" y="111" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. tap_export_inspection_report()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="245.75" y="147" width="208.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/reports/pdf/compile</text>
+  <path d="M 430 192 L 455 192 L 455 210 L 435 210" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="460" y="190" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="465" y="201" font-size="7.5" font-weight="bold" fill="#0f172a">3. assemble_report_data(roll, defects, astm, audit)</text>
+  <line x1="430" y1="228" x2="590" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="414.0" y="219" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. generate_sha256_hash_digest()</text>
+  <line x1="590" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="414.0" y="255" width="192.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return cryptographic_seal_hex</text>
+  <line x1="430" y1="300" x2="750" y2="300" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="491.25" y="291" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="302" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">6. render_pdf_binary_and_upload()</text>
+  <line x1="430" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.25" y="327" width="219.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (download_url, sha256_seal)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="88.5" y="363" width="203.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. prompt_download_certified_pdf()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Compiles an export-ready digital inspection report with defect charts, canvas miniatures, and cryptographic SHA-256 digital seals.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-PM-01: Production Manager Login / Logout</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ProductionManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuthService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="99.5" y="111" width="181.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_manager_credentials()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="270.5" y="147" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/auth/login</text>
+  <line x1="430" y1="192" x2="590" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="414.0" y="183" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. verify_executive_privileges()</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="582.25" y="219" width="175.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT role='PROD_MANAGER'</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="593.25" y="255" width="153.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return user_and_scopes</text>
+  <line x1="590" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="320.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (jwt_token, dashboard_scope)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="91.25" y="327" width="197.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_executive_portal_view()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Production Manager authenticates with executive credentials to access high-level plant throughput and quality analytics.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-PM-02: View Production Executive Dashboard</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ProductionManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AnalyticsEngine</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="102.25" y="111" width="175.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. open_executive_dashboard()</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/analytics/kpi?shift='CURRENT'</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="425.0" y="183" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. aggregate_shift_metrics()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT count(rolls), sum(meters), avg(grade) FROM fabric_rolls</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="494.0" y="255" width="192.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return aggregated_kpi_payload</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (total_rolls=28, yield=94.2%, scrap=2)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_kpi_cards_and_throughput_gauge()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Aggregates plant-wide KPIs across active shifts, including total rolls inspected, total fabric meters, first-pass yield, and scrap rates.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-PM-03: View Defect Pareto Statistics & Trend Analytics</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ProductionManager</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ParetoEngine</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_batch_filter(batch='BATCH-402')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/analytics/pareto?batch=B402</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="414.0" y="183" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. compute_pareto_distribution()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT flaw_class, count(*) FROM defects GROUP BY flaw_class</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="496.75" y="255" width="186.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return flaw_frequencies_desc</text>
+  <path d="M 430 300 L 455 300 L 455 318 L 435 318" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="460" y="298" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="465" y="309" font-size="7.5" font-weight="bold" fill="#0f172a">6. calculate_cumulative_percentage()</text>
+  <line x1="430" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="256.75" y="327" width="186.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (pareto_dataset_json)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="99.5" y="363" width="181.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. render_pareto_80_20_chart()</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Computes an 80/20 Pareto distribution identifying primary defect root causes (e.g. Broken Warp threads vs. machine oil drips) to guide loom maintenance.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-PM-04: View Historical Production Quality Records</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ProductionManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:HistoricalQueryService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. apply_filters(date_range, fabric_type='Denim')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/rolls/history?limit=50&offset=0</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="425.0" y="183" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. build_dynamic_sql_query()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT * FROM fabric_rolls WHERE type='Denim'</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="480.0" y="255" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return paginated_historical_records</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (records_page, total_count=340)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_searchable_data_table_with_export()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Provides multi-criteria search and filtering across past production runs with direct export options for factory ERP auditing.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-01: Inventory Manager Login / Logout</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuthService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="94.0" y="111" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_warehouse_credentials()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="270.5" y="147" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/auth/login</text>
+  <line x1="430" y1="192" x2="590" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="427.75" y="183" width="164.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. verify_warehouse_scope()</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="579.5" y="219" width="181.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT role='INVENTORY_MGR'</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="593.25" y="255" width="153.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return user_and_scopes</text>
+  <line x1="590" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="320.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (jwt_token, warehouse_scope)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.25" y="327" width="219.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_warehouse_management_view()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Inventory manager authenticates to access warehouse roll allocation, pallet assignment, and scrap segregation records.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-02: View Warehouse Inventory Records</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="110.5" y="111" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. open_inventory_ledger()</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/inventory/rolls?status=IN_STOCK</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="430.5" y="183" width="159.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. query_available_stock()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT roll_id, grade, length, rack_location FROM rolls</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="491.25" y="255" width="197.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return current_warehouse_stock</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="265.0" y="291" width="170.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (stock_items_list)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="94.0" y="327" width="192.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_warehouse_stock_grid()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Displays real-time stock levels of certified fabric rolls categorized by ASTM grade, fabric blend, and physical warehouse location.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-03: Update Roll Warehouse Storage Location</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. update_location(roll_id, rack='B-04-S2')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. PATCH /api/v1/inventory/rolls/{id}/location</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="438.75" y="183" width="142.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. update_storage_bay()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. UPDATE fabric_rolls SET rack_location='B-04-S2'</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="516.0" y="255" width="148.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return update_success</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="265.0" y="291" width="170.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (location_updated)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. display_toast('Roll moved to Bay B-04-S2')</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Updates physical storage bay and pallet coordinates when rolls are moved into warehouse storage or staged for shipping.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-04: View Certified Roll Grading Status</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:CertVerificationService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. search_order_requirements(grade='Grade A')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. GET /api/v1/inventory/certified?grade=Grade_A</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="411.25" y="183" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. query_export_certified_stock()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT roll_id, grade, sha256_hash FROM fabric_rolls</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="496.75" y="255" width="186.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return certified_rolls_batch</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.25" y="291" width="219.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (certified_list, cert_urls)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="85.75" y="327" width="208.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_export_allocation_table()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Enables warehouse teams to verify quality certificates and match Grade A certified rolls against customer export orders.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-05: Manage Scrap & Quarantined Roll Segregation</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QuarantineService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_scrap_roll(roll_id='ROLL-109')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/inventory/quarantine/segregate</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="400.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. tag_quarantine_bay('BIN-SCRAP-RED')</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. UPDATE rolls SET status='SCRAP_LOCKED', bay='BIN-RED'</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="499.5" y="255" width="181.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return quarantine_record_id</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="243.0" y="291" width="214.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (segregation_manifest_pdf)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="102.25" y="327" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. print_quarantine_red_tag()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Enforces physical quarantine procedures for rejected/scrap fabric rolls, locking them from shipping and logging segregation manifests.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-ADMIN-01: System Administrator Login / Logout</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SystemAdmin</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AdminPortal (React)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AuthService</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="105.0" y="111" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_admin_credentials()</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="254.0" y="147" width="192.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/auth/admin-login</text>
+  <line x1="430" y1="192" x2="590" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="425.0" y="183" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. verify_superuser_status()</text>
+  <line x1="590" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. SELECT is_superuser=TRUE, mfa_valid</text>
+  <line x1="750" y1="264" x2="590" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="587.75" y="255" width="164.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return admin_user_record</text>
+  <line x1="590" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="320.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="430.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (admin_jwt_token, scopes=['*'])</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. render_system_administration_console()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Superuser administrator authenticates with elevated privileges to configure edge stand hardware, manage users, and adjust thresholds.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-ADMIN-02: Manage User Accounts (CRUD)</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SystemAdmin</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AdminPortal (React)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:UserManagementService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. submit_new_user_form(username, role, pass)</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="347.75" y="147" width="164.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/admin/users</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="433.25" y="183" width="153.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. hash_password_bcrypt()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. INSERT INTO users (username, role, pwd_hash)</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="518.75" y="255" width="142.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return new_user_uuid</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="240.0" y="291" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 201 Created (user_created_successfully)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="102.25" y="327" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. update_active_user_table()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Handles user account creation, credential rotation, role assignment, and account deactivation across shop-floor and management roles.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-ADMIN-03: Assign Roles & Scopes (RBAC)</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SystemAdmin</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AdminPortal (React)</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:RBACService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_user_and_update_role('Inspector')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.25" y="147" width="219.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. PUT /api/v1/admin/users/{id}/roles</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="425.0" y="183" width="170.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. update_role_permissions()</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="488.5" y="219" width="203.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. UPDATE user_roles SET role_id=2</text>
+  <line x1="430" y1="264" x2="750" y2="264" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="483.0" y="255" width="214.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">5. revoke_cached_jwt_tokens(user_id)</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="243.0" y="291" width="214.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (role_permissions_updated)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. display_toast('Permissions updated successfully')</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Configures granular permission matrices (e.g. view only vs. reclassify defects vs. export certificates) adhering to the principle of least privilege.</text>
+</svg>
+    </div>
+
+    <div class="page-break"></div>
+    <div class="card-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 524" width="860" height="524" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-ADMIN-04: Configure Edge Calibration & Quality Thresholds</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:SystemAdmin</text>
+  <line x1="110" y1="97" x2="110" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:AdminPortal (React)</text>
+  <line x1="270" y1="97" x2="270" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ConfigService</text>
+  <line x1="430" y1="97" x2="430" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:EdgeSyncBus</text>
+  <line x1="590" y1="97" x2="590" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:EdgeStandDaemon</text>
+  <line x1="750" y1="97" x2="750" y2="459" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. enter_new_calibration(mm_per_pulse=0.235, min_lux=800)</text>
+  <line x1="270" y1="156" x2="430" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="251.25" y="147" width="197.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="350.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. PUT /api/v1/admin/stand-config</text>
+  <path d="M 430 192 L 455 192 L 455 210 L 435 210" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="460" y="190" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="465" y="201" font-size="7.5" font-weight="bold" fill="#0f172a">3. save_calibration_settings()</text>
+  <line x1="430" y1="228" x2="590" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="403.0" y="219" width="214.0" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. broadcast_config_update(settings)</text>
+  <line x1="590" y1="264" x2="750" y2="264" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="560.25" y="255" width="219.5" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="670.0" y="266" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">5. push_ws('CONFIG_RELOAD', settings)</text>
+  <path d="M 750 300 L 775 300 L 775 318 L 755 318" fill="none" stroke="#0f172a" stroke-width="1.2" marker-end="url(#arr-black)"/>
+  <rect x="780" y="298" width="160" height="15" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="785" y="309" font-size="7.5" font-weight="bold" fill="#0f172a">6. reload_encoder_and_lux_sentinels()</text>
+  <line x1="750" y1="336" x2="270" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="400.0" y="327" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="510.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. 200 OK (stand_recalibrated_successfully)</text>
+  <line x1="270" y1="372" x2="110" y2="372" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="80.0" y="363" width="220" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="374" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">8. display_success_banner('Stand calibrated')</text>
+  <rect x="20" y="472" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="487" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="500" font-size="7.5" fill="#334155">Pushes updated physical calibration constants (pulses-per-mm, frame scale factor, and lux failure thresholds) dynamically to edge stands without restarting hardware.</text>
+</svg>
+    </div>
+
+  </div>
+</body>
+</html>

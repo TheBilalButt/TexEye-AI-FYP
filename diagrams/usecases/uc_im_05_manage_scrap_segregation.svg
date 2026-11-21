@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 488" width="860" height="488" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <marker id="arr-black" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 1, 8 4, 0 7" fill="#0f172a"/></marker>
+    <marker id="arr-ret" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polyline points="2 1, 7 4, 2 7" fill="none" stroke="#0f172a" stroke-width="1.2"/></marker>
+  </defs>
+  <!-- Header Bar -->
+  <rect x="20" y="12" width="820" height="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="5"/>
+  <text x="430" y="30" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">UC-IM-05: Manage Scrap & Quarantined Roll Segregation</text>
+  <text x="430" y="44" font-size="8.5" fill="#475569" text-anchor="middle">TexEye AI &bull; Formal UML Use-Case Sequence Realization &bull; COMSATS University Islamabad</text>
+  <rect x="45" y="65" width="130" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+  <text x="110" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:InventoryManager</text>
+  <line x1="110" y1="97" x2="110" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="205" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="270" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:ReactWebDashboard</text>
+  <line x1="270" y1="97" x2="270" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="365" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="430" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:QuarantineService</text>
+  <line x1="430" y1="97" x2="430" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="525" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="590" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:FastAPIGateway</text>
+  <line x1="590" y1="97" x2="590" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="685" y="65" width="130" height="32" rx="4" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.2"/>
+  <text x="750" y="85" font-size="8.5" font-weight="bold" fill="#0f172a" text-anchor="middle">:PostgreSQLDB</text>
+  <line x1="750" y1="97" x2="750" y2="423" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="120" x2="270" y2="120" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="80.0" y="111" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="190.0" y="122" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">1. select_scrap_roll(roll_id='ROLL-109')</text>
+  <line x1="270" y1="156" x2="590" y2="156" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="320.0" y="147" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="430.0" y="158" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">2. POST /api/v1/inventory/quarantine/segregate</text>
+  <line x1="590" y1="192" x2="430" y2="192" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="400.0" y="183" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="510.0" y="194" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">3. tag_quarantine_bay('BIN-SCRAP-RED')</text>
+  <line x1="430" y1="228" x2="750" y2="228" stroke="#0f172a" stroke-width="1.2"  marker-end="url(#arr-black)"/>
+  <rect x="480.0" y="219" width="220" height="16" fill="#ffffff" stroke="#cbd5e1" rx="3"/>
+  <text x="590.0" y="230" font-size="7.5" font-weight="bold" fill="#0f172a" text-anchor="middle">4. UPDATE rolls SET status='SCRAP_LOCKED', bay='BIN-RED'</text>
+  <line x1="750" y1="264" x2="430" y2="264" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="499.5" y="255" width="181.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="590.0" y="266" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">5. return quarantine_record_id</text>
+  <line x1="430" y1="300" x2="270" y2="300" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="243.0" y="291" width="214.0" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="350.0" y="302" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">6. 200 OK (segregation_manifest_pdf)</text>
+  <line x1="270" y1="336" x2="110" y2="336" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr-ret)"/>
+  <rect x="102.25" y="327" width="175.5" height="16" fill="#f0fdf4" stroke="#86efac" rx="3"/>
+  <text x="190.0" y="338" font-size="7.5" font-weight="normal" fill="#166534" text-anchor="middle">7. print_quarantine_red_tag()</text>
+  <rect x="20" y="436" width="820" height="38" fill="#f8fafc" stroke="#cbd5e1" rx="4"/>
+  <text x="32" y="451" font-size="8" font-weight="bold" fill="#0f172a">Use Case Execution Summary:</text>
+  <text x="32" y="464" font-size="7.5" fill="#334155">Enforces physical quarantine procedures for rejected/scrap fabric rolls, locking them from shipping and logging segregation manifests.</text>
+</svg>
