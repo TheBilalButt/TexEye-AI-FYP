@@ -185,31 +185,86 @@ def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, s
         if len(clean_text) > 42:
             clean_text = clean_text[:40] + "..."
             
-        # Draw activation box on target lifeline (reference style)
-        act_w, act_h = 0.12, min(0.35, step_dy * 0.75)
-        act_box = page.DrawRectangle(x2 - act_w/2, curr_y - act_h/2, x2 + act_w/2, curr_y + act_h/2)
-        act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+        tw = max(1.5, len(clean_text) * 0.052 + 0.25)
+        act_w = 0.12
         
         if s_type == "self":
-            loop_w = 0.35
-            loop_h = min(0.22, step_dy * 0.45)
-            l1 = page.DrawLine(x1, curr_y, x1 + loop_w, curr_y)
+            loop_w = 0.38
+            loop_h = min(0.24, step_dy * 0.50)
+            
+            # Activation box spans cleanly across the entire self loop
+            act_top = curr_y + 0.08
+            act_bot = curr_y - loop_h - 0.08
+            act_box = page.DrawRectangle(x1 - act_w/2, act_bot, x1 + act_w/2, act_top)
+            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            
+            # Self loop originates from and returns to the RIGHT FACE of the activation box
+            start_x = x1 + act_w/2
+            l1 = page.DrawLine(start_x, curr_y, start_x + loop_w, curr_y)
             l1.Cells("LineColor").FormulaU = "RGB(0,0,0)"; l1.Cells("LineWeight").FormulaU = "0.75 pt"
-            l2 = page.DrawLine(x1 + loop_w, curr_y, x1 + loop_w, curr_y - loop_h)
+            l2 = page.DrawLine(start_x + loop_w, curr_y, start_x + loop_w, curr_y - loop_h)
             l2.Cells("LineColor").FormulaU = "RGB(0,0,0)"; l2.Cells("LineWeight").FormulaU = "0.75 pt"
-            l3 = page.DrawLine(x1 + loop_w, curr_y - loop_h, x1, curr_y - loop_h)
+            l3 = page.DrawLine(start_x + loop_w, curr_y - loop_h, start_x, curr_y - loop_h)
             l3.Cells("LineColor").FormulaU = "RGB(0,0,0)"; l3.Cells("LineWeight").FormulaU = "0.75 pt"
             l3.Cells("EndArrow").FormulaU = "13"; l3.Cells("EndArrowSize").FormulaU = "2"
             
-            lbl = page.DrawRectangle(x1 + loop_w + 0.05, curr_y - loop_h - 0.05, x1 + loop_w + 2.5, curr_y + 0.1)
+            # Label placed to the right with solid white background (zero lifeline bleed)
+            lbl_x1 = start_x + loop_w + 0.08
+            lbl_x2 = lbl_x1 + tw
+            lbl = page.DrawRectangle(lbl_x1, curr_y - loop_h - 0.02, lbl_x2, curr_y + 0.12)
             lbl.Text = clean_text
-            lbl.Cells("FillPattern").FormulaU = "0"; lbl.Cells("LinePattern").FormulaU = "0"
+            lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
             lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
             apply_zero_margins(lbl)
         else:
-            # Adjust endpoints to touch activation box
-            target_x = x2 - act_w/2 if x1 < x2 else x2 + act_w/2
-            msg_line = page.DrawLine(x1, curr_y, target_x, curr_y)
+            # Draw activation box on target
+            act_h = min(0.32, step_dy * 0.70)
+            act_box = page.DrawRectangle(x2 - act_w/2, curr_y - act_h/2, x2 + act_w/2, curr_y + act_h/2)
+            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            
+            # Start and End points touch outside face of activation box
+            if x1 < x2:
+                # Left to Right: align text left near sender so it does not collide with intermediate lifelines
+                src_pt_x = x1 + (act_w/2 if not participants[i1][2] else 0)
+                dst_pt_x = x2 - act_w/2
+                msg_line = page.DrawLine(src_pt_x, curr_y, dst_pt_x, curr_y)
+                
+                lbl_left = src_pt_x + 0.15
+                lbl_right = lbl_left + tw
+                
+                # If there are intermediate lifelines, ensure label does not intersect them
+                if i2 > i1 + 1:
+                    next_ll_x = x_coords[i1 + 1]
+                    if lbl_right > next_ll_x - 0.10 and tw < (next_ll_x - src_pt_x - 0.20):
+                        lbl_left = src_pt_x + 0.10
+                        lbl_right = lbl_left + tw
+                
+                lbl = page.DrawRectangle(lbl_left, curr_y + 0.03, lbl_right, curr_y + 0.22)
+                lbl.Text = clean_text
+                lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
+                lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
+                apply_zero_margins(lbl)
+            else:
+                # Right to Left: align text left near destination (target)
+                src_pt_x = x1 - (act_w/2 if not participants[i1][2] else 0)
+                dst_pt_x = x2 + act_w/2
+                msg_line = page.DrawLine(src_pt_x, curr_y, dst_pt_x, curr_y)
+                
+                lbl_left = dst_pt_x + 0.15
+                lbl_right = lbl_left + tw
+                
+                if i1 > i2 + 1:
+                    next_ll_x = x_coords[i2 + 1]
+                    if lbl_right > next_ll_x - 0.10 and tw < (next_ll_x - dst_pt_x - 0.20):
+                        lbl_left = dst_pt_x + 0.10
+                        lbl_right = lbl_left + tw
+                        
+                lbl = page.DrawRectangle(lbl_left, curr_y + 0.03, lbl_right, curr_y + 0.22)
+                lbl.Text = clean_text
+                lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
+                lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
+                apply_zero_margins(lbl)
+                
             msg_line.Cells("LineColor").FormulaU = "RGB(0,0,0)"; msg_line.Cells("LineWeight").FormulaU = "0.75 pt"
             if s_type == "ret":
                 msg_line.Cells("LinePattern").FormulaU = "2"
@@ -217,14 +272,6 @@ def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, s
             else:
                 msg_line.Cells("EndArrow").FormulaU = "13"
             msg_line.Cells("EndArrowSize").FormulaU = "2"
-            
-            tw = max(1.6, len(clean_text) * 0.052 + 0.2)
-            tx = (x1 + target_x) / 2
-            lbl = page.DrawRectangle(tx - tw/2, curr_y + 0.03, tx + tw/2, curr_y + 0.22)
-            lbl.Text = clean_text
-            lbl.Cells("FillPattern").FormulaU = "0"; lbl.Cells("LinePattern").FormulaU = "0"
-            lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "1"
-            apply_zero_margins(lbl)
             
     doc.SaveAs(os.path.abspath(out_vsdx_path))
     page.Export(os.path.abspath(out_png_path))
