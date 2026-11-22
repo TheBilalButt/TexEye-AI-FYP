@@ -40,7 +40,9 @@ for f in os.listdir(visio_png_dir):
         im.save(dp)
 
 extra_map = {
-    "01_system_workflow.png": os.path.join(BASE_DIR, "diagrams", "png", "01_system_workflow.png"),
+    "01_system_workflow.png": os.path.join(DOCS_DIR, "TexEye_AI_System_Workflow.png"),
+    "00_rough_workflow_paper.png": os.path.join(DOCS_DIR, "TexEye_AI_System_Workflow.png"),
+    "01_overall_system_workflow.png": os.path.join(DOCS_DIR, "TexEye_AI_System_Workflow.png"),
     "04_hardware_architecture.png": os.path.join(BASE_DIR, "diagrams", "png", "04_hardware_architecture.png"),
     "07_context_diagram.png": os.path.join(BASE_DIR, "diagrams", "png", "07_context_diagram.png"),
     "10_component_diagram.png": os.path.join(BASE_DIR, "diagrams", "png", "10_component_diagram.png"),
