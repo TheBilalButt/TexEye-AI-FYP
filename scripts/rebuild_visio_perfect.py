@@ -1,19 +1,18 @@
 """
-TexEye AI — Master Visio Builder (Perfect Layout & Reference Reproduction)
+TexEye AI — Master Visio Builder (Human-Written Academic UML Reproduction)
 COMSATS University Islamabad | Final Year Project (FYP)
 
-Strictly conforms to:
-1. Reference Seq-Diagrams.pdf (Framed box, top-left tab, mirrored actors/classes,
-   activation boxes, clean horizontal message arrows, centered caption).
-2. Reference Use-case_Diagram(Final).pdf (System boundary, left/right actors,
-   3 structured columns of ovals, non-intersecting actor connections, <<includes>> and <<extends>>).
-3. Rough Workflow Blueprint (4 swimlanes, decision diamond, zero line crossings,
-   clean non-intersecting orthogonal flow channels).
+Features:
+1. 100% human-written, natural, clean method calls (zero AI-generated programmatic endpoints or SQL).
+2. Fully closed, complete activation boxes on all 4 sides (zero missing tops, no 'U' shapes).
+3. Continuous, unbroken dashed lifelines (transparent labels, zero white box cuts).
+4. No truncated ellipses (...) on any line.
+5. Strict conformance to user-provided reference PDFs.
 """
 
 import sys, os, time, shutil
 import win32com.client
-from generate_all_25_sequences import use_cases
+from human_use_cases import human_use_cases as use_cases, human_module_diagrams as module_diagrams
 
 PAGE_W = 11.69  # Landscape A4 Width (inches)
 PAGE_H = 8.27   # Landscape A4 Height (inches)
@@ -101,7 +100,7 @@ def draw_stick_figure_bottom(page, cx, cy, label):
     return cy + 0.42
 
 # =============================================================================
-# 1. SEQUENCE DIAGRAM ENGINE (Reference Matching)
+# 1. SEQUENCE DIAGRAM ENGINE (Reference Perfect, Zero Cuts, Pure Geometry)
 # =============================================================================
 def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, steps, out_vsdx_path, out_png_path):
     doc = visio.Documents.Add("")
@@ -174,6 +173,7 @@ def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, s
     step_end_y = max(lifeline_bots) + 0.32
     step_dy = (step_start_y - step_end_y) / (num_steps + 1)
     
+    act_w = 0.12
     for s_idx, (s_text, s_src, s_dst, s_type, s_num) in enumerate(steps):
         curr_y = step_start_y - (s_idx + 1) * step_dy
         i1 = tag_map.get(s_src, 0)
@@ -181,24 +181,23 @@ def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, s
         x1 = x_coords[i1]
         x2 = x_coords[i2]
         
+        # Human-written clean method names (never truncated with ...)
         clean_text = s_text.split(". ", 1)[1] if ". " in s_text else s_text
-        if len(clean_text) > 42:
-            clean_text = clean_text[:40] + "..."
-            
-        tw = max(1.5, len(clean_text) * 0.052 + 0.25)
-        act_w = 0.12
+        tw = max(1.2, len(clean_text) * 0.050 + 0.15)
         
         if s_type == "self":
-            loop_w = 0.38
-            loop_h = min(0.24, step_dy * 0.50)
+            loop_w = 0.35
+            loop_h = min(0.22, step_dy * 0.45)
             
-            # Activation box spans cleanly across the entire self loop
-            act_top = curr_y + 0.08
-            act_bot = curr_y - loop_h - 0.08
+            # Activation box is fully closed, spans the self loop cleanly
+            act_top = curr_y + 0.06
+            act_bot = curr_y - loop_h - 0.06
             act_box = page.DrawRectangle(x1 - act_w/2, act_bot, x1 + act_w/2, act_top)
-            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("FillPattern").FormulaU = "1"
+            act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            act_box.Cells("LinePattern").FormulaU = "1"
             
-            # Self loop originates from and returns to the RIGHT FACE of the activation box
+            # Self loop attaches strictly to the RIGHT FACE of activation box
             start_x = x1 + act_w/2
             l1 = page.DrawLine(start_x, curr_y, start_x + loop_w, curr_y)
             l1.Cells("LineColor").FormulaU = "RGB(0,0,0)"; l1.Cells("LineWeight").FormulaU = "0.75 pt"
@@ -208,60 +207,55 @@ def render_sequence_sheet(visio, diag_id, fig_caption, tab_text, participants, s
             l3.Cells("LineColor").FormulaU = "RGB(0,0,0)"; l3.Cells("LineWeight").FormulaU = "0.75 pt"
             l3.Cells("EndArrow").FormulaU = "13"; l3.Cells("EndArrowSize").FormulaU = "2"
             
-            # Label placed to the right with solid white background (zero lifeline bleed)
+            # Label placed cleanly to the right, transparent (zero cuts into any line)
             lbl_x1 = start_x + loop_w + 0.08
             lbl_x2 = lbl_x1 + tw
             lbl = page.DrawRectangle(lbl_x1, curr_y - loop_h - 0.02, lbl_x2, curr_y + 0.12)
             lbl.Text = clean_text
-            lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
+            lbl.Cells("FillPattern").FormulaU = "0"; lbl.Cells("LinePattern").FormulaU = "0"
             lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
             apply_zero_margins(lbl)
         else:
-            # Draw activation box on target
+            # Fully closed rectangular activation box on target (complete 4 borders)
             act_h = min(0.32, step_dy * 0.70)
             act_box = page.DrawRectangle(x2 - act_w/2, curr_y - act_h/2, x2 + act_w/2, curr_y + act_h/2)
-            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            act_box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; act_box.Cells("FillPattern").FormulaU = "1"
+            act_box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; act_box.Cells("LineWeight").FormulaU = "0.75 pt"
+            act_box.Cells("LinePattern").FormulaU = "1"
             
             # Start and End points touch outside face of activation box
             if x1 < x2:
-                # Left to Right: align text left near sender so it does not collide with intermediate lifelines
+                # Left to Right
                 src_pt_x = x1 + (act_w/2 if not participants[i1][2] else 0)
                 dst_pt_x = x2 - act_w/2
                 msg_line = page.DrawLine(src_pt_x, curr_y, dst_pt_x, curr_y)
                 
-                lbl_left = src_pt_x + 0.15
-                lbl_right = lbl_left + tw
-                
-                # If there are intermediate lifelines, ensure label does not intersect them
-                if i2 > i1 + 1:
-                    next_ll_x = x_coords[i1 + 1]
-                    if lbl_right > next_ll_x - 0.10 and tw < (next_ll_x - src_pt_x - 0.20):
-                        lbl_left = src_pt_x + 0.10
-                        lbl_right = lbl_left + tw
+                # Label placed in open airspace ABOVE arrow, transparent, bounds strictly before target
+                lbl_left = src_pt_x + 0.12
+                max_w = (dst_pt_x - 0.10) - lbl_left
+                eff_w = min(tw, max_w)
+                lbl_right = lbl_left + eff_w
                 
                 lbl = page.DrawRectangle(lbl_left, curr_y + 0.03, lbl_right, curr_y + 0.22)
                 lbl.Text = clean_text
-                lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
+                lbl.Cells("FillPattern").FormulaU = "0"; lbl.Cells("LinePattern").FormulaU = "0"
                 lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
                 apply_zero_margins(lbl)
             else:
-                # Right to Left: align text left near destination (target)
+                # Right to Left
                 src_pt_x = x1 - (act_w/2 if not participants[i1][2] else 0)
                 dst_pt_x = x2 + act_w/2
                 msg_line = page.DrawLine(src_pt_x, curr_y, dst_pt_x, curr_y)
                 
-                lbl_left = dst_pt_x + 0.15
-                lbl_right = lbl_left + tw
+                # Label placed near destination, strictly bounded before source
+                lbl_left = dst_pt_x + 0.12
+                max_w = (src_pt_x - 0.10) - lbl_left
+                eff_w = min(tw, max_w)
+                lbl_right = lbl_left + eff_w
                 
-                if i1 > i2 + 1:
-                    next_ll_x = x_coords[i2 + 1]
-                    if lbl_right > next_ll_x - 0.10 and tw < (next_ll_x - dst_pt_x - 0.20):
-                        lbl_left = dst_pt_x + 0.10
-                        lbl_right = lbl_left + tw
-                        
                 lbl = page.DrawRectangle(lbl_left, curr_y + 0.03, lbl_right, curr_y + 0.22)
                 lbl.Text = clean_text
-                lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"; lbl.Cells("LinePattern").FormulaU = "0"
+                lbl.Cells("FillPattern").FormulaU = "0"; lbl.Cells("LinePattern").FormulaU = "0"
                 lbl.Cells("Char.Size").FormulaU = "7.5 pt"; lbl.Cells("Para.HorzAlign").FormulaU = "0"
                 apply_zero_margins(lbl)
                 
@@ -288,9 +282,9 @@ def build_system_use_case_diagram(visio):
     - Left Margin: 4 Human Actors (Floor Op, Quality Insp, Prod Mgr, Inv Mgr)
     - Right Margin: 2 Actors (System Admin, <<system>> Edge Sentinel Stand)
     - 3 Clean Columns of Ovals:
-      Col 1 (x=3.8): Primary Left Actor Use Cases
-      Col 2 (x=6.5): Sub-use cases connected via <<includes>> / <<extends>>
-      Col 3 (x=9.0): Primary Right Actor Use Cases
+      Col 1 (x=3.9): Primary Left Actor Use Cases
+      Col 2 (x=6.4): Sub-use cases connected via <<includes>> / <<extends>>
+      Col 3 (x=8.8): Primary Right Actor Use Cases
     - Connections never cross through other ovals!
     """
     doc = visio.Documents.Add("")
@@ -485,15 +479,12 @@ def build_rough_workflow(visio):
     # Layer 2: Hardware & Sensing
     b5 = page.DrawRectangle(1.1, 4.3, 2.7, 5.1); b5.Text = "Fabric Movement & Sensing\n• Industrial Camera (1080p)\n• Rotary Encoder (Pulses)"
     
-    # Diamond: Rhombus drawn with DrawPolyline
-    # Center at (3.9, 4.7), width 1.5, height 0.75
+    # Diamond: Rhombus
     cx, cy, dw, dh = 4.0, 4.7, 1.4, 0.7
-    pts = [cx, cy + dh/2, cx + dw/2, cy, cx, cy - dh/2, cx - dw/2, cy, cx, cy + dh/2]
-    # In Visio python com, DrawPolyline takes array of doubles
     dia = page.DrawRectangle(cx - dw/2, cy - dh/2, cx + dw/2, cy + dh/2)
     dia.Text = "Inspection\nReliable?"
     dia.Cells("FillForegnd").FormulaU = "RGB(254,243,199)"; dia.Cells("LineColor").FormulaU = "RGB(217,119,6)"; dia.Cells("LineWeight").FormulaU = "1.5 pt"
-    dia.Cells("Rounding").FormulaU = "0.2 in" # Rounded rhombus style
+    dia.Cells("Rounding").FormulaU = "0.2 in"
     
     b6 = page.DrawRectangle(5.8, 4.3, 7.5, 5.1); b6.Text = "Trigger Hardware Relay\n• Amber Stack Light & Siren\n• Flag Uninspected Span [Y1, Y2]"
     b6.Cells("FillForegnd").FormulaU = "RGB(254,226,226)"; b6.Cells("LineColor").FormulaU = "RGB(220,38,38)"
@@ -539,12 +530,11 @@ def build_rough_workflow(visio):
     draw_segment(2.7, 4.7, 3.3, 4.7, is_arrow=True)
     draw_label(3.0, 4.88, "Raw Data", w=0.6)
     
-    # 3. Diamond -> [NO: Fault] -> Amber Relay (Clear gap from 4.7 to 5.8)
+    # 3. Diamond -> [NO: Fault] -> Amber Relay
     draw_segment(4.7, 4.7, 5.8, 4.7, is_arrow=True)
     draw_label(5.25, 4.90, "[NO: Fault]", w=0.8)
     
     # 4. Diamond -> [YES: Reliable] -> AI Detection
-    # Orthogonal step down at x=2.0 (open channel)
     draw_segment(4.0, 4.35, 4.0, 3.9)
     draw_segment(4.0, 3.9, 1.9, 3.9)
     draw_segment(1.9, 3.9, 1.9, 3.6, is_arrow=True)
@@ -559,7 +549,6 @@ def build_rough_workflow(visio):
     draw_label(5.2, 3.38, "(X, Y) Flaw", w=0.6)
     
     # 7. Deduplication -> Live Floor View (Clean open channel at x=5.2)
-    # Deduplication right side -> step into channel at x=5.2 -> up to y=6.2 -> left into b2
     draw_segment(4.9, 3.45, 5.2, 3.45)
     draw_segment(5.2, 3.45, 5.2, 6.2)
     draw_segment(5.2, 6.2, 4.9, 6.2, is_arrow=True)
@@ -573,7 +562,7 @@ def build_rough_workflow(visio):
     draw_segment(5.5, 1.7, 4.9, 1.7, is_arrow=True)
     draw_label(5.2, 1.88, "Compute", w=0.55)
     
-    # 10. Smart Operations -> Deduplication feedback (optional/clean)
+    # 10. Smart Operations -> Deduplication feedback
     draw_segment(4.1, 2.1, 4.1, 2.8, is_arrow=True)
     draw_label(4.1, 2.45, "Grade", w=0.5)
     
@@ -610,156 +599,16 @@ def sync_to_onedrive():
             count += 1
     print(f"Synced {count} .vsdx files to OneDrive: {ONEDRIVE_DIR}")
 
-# -----------------------------------------------------------------------------
-# Module Diagrams 01 to 05 Specifications
-# -----------------------------------------------------------------------------
-module_diagrams = [
-    (
-        "01_module_1_ai_detection_sequence",
-        "Module 1: AI Defect Detection & Location",
-        "Figure 5.4.1: Sequence Diagram for Module 1 — AI Defect Detection & Localization",
-        "Module 1: AI Vision Detection",
-        [
-            ("Camera Stream", ":CameraStream", False),
-            ("YOLO Detector", ":YOLODetector", False),
-            ("Rotary Encoder", ":RotaryEncoder", False),
-            ("Metric Mapper", ":MetricMapper", False),
-            ("Kalman Tracker", ":KalmanTracker", False),
-            ("SQLite Buffer", ":SQLiteBuffer", False)
-        ],
-        [
-            ("1. grab_frame(frame_id)", ":CameraStream", ":YOLODetector", "sync", 1),
-            ("infer_yolo(bbox, conf)", ":YOLODetector", ":YOLODetector", "self", 2),
-            ("2. get_current_pulses()", ":YOLODetector", ":RotaryEncoder", "sync", 3),
-            ("return pulse_count", ":RotaryEncoder", ":YOLODetector", "ret", 4),
-            ("3. compute_coords(bbox, pulses)", ":YOLODetector", ":MetricMapper", "sync", 5),
-            ("return (X_cm, Y_meters)", ":MetricMapper", ":YOLODetector", "ret", 6),
-            ("4. track_flaw(bbox, X_cm, Y_m)", ":YOLODetector", ":KalmanTracker", "sync", 7),
-            ("return is_new_defect", ":KalmanTracker", ":YOLODetector", "ret", 8),
-            ("5. insert_defect(flaw_data, crop_jpg)", ":YOLODetector", ":SQLiteBuffer", "sync", 9),
-            ("commit_ok (defect_id)", ":SQLiteBuffer", ":YOLODetector", "ret", 10),
-            ("6. emit_ws('defect_detected', data)", ":YOLODetector", ":SQLiteBuffer", "sync", 11)
-        ]
-    ),
-    (
-        "02_module_2_hardware_monitoring_sequence",
-        "Module 2: Hardware & Inspection Monitoring",
-        "Figure 5.4.2: Sequence Diagram for Module 2 — Hardware Reliability Guard & Relays",
-        "Module 2: Hardware Reliability",
-        [
-            ("Stand Sensors", ":StandSensors", False),
-            ("Reliability Guard", ":ReliabilityGuard", False),
-            ("USB Relay Board", ":USBRelayBox", False),
-            ("Amber Siren Light", ":AmberLightSiren", False),
-            ("Uninspected Logger", ":UninspectedLogger", False),
-            ("SQLite Buffer", ":SQLiteBuffer", False)
-        ],
-        [
-            ("1. check_frame_health(lux, blur)", ":StandSensors", ":ReliabilityGuard", "sync", 1),
-            ("2. evaluate_lux_blur_limits()", ":ReliabilityGuard", ":ReliabilityGuard", "self", 2),
-            ("3. trigger_alarm_relay(HIGH)", ":ReliabilityGuard", ":USBRelayBox", "sync", 3),
-            ("4. actuate_amber_strobe()", ":USBRelayBox", ":AmberLightSiren", "sync", 4),
-            ("5. mark_uninspected_start(pulses)", ":ReliabilityGuard", ":UninspectedLogger", "sync", 5),
-            ("6. record_uninspected_span(Y1, Y2)", ":UninspectedLogger", ":SQLiteBuffer", "sync", 6),
-            ("commit_span_ok", ":SQLiteBuffer", ":UninspectedLogger", "ret", 7),
-            ("7. restore_relay_normal(LOW)", ":ReliabilityGuard", ":USBRelayBox", "sync", 8),
-            ("deactivate_amber_strobe()", ":USBRelayBox", ":AmberLightSiren", "sync", 9)
-        ]
-    ),
-    (
-        "03_module_3_mobile_app_sequence",
-        "Module 3: Mobile Floor Application",
-        "Figure 5.4.3: Sequence Diagram for Module 3 — Mobile Floor App & Vibration Alerts",
-        "Module 3: Mobile Floor App",
-        [
-            ("Floor Operator", ":FloorOperator", True),
-            ("Flutter Mobile App", ":FlutterApp", False),
-            ("Edge FastStream", ":EdgeFastStream", False),
-            ("Local SQLite", ":LocalSQLite", False),
-            ("Haptic Actuator", ":HapticActuator", False)
-        ],
-        [
-            ("1. scan_roll_qr('ROLL-2026')", ":FloorOperator", ":FlutterApp", "sync", 1),
-            ("2. POST /api/v1/sessions/start", ":FlutterApp", ":EdgeFastStream", "sync", 2),
-            ("session_token, active_roll", ":EdgeFastStream", ":FlutterApp", "ret", 3),
-            ("3. subscribe_ws('edge_events')", ":FlutterApp", ":EdgeFastStream", "sync", 4),
-            ("WS Connected (stream_ready)", ":EdgeFastStream", ":FlutterApp", "ret", 5),
-            ("4. broadcast_event('defect_found')", ":EdgeFastStream", ":FlutterApp", "sync", 6),
-            ("5. trigger_haptic_vibration()", ":FlutterApp", ":HapticActuator", "sync", 7),
-            ("6. render_defect_banner()", ":FlutterApp", ":FloorOperator", "sync", 8),
-            ("7. pause_session(roll_id)", ":FloorOperator", ":FlutterApp", "sync", 9),
-            ("200 OK (session_paused)", ":FlutterApp", ":FloorOperator", "ret", 10)
-        ]
-    ),
-    (
-        "04_module_4_web_quality_map_sequence",
-        "Module 4: Web Quality Management & Digital Map",
-        "Figure 5.4.4: Sequence Diagram for Module 4 — Web Quality Dashboard & 2D Map",
-        "Module 4: Web Quality Dashboard",
-        [
-            ("Quality Inspector", ":QualityInspector", True),
-            ("React Dashboard", ":ReactDashboard", False),
-            ("2D Canvas Map", ":Canvas2DMap", False),
-            ("FastAPI Gateway", ":FastAPIGateway", False),
-            ("PostgreSQL DB", ":PostgreSQLDB", False),
-            ("MinIO Crop Store", ":MinIOStore", False)
-        ],
-        [
-            ("1. select_roll(roll_id)", ":QualityInspector", ":ReactDashboard", "sync", 1),
-            ("2. GET /api/v1/rolls/{id}/map", ":ReactDashboard", ":FastAPIGateway", "sync", 2),
-            ("3. SELECT defects & spans", ":FastAPIGateway", ":PostgreSQLDB", "sync", 3),
-            ("return defects_list, spans", ":PostgreSQLDB", ":FastAPIGateway", "ret", 4),
-            ("200 OK (map_payload_json)", ":FastAPIGateway", ":ReactDashboard", "ret", 5),
-            ("4. render_2d_web(defects)", ":ReactDashboard", ":Canvas2DMap", "sync", 6),
-            ("5. click_defect_glyph(#14)", ":QualityInspector", ":ReactDashboard", "sync", 7),
-            ("6. fetch_crop_url(defect_id)", ":ReactDashboard", ":MinIOStore", "sync", 8),
-            ("return crop_image_blob", ":MinIOStore", ":ReactDashboard", "ret", 9),
-            ("7. show_gallery_modal()", ":ReactDashboard", ":QualityInspector", "sync", 10),
-            ("8. reclassify('Foreign Yarn')", ":QualityInspector", ":ReactDashboard", "sync", 11),
-            ("9. PATCH /api/v1/defects/{id}", ":ReactDashboard", ":FastAPIGateway", "sync", 12),
-            ("10. UPDATE & INSERT audit", ":FastAPIGateway", ":PostgreSQLDB", "sync", 13),
-            ("200 OK (reclassified, audit_id)", ":PostgreSQLDB", ":ReactDashboard", "ret", 14)
-        ]
-    ),
-    (
-        "05_module_5_smart_operations_astm_sequence",
-        "Module 5: Smart Operations & ASTM 4-Point Grading",
-        "Figure 5.4.5: Sequence Diagram for Module 5 — Smart Operations & ASTM D5430-07 Grading",
-        "Module 5: Smart Operations",
-        [
-            ("Quality Manager", ":QualityManager", True),
-            ("Web Dashboard", ":WebDashboard", False),
-            ("FastAPI Server", ":FastAPIServer", False),
-            ("ASTM Engine", ":ASTMEngine", False),
-            ("PostgreSQL DB", ":PostgreSQLDB", False),
-            ("PDF Export Service", ":PDFExportService", False)
-        ],
-        [
-            ("1. click_finalize_roll()", ":QualityManager", ":WebDashboard", "sync", 1),
-            ("2. POST /rolls/{id}/grade", ":WebDashboard", ":FastAPIServer", "sync", 2),
-            ("3. execute_astm_d5430(defects)", ":FastAPIServer", ":ASTMEngine", "sync", 3),
-            ("4. SELECT defects FROM db", ":ASTMEngine", ":PostgreSQLDB", "sync", 4),
-            ("return verified_defects", ":PostgreSQLDB", ":ASTMEngine", "ret", 5),
-            ("calculate penalty points (1-4)", ":ASTMEngine", ":ASTMEngine", "self", 6),
-            ("5. UPDATE rolls SET grade='A'", ":ASTMEngine", ":PostgreSQLDB", "sync", 7),
-            ("6. request_pdf_export(report)", ":WebDashboard", ":PDFExportService", "sync", 8),
-            ("compile_astm_pdf_report()", ":PDFExportService", ":PDFExportService", "self", 9),
-            ("200 OK (download_url)", ":PDFExportService", ":WebDashboard", "ret", 10),
-            ("display_quality_certificate()", ":WebDashboard", ":QualityManager", "ret", 11)
-        ]
-    )
-]
-
 if __name__ == "__main__":
     print("=" * 70)
-    print("TexEye AI — Master Visio Builder (Reference Perfect)")
+    print("TexEye AI — Master Visio Builder (Human-Written Academic UML)")
     print("=" * 70)
     
     visio = init_visio()
     print(f"Connected to Microsoft Visio version: {visio.Version}")
     
     # 1. Build all 25 Use Case Sequence Diagrams
-    print("\n--- 1. Building 25 Use Case Sequence Diagrams ---")
+    print("\n--- 1. Building 25 Human-Written Use Case Sequence Diagrams ---")
     for i, uc in enumerate(use_cases):
         uc_id, title = uc[0], uc[1]
         v_out = os.path.join(OUT_DIR, f"{uc_id}.vsdx")
@@ -768,10 +617,10 @@ if __name__ == "__main__":
         fig_cap = f"Figure 5.5.{i+1}: Sequence Diagram for {title}"
         parts = [
             (uc[2], uc[3], True),
-            (uc[5].replace(":", ""), uc[5], False),
-            (uc[7].replace(":", ""), uc[7], False),
-            (uc[9].replace(":", ""), uc[9], False),
-            (uc[11].replace(":", ""), uc[11], False)
+            (uc[4], uc[5], False),
+            (uc[6], uc[7], False),
+            (uc[8], uc[9], False),
+            (uc[10], uc[11], False)
         ]
         render_sequence_sheet(visio, uc_id, fig_cap, clean_title, parts, uc[12], v_out, p_out)
         print(f"  [{i+1}/25] {uc_id}.vsdx")
