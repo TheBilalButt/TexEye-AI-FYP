@@ -1,13 +1,9 @@
 import os
-import sys
 import re
 import base64
 import urllib.parse
 import zipfile
 import io
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.getcwd())
 
 print("Initializing Draw.io and MS Visio Exporter for TexEye AI...")
 
@@ -390,3 +386,4 @@ create_vsdx_package(master_vsdx_path, "Master Collection", master_shapes)
 print(f"Created Master Visio Archive at {master_vsdx_path} ({os.path.getsize(master_vsdx_path)} bytes)")
 
 print("\nSUCCESS! All Draw.io and MS Visio files generated and verified.")
+
