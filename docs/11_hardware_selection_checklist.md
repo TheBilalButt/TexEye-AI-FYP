@@ -55,7 +55,7 @@ This checklist outlines the evaluation criteria and decisions needed prior to pr
   - Constant-current 24V DC driver vs. camera-strobe triggered PWM driver (extends LED lifespan and keeps heat down).
 
 ### Decision 6: Edge Processing Unit Form Factor
-- [ ] **Embedded Platform (Option A):** NVIDIA Jetson Orin Nano (40 TOPS) / Orin NX (70–100 TOPS) running Linux ARM64. Low power consumption (15–25W), compact enclosure right on the stand.
+- [ ] **Embedded Platform (Option A):** Industrial Edge PC (Dedicated GPU) (40 TOPS) / Orin NX (70–100 TOPS) running Linux ARM64. Low power consumption (15–25W), compact enclosure right on the stand.
 - [ ] **Industrial Mini-PC (Option B):** Intel Core i7 / AMD Ryzen + NVIDIA GeForce RTX GPU running Linux x86_64. More raw compute power for testing multiple model backbones.
 
 ---
@@ -68,4 +68,4 @@ This checklist outlines the evaluation criteria and decisions needed prior to pr
 | C-Mount Lens | 12mm Fixed Focal Length, Low Distortion | [ ] Approved [ ] Revision Req. | Proposed |
 | Rotary Encoder | 1000 PPR Optical Quadrature (A/B) | [ ] Approved [ ] Revision Req. | Proposed |
 | Lighting Rig | High-CRI 24V Linear LED Bar + Diffuser | [ ] Approved [ ] Revision Req. | Proposed |
-| Edge Unit | NVIDIA Jetson Orin / Industrial Mini-PC with GPU | [ ] Approved [ ] Revision Req. | Proposed |
+| Edge Unit | Industrial Edge PC / Industrial Mini-PC with GPU | [ ] Approved [ ] Revision Req. | Proposed |

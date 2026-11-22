@@ -19,7 +19,7 @@
 
   <!-- Title & Header Bar -->
   <rect x="25" y="15" width="1270" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
-  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI — Complete End-to-End System Workflow Diagram</text>
+  <text x="660" y="36" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">TexEye AI â€” Complete End-to-End System Workflow Diagram</text>
   <text x="660" y="52" font-size="10.5" fill="#475569" text-anchor="middle">Paper-Reproduction Blueprint for FYP Supervisor Presentation | COMSATS University Islamabad, Wah Campus</text>
 
   <!-- ==================== SWIMLANE CONTAINERS ==================== -->

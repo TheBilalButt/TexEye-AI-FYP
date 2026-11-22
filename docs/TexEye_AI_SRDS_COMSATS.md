@@ -152,7 +152,7 @@ The system interfaces physically with standard mill rolling/inspection frames vi
 - **System Administrator:** Manages users, JWT access keys, camera calibration parameters, and edge hardware diagnostic logs.
 
 ### 2.4 Operating Environment & Hardware Boundaries
-- **Edge Computing Unit:** Industrial mini PC / NVIDIA Jetson Orin Nano (Linux Ubuntu 22.04 LTS, 8GB/16GB RAM, NVMe storage).
+- **Edge Computing Unit:** Industrial mini PC / Industrial Edge PC (Dedicated GPU) (Linux Ubuntu 22.04 LTS, 8GB/16GB RAM, NVMe storage).
 - **Camera Sensor:** Industrial USB 3.0 / GigE Area-Scan Camera (Sony IMX Sensor, global shutter, C-mount lens with fixed focal length $8\text{mm}$ or $12\text{mm}$).
 - **Encoder:** Optical quadrature rotary encoder (Autonics or Omron, 1024 PPR, roller-coupled).
 - **Illumination Rig:** Regulated constant-current DC LED light bar (Color Rendering Index $\ge 90$, 5500K color temperature).

@@ -525,149 +525,203 @@ def build_system_use_case_diagram(visio):
 
 
 # =============================================================================
-# 3. SUPERVISOR PAPER WORKFLOW (Clean 5-Stage B&W Diagram for Pen Sketching)
+# 3. SUPERVISOR PAPER WORKFLOW (Exact 4-Tier Blueprint Matching Attached Diagram)
 # =============================================================================
 def build_supervisor_paper_workflow(visio):
     """
-    Renders the clean, minimal, 5-stage B&W rough workflow that directly addresses
-    the supervisor's concern ('ye na ho apne banaya ho likha ho sb aur at last wo output ban k na aye').
-    Shows exactly what physical and software output will be demonstrated:
-    Stage 1: Mechanical Inspection Table (Fabric roll moves)
-    Stage 2: Vision & Rotary Sensors (Camera frames + Encoder pulses)
-    Stage 3: Edge AI Processing (Jetson Orin Nano + Tower Stack Light alarm)
-    Stage 4: Floor Operator Tablet (Flutter app: meters, speed, flaw alert)
-    Stage 5: Quality Web Portal (2D Defect Map + ASTM 4-Point Grade + PDF Report)
+    Renders the exact 4-tier system workflow diagram matching the supervisor blueprint:
+    - 4 progressive layers: Users/Frontend -> Hardware Sensing -> Edge AI & Buffer -> Backend & DB
+    - Two decision diamonds: 'Inspection Reliable?' and 'Network Online?'
+    - Clear orthogonal Manhattan channels, zero Jetson mentions, zero line crossings.
     """
     doc = visio.Documents.Add("")
     page = setup_page(doc, "00_rough_workflow_paper")
     
     # Outer frame
     frame = page.DrawRectangle(0.5, 0.5, PAGE_W - 0.5, PAGE_H - 0.5)
-    frame.Cells("FillPattern").FormulaU = "0"
-    frame.Cells("LineColor").FormulaU = "RGB(0,0,0)"
-    frame.Cells("LineWeight").FormulaU = "1.5 pt"
+    frame.Cells("FillPattern").FormulaU = "0"; frame.Cells("LineColor").FormulaU = "RGB(0,0,0)"; frame.Cells("LineWeight").FormulaU = "1.5 pt"
     
     # Title Block
-    tb = page.DrawRectangle(0.6, PAGE_H - 1.15, PAGE_W - 0.6, PAGE_H - 0.60)
-    tb.Text = "TexEye AI — System Architecture & Physical Realization Workflow\nBlueprint for Supervisor Defense Presentation | Final Year Project (BS-AI) | COMSATS University Islamabad"
-    tb.Cells("FillPattern").FormulaU = "0"; tb.Cells("LinePattern").FormulaU = "0"
-    tb.Cells("Char.Size").FormulaU = "11 pt"; tb.Cells("Char.Style").FormulaU = "1"; tb.Cells("Para.HorzAlign").FormulaU = "1"
-    apply_zero_margins(tb)
+    tbox = page.DrawRectangle(0.5, PAGE_H - 1.05, PAGE_W - 0.5, PAGE_H - 0.50)
+    tbox.Text = "TexEye AI — Complete End-to-End System Workflow Diagram\nPaper-Reproduction Blueprint for FYP Supervisor Presentation | COMSATS University Islamabad, Wah Campus"
+    tbox.Cells("FillPattern").FormulaU = "0"; tbox.Cells("LinePattern").FormulaU = "0"
+    tbox.Cells("Char.Size").FormulaU = "11 pt"; tbox.Cells("Char.Style").FormulaU = "1"; tbox.Cells("Para.HorzAlign").FormulaU = "1"
+    apply_zero_margins(tbox)
     
-    # Caption at bottom
-    cap = page.DrawRectangle(PAGE_W / 2 - 4.5, 0.18, PAGE_W / 2 + 4.5, 0.45)
-    cap.Text = "Figure 2.1: High-Level End-to-End System Workflow (Physical Hardware to Certified Quality Output)"
-    cap.Cells("FillPattern").FormulaU = "0"; cap.Cells("LinePattern").FormulaU = "0"
-    cap.Cells("Char.Size").FormulaU = "9.5 pt"; cap.Cells("Char.Style").FormulaU = "1"; cap.Cells("Para.HorzAlign").FormulaU = "1"
-    apply_zero_margins(cap)
-    
-    # 5 Major Physical Stages (Horizontal Layout from Left to Right)
-    stages = [
-        (
-            "STAGE 1: PHYSICAL STAND",
-            "Fabric Unrolling Stand",
-            "• Mechanical Rolling Table\n• DC Gear Motor Drive\n• Fabric Roll (Width: 1.5m)\n• Continuous Feed (0.3 m/s)",
-            1.65, 4.20
-        ),
-        (
-            "STAGE 2: SENSORS",
-            "Camera & Encoder",
-            "• Basler USB3 Area Camera\n• High-CRI LED Illumination\n• Omron Rotary Encoder\n• 1000 Pulses = 1 Meter",
-            3.80, 4.20
-        ),
-        (
-            "STAGE 3: EDGE AI",
-            "Jetson Orin Nano Stand",
-            "• YOLOv8s TensorRT AI\n• < 25ms Flaw Detection\n• Multi-Frame Flaw Tracker\n• Tower Stack Light & Siren",
-            5.95, 4.20
-        ),
-        (
-            "STAGE 4: OPERATOR UI",
-            "Floor Stand Tablet",
-            "• Flutter Touch Mobile UI\n• Roll QR Code Scanner\n• Live Meters & Speed Gauge\n• Instant Flaw Alarm Popup",
-            8.10, 4.20
-        ),
-        (
-            "STAGE 5: QA PORTAL",
-            "Central Quality Portal",
-            "• Interactive 2D Roll Map\n• ASTM D5430 4-Point Grade\n• Pass / Hold / Scrap Verdict\n• Cryptographic PDF Cert",
-            10.20, 4.20
-        )
+    # 4 Progressive Swimlane Layers
+    layers = [
+        ("1. USER & FRONTEND LAYER", 5.60, 6.90, "RGB(248,250,252)"),
+        ("2. HARDWARE & SENSING LAYER", 4.10, 5.40, "RGB(255,255,255)"),
+        ("3. EDGE AI & LOCAL BUFFER LAYER", 2.60, 3.90, "RGB(248,250,252)"),
+        ("4. CENTRAL BACKEND & DATABASE", 1.10, 2.40, "RGB(255,255,255)")
     ]
+    for l_title, ly1, ly2, l_color in layers:
+        lane = page.DrawRectangle(0.80, ly1, PAGE_W - 0.80, ly2)
+        lane.Cells("FillForegnd").FormulaU = l_color; lane.Cells("LineColor").FormulaU = "RGB(148,163,184)"; lane.Cells("LineWeight").FormulaU = "0.75 pt"
+        lt = page.DrawRectangle(0.90, ly2 - 0.28, 4.00, ly2 - 0.05)
+        lt.Text = l_title
+        lt.Cells("FillPattern").FormulaU = "0"; lt.Cells("LinePattern").FormulaU = "0"
+        lt.Cells("Char.Size").FormulaU = "8 pt"; lt.Cells("Char.Style").FormulaU = "1"; lt.Cells("Para.HorzAlign").FormulaU = "0"
+        apply_zero_margins(lt)
+        
+    # Layer 1: Frontend Boxes
+    b1 = page.DrawRectangle(1.10, 5.80, 2.80, 6.60); b1.Text = "Floor Operator\nMobile Floor App\nScan Roll QR & Start Session"
+    b2 = page.DrawRectangle(3.30, 5.80, 5.10, 6.60); b2.Text = "Mobile Live Floor View\n• Real-Time Defect Alert (Vibration)\n• Quick Review & Correct Flaw Tag"
+    b3 = page.DrawRectangle(7.00, 5.80, 9.10, 6.60); b3.Text = "Quality Manager / Inspector\nWeb Management Dashboard\n2D Defect Map • Crop Gallery • Audit"
+    b4 = page.DrawRectangle(9.50, 5.80, 10.90, 6.60); b4.Text = "Final Result\nPDF Quality Certificate\nVerified ASTM Scorecard"
+    b4.Cells("FillForegnd").FormulaU = "RGB(240,253,244)"; b4.Cells("LineColor").FormulaU = "RGB(22,163,74)"; b4.Cells("LineWeight").FormulaU = "1.5 pt"
+
+    # Layer 2: Hardware & Sensing Boxes
+    b5 = page.DrawRectangle(1.10, 4.30, 2.80, 5.10); b5.Text = "Fabric Movement & Sensing\n• Industrial Camera (Video Frames)\n• Rotary Encoder (Pulses / Distance)"
     
-    bw, bh = 1.85, 2.80
-    for s_tag, s_title, s_bullets, cx, cy in stages:
-        # Stage Main Box
-        box = page.DrawRectangle(cx - bw/2, cy - bh/2, cx + bw/2, cy + bh/2)
-        box.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; box.Cells("FillPattern").FormulaU = "1"
-        box.Cells("LineColor").FormulaU = "RGB(0,0,0)"; box.Cells("LineWeight").FormulaU = "1.5 pt"
-        
-        # Header banner inside box
-        hb = page.DrawRectangle(cx - bw/2, cy + bh/2 - 0.40, cx + bw/2, cy + bh/2)
-        hb.Text = s_tag
-        hb.Cells("FillForegnd").FormulaU = "RGB(240,240,240)"; hb.Cells("FillPattern").FormulaU = "1"
-        hb.Cells("LineColor").FormulaU = "RGB(0,0,0)"; hb.Cells("LineWeight").FormulaU = "1 pt"
-        hb.Cells("Char.Size").FormulaU = "8 pt"; hb.Cells("Char.Style").FormulaU = "1"; hb.Cells("Para.HorzAlign").FormulaU = "1"
-        apply_zero_margins(hb)
-        
-        # Title inside box
-        t_box = page.DrawRectangle(cx - bw/2 + 0.05, cy + bh/2 - 0.85, cx + bw/2 - 0.05, cy + bh/2 - 0.45)
-        t_box.Text = s_title
-        t_box.Cells("FillPattern").FormulaU = "0"; t_box.Cells("LinePattern").FormulaU = "0"
-        t_box.Cells("Char.Size").FormulaU = "9 pt"; t_box.Cells("Char.Style").FormulaU = "1"; t_box.Cells("Para.HorzAlign").FormulaU = "1"
-        apply_zero_margins(t_box)
-        
-        # Divider line
-        div = page.DrawLine(cx - bw/2 + 0.10, cy + bh/2 - 0.90, cx + bw/2 - 0.10, cy + bh/2 - 0.90)
-        div.Cells("LineColor").FormulaU = "RGB(180,180,180)"; div.Cells("LineWeight").FormulaU = "0.75 pt"
-        
-        # Bullets inside box
-        b_box = page.DrawRectangle(cx - bw/2 + 0.08, cy - bh/2 + 0.10, cx + bw/2 - 0.08, cy + bh/2 - 0.95)
-        b_box.Text = s_bullets
-        b_box.Cells("FillPattern").FormulaU = "0"; b_box.Cells("LinePattern").FormulaU = "0"
-        b_box.Cells("Char.Size").FormulaU = "8 pt"; b_box.Cells("Para.HorzAlign").FormulaU = "0"
-        apply_zero_margins(b_box)
-        
-    # Main Horizontal Flow Arrows between the 5 stages
-    arrow_links = [
-        (1.65 + bw/2, 4.20, 3.80 - bw/2, 4.20, "1. Fabric Motion"),
-        (3.80 + bw/2, 4.20, 5.95 - bw/2, 4.20, "2. Images & Pulses"),
-        (5.95 + bw/2, 4.20, 8.10 - bw/2, 4.20, "3. Local FastStream"),
-        (8.10 + bw/2, 4.20, 10.20 - bw/2, 4.20, "4. Cloud Outbox Sync")
-    ]
-    for x1, y1, x2, y2, lbl_txt in arrow_links:
+    # Diamond 1: Inspection Reliable?
+    cx1, cy1, dw1, dh1 = 3.90, 4.70, 1.40, 0.70
+    dia1 = page.DrawRectangle(cx1 - dw1/2, cy1 - dh1/2, cx1 + dw1/2, cy1 + dh1/2)
+    dia1.Text = "Inspection\nReliable?"
+    dia1.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; dia1.Cells("LineColor").FormulaU = "RGB(15,23,42)"; dia1.Cells("LineWeight").FormulaU = "1.5 pt"
+    dia1.Cells("Rounding").FormulaU = "0.20 in"
+    
+    b6 = page.DrawRectangle(5.80, 4.30, 7.90, 5.10); b6.Text = "1. Trigger Hardware Relay\nAmber / Red Light & Audible Buzzer\n2. Mark Section UNINSPECTED\n(Flag Span [Y_start, Y_end])"
+    b6.Cells("FillForegnd").FormulaU = "RGB(255,241,242)"; b6.Cells("LineColor").FormulaU = "RGB(225,29,72)"; b6.Cells("LineWeight").FormulaU = "1.4 pt"
+
+    # Layer 3: Edge AI & Buffer Boxes
+    b7 = page.DrawRectangle(1.10, 2.80, 2.80, 3.60); b7.Text = "AI Defect Detection\n• YOLO Model Inference\n• Defect Class (Hole, Stain, Yarn)"
+    b8 = page.DrawRectangle(3.30, 2.80, 5.10, 3.60); b8.Text = "Location & Deduplication\n• Calculate (X cm, Y m) via Pulses\n• Multi-Frame Tracker (No Dups)"
+    b9 = page.DrawRectangle(5.60, 2.80, 7.70, 3.60); b9.Text = "Local SQLite Storage\n• Zero Delay / Offline-First\n• Roll Header & Defect Records\n• High-Res JPEG Defect Crops"
+    
+    b_outbox = page.DrawRectangle(8.10, 3.42, 9.60, 3.78)
+    b_outbox.Text = "Offline Queue (Outbox)\nAuto-sync when reconnected"
+    b_outbox.Cells("FillForegnd").FormulaU = "RGB(255,251,235)"; b_outbox.Cells("LineColor").FormulaU = "RGB(217,119,6)"; b_outbox.Cells("LineWeight").FormulaU = "1 pt"
+    b_outbox.Cells("Char.Size").FormulaU = "7 pt"; b_outbox.Cells("Para.HorzAlign").FormulaU = "1"
+    apply_zero_margins(b_outbox)
+    
+    # Diamond 2: Network Online?
+    cx2, cy2, dw2, dh2 = 8.85, 2.95, 1.25, 0.65
+    dia2 = page.DrawRectangle(cx2 - dw2/2, cy2 - dh2/2, cx2 + dw2/2, cy2 + dh2/2)
+    dia2.Text = "Network\nOnline?"
+    dia2.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; dia2.Cells("LineColor").FormulaU = "RGB(15,23,42)"; dia2.Cells("LineWeight").FormulaU = "1.4 pt"
+    dia2.Cells("Rounding").FormulaU = "0.20 in"
+
+    # Layer 4: Central Backend Boxes
+    b10 = page.DrawRectangle(1.10, 1.30, 2.80, 2.10); b10.Text = "Smart Operations Module\n• ASTM D5430 4-Point Grading\n• Roll Grade (Grade A, B, Scrap)"
+    b11 = page.DrawRectangle(3.30, 1.30, 5.10, 2.10); b11.Text = "Central Enterprise DB\n• PostgreSQL (Rolls, Defects, Audit)\n• MinIO Storage (Defect Crops)"
+    b12 = page.DrawRectangle(5.60, 1.30, 7.70, 2.10); b12.Text = "Central FastAPI Backend\n• Ingest HTTPS REST Sync Batches\n• WebSocket Broadcast Hub & Auth"
+
+    for b in [b1, b2, b3, b5, dia1, b6, b7, b8, b9, dia2, b10, b11, b12]:
+        if b not in [b4, dia1, b6, b_outbox, dia2]:
+            b.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"
+            b.Cells("LineColor").FormulaU = "RGB(15,23,42)"
+            b.Cells("LineWeight").FormulaU = "1 pt"
+        b.Cells("Char.Size").FormulaU = "7.5 pt"
+        b.Cells("Para.HorzAlign").FormulaU = "1"
+        apply_zero_margins(b)
+
+    # Helper for orthogonal connecting lines
+    def draw_seg(x1, y1, x2, y2, is_arrow=False, color="RGB(15,23,42)", is_dashed=False):
         ln = page.DrawLine(x1, y1, x2, y2)
-        ln.Cells("LineColor").FormulaU = "RGB(0,0,0)"; ln.Cells("LineWeight").FormulaU = "1.5 pt"
-        ln.Cells("EndArrow").FormulaU = "13"; ln.Cells("EndArrowSize").FormulaU = "2"
-        
-        lbl = page.DrawRectangle((x1+x2)/2 - 0.55, y1 + 0.08, (x1+x2)/2 + 0.55, y1 + 0.32)
-        lbl.Text = lbl_txt
-        lbl.Cells("FillForegnd").FormulaU = "RGB(255,255,255)"; lbl.Cells("FillPattern").FormulaU = "1"
+        ln.Cells("LineColor").FormulaU = color; ln.Cells("LineWeight").FormulaU = "1 pt"
+        if is_dashed:
+            ln.Cells("LinePattern").FormulaU = "2"
+        if is_arrow:
+            ln.Cells("EndArrow").FormulaU = "13"; ln.Cells("EndArrowSize").FormulaU = "2"
+        return ln
+
+    def draw_pill(cx, cy, text, w=1.0, h=0.20, fill="RGB(255,255,255)", text_col="RGB(15,23,42)"):
+        lbl = page.DrawRectangle(cx - w/2, cy - h/2, cx + w/2, cy + h/2)
+        lbl.Text = text
+        lbl.Cells("FillForegnd").FormulaU = fill; lbl.Cells("FillPattern").FormulaU = "1"
         lbl.Cells("LinePattern").FormulaU = "0"
-        lbl.Cells("Char.Size").FormulaU = "7 pt"; lbl.Cells("Char.Style").FormulaU = "1"; lbl.Cells("Para.HorzAlign").FormulaU = "1"
+        lbl.Cells("Char.Size").FormulaU = "7 pt"; lbl.Cells("Char.Style").FormulaU = "1"
+        lbl.Cells("Char.Color").FormulaU = text_col
+        lbl.Cells("Para.HorzAlign").FormulaU = "1"
         apply_zero_margins(lbl)
-        
-    # Bottom Note Box: Concrete Hardware-to-Software Output Proof for Supervisor
-    nb = page.DrawRectangle(0.8, 0.85, PAGE_W - 0.8, 2.05)
-    nb.Cells("FillForegnd").FormulaU = "RGB(250,250,250)"; nb.Cells("FillPattern").FormulaU = "1"
-    nb.Cells("LineColor").FormulaU = "RGB(0,0,0)"; nb.Cells("LineWeight").FormulaU = "1 pt"
+
+    # Connectors matching TexEye_AI_System_Workflow.svg
+    # 1. Floor Op -> Sensing (Start Session)
+    draw_seg(1.95, 5.80, 1.95, 5.10, is_arrow=True)
+    draw_pill(1.95, 5.45, "1. Start Session", w=0.95)
     
-    nt = page.DrawRectangle(0.9, 0.90, PAGE_W - 0.9, 2.00)
-    nt.Text = (
-        "HOW THE DEMONSTRATION WORKING OUTPUT WILL BE PROVEN ON EVALUATION DAY:\n"
-        "1. PHYSICAL ROLLING STAND: Fabric roll is loaded and unrolled past the camera enclosure at continuous speed.\n"
-        "2. REAL-TIME AI VISION: The Jetson Orin Nano processes each frame, draws bounding boxes on fabric holes/stains, and tracks defect coordinates (X cm, Y m).\n"
-        "3. PHYSICAL HARDWARE ACTUATION: A physical 3-color industrial tower stack light switches from GREEN to RED and sounds buzzer upon defect detection.\n"
-        "4. MOBILE OPERATOR DASHBOARD: The machine operator observes live elapsed meters and flaw warnings on the stand tablet in real-time.\n"
-        "5. CERTIFIED ASTM EXPORT: The quality lab opens the Web Dashboard, reviews the 2D roll defect map, and downloads the cryptographically sealed PDF report."
-    )
-    nt.Cells("FillPattern").FormulaU = "0"; nt.Cells("LinePattern").FormulaU = "0"
-    nt.Cells("Char.Size").FormulaU = "7.5 pt"; nt.Cells("Para.HorzAlign").FormulaU = "0"
-    apply_zero_margins(nt)
+    # 2. Sensing -> Reliability Diamond (Frames)
+    draw_seg(2.80, 4.70, 3.20, 4.70, is_arrow=True)
+    draw_pill(3.00, 4.88, "Frames", w=0.55)
     
+    # 3A. Reliability Diamond -> [NO: Sensor Fault] -> Hardware Alarm
+    draw_seg(4.60, 4.70, 5.80, 4.70, is_arrow=True, color="RGB(220,38,38)")
+    draw_pill(5.20, 4.88, "[NO: Sensor Fault]", w=1.05, fill="RGB(255,241,242)", text_col="RGB(190,18,60)")
+    
+    # 3B. Reliability Diamond -> [YES: Reliable Data] -> AI Detection
+    draw_seg(3.90, 4.35, 3.90, 3.95)
+    draw_seg(3.90, 3.95, 1.95, 3.95)
+    draw_seg(1.95, 3.95, 1.95, 3.60, is_arrow=True)
+    draw_pill(2.90, 4.10, "[YES: Reliable Data]", w=1.15, fill="RGB(240,253,244)", text_col="RGB(21,128,61)")
+    
+    # 3C. Hardware Alarm -> Save Uninspected Span (dashed red down to SQLite)
+    draw_seg(7.90, 4.70, 8.10, 4.70, color="RGB(220,38,38)", is_dashed=True)
+    draw_seg(8.10, 4.70, 8.10, 3.20, color="RGB(220,38,38)", is_dashed=True)
+    draw_seg(8.10, 3.20, 7.70, 3.20, is_arrow=True, color="RGB(220,38,38)", is_dashed=True)
+    draw_pill(8.10, 4.00, "Save Uninspected", w=1.10, fill="RGB(255,241,242)", text_col="RGB(190,18,60)")
+    
+    # 4. AI Detection -> Location & Deduplication (BBox)
+    draw_seg(2.80, 3.20, 3.30, 3.20, is_arrow=True)
+    draw_pill(3.05, 3.36, "BBox", w=0.45)
+    
+    # 4B. AI Detection -> Mobile Live Floor View (Live Defect Push - dashed blue)
+    draw_seg(2.80, 3.45, 3.05, 3.45, color="RGB(37,99,235)", is_dashed=True)
+    draw_seg(3.05, 3.45, 3.05, 6.20, color="RGB(37,99,235)", is_dashed=True)
+    draw_seg(3.05, 6.20, 3.30, 6.20, is_arrow=True, color="RGB(37,99,235)", is_dashed=True)
+    draw_pill(3.05, 5.35, "Live Defect Push", w=1.00, fill="RGB(239,246,255)", text_col="RGB(29,78,216)")
+    
+    # 5. Location -> Local SQLite Storage ((X, Y))
+    draw_seg(5.10, 3.20, 5.60, 3.20, is_arrow=True)
+    draw_pill(5.35, 3.36, "(X, Y)", w=0.50)
+    
+    # 6. SQLite -> Network Online?
+    draw_seg(7.70, 3.20, 8.22, 3.00, is_arrow=True)
+    draw_seg(8.85, 3.28, 8.85, 3.42, is_arrow=True, color="RGB(217,119,6)")
+    
+    # 7. Network Online? -> [YES: Online Sync] -> Central FastAPI Backend
+    draw_seg(8.85, 2.62, 8.85, 1.70)
+    draw_seg(8.85, 1.70, 7.70, 1.70, is_arrow=True)
+    draw_pill(8.85, 2.15, "[YES: Online Sync]\nHTTPS REST / WSS", w=1.20, h=0.32, fill="RGB(240,253,244)", text_col="RGB(21,128,61)")
+    
+    # 8. Central FastAPI Backend -> Central Enterprise DB (Commit)
+    draw_seg(5.60, 1.70, 5.10, 1.70, is_arrow=True)
+    draw_pill(5.35, 1.86, "Commit", w=0.55)
+    
+    # 9. Central Enterprise DB -> Smart Operations Module (Grade)
+    draw_seg(3.30, 1.70, 2.80, 1.70, is_arrow=True)
+    draw_pill(3.05, 1.86, "Grade", w=0.50)
+    
+    # 10. Central Enterprise DB -> Web Dashboard (Load 2D Map & Audit Data)
+    draw_seg(5.10, 1.90, 9.40, 1.90)
+    draw_seg(9.40, 1.90, 9.40, 5.80, is_arrow=True)
+    draw_pill(9.40, 3.85, "Load 2D Map & Audit Data", w=1.45)
+    
+    # 11. Web Dashboard -> PDF Quality Certificate (Export)
+    draw_seg(9.10, 6.20, 9.50, 6.20, is_arrow=True, color="RGB(22,163,74)")
+    draw_pill(9.30, 6.36, "Export", w=0.50, fill="RGB(240,253,244)", text_col="RGB(21,128,61)")
+
+    # Bottom Notes Guide
+    cap = page.DrawRectangle(0.80, 0.65, PAGE_W - 0.80, 0.98)
+    cap.Text = "Paper-Reproduction Guide for FYP Supervisor Presentation: 4 Tiers (Users & Apps -> Stand Hardware & Reliability -> Edge AI & SQLite -> Cloud Backend & ASTM Grading) • 2 Decision Diamonds (Sensor Reliability & Network Connectivity)."
+    cap.Cells("FillForegnd").FormulaU = "RGB(248,250,252)"; cap.Cells("FillPattern").FormulaU = "1"
+    cap.Cells("LineColor").FormulaU = "RGB(203,213,225)"; cap.Cells("LineWeight").FormulaU = "1 pt"
+    cap.Cells("Char.Size").FormulaU = "7 pt"; cap.Cells("Char.Style").FormulaU = "0"; cap.Cells("Para.HorzAlign").FormulaU = "0"
+    apply_zero_margins(cap)
+
     vsdx_path = os.path.join(OUT_DIR, "00_rough_workflow_paper.vsdx")
     doc.SaveAs(os.path.abspath(vsdx_path))
     png_path = os.path.join(PNG_DIR, "00_rough_workflow_paper.png")
+    page.Export(os.path.abspath(png_path))
+    doc.Close()
+    
+    # Also save to 01_overall_system_workflow.vsdx
+    shutil.copy2(vsdx_path, os.path.join(OUT_DIR, "01_overall_system_workflow.vsdx"))
+    if os.path.exists(ONEDRIVE_DIR):
+        shutil.copy2(vsdx_path, os.path.join(ONEDRIVE_DIR, "00_rough_workflow_paper.vsdx"))
+        shutil.copy2(vsdx_path, os.path.join(ONEDRIVE_DIR, "01_overall_system_workflow.vsdx"))
+        
+    return vsdx_path, png_path
     page.Export(os.path.abspath(png_path))
     doc.Close()
     

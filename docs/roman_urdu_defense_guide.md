@@ -81,7 +81,7 @@ TexEye AI aik **AI-based Edge-Accelerated Fabric Defect Detection aur Quality Ma
 >
 > *1. **Fabric Stand Subsystem [Confirmed]:** Moving fabric web, idler friction roller, aur illuminated inspection area.*
 > *2. **Sensing & Illumination [Confirmed]:** Industrial camera, high-CRI uniform LED bar, aur incremental optical quadrature rotary encoder.*
-> *3. **Edge Processing Unit [Confirmed]:** Industrial Edge Computer jisme GPU accelerator (jaise NVIDIA Jetson ya Industrial Mini-PC with dedicated GPU) aur NVMe storage mojud hai.*
+> *3. **Edge Processing Unit [Confirmed]:** Industrial Edge Computer jisme GPU accelerator (jaise Industrial Edge PCya Industrial Mini-PC with dedicated GPU) aur NVMe storage mojud hai.*
 >
 > *Important baat yeh hai sir ke humne exact hardware models aur interfaces ko **Proposed Alternatives** ke tor par mark kiya hai:*
 > *- Camera connection ke liye humne USB 3.0 Vision, GigE Vision, aur MIPI-CSI2 ke options propose kiye hain.*

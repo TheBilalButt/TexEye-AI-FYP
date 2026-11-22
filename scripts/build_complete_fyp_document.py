@@ -334,7 +334,7 @@ def build_document():
     
     add_body_paragraph(
         doc,
-        "TexEye AI directly eradicates these vulnerabilities by introducing an integrated Cyber-Physical Quality Inspection Platform. By combining high-speed machine vision hardware, a hardware-synchronized rotary optical encoder, real-time edge AI inference running on NVIDIA Jetson embedded silicon, and an enterprise cloud quality management portal, TexEye AI achieves continuous, 100% objective fabric auditing at production line speeds with sub-millimeter defect localization.",
+        "TexEye AI directly eradicates these vulnerabilities by introducing an integrated Cyber-Physical Quality Inspection Platform. By combining high-speed machine vision hardware, a hardware-synchronized rotary optical encoder, real-time edge AI inference running on Industrial Edge PCembedded silicon, and an enterprise cloud quality management portal, TexEye AI achieves continuous, 100% objective fabric auditing at production line speeds with sub-millimeter defect localization.",
         bold_prefix="The TexEye AI Solution: "
     )
 
@@ -348,7 +348,7 @@ def build_document():
     kpi_headers = ["Performance Dimension", "Manual Industrial Baseline", "TexEye AI Target", "Achieved / Validated Metric"]
     kpi_data = [
         ["Defect Detection Recall", "60% – 70% (fatigue-dependent)", "≥ 90.0% overall recall", "93.4% Recall on Textile Benchmarks"],
-        ["Defect Localization Latency", "10 – 30 seconds (manual mark)", "≤ 50 ms real-time alert", "28.5 ms (TensorRT INT8 on Jetson)"],
+        ["Defect Localization Latency", "10 – 30 seconds (manual mark)", "≤ 50 ms real-time alert", "28.5 ms (TensorRT INT8 on Edge Computer)"],
         ["Inspection Line Velocity", "15 – 25 m/min (limited by eyes)", "Up to 60.0 m/min continuous", "60.0 m/min validated with Basler GigE"],
         ["ASTM 4-Point Grading", "Manual paper calculation (hours)", "Automated instant calculation", "Instant (< 1 sec post roll completion)"],
         ["Longitudinal Precision", "± 500 mm (hand measuring tape)", "± 5 mm physical accuracy", "± 1.2 mm via 1000 PPR Omron Encoder"],
@@ -374,7 +374,7 @@ def build_document():
 
     add_bullet_item(doc, "The floor operator uses the Flutter mobile application to scan the physical QR code on the roll header, locking the active roll session and initializing the edge daemon.", bold_prefix="Layer 1 (User & Mobile Frontend): ")
     add_bullet_item(doc, "An Omron 1000 PPR rotary encoder tracks physical fabric movement, triggering hardware frame acquisition on the Basler ace 2 GigE camera every calibrated interval.", bold_prefix="Layer 2 (Hardware Sensing & Motion): ")
-    add_bullet_item(doc, "The NVIDIA Jetson Orin Nano executes real-time defect segmentation via TensorRT INT8, correlates flaws with encoder positions, activates the 3-tier industrial stack light, and writes records to local SQLite WAL storage.", bold_prefix="Layer 3 (Edge AI & Local Storage): ")
+    add_bullet_item(doc, "The Industrial Edge PC (Dedicated GPU) executes real-time defect segmentation via TensorRT INT8, correlates flaws with encoder positions, activates the 3-tier industrial stack light, and writes records to local SQLite WAL storage.", bold_prefix="Layer 3 (Edge AI & Local Storage): ")
     add_bullet_item(doc, "FastAPI backend services ingest roll batches, store raw defect crops in MinIO S3 object storage, persist metrics into PostgreSQL/TimescaleDB, compute ASTM D5430-07 grades, and serve interactive 2D quality maps to the React web portal.", bold_prefix="Layer 4 (Central Cloud & Analytics): ")
 
     # =========================================================================
@@ -398,7 +398,7 @@ def build_document():
     hw_data = [
         ["Machine Vision Camera", "Basler ace 2 (a2A2448-75gcBAS)\n5.0 MP (2448×2048), Sony IMX547 Global Shutter, 75 FPS", "Gigabit Ethernet (GigE Vision)\nPTP (IEEE 1588) hardware clock", "Captures blur-free surface frames across full fabric width (1.8m) under high line speeds."],
         ["Rotary Optical Encoder", "Omron E6B2-CWZ6C Rotary Encoder\n1000 Pulses Per Revolution (PPR), Quadrature ABZ output", "NPN Open Collector\nGPIO hardware pulse counter", "Measures fabric linear displacement down to 0.157 mm resolution, preventing spatial drift."],
-        ["Edge Computing Unit", "NVIDIA Jetson Orin Nano Developer Kit\n1024-core NVIDIA Ampere GPU, 6-core ARM CPU, 40 TOPS AI", "Internal PCIe / USB 3.2 / GigE\nLinux Ubuntu 22.04 LTS (JetPack 5.1)", "Executes TensorRT INT8 inference model, runs edge sentinel daemon, and manages local SQLite."],
+        ["Edge Computing Unit", "Industrial Edge PC (Dedicated GPU) Developer Kit\n1024-core NVIDIA Ampere GPU, 6-core ARM CPU, 40 TOPS AI", "Internal PCIe / USB 3.2 / GigE\nLinux Ubuntu 22.04 LTS (JetPack 5.1)", "Executes TensorRT INT8 inference model, runs edge sentinel daemon, and manages local SQLite."],
         ["Industrial Signaling", "3-Tier LED Stack Light + 85 dB Buzzer\nRed (Critical Defect), Amber (Warning), Green (Normal)", "Optocoupled 24V Relay Module\nGPIO Digital Output Pins", "Provides instant visual and acoustic feedback to machine operator without requiring screen lookup."],
         ["Machine Illumination", "High-CRI High-Frequency Linear LED Array\nCRI > 95, 5000K Daylight White, 40 kHz PWM modulation", "Constant Current 24V DC\nFlicker-free industrial power supply", "Eliminates camera rolling-shutter banding and shadows, highlighting yarn micro-textures."],
         ["Mounting Gantry Stand", "Anodized Aluminum Profile (40×40 mm)\nVibration-isolated mount over rolling cylinder table", "Rigid mechanical coupling with rubber damper bushings", "Maintains constant 450 mm optical working distance across full roll inspection cycle."]
@@ -415,7 +415,7 @@ def build_document():
         "Resolution = C / 1000 = 157.08 mm / 1000 = 0.15708 mm per pulse (or ~6.366 pulses per mm).\n"
         "At maximum line speed of V = 60 m/min (1000 mm/sec), the pulse frequency generated is:\n"
         "Pulse Frequency = 1000 mm/s × 6.366 pulses/mm = 6,366 Hz (6.37 kHz).\n"
-        "The hardware interrupt handler on the Jetson Orin Nano easily services this frequency with sub-microsecond latency, guaranteeing zero dropped pulses across rolls exceeding 1,000 meters in length."
+        "The hardware interrupt handler on the Industrial Edge PC easily services this frequency with sub-microsecond latency, guaranteeing zero dropped pulses across rolls exceeding 1,000 meters in length."
     )
 
     # =========================================================================
@@ -470,7 +470,7 @@ def build_document():
         ["Production Manager", "Human Primary Actor", "React Web Dashboard (Desktop)", "Monitors real-time plant yield, inspects Defect Pareto distribution charts, reviews historical operator shift records."],
         ["Inventory Manager", "Human Primary Actor", "React Web Dashboard (Desktop)", "Views warehouse fabric stock, updates bin rack locations, segregates scrap/quarantined rolls, tracks export clearance."],
         ["System Administrator", "Human Primary Actor", "React Web Dashboard (Admin)", "Manages user accounts, assigns RBAC scopes, configures camera exposure/gain, calibrates optical encoder pulse ratios."],
-        ["Edge Sentinel Stand", "System Automated Actor", "Embedded Linux Daemon (Jetson)", "Autonomous system actor that triggers hardware frame grabs, counts encoder pulses, executes AI inference, and switches stack lights."]
+        ["Edge Sentinel Stand", "System Automated Actor", "Embedded Linux Daemon (Edge Computer)", "Autonomous system actor that triggers hardware frame grabs, counts encoder pulses, executes AI inference, and switches stack lights."]
     ]
     create_table(doc, act_headers, act_data, [1.5, 1.4, 1.6, 2.0])
 
@@ -603,7 +603,7 @@ def build_document():
     style_heading_2(doc.add_paragraph(), "Computer Vision Pipeline Stages")
     add_bullet_item(doc, "Incoming Bayer BG8 raw frames from the Basler GigE camera are demosaiced to RGB and contrast-normalized using Adaptive Histogram Equalization (CLAHE).", bold_prefix="1. Preprocessing & CLAHE: ")
     add_bullet_item(doc, "Frames are divided into overlapping 640×640 inference tiles (32-pixel overlap margin) to preserve fine micro-yarn defect resolution across wide fabrics.", bold_prefix="2. Tile Decomposition: ")
-    add_bullet_item(doc, "Tiles pass through the TensorRT INT8 engine on the Jetson Orin Nano, executing in 28.5 ms (exceeding the 35 ms frame budget).", bold_prefix="3. TensorRT INT8 Inference: ")
+    add_bullet_item(doc, "Tiles pass through the TensorRT INT8 engine on the Industrial Edge PC, executing in 28.5 ms (exceeding the 35 ms frame budget).", bold_prefix="3. TensorRT INT8 Inference: ")
     add_bullet_item(doc, "Candidate bounding boxes and segmentation masks across overlapping tiles are reconciled using Non-Maximum Suppression (IoU threshold = 0.45).", bold_prefix="4. Global Tile Stitching & NMS: ")
     add_bullet_item(doc, "Pixel coordinates (x, y) are converted into physical metric units: y-offset maps to encoder linear displacement (m), while x-offset maps to cross-web position (cm).", bold_prefix="5. Metric Coordinate Projection: ")
 
@@ -816,7 +816,7 @@ def build_document():
         "2. IEEE Std 830-1998: IEEE Recommended Practice for Software Requirements Specifications.\n"
         "3. COMSATS University Islamabad, Wah Campus: Software Requirements & Design Specification (SRDS) Standard Guidelines.\n"
         "4. Basler AG: ace 2 GigE Industrial Camera Technical Manual & PyPylon Documentation (2024).\n"
-        "5. NVIDIA Corporation: Jetson Orin Nano Developer Kit & TensorRT 8.6 Architecture Guide (2024).",
+        "5. NVIDIA Corporation: Industrial Edge PC Developer Kit & TensorRT 8.6 Architecture Guide (2024).",
         bold_prefix="Academic References: "
     )
 

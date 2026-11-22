@@ -125,7 +125,7 @@ flowchart TB
 
 ### 2.1 Deployment Node Specifications
 1. **Fabric Inspection Stand:** Physical frame holding the fabric roll, contact roller, overhead camera, lighting bar, and alert beacon.
-2. **Edge Computer Node:** Industrial embedded GPU unit (NVIDIA Jetson Orin Nano/NX or Industrial Mini-PC with dedicated GPU) running Ubuntu Linux 22.04 LTS. Runs video capture, YOLO inference, local SQLite, and sync workers.
+2. **Edge Computer Node:** Industrial embedded GPU unit (Industrial Edge PC (Dedicated GPU) or Industrial Mini-PC with dedicated GPU) running Ubuntu Linux 22.04 LTS. Runs video capture, YOLO inference, local SQLite, and sync workers.
 3. **Central Server Node:** On-prem server or cloud VM running Docker. Houses Nginx reverse proxy, FastAPI backend containers, PostgreSQL 16 database, and MinIO/S3 storage.
 4. **Mobile Device Node:** Android or iOS devices used by floor operators to scan roll QR codes, review alerts, and inspect defect thumbnails.
 5. **Quality Workstation Node:** Desktop PCs running standard web browsers connected over local network to display the 2D defect map and certify roll grades.

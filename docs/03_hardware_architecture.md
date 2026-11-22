@@ -29,7 +29,7 @@ flowchart LR
     end
 
     subgraph EDGE ["Edge Computer [Confirmed]"]
-        EDGE_CORE["Industrial PC / Jetson Orin Core"]
+        EDGE_CORE["Industrial PC / Industrial Edge PC Core"]
         LOCAL_STORAGE[("Local SQLite & NVMe Cache")]
     end
 
@@ -59,14 +59,14 @@ This table clearly distinguishes between **confirmed subsystems** (core componen
 
 | Hardware Component | Connected To | Proposed Medium / Interface | Purpose & Function | Selection Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Industrial Camera** | Edge Computer | **Option 1:** USB 3.0 Vision<br/>**Option 2:** GigE Vision (Ethernet with PoE)<br/>**Option 3:** MIPI-CSI2 (Direct ribbon on Jetson) | Captures continuous video of the moving fabric across its full width at 30–60+ FPS. Streams frames into edge RAM. | **Confirmed Subsystem**;<br/>*Exact camera model and interface pending lab testing.* |
+| **Industrial Camera** | Edge Computer | **Option 1:** USB 3.0 Vision<br/>**Option 2:** GigE Vision (Ethernet with PoE)<br/>**Option 3:** MIPI-CSI2 (Direct ribbon on Edge Computer) | Captures continuous video of the moving fabric across its full width at 30–60+ FPS. Streams frames into edge RAM. | **Confirmed Subsystem**;<br/>*Exact camera model and interface pending lab testing.* |
 | **Camera Lens** | Industrial Camera | C-Mount or CS-Mount low-distortion fixed focal length lens (8mm, 12mm, or 16mm). | Focuses the image sharply across the fabric width without fish-eye distortion at the edges. | **Confirmed Subsystem**;<br/>*Focal length to match camera height.* |
 | **Rotary Encoder** | Measurement Roller (Mechanical);<br/>Edge Computer (Electrical) | **Option 1:** Shielded cable to high-speed GPIO counter pins.<br/>**Option 2:** USB Data Acquisition (DAQ) module.<br/>**Option 3:** Dedicated microcontroller (STM32/Arduino) sending counts over serial USB. | Measures roller rotation as fabric moves. Outputs quadrature pulses (Channels A and B) to calculate fabric displacement ($\Delta L$) and speed. | **Confirmed Subsystem**;<br/>*PPR count (600, 1000, or 2048) and wiring circuit pending physical stand setup.* |
 | **Measurement Roller** | Fabric Web (Friction contact);<br/>Rotary Encoder (Shaft coupling) | Precision aluminum or rubber-coated idler roller with smooth bearings, coupled to the encoder with a flexible shaft coupler. | Turns linear fabric movement into rotation. Rubber coating prevents fabric from slipping on the roller. | **Confirmed Subsystem**;<br/>*Roller diameter to be measured and calibrated upon assembly.* |
 | **Lighting System** | Fabric Inspection Area (Optical);<br/>LED Driver (Electrical) | Linear high-CRI white LED bar light or diffused backlight panel mounted at a fixed angle above the fabric. | Provides bright, even, flicker-free light across the fabric width. Overcomes shadows and changes in room lighting. | **Confirmed Subsystem**;<br/>*Linear top-light bar confirmed; brightness and angle to be tested on real fabric.* |
 | **Lighting Driver / Controller** | Lighting System (Power);<br/>Edge Computer (Optional strobe) | **Option 1:** Regulated constant-current 24V DC power supply with manual dimmer.<br/>**Option 2:** PWM strobe controller synchronized to camera exposure. | Provides steady current so LEDs don't flicker or dim when hot, which would ruin camera frames. | **Proposed Alternative**;<br/>*Standard 24V constant-current supply proposed for prototype.* |
 | **Alert Mechanism** | Edge Computer (Control signal);<br/>Shop Floor (Visual / Sound) | **Option 1:** Industrial 3-color (Red/Yellow/Green) stack light with loud buzzer.<br/>**Option 2:** Optocoupler relay module driven by edge digital output pin.<br/>**Option 3:** Software-only alerts on operator's phone and edge monitor. | Gives workers an immediate visual and audible warning if the camera/light fails or if a major defect is spotted. | **Proposed Alternative**;<br/>*Software alerts confirmed; physical tower light is a proposed prototype add-on.* |
-| **Edge Computer** | Camera, Encoder, Alert Light, Local Network | Internal PCIe / USB 3.0 / GPIO / Ethernet buses. | Runs camera capture, encoder reading, health checks, AI defect detection, tracking, coordinate math, and local database storage. | **Confirmed Subsystem**;<br/>*NVIDIA Jetson Orin or Mini-PC with dedicated GPU proposed.* |
+| **Edge Computer** | Camera, Encoder, Alert Light, Local Network | Internal PCIe / USB 3.0 / GPIO / Ethernet buses. | Runs camera capture, encoder reading, health checks, AI defect detection, tracking, coordinate math, and local database storage. | **Confirmed Subsystem**;<br/>*Industrial Edge PC or Mini-PC with dedicated GPU proposed.* |
 | **Local Storage** | Edge Computer | High-speed internal NVMe M.2 Solid State Drive (SSD). | Holds local SQLite database (`texeye_local.db`), offline sync queue, and temporary defect image crops. Ensures zero-delay saves. | **Confirmed Subsystem**;<br/>*Internal NVMe SSD confirmed.* |
 | **Network Uplink** | Edge Computer to Central Cloud | **Option 1:** Industrial Cat6 Gigabit Ethernet cable.<br/>**Option 2:** Industrial Dual-Band Wi-Fi (802.11ac/ax). | Sends HTTPS sync batches and WebSocket updates between edge computer and central backend. | **Proposed Alternative**;<br/>*Cat6 Ethernet preferred for factory stability; Wi-Fi as secondary option.* |
 | **Central Backend Server** | Edge Units, Mobile Apps, Web Dashboards | On-premise server or cloud virtual machine running Linux and Docker. | Runs the FastAPI backend, PostgreSQL database, MinIO/S3 file storage, 4-point grading engine, and WebSocket hub. | **Confirmed Subsystem**;<br/>*Backend server architecture confirmed.* |
@@ -83,7 +83,7 @@ This table clearly distinguishes between **confirmed subsystems** (core componen
    - *Good:* Ethernet cables can run up to 100 meters, which is great if the computer is in a control room away from the loom. Power-over-Ethernet means one single cable carries power and video. Locking RJ45 connectors handle vibration well.
    - *Considerations:* Needs a dedicated Gigabit network card with jumbo frame support.
 3. **MIPI-CSI2 (Proposed Option C):**
-   - *Good:* Plugs straight into the Jetson GPU board with zero-copy memory access, giving the lowest latency and power draw.
+   - *Good:* Plugs straight into the Edge Computer GPU board with zero-copy memory access, giving the lowest latency and power draw.
    - *Considerations:* Ribbon cables are very short (under 30 cm) and camera sensor drivers can be tricky to configure.
 
 ### 3.2 Rotary Encoder Interface Options
@@ -106,7 +106,7 @@ These specific choices will be discussed with our project supervisor and finaliz
 - [ ] **Camera Cable Choice:** Finalize whether to use USB 3.0 (easier for bench prototype) or GigE Vision (better for long cable runs on a factory frame).
 - [ ] **Encoder Resolution (PPR):** Match the encoder pulses-per-revolution (e.g., 1000 PPR) to our roller diameter to get at least 1 mm measurement accuracy.
 - [ ] **Lighting Brightness:** Test LED brightness (lux) on actual fabric samples to make sure we can use fast shutter speeds (1–2 ms) without motion blur.
-- [ ] **Edge Computer Selection:** Choose between an NVIDIA Jetson Orin Nano/NX (small, low power, mounts directly on frame) or a Mini-PC with an RTX GPU (more compute headroom for running bigger models).
+- [ ] **Edge Computer Selection:** Choose between an Industrial Edge PC (Dedicated GPU) (small, low power, mounts directly on frame) or a Mini-PC with an RTX GPU (more compute headroom for running bigger models).
 
 ---
 

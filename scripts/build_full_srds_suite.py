@@ -550,7 +550,7 @@ def build_srds_html():
                 <tr><td><b>Inspection Table Gantry</b></td><td>Extruded aluminum profile (40×40 mm) mounted over motorized rolling table. Temp: 10°C to 45°C.</td><td>Vibration-isolated optical mounting.</td></tr>
                 <tr><td><b>Industrial Camera</b></td><td>Basler ace 2 (a2A2448-75gcBAS), 5.0 MP Sony IMX547 Global Shutter, 75 FPS, GigE interface.</td><td>High-speed blur-free web capture.</td></tr>
                 <tr><td><b>Rotary Optical Encoder</b></td><td>Omron E6B2-CWZ6C, 1000 PPR, dual-channel quadrature NPN outputs coupled to 50 mm drive roller.</td><td>0.157 mm displacement metrology.</td></tr>
-                <tr><td><b>Edge Computing Stand</b></td><td>NVIDIA Jetson Orin Nano (1024-core Ampere GPU, 40 TOPS AI compute, Ubuntu 22.04 LTS).</td><td>TensorRT INT8 real-time inference.</td></tr>
+                <tr><td><b>Edge Computing Stand</b></td><td>Industrial Edge PC (Dedicated GPU) (1024-core Ampere GPU, 40 TOPS AI compute, Ubuntu 22.04 LTS).</td><td>TensorRT INT8 real-time inference.</td></tr>
                 <tr><td><b>Alarm Relay & Stack Light</b></td><td>Opto-isolated 4-channel 24V DC relay board with 3-tier LED tower (Red/Amber/Green) + 85 dB buzzer.</td><td>Shop-floor visual/audible alarms.</td></tr>
                 <tr><td><b>Central Cloud Server</b></td><td>Linux Server (8 CPU cores, 16 GB RAM, 500 GB NVMe SSD). Python 3.11, PostgreSQL 16, MinIO S3.</td><td>Enterprise database & reporting hub.</td></tr>
               </tbody>
@@ -596,7 +596,7 @@ def build_srds_html():
             <table class="formal-table">
               <thead><tr><th style="width:18%;">Req ID</th><th style="width:28%;">Requirement Name</th><th style="width:44%;">Engineering Description</th><th style="width:10%;">Priority</th></tr></thead>
               <tbody>
-                <tr><td><b>FR-INF-01</b></td><td>AI Inference Engine</td><td>Execute fine-tuned YOLO model with real-time inference latency under 30 ms per frame on Jetson.</td><td>High</td></tr>
+                <tr><td><b>FR-INF-01</b></td><td>AI Inference Engine</td><td>Execute fine-tuned YOLO model with real-time inference latency under 30 ms per frame on Edge Computer.</td><td>High</td></tr>
                 <tr><td><b>FR-INF-02</b></td><td>Multi-Class Detection</td><td>Detect six defect classes: Hole, Oil Stain, Broken Yarn, Slub, Knot, Crease (mAP@0.5 ≥ 88%).</td><td>High</td></tr>
                 <tr><td><b>FR-INF-03</b></td><td>Bounding Box Extraction</td><td>Output normalized coordinates [u_min, v_min, u_max, v_max] and confidence scores [0.0, 1.0].</td><td>High</td></tr>
                 <tr><td><b>FR-INF-04</b></td><td>Metric Width Mapping</td><td>Map lateral pixel coordinates to physical millimeters (X in mm) using optical scale factor kx.</td><td>High</td></tr>
@@ -1153,7 +1153,7 @@ def build_srds_html():
             </div>
             
             <p class="body-p" style="font-size: 8pt; color: #333;">
-              The physical stand incorporates optical isolation across all GPIO inputs and outputs, ensuring complete protection of the NVIDIA Jetson Orin Nano edge computer against motor electrical noise and inductive kickbacks.
+              The physical stand incorporates optical isolation across all GPIO inputs and outputs, ensuring complete protection of the Industrial Edge PC (Dedicated GPU) edge computer against motor electrical noise and inductive kickbacks.
             </p>
           </div>
         </div>
