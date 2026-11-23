@@ -1,0 +1,341 @@
+"""
+TexEye AI — Master Vector SVG Use Case Diagram Generator
+Generates pure vector SVG strictly adhering to UML 2.5 standards:
+- Left: 5 Primary Human Actors
+- Center: System Boundary 'TexEye AI' with 5 Module Groupings & 19 Use Case Ovals
+- Right: 4 Secondary Hardware Actors (Camera, Rotary Encoder, Lighting System, Alarm / Buzzer)
+- Proper <<include>> and <<extend>> dashed lines with arrows and pill labels
+- 100% Monochrome Academic Standards
+"""
+
+import os
+
+SVG_PATH = os.path.abspath(r"C:\Users\User\Desktop\FYP\diagrams\visio\07_module_wise_use_cases.svg")
+DOCS_SVG_PATH = os.path.abspath(r"C:\Users\User\Desktop\FYP\docs\07_module_wise_use_cases.svg")
+
+svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 880" width="100%" height="100%" style="background:#ffffff; font-family:Arial, Helvetica, sans-serif;">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-include" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#333333" />
+    </marker>
+    <marker id="arrow-extend" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#333333" />
+    </marker>
+    <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#000000" />
+    </marker>
+  </defs>
+
+  <!-- Outer Border -->
+  <rect x="20" y="20" width="1240" height="840" fill="none" stroke="#000000" stroke-width="1.5" />
+
+  <!-- Academic Caption at Bottom -->
+  <text x="640" y="845" font-size="13" font-weight="bold" text-anchor="middle" fill="#000000">
+    Figure 3.1: Master UML 2.5 Use Case Diagram — TexEye AI System
+  </text>
+
+  <!-- SYSTEM BOUNDARY BOX -->
+  <rect x="230" y="45" width="820" height="770" fill="#ffffff" stroke="#000000" stroke-width="2.2" rx="4" />
+  
+  <!-- Boundary Header -->
+  <rect x="230" y="45" width="820" height="34" fill="#f8fafc" stroke="#000000" stroke-width="1.2" />
+  <text x="640" y="68" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f172a">
+    SYSTEM BOUNDARY: TexEye AI (Automated Fabric Defect Detection &amp; Quality Management)
+  </text>
+
+  <!-- ===================================================================== -->
+  <!-- PRIMARY HUMAN ACTORS (LEFT SIDE) -->
+  <!-- ===================================================================== -->
+  <!-- Helper stick figure template -->
+  <!-- 1. Floor Operator (y = 150) -->
+  <g id="actor-floor-operator" transform="translate(100, 150)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="72" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Floor Operator</text>
+    <text x="0" y="86" font-size="9.5" text-anchor="middle" fill="#475569">(Mobile App)</text>
+  </g>
+
+  <!-- 2. Quality Inspector (y = 350) -->
+  <g id="actor-quality-inspector" transform="translate(100, 360)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="72" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Quality Inspector</text>
+    <text x="0" y="86" font-size="9.5" text-anchor="middle" fill="#475569">(Web Dashboard)</text>
+  </g>
+
+  <!-- 3. Production Manager (y = 530) -->
+  <g id="actor-production-manager" transform="translate(100, 530)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="72" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Production Manager</text>
+    <text x="0" y="86" font-size="9.5" text-anchor="middle" fill="#475569">(Web Analytics)</text>
+  </g>
+
+  <!-- 4. Inventory Manager (y = 670) -->
+  <g id="actor-inventory-manager" transform="translate(100, 670)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="72" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Inventory Manager</text>
+    <text x="0" y="86" font-size="9.5" text-anchor="middle" fill="#475569">(Warehouse Portal)</text>
+  </g>
+
+  <!-- 5. System Administrator (y = 780) -->
+  <g id="actor-system-admin" transform="translate(100, 780)">
+    <circle cx="0" cy="-20" r="12" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-8" x2="0" y2="18" stroke="#000000" stroke-width="1.8" />
+    <line x1="-16" y1="2" x2="16" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="18" x2="-14" y2="40" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="18" x2="14" y2="40" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="56" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">System Admin</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- SECONDARY HARDWARE ACTORS (RIGHT SIDE) -->
+  <!-- ===================================================================== -->
+  <!-- 1. Camera (y = 150) -->
+  <g id="actor-camera" transform="translate(1180, 150)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="68" font-size="9" font-style="italic" text-anchor="middle" fill="#475569">&lt;&lt;secondary&gt;&gt;</text>
+    <text x="0" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Camera</text>
+  </g>
+
+  <!-- 2. Rotary Encoder (y = 290) -->
+  <g id="actor-encoder" transform="translate(1180, 290)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="68" font-size="9" font-style="italic" text-anchor="middle" fill="#475569">&lt;&lt;secondary&gt;&gt;</text>
+    <text x="0" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Rotary Encoder</text>
+  </g>
+
+  <!-- 3. Lighting System (y = 440) -->
+  <g id="actor-lighting" transform="translate(1180, 440)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="68" font-size="9" font-style="italic" text-anchor="middle" fill="#475569">&lt;&lt;secondary&gt;&gt;</text>
+    <text x="0" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Lighting System</text>
+  </g>
+
+  <!-- 4. Alarm / Buzzer (y = 580) -->
+  <g id="actor-alarm" transform="translate(1180, 580)">
+    <circle cx="0" cy="-24" r="14" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#000000" stroke-width="1.8" />
+    <line x1="-20" y1="2" x2="20" y2="2" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="-16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <line x1="0" y1="24" x2="16" y2="52" stroke="#000000" stroke-width="1.8" />
+    <text x="0" y="68" font-size="9" font-style="italic" text-anchor="middle" fill="#475569">&lt;&lt;secondary&gt;&gt;</text>
+    <text x="0" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Alarm / Buzzer</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- USE CASE OVALS -->
+  <!-- Col 1: cx = 360 | Col 2: cx = 640 | Col 3: cx = 920 -->
+  <!-- rx = 85, ry = 22 -->
+  <!-- ===================================================================== -->
+  
+  <!-- Common: Authenticate User (cx=640, cy=105) -->
+  <ellipse cx="640" cy="105" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="109" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Authenticate User</text>
+
+  <!-- --- Module 1 & 3: Floor Operations & Inspection --- -->
+  <!-- Scan Roll QR (cx=360, cy=150) -->
+  <ellipse cx="360" cy="150" rx="85" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="154" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Scan Roll QR Code</text>
+
+  <!-- View Roll Info (cx=640, cy=150) -->
+  <ellipse cx="640" cy="150" rx="85" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="154" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">View Roll Information</text>
+
+  <!-- Start Inspection Session (cx=360, cy=215) -->
+  <ellipse cx="360" cy="215" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="219" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Start Inspection Session</text>
+
+  <!-- Execute Fabric Inspection (cx=640, cy=215) -->
+  <ellipse cx="640" cy="215" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="219" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Execute Fabric Inspection</text>
+
+  <!-- Receive Inspection Alerts (cx=360, cy=280) -->
+  <ellipse cx="360" cy="280" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="284" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Receive Inspection Alerts</text>
+
+  <!-- --- Module 2: Hardware & Inspection Monitoring --- -->
+  <!-- Monitor Reliability (cx=920, cy=215) -->
+  <ellipse cx="920" cy="215" rx="95" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="920" y="219" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Monitor Reliability</text>
+
+  <!-- Mark Uninspected Section (cx=920, cy=290) -->
+  <ellipse cx="920" cy="290" rx="95" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="920" y="294" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Mark Uninspected Section</text>
+
+  <!-- Trigger Hardware Alert (cx=920, cy=365) -->
+  <ellipse cx="920" cy="365" rx="95" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="920" y="369" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Trigger Hardware Alert</text>
+
+  <!-- --- Module 4: Web Quality Management & Digital Map --- -->
+  <!-- View 2D Defect Map (cx=360, cy=355) -->
+  <ellipse cx="360" cy="355" rx="85" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="359" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">View 2D Defect Map</text>
+
+  <!-- Review Detected Defects (cx=360, cy=420) -->
+  <ellipse cx="360" cy="420" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="424" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Review Detected Defects</text>
+
+  <!-- Correct Defect Classification (cx=640, cy=420) -->
+  <ellipse cx="640" cy="420" rx="92" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="424" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Correct Defect Class</text>
+
+  <!-- Review Roll Grading (cx=360, cy=485) -->
+  <ellipse cx="360" cy="485" rx="85" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="489" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Review Roll Grading</text>
+
+  <!-- Generate Inspection Report (cx=640, cy=485) -->
+  <ellipse cx="640" cy="485" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="489" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Generate Inspection Report</text>
+
+  <!-- Synchronize Inspection Data (cx=640, cy=355) -->
+  <ellipse cx="640" cy="355" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="359" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Synchronize Data Online</text>
+
+  <!-- --- Module 5: Smart Operations & Administration --- -->
+  <!-- View Production Dashboard (cx=360, cy=565) -->
+  <ellipse cx="360" cy="565" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="569" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Production Dashboard</text>
+
+  <!-- View Defect Statistics (cx=640, cy=565) -->
+  <ellipse cx="640" cy="565" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="569" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">View Defect Statistics</text>
+
+  <!-- Manage Roll Inventory (cx=360, cy=640) -->
+  <ellipse cx="360" cy="640" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="644" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Manage Roll Inventory</text>
+
+  <!-- Manage Scrap & Quarantine (cx=640, cy=640) -->
+  <ellipse cx="640" cy="640" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="644" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Manage Scrap Records</text>
+
+  <!-- Manage Users & Permissions (cx=360, cy=715) -->
+  <ellipse cx="360" cy="715" rx="88" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="360" y="719" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Manage Users &amp; Scopes</text>
+
+  <!-- Configure Calibration (cx=640, cy=715) -->
+  <ellipse cx="640" cy="715" rx="90" ry="20" fill="#ffffff" stroke="#000000" stroke-width="1.4" />
+  <text x="640" y="719" font-size="10" font-weight="bold" text-anchor="middle" fill="#000000">Configure Calibration</text>
+
+  <!-- ===================================================================== -->
+  <!-- SOLID ASSOCIATION LINES: Primary Human Actors to Use Cases -->
+  <!-- ===================================================================== -->
+  <!-- Floor Operator to Scan QR, Start Insp, Recv Alerts -->
+  <line x1="130" y1="160" x2="275" y2="150" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="160" x2="272" y2="215" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="160" x2="272" y2="280" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Quality Inspector to Defect Map, Review Defects, Review Grade -->
+  <line x1="130" y1="380" x2="275" y2="355" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="380" x2="272" y2="420" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="380" x2="275" y2="485" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Production Manager to Dashboard, Defect Stats -->
+  <line x1="130" y1="545" x2="272" y2="565" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="545" x2="555" y2="565" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Inventory Manager to Manage Inventory, Manage Scrap -->
+  <line x1="130" y1="680" x2="272" y2="640" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="680" x2="550" y2="640" stroke="#000000" stroke-width="1.1" />
+
+  <!-- System Administrator to Manage Users, Configure Calibration, Sync Data -->
+  <line x1="130" y1="790" x2="272" y2="715" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="790" x2="550" y2="715" stroke="#000000" stroke-width="1.1" />
+  <line x1="130" y1="790" x2="555" y2="365" stroke="#64748b" stroke-dasharray="3,3" stroke-width="0.8" />
+
+  <!-- ===================================================================== -->
+  <!-- SOLID ASSOCIATION LINES: Secondary Hardware Actors to Use Cases -->
+  <!-- ===================================================================== -->
+  <!-- Camera to Execute Inspection & Monitor Reliability -->
+  <line x1="1150" y1="160" x2="730" y2="215" stroke="#000000" stroke-width="1.1" />
+  <line x1="1150" y1="160" x2="1015" y2="215" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Rotary Encoder to Execute Inspection & Monitor Reliability -->
+  <line x1="1150" y1="290" x2="730" y2="225" stroke="#000000" stroke-width="1.1" />
+  <line x1="1150" y1="290" x2="1015" y2="225" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Lighting System to Monitor Reliability -->
+  <line x1="1150" y1="440" x2="1015" y2="235" stroke="#000000" stroke-width="1.1" />
+
+  <!-- Alarm / Buzzer to Trigger Hardware Alert -->
+  <line x1="1150" y1="580" x2="1015" y2="365" stroke="#000000" stroke-width="1.2" />
+
+  <!-- ===================================================================== -->
+  <!-- DASHED LINES: <<include>> RELATIONSHIPS (Base -> Included) -->
+  <!-- ===================================================================== -->
+  <!-- 1. Scan Roll QR -> View Roll Info -->
+  <line x1="445" y1="150" x2="555" y2="150" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-include)" />
+  <rect x="470" y="140" width="60" height="15" fill="#ffffff" />
+  <text x="500" y="151" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- 2. Start Inspection Session -> Execute Fabric Inspection -->
+  <line x1="448" y1="215" x2="550" y2="215" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-include)" />
+  <rect x="468" y="205" width="60" height="15" fill="#ffffff" />
+  <text x="498" y="216" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- 3. Review Roll Grading -> Generate Inspection Report -->
+  <line x1="445" y1="485" x2="550" y2="485" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-include)" />
+  <rect x="468" y="475" width="60" height="15" fill="#ffffff" />
+  <text x="498" y="486" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- ===================================================================== -->
+  <!-- DASHED LINES: <<extend>> RELATIONSHIPS (Extension -> Base) -->
+  <!-- ===================================================================== -->
+  <!-- 4. Correct Defect Classification -> Review Detected Defects -->
+  <line x1="548" y1="420" x2="448" y2="420" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-extend)" />
+  <rect x="470" y="410" width="60" height="15" fill="#ffffff" />
+  <text x="500" y="421" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- 5. Mark Uninspected Section -> Monitor Reliability (vertical up) -->
+  <line x1="920" y1="270" x2="920" y2="238" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-extend)" />
+  <rect x="928" y="246" width="56" height="14" fill="#ffffff" />
+  <text x="956" y="257" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- 6. Trigger Hardware Alert -> Monitor Reliability (vertical up) -->
+  <line x1="920" y1="345" x2="920" y2="313" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-extend)" />
+  <rect x="928" y="321" width="56" height="14" fill="#ffffff" />
+  <text x="956" y="332" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- 7. Trigger Hardware Alert -> Execute Fabric Inspection (orthogonal diagonal) -->
+  <path d="M 830 365 L 750 365 L 700 238" fill="none" stroke="#333333" stroke-dasharray="4,3" stroke-width="1" marker-end="url(#arrow-extend)" />
+  <rect x="735" y="356" width="56" height="14" fill="#ffffff" />
+  <text x="763" y="367" font-size="8.5" font-style="italic" text-anchor="middle" fill="#1e293b">&lt;&lt;extend&gt;&gt;</text>
+
+</svg>
+"""
+
+with open(SVG_PATH, "w", encoding="utf-8") as f:
+    f.write(svg_content)
+
+with open(DOCS_SVG_PATH, "w", encoding="utf-8") as f:
+    f.write(svg_content)
+
+print("Generated clean vector SVG files:")
+print(f"  {SVG_PATH}")
+print(f"  {DOCS_SVG_PATH}")

@@ -1,0 +1,128 @@
+@startuml 07_module_wise_use_cases
+!theme plain
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam roundCorner 10
+skinparam actorStyle awesome
+
+left to right direction
+
+header COMSATS University Islamabad, Wah Campus — Department of Computer Science
+title Figure 3.1: Master UML 2.5 Use Case Diagram — TexEye AI System
+
+' =============================================================================
+' PRIMARY HUMAN ACTORS (LEFT SIDE)
+' =============================================================================
+actor "Floor Operator\n(Mobile App)" as FO
+actor "Quality Inspector\n(Web Dashboard)" as QI
+actor "Production Manager\n(Web Analytics)" as PM
+actor "Inventory Manager\n(Warehouse Portal)" as IM
+actor "System Administrator\n(Admin Portal)" as ADMIN
+
+' =============================================================================
+' SYSTEM BOUNDARY: TexEye AI
+' =============================================================================
+rectangle "SYSTEM BOUNDARY: TexEye AI" {
+
+  ' --- Common / Access ---
+  usecase "Authenticate User\n(UC-COM-01)" as UC_AUTH
+
+  ' --- Module 1 & 3: Floor Operations & Defect Inspection ---
+  package "Module 1 & 3: Floor Operations & Inspection" {
+    usecase "Scan Fabric Roll QR Code\n(UC-MOB-01)" as UC_SCAN
+    usecase "View Fabric Roll Information\n(UC-MOB-02)" as UC_VIEW_ROLL
+    usecase "Start Inspection Session\n(UC-INSP-01)" as UC_START_INSP
+    usecase "Execute Fabric Inspection\n(UC-INSP-02)" as UC_EXEC_INSP
+    usecase "Receive Inspection Alerts\n(UC-MOB-03)" as UC_RECV_ALERTS
+  }
+
+  ' --- Module 2: Hardware & Inspection Monitoring ---
+  package "Module 2: Hardware & Inspection Monitoring" {
+    usecase "Monitor Inspection Reliability\n(UC-INSP-03)" as UC_MONITOR_REL
+    usecase "Mark Uninspected Fabric Section\n(UC-INSP-04)" as UC_MARK_UNINSP
+    usecase "Trigger Hardware Alert\n(UC-INSP-05)" as UC_TRIG_ALARM
+  }
+
+  ' --- Module 4: Web Quality Management & Digital Map ---
+  package "Module 4: Web Quality Management & Digital Map" {
+    usecase "View Digital Fabric Defect Map\n(UC-WEB-01)" as UC_DEFECT_MAP
+    usecase "Review Detected Defects\n(UC-WEB-02)" as UC_REV_DEFECTS
+    usecase "Correct Defect Classification\n(UC-WEB-03)" as UC_CORRECT_DEFECT
+    usecase "Review Fabric Roll Grading\n(UC-WEB-04)" as UC_REV_GRADE
+    usecase "Generate Inspection Report\n(UC-WEB-05)" as UC_GEN_REPORT
+    usecase "Synchronize Inspection Data\n(UC-WEB-06)" as UC_SYNC_DATA
+  }
+
+  ' --- Module 5: Smart Operations & Administration ---
+  package "Module 5: Smart Operations & Administration" {
+    usecase "View Production Dashboard\n(UC-OPS-01)" as UC_PROD_DASH
+    usecase "View Defect Statistics\n(UC-OPS-02)" as UC_DEFECT_STATS
+    usecase "Manage Fabric Roll Inventory\n(UC-OPS-03)" as UC_MANAGE_INV
+    usecase "Manage Scrap & Quarantined Rolls\n(UC-OPS-04)" as UC_MANAGE_SCRAP
+    usecase "Manage Users & Permissions\n(UC-OPS-05)" as UC_MANAGE_USERS
+    usecase "Configure System Calibration\n(UC-OPS-06)" as UC_CONFIG_CALIB
+  }
+}
+
+' =============================================================================
+' SECONDARY HARDWARE ACTORS (RIGHT SIDE)
+' =============================================================================
+actor "Camera" as CAM <<secondary>>
+actor "Rotary Encoder" as ENC <<secondary>>
+actor "Lighting System" as LIGHT <<secondary>>
+actor "Alarm / Buzzer" as ALARM <<secondary>>
+
+' =============================================================================
+' PRIMARY ACTOR ASSOCIATIONS
+' =============================================================================
+FO --> UC_SCAN
+FO --> UC_START_INSP
+FO --> UC_RECV_ALERTS
+
+QI --> UC_DEFECT_MAP
+QI --> UC_REV_DEFECTS
+QI --> UC_REV_GRADE
+QI --> UC_GEN_REPORT
+
+PM --> UC_PROD_DASH
+PM --> UC_DEFECT_STATS
+
+IM --> UC_MANAGE_INV
+IM --> UC_MANAGE_SCRAP
+
+ADMIN --> UC_MANAGE_USERS
+ADMIN --> UC_CONFIG_CALIB
+ADMIN --> UC_SYNC_DATA
+
+' =============================================================================
+' SECONDARY HARDWARE ACTOR ASSOCIATIONS
+' =============================================================================
+UC_EXEC_INSP --> CAM : <<supplies images>>
+UC_EXEC_INSP --> ENC : <<supplies pulses>>
+
+UC_MONITOR_REL --> CAM : <<monitors connectivity & drops>>
+UC_MONITOR_REL --> ENC : <<monitors pulse consistency>>
+UC_MONITOR_REL --> LIGHT : <<monitors lux intensity>>
+
+UC_TRIG_ALARM --> ALARM : <<activates siren / beacon>>
+
+' =============================================================================
+' UML <<include>> RELATIONSHIPS (Mandatory Reusable Behavior)
+' Base --( <<include>> )--> Included
+' =============================================================================
+UC_SCAN ..> UC_VIEW_ROLL : <<include>>
+UC_START_INSP ..> UC_EXEC_INSP : <<include>>
+UC_REV_GRADE ..> UC_GEN_REPORT : <<include>>
+
+' =============================================================================
+' UML <<extend>> RELATIONSHIPS (Conditional Extension Behavior)
+' Extension --( <<extend>> )--> Base
+' =============================================================================
+UC_CORRECT_DEFECT ..> UC_REV_DEFECTS : <<extend>>\n(condition: when AI classification is erroneous)
+UC_MARK_UNINSP ..> UC_MONITOR_REL : <<extend>>\n(condition: when hardware failure or frame drop occurs)
+UC_TRIG_ALARM ..> UC_MONITOR_REL : <<extend>>\n(condition: when inspection reliability threshold violated)
+UC_TRIG_ALARM ..> UC_EXEC_INSP : <<extend>>\n(condition: when critical defect density detected)
+
+@enduml
